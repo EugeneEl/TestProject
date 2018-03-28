@@ -13,6 +13,8 @@
 		3E2FA192206BEE4E0000DAD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FA18B206BEE4E0000DAD7 /* AppDelegate.swift */; };
 		3E2FA193206BEE4E0000DAD7 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E2FA18C206BEE4E0000DAD7 /* Info.plist */; };
 		3E2FA195206BEEAD0000DAD7 /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FA194206BEEAD0000DAD7 /* RootRouter.swift */; };
+		3E2FA198206BEF830000DAD7 /* UserSessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FA197206BEF830000DAD7 /* UserSessionModel.swift */; };
+		3E2FA19C206BEFDE0000DAD7 /* UserSessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FA19B206BEFDE0000DAD7 /* UserSessionService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,8 @@
 		3E2FA18B206BEE4E0000DAD7 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3E2FA18C206BEE4E0000DAD7 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E2FA194206BEEAD0000DAD7 /* RootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootRouter.swift; sourceTree = "<group>"; };
+		3E2FA197206BEF830000DAD7 /* UserSessionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSessionModel.swift; sourceTree = "<group>"; };
+		3E2FA19B206BEFDE0000DAD7 /* UserSessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSessionService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,9 +83,9 @@
 		3E2FA17F206BEE4D0000DAD7 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				3E2FA194206BEEAD0000DAD7 /* RootRouter.swift */,
 				3E2FA181206BEE4D0000DAD7 /* LoginFlow */,
 				3E2FA180206BEE4D0000DAD7 /* MainFlow */,
-				3E2FA194206BEEAD0000DAD7 /* RootRouter.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -150,6 +154,8 @@
 		3E2FA18D206BEE4E0000DAD7 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				3E2FA199206BEFD10000DAD7 /* CoreServices */,
+				3E2FA19A206BEFD10000DAD7 /* UserSessionService */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -157,8 +163,32 @@
 		3E2FA18E206BEE4E0000DAD7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3E2FA196206BEF740000DAD7 /* UserSessionModel */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		3E2FA196206BEF740000DAD7 /* UserSessionModel */ = {
+			isa = PBXGroup;
+			children = (
+				3E2FA197206BEF830000DAD7 /* UserSessionModel.swift */,
+			);
+			path = UserSessionModel;
+			sourceTree = "<group>";
+		};
+		3E2FA199206BEFD10000DAD7 /* CoreServices */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoreServices;
+			sourceTree = "<group>";
+		};
+		3E2FA19A206BEFD10000DAD7 /* UserSessionService */ = {
+			isa = PBXGroup;
+			children = (
+				3E2FA19B206BEFDE0000DAD7 /* UserSessionService.swift */,
+			);
+			path = UserSessionService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,8 +264,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E2FA198206BEF830000DAD7 /* UserSessionModel.swift in Sources */,
 				3E2FA195206BEEAD0000DAD7 /* RootRouter.swift in Sources */,
 				3E2FA192206BEE4E0000DAD7 /* AppDelegate.swift in Sources */,
+				3E2FA19C206BEFDE0000DAD7 /* UserSessionService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
