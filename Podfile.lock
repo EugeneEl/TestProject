@@ -1,0 +1,29 @@
+PODS:
+  - Alamofire (4.7.0)
+  - FXKeychain (1.5.3)
+  - Localize-Swift (2.0.0)
+  - SDWebImage (4.3.3):
+    - SDWebImage/Core (= 4.3.3)
+  - SDWebImage/Core (4.3.3)
+  - SnapKit (3.2.0)
+  - TPKeyboardAvoiding (1.3.2)
+
+DEPENDENCIES:
+  - Alamofire
+  - FXKeychain (~> 1.5.3)
+  - Localize-Swift
+  - SDWebImage
+  - SnapKit (~> 3.0)
+  - TPKeyboardAvoiding (~> 1.3)
+
+SPEC CHECKSUMS:
+  Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
+  FXKeychain: 2fe54573946ffef634f4e2a2851e6c8f4ea15e76
+  Localize-Swift: c798ec9286494866f7068f85f7c71283ac5bdab4
+  SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
+  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
+  TPKeyboardAvoiding: cb69d5ddbe90ce0170e4bc2db1e5e41d4a3ad9a4
+
+PODFILE CHECKSUM: 2208d65d88d8641ed9602914001453f53f0aee5a
+
+COCOAPODS: 1.3.1
