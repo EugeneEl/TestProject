@@ -15,63 +15,24 @@
 		3E2FA195206BEEAD0000DAD7 /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FA194206BEEAD0000DAD7 /* RootRouter.swift */; };
 		3E2FA198206BEF830000DAD7 /* UserSessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FA197206BEF830000DAD7 /* UserSessionModel.swift */; };
 		3E2FA19C206BEFDE0000DAD7 /* UserSessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FA19B206BEFDE0000DAD7 /* UserSessionService.swift */; };
-		3EB16713206CB25800A82D11 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB166DB206CB25800A82D11 /* UIViewController+Extensions.swift */; };
-		3EB16714206CB25800A82D11 /* UITabBarController+ZPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB166DC206CB25800A82D11 /* UITabBarController+ZPosition.swift */; };
-		3EB16715206CB25800A82D11 /* UIViewController+NavigationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB166DD206CB25800A82D11 /* UIViewController+NavigationExtension.swift */; };
-		3EB16716206CB25800A82D11 /* AlertController+TheBoardAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB166DE206CB25800A82D11 /* AlertController+TheBoardAdditions.swift */; };
-		3EB16717206CB25800A82D11 /* UIButton + BackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB166E0206CB25800A82D11 /* UIButton + BackgroundColor.swift */; };
-		3EB16718206CB25800A82D11 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB166E2206CB25800A82D11 /* UIView.swift */; };
-		3EB16719206CB25800A82D11 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB166E4206CB25800A82D11 /* UIColor.swift */; };
-		3EB1671A206CB25800A82D11 /* UIImage + Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB166E6206CB25800A82D11 /* UIImage + Snapshot.swift */; };
-		3EB1671B206CB25800A82D11 /* UIImage+ReSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB166E7206CB25800A82D11 /* UIImage+ReSize.swift */; };
-		3EB1671C206CB25800A82D11 /* UIImage+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB166E8206CB25800A82D11 /* UIImage+Color.swift */; };
-		3EB1671D206CB25800A82D11 /* UIImage+RoundCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB166E9206CB25800A82D11 /* UIImage+RoundCorner.swift */; };
-		3EB1671E206CB25800A82D11 /* UIImage+Alpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB166EA206CB25800A82D11 /* UIImage+Alpha.swift */; };
-		3EB1671F206CB25800A82D11 /* UIImage + TintColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB166EB206CB25800A82D11 /* UIImage + TintColor.swift */; };
-		3EB16720206CB25800A82D11 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB166ED206CB25800A82D11 /* UITableView+Extensions.swift */; };
-		3EB16721206CB25800A82D11 /* UITableViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB166EE206CB25800A82D11 /* UITableViewCell+Extensions.swift */; };
-		3EB16722206CB25800A82D11 /* UIApplication+TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB166F0206CB25800A82D11 /* UIApplication+TopViewController.swift */; };
-		3EB16723206CB25800A82D11 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB166F2206CB25800A82D11 /* UIImageView+Extensions.swift */; };
-		3EB16724206CB25800A82D11 /* UIImageView+ColorReplace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB166F3206CB25800A82D11 /* UIImageView+ColorReplace.swift */; };
-		3EB16725206CB25800A82D11 /* UIImageView+PreloadExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB166F4206CB25800A82D11 /* UIImageView+PreloadExtension.swift */; };
-		3EB16726206CB25800A82D11 /* UIScrollView+Exntensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB166F6206CB25800A82D11 /* UIScrollView+Exntensions.swift */; };
-		3EB16727206CB25800A82D11 /* UICollectionViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB166F8206CB25800A82D11 /* UICollectionViewCell+Extensions.swift */; };
-		3EB16728206CB25800A82D11 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB166F9206CB25800A82D11 /* UICollectionView+Extensions.swift */; };
-		3EB16729206CB25800A82D11 /* UIDevice+Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB166FB206CB25800A82D11 /* UIDevice+Debug.swift */; };
-		3EB1672A206CB25800A82D11 /* UILabel+HeightToFit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB166FD206CB25800A82D11 /* UILabel+HeightToFit.swift */; };
-		3EB1672B206CB25800A82D11 /* UIScreen+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB166FF206CB25800A82D11 /* UIScreen+Extensions.swift */; };
-		3EB1672C206CB25800A82D11 /* Array+CardAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB16701206CB25800A82D11 /* Array+CardAdditions.swift */; };
-		3EB1672D206CB25800A82D11 /* Bool+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB16702206CB25800A82D11 /* Bool+Extensions.swift */; };
-		3EB1672E206CB25800A82D11 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB16704206CB25800A82D11 /* String+Extensions.swift */; };
-		3EB1672F206CB25800A82D11 /* NSMutableAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB16705206CB25800A82D11 /* NSMutableAttributedString+Extensions.swift */; };
-		3EB16730206CB25800A82D11 /* String+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB16706206CB25800A82D11 /* String+Validation.swift */; };
-		3EB16731206CB25800A82D11 /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB16707206CB25800A82D11 /* String+Localization.swift */; };
-		3EB16732206CB25800A82D11 /* NSString+LinkDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB16708206CB25800A82D11 /* NSString+LinkDetection.swift */; };
-		3EB16733206CB25800A82D11 /* NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB16709206CB25800A82D11 /* NSObject.swift */; };
-		3EB16734206CB25800A82D11 /* Dictionary + JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB1670A206CB25800A82D11 /* Dictionary + JSON.swift */; };
-		3EB16735206CB25800A82D11 /* Foundation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB1670B206CB25800A82D11 /* Foundation+Extensions.swift */; };
-		3EB16736206CB25800A82D11 /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB1670C206CB25800A82D11 /* NSDate.swift */; };
-		3EB16737206CB25800A82D11 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB1670D206CB25800A82D11 /* Bundle+Extensions.swift */; };
-		3EB16738206CB25800A82D11 /* MapView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB1670F206CB25800A82D11 /* MapView+Extensions.swift */; };
-		3EB16739206CB25800A82D11 /* SafariService+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB16711206CB25800A82D11 /* SafariService+Extension.swift */; };
-		3EB1673A206CB25800A82D11 /* StatusBarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB16712206CB25800A82D11 /* StatusBarHelper.swift */; };
-		3EB16775206CB26700A82D11 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB1673D206CB26700A82D11 /* UIViewController+Extensions.swift */; };
-		3EB1677A206CB26700A82D11 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB16744206CB26700A82D11 /* UIView.swift */; };
-		3EB1677B206CB26700A82D11 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB16746206CB26700A82D11 /* UIColor.swift */; };
-		3EB16782206CB26700A82D11 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB1674F206CB26700A82D11 /* UITableView+Extensions.swift */; };
-		3EB16783206CB26700A82D11 /* UITableViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB16750206CB26700A82D11 /* UITableViewCell+Extensions.swift */; };
-		3EB16785206CB26700A82D11 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB16754206CB26700A82D11 /* UIImageView+Extensions.swift */; };
-		3EB16789206CB26700A82D11 /* UICollectionViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB1675A206CB26700A82D11 /* UICollectionViewCell+Extensions.swift */; };
-		3EB1678A206CB26700A82D11 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB1675B206CB26700A82D11 /* UICollectionView+Extensions.swift */; };
-		3EB1678F206CB26700A82D11 /* Bool+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB16764206CB26700A82D11 /* Bool+Extensions.swift */; };
-		3EB16792206CB26700A82D11 /* String+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB16768206CB26700A82D11 /* String+Validation.swift */; };
-		3EB16797206CB26700A82D11 /* Foundation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB1676D206CB26700A82D11 /* Foundation+Extensions.swift */; };
-		3EB1679A206CB26700A82D11 /* MapView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB16771206CB26700A82D11 /* MapView+Extensions.swift */; };
-		3EB1679B206CB26700A82D11 /* SafariService+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB16773206CB26700A82D11 /* SafariService+Extension.swift */; };
-		3EB1679C206CB26700A82D11 /* StatusBarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB16774206CB26700A82D11 /* StatusBarHelper.swift */; };
+		3E58BA89206CDF49001DEB34 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E58BA70206CDF49001DEB34 /* UIViewController+Extensions.swift */; };
+		3E58BA8A206CDF49001DEB34 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E58BA72206CDF49001DEB34 /* UIView.swift */; };
+		3E58BA8B206CDF49001DEB34 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E58BA74206CDF49001DEB34 /* UIColor.swift */; };
+		3E58BA8C206CDF49001DEB34 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E58BA77206CDF49001DEB34 /* UITableView+Extensions.swift */; };
+		3E58BA8D206CDF49001DEB34 /* UITableViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E58BA78206CDF49001DEB34 /* UITableViewCell+Extensions.swift */; };
+		3E58BA8E206CDF49001DEB34 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E58BA7A206CDF49001DEB34 /* UIImageView+Extensions.swift */; };
+		3E58BA8F206CDF49001DEB34 /* UICollectionViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E58BA7D206CDF49001DEB34 /* UICollectionViewCell+Extensions.swift */; };
+		3E58BA90206CDF49001DEB34 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E58BA7E206CDF49001DEB34 /* UICollectionView+Extensions.swift */; };
+		3E58BA91206CDF49001DEB34 /* SafariService+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E58BA80206CDF49001DEB34 /* SafariService+Extension.swift */; };
+		3E58BA92206CDF49001DEB34 /* StatusBarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E58BA81206CDF49001DEB34 /* StatusBarHelper.swift */; };
+		3E58BA93206CDF49001DEB34 /* Bool+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E58BA83206CDF49001DEB34 /* Bool+Extensions.swift */; };
+		3E58BA94206CDF49001DEB34 /* String+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E58BA85206CDF49001DEB34 /* String+Validation.swift */; };
+		3E58BA95206CDF49001DEB34 /* Foundation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E58BA86206CDF49001DEB34 /* Foundation+Extensions.swift */; };
+		3E58BA96206CDF49001DEB34 /* MapView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E58BA88206CDF49001DEB34 /* MapView+Extensions.swift */; };
 		3EB1679E206CDB5000A82D11 /* ViewControllersProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB1679D206CDB5000A82D11 /* ViewControllersProvider.swift */; };
 		3EB167A0206CDBC000A82D11 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EB1679F206CDBC000A82D11 /* Login.storyboard */; };
 		3EB167A2206CDBDB00A82D11 /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB167A1206CDBDB00A82D11 /* ServiceLocator.swift */; };
+		3EB167A5206CDCB900A82D11 /* ViewControllerConfigurating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB167A4206CDCB900A82D11 /* ViewControllerConfigurating.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,63 +45,24 @@
 		3E2FA194206BEEAD0000DAD7 /* RootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootRouter.swift; sourceTree = "<group>"; };
 		3E2FA197206BEF830000DAD7 /* UserSessionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSessionModel.swift; sourceTree = "<group>"; };
 		3E2FA19B206BEFDE0000DAD7 /* UserSessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSessionService.swift; sourceTree = "<group>"; };
-		3EB166DB206CB25800A82D11 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
-		3EB166DC206CB25800A82D11 /* UITabBarController+ZPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITabBarController+ZPosition.swift"; sourceTree = "<group>"; };
-		3EB166DD206CB25800A82D11 /* UIViewController+NavigationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+NavigationExtension.swift"; sourceTree = "<group>"; };
-		3EB166DE206CB25800A82D11 /* AlertController+TheBoardAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AlertController+TheBoardAdditions.swift"; sourceTree = "<group>"; };
-		3EB166E0206CB25800A82D11 /* UIButton + BackgroundColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton + BackgroundColor.swift"; sourceTree = "<group>"; };
-		3EB166E2206CB25800A82D11 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
-		3EB166E4206CB25800A82D11 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
-		3EB166E6206CB25800A82D11 /* UIImage + Snapshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage + Snapshot.swift"; sourceTree = "<group>"; };
-		3EB166E7206CB25800A82D11 /* UIImage+ReSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+ReSize.swift"; sourceTree = "<group>"; };
-		3EB166E8206CB25800A82D11 /* UIImage+Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Color.swift"; sourceTree = "<group>"; };
-		3EB166E9206CB25800A82D11 /* UIImage+RoundCorner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+RoundCorner.swift"; sourceTree = "<group>"; };
-		3EB166EA206CB25800A82D11 /* UIImage+Alpha.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Alpha.swift"; sourceTree = "<group>"; };
-		3EB166EB206CB25800A82D11 /* UIImage + TintColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage + TintColor.swift"; sourceTree = "<group>"; };
-		3EB166ED206CB25800A82D11 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
-		3EB166EE206CB25800A82D11 /* UITableViewCell+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extensions.swift"; sourceTree = "<group>"; };
-		3EB166F0206CB25800A82D11 /* UIApplication+TopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+TopViewController.swift"; sourceTree = "<group>"; };
-		3EB166F2206CB25800A82D11 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
-		3EB166F3206CB25800A82D11 /* UIImageView+ColorReplace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+ColorReplace.swift"; sourceTree = "<group>"; };
-		3EB166F4206CB25800A82D11 /* UIImageView+PreloadExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+PreloadExtension.swift"; sourceTree = "<group>"; };
-		3EB166F6206CB25800A82D11 /* UIScrollView+Exntensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Exntensions.swift"; sourceTree = "<group>"; };
-		3EB166F8206CB25800A82D11 /* UICollectionViewCell+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extensions.swift"; sourceTree = "<group>"; };
-		3EB166F9206CB25800A82D11 /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
-		3EB166FB206CB25800A82D11 /* UIDevice+Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+Debug.swift"; sourceTree = "<group>"; };
-		3EB166FD206CB25800A82D11 /* UILabel+HeightToFit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+HeightToFit.swift"; sourceTree = "<group>"; };
-		3EB166FF206CB25800A82D11 /* UIScreen+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScreen+Extensions.swift"; sourceTree = "<group>"; };
-		3EB16701206CB25800A82D11 /* Array+CardAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+CardAdditions.swift"; sourceTree = "<group>"; };
-		3EB16702206CB25800A82D11 /* Bool+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bool+Extensions.swift"; sourceTree = "<group>"; };
-		3EB16704206CB25800A82D11 /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
-		3EB16705206CB25800A82D11 /* NSMutableAttributedString+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Extensions.swift"; sourceTree = "<group>"; };
-		3EB16706206CB25800A82D11 /* String+Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Validation.swift"; sourceTree = "<group>"; };
-		3EB16707206CB25800A82D11 /* String+Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Localization.swift"; sourceTree = "<group>"; };
-		3EB16708206CB25800A82D11 /* NSString+LinkDetection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+LinkDetection.swift"; sourceTree = "<group>"; };
-		3EB16709206CB25800A82D11 /* NSObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSObject.swift; sourceTree = "<group>"; };
-		3EB1670A206CB25800A82D11 /* Dictionary + JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary + JSON.swift"; sourceTree = "<group>"; };
-		3EB1670B206CB25800A82D11 /* Foundation+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Foundation+Extensions.swift"; sourceTree = "<group>"; };
-		3EB1670C206CB25800A82D11 /* NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDate.swift; sourceTree = "<group>"; };
-		3EB1670D206CB25800A82D11 /* Bundle+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
-		3EB1670F206CB25800A82D11 /* MapView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MapView+Extensions.swift"; sourceTree = "<group>"; };
-		3EB16711206CB25800A82D11 /* SafariService+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SafariService+Extension.swift"; sourceTree = "<group>"; };
-		3EB16712206CB25800A82D11 /* StatusBarHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarHelper.swift; sourceTree = "<group>"; };
-		3EB1673D206CB26700A82D11 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
-		3EB16744206CB26700A82D11 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
-		3EB16746206CB26700A82D11 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
-		3EB1674F206CB26700A82D11 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
-		3EB16750206CB26700A82D11 /* UITableViewCell+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extensions.swift"; sourceTree = "<group>"; };
-		3EB16754206CB26700A82D11 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
-		3EB1675A206CB26700A82D11 /* UICollectionViewCell+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extensions.swift"; sourceTree = "<group>"; };
-		3EB1675B206CB26700A82D11 /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
-		3EB16764206CB26700A82D11 /* Bool+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bool+Extensions.swift"; sourceTree = "<group>"; };
-		3EB16768206CB26700A82D11 /* String+Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Validation.swift"; sourceTree = "<group>"; };
-		3EB1676D206CB26700A82D11 /* Foundation+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Foundation+Extensions.swift"; sourceTree = "<group>"; };
-		3EB16771206CB26700A82D11 /* MapView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MapView+Extensions.swift"; sourceTree = "<group>"; };
-		3EB16773206CB26700A82D11 /* SafariService+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SafariService+Extension.swift"; sourceTree = "<group>"; };
-		3EB16774206CB26700A82D11 /* StatusBarHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarHelper.swift; sourceTree = "<group>"; };
+		3E58BA70206CDF49001DEB34 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		3E58BA72206CDF49001DEB34 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		3E58BA74206CDF49001DEB34 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		3E58BA77206CDF49001DEB34 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
+		3E58BA78206CDF49001DEB34 /* UITableViewCell+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extensions.swift"; sourceTree = "<group>"; };
+		3E58BA7A206CDF49001DEB34 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
+		3E58BA7D206CDF49001DEB34 /* UICollectionViewCell+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extensions.swift"; sourceTree = "<group>"; };
+		3E58BA7E206CDF49001DEB34 /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
+		3E58BA80206CDF49001DEB34 /* SafariService+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SafariService+Extension.swift"; sourceTree = "<group>"; };
+		3E58BA81206CDF49001DEB34 /* StatusBarHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarHelper.swift; sourceTree = "<group>"; };
+		3E58BA83206CDF49001DEB34 /* Bool+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bool+Extensions.swift"; sourceTree = "<group>"; };
+		3E58BA85206CDF49001DEB34 /* String+Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Validation.swift"; sourceTree = "<group>"; };
+		3E58BA86206CDF49001DEB34 /* Foundation+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Foundation+Extensions.swift"; sourceTree = "<group>"; };
+		3E58BA88206CDF49001DEB34 /* MapView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MapView+Extensions.swift"; sourceTree = "<group>"; };
 		3EB1679D206CDB5000A82D11 /* ViewControllersProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllersProvider.swift; sourceTree = "<group>"; };
 		3EB1679F206CDBC000A82D11 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		3EB167A1206CDBDB00A82D11 /* ServiceLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
+		3EB167A4206CDCB900A82D11 /* ViewControllerConfigurating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerConfigurating.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,26 +98,15 @@
 				3E2FA187206BEE4D0000DAD7 /* Storyboards */,
 				3E2FA18A206BEE4E0000DAD7 /* Application */,
 				3E2FA17F206BEE4D0000DAD7 /* Scenes */,
-				3E2FA17E206BEE4D0000DAD7 /* Extensions */,
 				3E2FA18D206BEE4E0000DAD7 /* Services */,
 				3E2FA18E206BEE4E0000DAD7 /* Models */,
+				3E58BA6D206CDF49001DEB34 /* Extensions */,
 				3E2FA183206BEE4D0000DAD7 /* Helpers */,
 				3E2FA184206BEE4D0000DAD7 /* Resources */,
 				3E2FA186206BEE4D0000DAD7 /* ScreenProviders */,
 				3E2FA182206BEE4D0000DAD7 /* Views */,
 			);
 			path = TestProject;
-			sourceTree = "<group>";
-		};
-		3E2FA17E206BEE4D0000DAD7 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				3EB16762206CB26700A82D11 /* Foundation+Extensions */,
-				3EB16770206CB26700A82D11 /* MapKit+Extensions */,
-				3EB16772206CB26700A82D11 /* SafariService+Extension */,
-				3EB1673B206CB26700A82D11 /* UIKit+Exntenions */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		3E2FA17F206BEE4D0000DAD7 /* Scenes */ = {
@@ -211,10 +122,6 @@
 		3E2FA180206BEE4D0000DAD7 /* MainFlow */ = {
 			isa = PBXGroup;
 			children = (
-				3EB16700206CB25800A82D11 /* Foundation+Extensions */,
-				3EB1670E206CB25800A82D11 /* MapKit+Extensions */,
-				3EB16710206CB25800A82D11 /* SafariService+Extension */,
-				3EB166D9206CB25800A82D11 /* UIKit+Exntenions */,
 			);
 			path = MainFlow;
 			sourceTree = "<group>";
@@ -236,6 +143,7 @@
 		3E2FA183206BEE4D0000DAD7 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				3EB167A3206CDCA200A82D11 /* ViewControllerConfigurating */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -316,286 +224,138 @@
 			path = UserSessionService;
 			sourceTree = "<group>";
 		};
-		3EB166D9206CB25800A82D11 /* UIKit+Exntenions */ = {
+		3E58BA6D206CDF49001DEB34 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				3EB166DA206CB25800A82D11 /* UIViewController+Extensions */,
-				3EB166DF206CB25800A82D11 /* UIControl+Exntensions */,
-				3EB166E1206CB25800A82D11 /* UIView+Exnentsions */,
-				3EB166E3206CB25800A82D11 /* UIColor+Extensions */,
-				3EB166E5206CB25800A82D11 /* UIImage+Exntensions */,
-				3EB166EC206CB25800A82D11 /* UITableView+Extensions */,
-				3EB166EF206CB25800A82D11 /* UIApplication+Extensions */,
-				3EB166F1206CB25800A82D11 /* UIImageView+Extensions */,
-				3EB166F5206CB25800A82D11 /* UIScrollView+Exntensions */,
-				3EB166F7206CB25800A82D11 /* UICollectionView+Extensions */,
-				3EB166FA206CB25800A82D11 /* UIDevice+Extensions */,
-				3EB166FC206CB25800A82D11 /* UIlabel+Extensions */,
-				3EB166FE206CB25800A82D11 /* UIScreen+Extensions */,
+				3E58BA6E206CDF49001DEB34 /* UIKit+Exntenions */,
+				3E58BA7F206CDF49001DEB34 /* SafariService+Extension */,
+				3E58BA82206CDF49001DEB34 /* Foundation+Extensions */,
+				3E58BA87206CDF49001DEB34 /* MapKit+Extensions */,
 			);
-			name = "UIKit+Exntenions";
-			path = "TestProject/Extensions/UIKit+Exntenions";
-			sourceTree = SOURCE_ROOT;
-		};
-		3EB166DA206CB25800A82D11 /* UIViewController+Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				3EB166DB206CB25800A82D11 /* UIViewController+Extensions.swift */,
-				3EB166DC206CB25800A82D11 /* UITabBarController+ZPosition.swift */,
-				3EB166DD206CB25800A82D11 /* UIViewController+NavigationExtension.swift */,
-				3EB166DE206CB25800A82D11 /* AlertController+TheBoardAdditions.swift */,
-			);
-			path = "UIViewController+Extensions";
+			path = Extensions;
 			sourceTree = "<group>";
 		};
-		3EB166DF206CB25800A82D11 /* UIControl+Exntensions */ = {
+		3E58BA6E206CDF49001DEB34 /* UIKit+Exntenions */ = {
 			isa = PBXGroup;
 			children = (
-				3EB166E0206CB25800A82D11 /* UIButton + BackgroundColor.swift */,
-			);
-			path = "UIControl+Exntensions";
-			sourceTree = "<group>";
-		};
-		3EB166E1206CB25800A82D11 /* UIView+Exnentsions */ = {
-			isa = PBXGroup;
-			children = (
-				3EB166E2206CB25800A82D11 /* UIView.swift */,
-			);
-			path = "UIView+Exnentsions";
-			sourceTree = "<group>";
-		};
-		3EB166E3206CB25800A82D11 /* UIColor+Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				3EB166E4206CB25800A82D11 /* UIColor.swift */,
-			);
-			path = "UIColor+Extensions";
-			sourceTree = "<group>";
-		};
-		3EB166E5206CB25800A82D11 /* UIImage+Exntensions */ = {
-			isa = PBXGroup;
-			children = (
-				3EB166E6206CB25800A82D11 /* UIImage + Snapshot.swift */,
-				3EB166E7206CB25800A82D11 /* UIImage+ReSize.swift */,
-				3EB166E8206CB25800A82D11 /* UIImage+Color.swift */,
-				3EB166E9206CB25800A82D11 /* UIImage+RoundCorner.swift */,
-				3EB166EA206CB25800A82D11 /* UIImage+Alpha.swift */,
-				3EB166EB206CB25800A82D11 /* UIImage + TintColor.swift */,
-			);
-			path = "UIImage+Exntensions";
-			sourceTree = "<group>";
-		};
-		3EB166EC206CB25800A82D11 /* UITableView+Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				3EB166ED206CB25800A82D11 /* UITableView+Extensions.swift */,
-				3EB166EE206CB25800A82D11 /* UITableViewCell+Extensions.swift */,
-			);
-			path = "UITableView+Extensions";
-			sourceTree = "<group>";
-		};
-		3EB166EF206CB25800A82D11 /* UIApplication+Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				3EB166F0206CB25800A82D11 /* UIApplication+TopViewController.swift */,
-			);
-			path = "UIApplication+Extensions";
-			sourceTree = "<group>";
-		};
-		3EB166F1206CB25800A82D11 /* UIImageView+Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				3EB166F2206CB25800A82D11 /* UIImageView+Extensions.swift */,
-				3EB166F3206CB25800A82D11 /* UIImageView+ColorReplace.swift */,
-				3EB166F4206CB25800A82D11 /* UIImageView+PreloadExtension.swift */,
-			);
-			path = "UIImageView+Extensions";
-			sourceTree = "<group>";
-		};
-		3EB166F5206CB25800A82D11 /* UIScrollView+Exntensions */ = {
-			isa = PBXGroup;
-			children = (
-				3EB166F6206CB25800A82D11 /* UIScrollView+Exntensions.swift */,
-			);
-			path = "UIScrollView+Exntensions";
-			sourceTree = "<group>";
-		};
-		3EB166F7206CB25800A82D11 /* UICollectionView+Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				3EB166F8206CB25800A82D11 /* UICollectionViewCell+Extensions.swift */,
-				3EB166F9206CB25800A82D11 /* UICollectionView+Extensions.swift */,
-			);
-			path = "UICollectionView+Extensions";
-			sourceTree = "<group>";
-		};
-		3EB166FA206CB25800A82D11 /* UIDevice+Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				3EB166FB206CB25800A82D11 /* UIDevice+Debug.swift */,
-			);
-			path = "UIDevice+Extensions";
-			sourceTree = "<group>";
-		};
-		3EB166FC206CB25800A82D11 /* UIlabel+Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				3EB166FD206CB25800A82D11 /* UILabel+HeightToFit.swift */,
-			);
-			path = "UIlabel+Extensions";
-			sourceTree = "<group>";
-		};
-		3EB166FE206CB25800A82D11 /* UIScreen+Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				3EB166FF206CB25800A82D11 /* UIScreen+Extensions.swift */,
-			);
-			path = "UIScreen+Extensions";
-			sourceTree = "<group>";
-		};
-		3EB16700206CB25800A82D11 /* Foundation+Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				3EB16701206CB25800A82D11 /* Array+CardAdditions.swift */,
-				3EB16702206CB25800A82D11 /* Bool+Extensions.swift */,
-				3EB16703206CB25800A82D11 /* String+Extensions */,
-				3EB16709206CB25800A82D11 /* NSObject.swift */,
-				3EB1670A206CB25800A82D11 /* Dictionary + JSON.swift */,
-				3EB1670B206CB25800A82D11 /* Foundation+Extensions.swift */,
-				3EB1670C206CB25800A82D11 /* NSDate.swift */,
-				3EB1670D206CB25800A82D11 /* Bundle+Extensions.swift */,
-			);
-			name = "Foundation+Extensions";
-			path = "TestProject/Extensions/Foundation+Extensions";
-			sourceTree = SOURCE_ROOT;
-		};
-		3EB16703206CB25800A82D11 /* String+Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				3EB16704206CB25800A82D11 /* String+Extensions.swift */,
-				3EB16705206CB25800A82D11 /* NSMutableAttributedString+Extensions.swift */,
-				3EB16706206CB25800A82D11 /* String+Validation.swift */,
-				3EB16707206CB25800A82D11 /* String+Localization.swift */,
-				3EB16708206CB25800A82D11 /* NSString+LinkDetection.swift */,
-			);
-			path = "String+Extensions";
-			sourceTree = "<group>";
-		};
-		3EB1670E206CB25800A82D11 /* MapKit+Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				3EB1670F206CB25800A82D11 /* MapView+Extensions.swift */,
-			);
-			name = "MapKit+Extensions";
-			path = "TestProject/Extensions/MapKit+Extensions";
-			sourceTree = SOURCE_ROOT;
-		};
-		3EB16710206CB25800A82D11 /* SafariService+Extension */ = {
-			isa = PBXGroup;
-			children = (
-				3EB16711206CB25800A82D11 /* SafariService+Extension.swift */,
-				3EB16712206CB25800A82D11 /* StatusBarHelper.swift */,
-			);
-			name = "SafariService+Extension";
-			path = "TestProject/Extensions/SafariService+Extension";
-			sourceTree = SOURCE_ROOT;
-		};
-		3EB1673B206CB26700A82D11 /* UIKit+Exntenions */ = {
-			isa = PBXGroup;
-			children = (
-				3EB1673C206CB26700A82D11 /* UIViewController+Extensions */,
-				3EB16743206CB26700A82D11 /* UIView+Exnentsions */,
-				3EB16745206CB26700A82D11 /* UIColor+Extensions */,
-				3EB1674E206CB26700A82D11 /* UITableView+Extensions */,
-				3EB16753206CB26700A82D11 /* UIImageView+Extensions */,
-				3EB16759206CB26700A82D11 /* UICollectionView+Extensions */,
+				3E58BA6F206CDF49001DEB34 /* UIViewController+Extensions */,
+				3E58BA71206CDF49001DEB34 /* UIView+Exnentsions */,
+				3E58BA73206CDF49001DEB34 /* UIColor+Extensions */,
+				3E58BA75206CDF49001DEB34 /* UIImage+Exntensions */,
+				3E58BA76206CDF49001DEB34 /* UITableView+Extensions */,
+				3E58BA79206CDF49001DEB34 /* UIImageView+Extensions */,
+				3E58BA7B206CDF49001DEB34 /* UIScrollView+Exntensions */,
+				3E58BA7C206CDF49001DEB34 /* UICollectionView+Extensions */,
 			);
 			path = "UIKit+Exntenions";
 			sourceTree = "<group>";
 		};
-		3EB1673C206CB26700A82D11 /* UIViewController+Extensions */ = {
+		3E58BA6F206CDF49001DEB34 /* UIViewController+Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				3EB1673D206CB26700A82D11 /* UIViewController+Extensions.swift */,
+				3E58BA70206CDF49001DEB34 /* UIViewController+Extensions.swift */,
 			);
 			path = "UIViewController+Extensions";
 			sourceTree = "<group>";
 		};
-		3EB16743206CB26700A82D11 /* UIView+Exnentsions */ = {
+		3E58BA71206CDF49001DEB34 /* UIView+Exnentsions */ = {
 			isa = PBXGroup;
 			children = (
-				3EB16744206CB26700A82D11 /* UIView.swift */,
+				3E58BA72206CDF49001DEB34 /* UIView.swift */,
 			);
 			path = "UIView+Exnentsions";
 			sourceTree = "<group>";
 		};
-		3EB16745206CB26700A82D11 /* UIColor+Extensions */ = {
+		3E58BA73206CDF49001DEB34 /* UIColor+Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				3EB16746206CB26700A82D11 /* UIColor.swift */,
+				3E58BA74206CDF49001DEB34 /* UIColor.swift */,
 			);
 			path = "UIColor+Extensions";
 			sourceTree = "<group>";
 		};
-		3EB1674E206CB26700A82D11 /* UITableView+Extensions */ = {
+		3E58BA75206CDF49001DEB34 /* UIImage+Exntensions */ = {
 			isa = PBXGroup;
 			children = (
-				3EB1674F206CB26700A82D11 /* UITableView+Extensions.swift */,
-				3EB16750206CB26700A82D11 /* UITableViewCell+Extensions.swift */,
+			);
+			path = "UIImage+Exntensions";
+			sourceTree = "<group>";
+		};
+		3E58BA76206CDF49001DEB34 /* UITableView+Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3E58BA77206CDF49001DEB34 /* UITableView+Extensions.swift */,
+				3E58BA78206CDF49001DEB34 /* UITableViewCell+Extensions.swift */,
 			);
 			path = "UITableView+Extensions";
 			sourceTree = "<group>";
 		};
-		3EB16753206CB26700A82D11 /* UIImageView+Extensions */ = {
+		3E58BA79206CDF49001DEB34 /* UIImageView+Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				3EB16754206CB26700A82D11 /* UIImageView+Extensions.swift */,
+				3E58BA7A206CDF49001DEB34 /* UIImageView+Extensions.swift */,
 			);
 			path = "UIImageView+Extensions";
 			sourceTree = "<group>";
 		};
-		3EB16759206CB26700A82D11 /* UICollectionView+Extensions */ = {
+		3E58BA7B206CDF49001DEB34 /* UIScrollView+Exntensions */ = {
 			isa = PBXGroup;
 			children = (
-				3EB1675A206CB26700A82D11 /* UICollectionViewCell+Extensions.swift */,
-				3EB1675B206CB26700A82D11 /* UICollectionView+Extensions.swift */,
+			);
+			path = "UIScrollView+Exntensions";
+			sourceTree = "<group>";
+		};
+		3E58BA7C206CDF49001DEB34 /* UICollectionView+Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3E58BA7D206CDF49001DEB34 /* UICollectionViewCell+Extensions.swift */,
+				3E58BA7E206CDF49001DEB34 /* UICollectionView+Extensions.swift */,
 			);
 			path = "UICollectionView+Extensions";
 			sourceTree = "<group>";
 		};
-		3EB16762206CB26700A82D11 /* Foundation+Extensions */ = {
+		3E58BA7F206CDF49001DEB34 /* SafariService+Extension */ = {
 			isa = PBXGroup;
 			children = (
-				3EB1676D206CB26700A82D11 /* Foundation+Extensions.swift */,
-				3EB16764206CB26700A82D11 /* Bool+Extensions.swift */,
-				3EB16765206CB26700A82D11 /* String+Extensions */,
+				3E58BA80206CDF49001DEB34 /* SafariService+Extension.swift */,
+				3E58BA81206CDF49001DEB34 /* StatusBarHelper.swift */,
+			);
+			path = "SafariService+Extension";
+			sourceTree = "<group>";
+		};
+		3E58BA82206CDF49001DEB34 /* Foundation+Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3E58BA83206CDF49001DEB34 /* Bool+Extensions.swift */,
+				3E58BA84206CDF49001DEB34 /* String+Extensions */,
+				3E58BA86206CDF49001DEB34 /* Foundation+Extensions.swift */,
 			);
 			path = "Foundation+Extensions";
 			sourceTree = "<group>";
 		};
-		3EB16765206CB26700A82D11 /* String+Extensions */ = {
+		3E58BA84206CDF49001DEB34 /* String+Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				3EB16768206CB26700A82D11 /* String+Validation.swift */,
+				3E58BA85206CDF49001DEB34 /* String+Validation.swift */,
 			);
 			path = "String+Extensions";
 			sourceTree = "<group>";
 		};
-		3EB16770206CB26700A82D11 /* MapKit+Extensions */ = {
+		3E58BA87206CDF49001DEB34 /* MapKit+Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				3EB16771206CB26700A82D11 /* MapView+Extensions.swift */,
+				3E58BA88206CDF49001DEB34 /* MapView+Extensions.swift */,
 			);
 			path = "MapKit+Extensions";
 			sourceTree = "<group>";
 		};
-		3EB16772206CB26700A82D11 /* SafariService+Extension */ = {
+		3EB167A3206CDCA200A82D11 /* ViewControllerConfigurating */ = {
 			isa = PBXGroup;
 			children = (
-				3EB16773206CB26700A82D11 /* SafariService+Extension.swift */,
-				3EB16774206CB26700A82D11 /* StatusBarHelper.swift */,
+				3EB167A4206CDCB900A82D11 /* ViewControllerConfigurating.swift */,
 			);
-			path = "SafariService+Extension";
+			name = ViewControllerConfigurating;
+			path = UIHelpers/ViewControllerConfigurating;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -672,66 +432,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3EB1671E206CB25800A82D11 /* UIImage+Alpha.swift in Sources */,
-				3EB16718206CB25800A82D11 /* UIView.swift in Sources */,
-				3EB16733206CB25800A82D11 /* NSObject.swift in Sources */,
-				3EB16725206CB25800A82D11 /* UIImageView+PreloadExtension.swift in Sources */,
-				3EB16729206CB25800A82D11 /* UIDevice+Debug.swift in Sources */,
-				3EB16735206CB25800A82D11 /* Foundation+Extensions.swift in Sources */,
-				3EB1672E206CB25800A82D11 /* String+Extensions.swift in Sources */,
-				3EB1671B206CB25800A82D11 /* UIImage+ReSize.swift in Sources */,
-				3EB16734206CB25800A82D11 /* Dictionary + JSON.swift in Sources */,
+				3E58BA8E206CDF49001DEB34 /* UIImageView+Extensions.swift in Sources */,
 				3EB1679E206CDB5000A82D11 /* ViewControllersProvider.swift in Sources */,
-				3EB16737206CB25800A82D11 /* Bundle+Extensions.swift in Sources */,
-				3EB1672F206CB25800A82D11 /* NSMutableAttributedString+Extensions.swift in Sources */,
+				3E58BA90206CDF49001DEB34 /* UICollectionView+Extensions.swift in Sources */,
 				3E2FA198206BEF830000DAD7 /* UserSessionModel.swift in Sources */,
-				3EB16716206CB25800A82D11 /* AlertController+TheBoardAdditions.swift in Sources */,
-				3EB16738206CB25800A82D11 /* MapView+Extensions.swift in Sources */,
-				3EB1671A206CB25800A82D11 /* UIImage + Snapshot.swift in Sources */,
-				3EB1672A206CB25800A82D11 /* UILabel+HeightToFit.swift in Sources */,
-				3EB16736206CB25800A82D11 /* NSDate.swift in Sources */,
-				3EB1671C206CB25800A82D11 /* UIImage+Color.swift in Sources */,
-				3EB16715206CB25800A82D11 /* UIViewController+NavigationExtension.swift in Sources */,
-				3EB1677A206CB26700A82D11 /* UIView.swift in Sources */,
-				3EB16727206CB25800A82D11 /* UICollectionViewCell+Extensions.swift in Sources */,
-				3EB16728206CB25800A82D11 /* UICollectionView+Extensions.swift in Sources */,
-				3EB16797206CB26700A82D11 /* Foundation+Extensions.swift in Sources */,
-				3EB1678A206CB26700A82D11 /* UICollectionView+Extensions.swift in Sources */,
-				3EB16785206CB26700A82D11 /* UIImageView+Extensions.swift in Sources */,
+				3E58BA92206CDF49001DEB34 /* StatusBarHelper.swift in Sources */,
+				3E58BA8D206CDF49001DEB34 /* UITableViewCell+Extensions.swift in Sources */,
+				3EB167A5206CDCB900A82D11 /* ViewControllerConfigurating.swift in Sources */,
 				3E2FA195206BEEAD0000DAD7 /* RootRouter.swift in Sources */,
-				3EB16775206CB26700A82D11 /* UIViewController+Extensions.swift in Sources */,
-				3EB16726206CB25800A82D11 /* UIScrollView+Exntensions.swift in Sources */,
-				3EB16721206CB25800A82D11 /* UITableViewCell+Extensions.swift in Sources */,
-				3EB16792206CB26700A82D11 /* String+Validation.swift in Sources */,
-				3EB16720206CB25800A82D11 /* UITableView+Extensions.swift in Sources */,
-				3EB16783206CB26700A82D11 /* UITableViewCell+Extensions.swift in Sources */,
-				3EB16731206CB25800A82D11 /* String+Localization.swift in Sources */,
-				3EB16730206CB25800A82D11 /* String+Validation.swift in Sources */,
-				3EB16789206CB26700A82D11 /* UICollectionViewCell+Extensions.swift in Sources */,
+				3E58BA95206CDF49001DEB34 /* Foundation+Extensions.swift in Sources */,
+				3E58BA91206CDF49001DEB34 /* SafariService+Extension.swift in Sources */,
+				3E58BA89206CDF49001DEB34 /* UIViewController+Extensions.swift in Sources */,
 				3EB167A2206CDBDB00A82D11 /* ServiceLocator.swift in Sources */,
-				3EB1671D206CB25800A82D11 /* UIImage+RoundCorner.swift in Sources */,
-				3EB1672B206CB25800A82D11 /* UIScreen+Extensions.swift in Sources */,
-				3EB16713206CB25800A82D11 /* UIViewController+Extensions.swift in Sources */,
-				3EB16724206CB25800A82D11 /* UIImageView+ColorReplace.swift in Sources */,
-				3EB1679B206CB26700A82D11 /* SafariService+Extension.swift in Sources */,
-				3EB1671F206CB25800A82D11 /* UIImage + TintColor.swift in Sources */,
-				3EB1678F206CB26700A82D11 /* Bool+Extensions.swift in Sources */,
-				3EB16714206CB25800A82D11 /* UITabBarController+ZPosition.swift in Sources */,
-				3EB1673A206CB25800A82D11 /* StatusBarHelper.swift in Sources */,
-				3EB16723206CB25800A82D11 /* UIImageView+Extensions.swift in Sources */,
-				3EB16722206CB25800A82D11 /* UIApplication+TopViewController.swift in Sources */,
-				3EB1677B206CB26700A82D11 /* UIColor.swift in Sources */,
-				3EB1679C206CB26700A82D11 /* StatusBarHelper.swift in Sources */,
-				3EB16739206CB25800A82D11 /* SafariService+Extension.swift in Sources */,
-				3EB16719206CB25800A82D11 /* UIColor.swift in Sources */,
-				3EB16782206CB26700A82D11 /* UITableView+Extensions.swift in Sources */,
-				3EB1679A206CB26700A82D11 /* MapView+Extensions.swift in Sources */,
+				3E58BA8F206CDF49001DEB34 /* UICollectionViewCell+Extensions.swift in Sources */,
+				3E58BA96206CDF49001DEB34 /* MapView+Extensions.swift in Sources */,
+				3E58BA94206CDF49001DEB34 /* String+Validation.swift in Sources */,
 				3E2FA192206BEE4E0000DAD7 /* AppDelegate.swift in Sources */,
+				3E58BA8C206CDF49001DEB34 /* UITableView+Extensions.swift in Sources */,
+				3E58BA8A206CDF49001DEB34 /* UIView.swift in Sources */,
 				3E2FA19C206BEFDE0000DAD7 /* UserSessionService.swift in Sources */,
-				3EB1672D206CB25800A82D11 /* Bool+Extensions.swift in Sources */,
-				3EB16717206CB25800A82D11 /* UIButton + BackgroundColor.swift in Sources */,
-				3EB1672C206CB25800A82D11 /* Array+CardAdditions.swift in Sources */,
-				3EB16732206CB25800A82D11 /* NSString+LinkDetection.swift in Sources */,
+				3E58BA8B206CDF49001DEB34 /* UIColor.swift in Sources */,
+				3E58BA93206CDF49001DEB34 /* Bool+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
