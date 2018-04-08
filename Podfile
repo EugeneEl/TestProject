@@ -13,11 +13,10 @@ pod 'Localize-Swift'
 # Homepage: https://github.com/marmelroy/Localize-Swift
 # Source:   https://github.com/marmelroy/Localize-Swift.git
 
-pod 'TPKeyboardAvoiding', '~> 1.3'
-# A drop-in universal solution for moving text fields out of the way of the
-# keyboard in iOS.
-# Homepage: https://github.com/michaeltyson/TPKeyboardAvoiding
-# Source:   https://github.com/michaeltyson/TPKeyboardAvoiding.git
+pod 'IQKeyboardManager'
+# Codeless drop-in universal library allows to prevent issues of keyboard sliding up.
+# Homepage: https://github.com/hackiftekhar/IQKeyboardManager
+# Source: https://github.com/hackiftekhar/IQKeyboardManager.git
 
 pod 'FXKeychain', '~> 1.5.3'
 # FXKeychain is a lightweight wrapper around the Apple keychain APIs

@@ -7,14 +7,24 @@
 //
 
 import UIKit
+import IQKeyboardManager
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    // MARK: - Vars
+    
     var window: UIWindow?
-
+    fileprivate (set) internal var router: RootRouter?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        router = RootRouter(window)
+        router?.buildNavigationFlow()
+        
+        IQKeyboardManager.shared().isEnableAutoToolbar = true
+        IQKeyboardManager.shared().isEnabled = true
+
         return true
     }
 }
