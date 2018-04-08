@@ -5,6 +5,7 @@
 
 import Foundation
 import UIKit
+import SDWebImage
 
 typealias SuccessImageDownloadCompletion = (_ image: UIImage) -> ()
 typealias FailureImageDownloadCompletion = () -> ()

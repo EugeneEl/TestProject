@@ -8,16 +8,17 @@
 
 import Foundation
 
-final class UserSessionService {
-    
-    // MARK: - Vars
-    
-    static let shared = UserSessionService()
-    
-    var isLogges: Bool
-    fileprivate (set) internal var sessionModel: UserSessionModel?
-    
-    // MARK: - Initialization
-    
-    private init() {}
-}
+//final class UserSessionService {
+//    
+//    // MARK: - Vars
+//    
+//    static let shared = UserSessionService()
+//    
+//    var isLogges: Bool
+//    fileprivate (set) internal var sessionModel: UserSessionModel?
+//    
+//    // MARK: - Initialization
+//    
+//    private init() {}
+//}
+

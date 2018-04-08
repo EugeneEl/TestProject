@@ -103,7 +103,7 @@ extension ViewControllerUIConfigurating where Self: UIViewController {
             navigationBar?.isHidden = false
             
             // on default setup back button for left bar button item
-            replaceBackButton()
+//            replaceBackButton()
             
             // remove separator if needed
             if let visible = appearance.isSeparatorVisible {
@@ -129,7 +129,7 @@ extension ViewControllerUIConfigurating where Self: UIViewController {
                 navigationItem.leftBarButtonItem = leftItem
             } else {
                 if isBackButtonVisible {
-                    replaceBackButton()
+//                    replaceBackButton()
                 } else {
                     navigationItem.leftBarButtonItem = nil
                 }
