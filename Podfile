@@ -33,6 +33,11 @@ pod 'SnapKit', '~> 3.0'
 # Homepage: https://github.com/SnapKit/SnapKit
 # Source:   https://github.com/SnapKit/SnapKit.git
 
+pod 'MBProgressHUD'
+# An iOS drop-in class that displays a translucent HUD with an indicator.
+# Homepage: https://github.com/jdg/MBProgressHUD
+# Source: https://github.com/jdg/MBProgressHUD.git
+
 end
 
 post_install do |installer|

@@ -21,4 +21,8 @@ final class LoginRouter {
     }
     
     // MARK: - Public
+    
+    func navigateToMainScene() {
+        
+    }
 }
