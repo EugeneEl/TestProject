@@ -8,23 +8,15 @@
 
 import Foundation
 
-struct PasswordInputModel {
-    let email: String
-    let password: String
-    
-    mutating func changeEmail(_ email: String) {
-        self = PasswordInputModel(email: email, password: self.password)
-    }
-   
-    mutating func changePassword(_ password: String) {
-        self = PasswordInputModel(email: self.email, password: password)
-    }
-    
-    func isModelValid() -> Bool {
-        return true
-    }
-}
-
+/**
+ LoginScene states.
+ ````
+ case loginInput(PasswordInputModel)
+ case isLogging
+ case loginSuccess
+ case loginFail(error: String)
+ ````
+ */
 enum LoginSceneState {
     case loginInput(PasswordInputModel)
     case isLogging
@@ -59,13 +51,18 @@ final class LoginPresenter {
     
     // MARK: - Public
     
+    /// Trigger initial state for scene. In more complicated implementations we can want to retrieve saved email from keychain for login etc.
+    func triggerInitialState() {
+        loginState = LoginSceneState.loginInput(model)
+    }
+    
     func updateEmail(_ email: String) {
         model.changeEmail(email)
         loginState = LoginSceneState.loginInput(model)
     }
     
     func updatePassword(_ password: String) {
-        model.changeEmail(email)
+        model.changePassword(password)
         loginState = LoginSceneState.loginInput(model)
     }
     

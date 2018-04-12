@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// LoginRouter encapsulates logic for navigation on login scene.
 final class LoginRouter {
     
     // MARK: - Vars
@@ -21,4 +22,8 @@ final class LoginRouter {
     }
     
     // MARK: - Public
+    
+    func navigateToMainScene() {
+        
+    }
 }
