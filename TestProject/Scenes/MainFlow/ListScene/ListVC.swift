@@ -28,10 +28,39 @@ class ListVC: UIViewController {
         setupScene()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        configureUI()
+    }
+    
     // MARK: - Private
     
     private func setupScene() {
         router = ListRouter(viewController: self)
     }
+}
+
+// MARK: - ViewControllerUIConfigurating
+
+extension ListVC: ViewControllerUIConfigurating {
+    var navigationBarAppearance: NavigationBarAppearance? {
+        return NavigationBarAppearance(isSeparatorVisible: false,
+                                       translucent: false,
+                                       navigationBarColor: .white,
+                                       navigationBarTintColor: .black,
+                                       navigationTitle: "News",
+                                       navigationTitleColor: .black,
+                                       leftItem: nil,
+                                       rightItem: nil)
+    }
     
+    var isNavigationBarHidden: Bool {
+        return false
+        
+    }
+    
+    var isBackButtonVisible: Bool {
+        return false
+    }
 }

@@ -1,5 +1,5 @@
 //
-//  PasswordInputModel.swift
+//  LoginInputModel.swift
 //  TestProject
 //
 //  Created by Eugene Goloboyar on 10.04.2018.
@@ -9,8 +9,13 @@
 import Foundation
 
 struct LoginInputModel {
+    
+    // MARK: - Vars
+    
     let email: String
     let password: String
+    
+    // MARK: - Public
     
     mutating func changeEmail(_ email: String) {
         self = LoginInputModel(email: email, password: self.password)

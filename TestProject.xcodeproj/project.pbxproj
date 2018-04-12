@@ -30,7 +30,7 @@
 		3E58BA95206CDF49001DEB34 /* Foundation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E58BA86206CDF49001DEB34 /* Foundation+Extensions.swift */; };
 		3E58BA96206CDF49001DEB34 /* MapView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E58BA88206CDF49001DEB34 /* MapView+Extensions.swift */; };
 		3E8AFAC2207CF76400C562AF /* HUDDisplayHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8AFAC1207CF76400C562AF /* HUDDisplayHelper.swift */; };
-		3E8AFAC4207CFC4F00C562AF /* PasswordInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8AFAC3207CFC4F00C562AF /* PasswordInputModel.swift */; };
+		3E8AFAC4207CFC4F00C562AF /* LoginInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8AFAC3207CFC4F00C562AF /* LoginInputModel.swift */; };
 		3E8AFAC7207F2C3B00C562AF /* ListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8AFAC6207F2C3B00C562AF /* ListVC.swift */; };
 		3E8AFAC9207F2C4B00C562AF /* ListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8AFAC8207F2C4B00C562AF /* ListPresenter.swift */; };
 		3E8AFACB207F2C5300C562AF /* ListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8AFACA207F2C5300C562AF /* ListRouter.swift */; };
@@ -72,7 +72,7 @@
 		3E58BA86206CDF49001DEB34 /* Foundation+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Foundation+Extensions.swift"; sourceTree = "<group>"; };
 		3E58BA88206CDF49001DEB34 /* MapView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MapView+Extensions.swift"; sourceTree = "<group>"; };
 		3E8AFAC1207CF76400C562AF /* HUDDisplayHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUDDisplayHelper.swift; sourceTree = "<group>"; };
-		3E8AFAC3207CFC4F00C562AF /* PasswordInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordInputModel.swift; sourceTree = "<group>"; };
+		3E8AFAC3207CFC4F00C562AF /* LoginInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputModel.swift; sourceTree = "<group>"; };
 		3E8AFAC6207F2C3B00C562AF /* ListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListVC.swift; sourceTree = "<group>"; };
 		3E8AFAC8207F2C4B00C562AF /* ListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPresenter.swift; sourceTree = "<group>"; };
 		3E8AFACA207F2C5300C562AF /* ListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRouter.swift; sourceTree = "<group>"; };
@@ -169,7 +169,7 @@
 				3E90AF802079E897006ED70D /* LoginVC.swift */,
 				3E90AF822079E8A6006ED70D /* LoginPresenter.swift */,
 				3E90AF842079E8AF006ED70D /* LoginRouter.swift */,
-				3E8AFAC3207CFC4F00C562AF /* PasswordInputModel.swift */,
+				3E8AFAC3207CFC4F00C562AF /* LoginInputModel.swift */,
 			);
 			path = LoginFlow;
 			sourceTree = "<group>";
@@ -609,7 +609,7 @@
 				3E58BA8B206CDF49001DEB34 /* UIColor.swift in Sources */,
 				3E90AF852079E8AF006ED70D /* LoginRouter.swift in Sources */,
 				3E58BA93206CDF49001DEB34 /* Bool+Extensions.swift in Sources */,
-				3E8AFAC4207CFC4F00C562AF /* PasswordInputModel.swift in Sources */,
+				3E8AFAC4207CFC4F00C562AF /* LoginInputModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
