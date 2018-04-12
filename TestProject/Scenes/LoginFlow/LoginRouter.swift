@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// LoginRouter encapsulates logic for navigation on login scene.
 final class LoginRouter {
     
     // MARK: - Vars

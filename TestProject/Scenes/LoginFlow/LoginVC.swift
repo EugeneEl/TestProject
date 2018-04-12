@@ -95,6 +95,7 @@ extension LoginVC: LoginPresenterOutput {
             HudHelper.hideHUDInView(view, animated: false)
         case .loginSuccess:
             HudHelper.hideHUDInView(view, animated: false)
+            loginButton.isEnabled = false
             router?.navigateToMainScene()
         }
     }

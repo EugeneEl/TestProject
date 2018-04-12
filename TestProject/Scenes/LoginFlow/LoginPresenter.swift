@@ -8,23 +8,15 @@
 
 import Foundation
 
-struct PasswordInputModel {
-    let email: String
-    let password: String
-    
-    mutating func changeEmail(_ email: String) {
-        self = PasswordInputModel(email: email, password: self.password)
-    }
-   
-    mutating func changePassword(_ password: String) {
-        self = PasswordInputModel(email: self.email, password: password)
-    }
-    
-    func isModelValid() -> Bool {
-        return email.isValidEmail() && password.length > 6
-    }
-}
-
+/**
+ LoginScene states.
+ ````
+ case loginInput(PasswordInputModel)
+ case isLogging
+ case loginSuccess
+ case loginFail(error: String)
+ ````
+ */
 enum LoginSceneState {
     case loginInput(PasswordInputModel)
     case isLogging
