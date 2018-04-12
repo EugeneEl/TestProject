@@ -19,13 +19,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        router = RootRouter(window)
-        router?.buildNavigationFlow()
-        
-        IQKeyboardManager.shared().isEnableAutoToolbar = true
-        IQKeyboardManager.shared().isEnabled = true
+        setupKeyboardManager()
+        setupNavigation()
 
         return true
+    }
+    
+    // MARK: - Private
+    
+    private func setupKeyboardManager() {
+        IQKeyboardManager.shared().isEnableAutoToolbar = true
+        IQKeyboardManager.shared().isEnabled = true
+    }
+    
+    private func setupNavigation() {
+        router = RootRouter(window)
+        router?.buildNavigationFlow()
     }
 }
 

@@ -28,7 +28,9 @@ final class RootRouter {
     func buildNavigationFlow() {
         let initialViewController = createInitialViewController()
         
-        window?.rootViewController = initialViewController
+        let rootNavigationController = BaseNavigationController(rootViewController: initialViewController)
+        
+        window?.rootViewController = rootNavigationController
         window?.makeKeyAndVisible()
     }
     

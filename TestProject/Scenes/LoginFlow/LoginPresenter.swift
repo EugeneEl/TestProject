@@ -11,14 +11,14 @@ import Foundation
 /**
  LoginScene states.
  ````
- case loginInput(PasswordInputModel)
+ case loginInput(LoginInputModel)
  case isLogging
  case loginSuccess
  case loginFail(error: String)
  ````
  */
 enum LoginSceneState {
-    case loginInput(PasswordInputModel)
+    case loginInput(LoginInputModel)
     case isLogging
     case loginSuccess
     case loginFail(error: String)
@@ -34,7 +34,7 @@ final class LoginPresenter {
     
     weak var output: LoginPresenterOutput?
     
-    fileprivate (set) internal var model: PasswordInputModel
+    fileprivate (set) internal var model: LoginInputModel
     fileprivate (set) internal var loginState: LoginSceneState {
         didSet {
             output?.loginStateDidChange(loginState)
@@ -44,7 +44,7 @@ final class LoginPresenter {
     // MARK: - Initialization
     
     init() {
-        let initialModel = PasswordInputModel(email: "", password: "")
+        let initialModel = LoginInputModel(email: "", password: "")
         self.model = initialModel
         self.loginState = LoginSceneState.loginInput(initialModel)
     }

@@ -8,16 +8,16 @@
 
 import Foundation
 
-struct PasswordInputModel {
+struct LoginInputModel {
     let email: String
     let password: String
     
     mutating func changeEmail(_ email: String) {
-        self = PasswordInputModel(email: email, password: self.password)
+        self = LoginInputModel(email: email, password: self.password)
     }
     
     mutating func changePassword(_ password: String) {
-        self = PasswordInputModel(email: self.email, password: password)
+        self = LoginInputModel(email: self.email, password: password)
     }
     
     func isModelValid() -> Bool {

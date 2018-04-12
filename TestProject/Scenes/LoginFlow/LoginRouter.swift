@@ -24,6 +24,7 @@ final class LoginRouter {
     // MARK: - Public
     
     func navigateToMainScene() {
-        
+        let listVC = ListVC.instantiateFromStoryboardId(.main)
+        viewController?.navigationController?.pushViewController(listVC, animated: true)
     }
 }

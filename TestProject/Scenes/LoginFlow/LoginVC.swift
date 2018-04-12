@@ -53,6 +53,10 @@ class LoginVC: UIViewController {
     @IBAction fileprivate func didTapOnView() {
         view.endEditing(true)
     }
+    
+    @IBAction fileprivate func didTapSignIn(_ sender: UIButton) {
+        router?.navigateToMainScene()
+    }
 }
 
 // MARK: - UITextFieldDelegate
