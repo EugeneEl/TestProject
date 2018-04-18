@@ -8,6 +8,9 @@
 
 import Foundation
 
+typealias FetchFeedListCompletionSuccess = (_ rssItems: [FeedItemJSONModel]) -> ()
+typealias FetchFeedListCompletionFail = (_ errorText: String) -> ()
+
 final class FeedAPIWorker {
     
     // MARK: - Vars
@@ -16,18 +19,30 @@ final class FeedAPIWorker {
     
     // MARK: - Public
     
-    func fetchNews() {
+    func fetchNewsWithCompletionSuccess(_ success: @escaping FetchFeedListCompletionSuccess, failure: @escaping FetchFeedListCompletionFail) {
         let path = "stock/market/news/last/100"
         
         networkService.GET(path, parameters: nil, headers: nil, encoding: .urlEncoded, withAuthorization: true) { (result) in
             switch result {
             case .success(let rawData):
-                let json = JSON(data: rawData!, error: nil)
+                guard let data = rawData else {
+                    success([])
+                    return
+                }
+                
+                let json = JSON(data: data, error: nil)
 
-                print(json)
+                var models = [FeedItemJSONModel]()
+                for (_,subJson):(String, JSON) in json {
+                    if let feed = FeedItemJSONModel(json: subJson) {
+                        models.append(feed)
+                    }
+                }
+                
+                success(models)
             case .failure(let errorJSON, let errorString):
                 print(errorString)
-                //failure(errorString ?? ErrorConstants.baseError)
+                failure(errorString ?? ErrorConstants.baseError)
             }
         }
     }

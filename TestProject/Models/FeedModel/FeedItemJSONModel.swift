@@ -34,7 +34,7 @@ final class FeedItemJSONModel {
   static private var dateFormatter: DateFormatter {
         let dateFormatter = DateFormatter()
         
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssxxxxx"
         return dateFormatter
     }
 
