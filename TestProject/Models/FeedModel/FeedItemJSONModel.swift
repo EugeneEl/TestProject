@@ -57,3 +57,4 @@ final class FeedItemJSONModel {
     self.datetime = date
   }
 }
+

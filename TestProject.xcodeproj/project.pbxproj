@@ -35,6 +35,10 @@
 		3E7F49A7208708A500A0AB56 /* ErrorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F49A6208708A500A0AB56 /* ErrorConstants.swift */; };
 		3E7F49A920870B1900A0AB56 /* ServiceLocatorConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F49A820870B1900A0AB56 /* ServiceLocatorConfigurator.swift */; };
 		3E7F49AD20870CA500A0AB56 /* FeedAPIWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F49AC20870CA500A0AB56 /* FeedAPIWorker.swift */; };
+		3E7F49B22087266200A0AB56 /* FeedListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F49B12087266200A0AB56 /* FeedListTableViewCell.swift */; };
+		3E7F49B42087267C00A0AB56 /* FeedListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E7F49B32087267C00A0AB56 /* FeedListTableViewCell.xib */; };
+		3E7F49B62087296400A0AB56 /* DTOInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F49B52087296400A0AB56 /* DTOInterface.swift */; };
+		3E7F49B820872A2600A0AB56 /* FeedListCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F49B720872A2600A0AB56 /* FeedListCellPresenter.swift */; };
 		3E8AFAC2207CF76400C562AF /* HUDDisplayHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8AFAC1207CF76400C562AF /* HUDDisplayHelper.swift */; };
 		3E8AFAC4207CFC4F00C562AF /* LoginInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8AFAC3207CFC4F00C562AF /* LoginInputModel.swift */; };
 		3E8AFAC7207F2C3B00C562AF /* ListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8AFAC6207F2C3B00C562AF /* ListVC.swift */; };
@@ -85,6 +89,10 @@
 		3E7F49A6208708A500A0AB56 /* ErrorConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorConstants.swift; sourceTree = "<group>"; };
 		3E7F49A820870B1900A0AB56 /* ServiceLocatorConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLocatorConfigurator.swift; sourceTree = "<group>"; };
 		3E7F49AC20870CA500A0AB56 /* FeedAPIWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedAPIWorker.swift; sourceTree = "<group>"; };
+		3E7F49B12087266200A0AB56 /* FeedListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedListTableViewCell.swift; sourceTree = "<group>"; };
+		3E7F49B32087267C00A0AB56 /* FeedListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedListTableViewCell.xib; sourceTree = "<group>"; };
+		3E7F49B52087296400A0AB56 /* DTOInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTOInterface.swift; sourceTree = "<group>"; };
+		3E7F49B720872A2600A0AB56 /* FeedListCellPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedListCellPresenter.swift; sourceTree = "<group>"; };
 		3E8AFAC1207CF76400C562AF /* HUDDisplayHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUDDisplayHelper.swift; sourceTree = "<group>"; };
 		3E8AFAC3207CFC4F00C562AF /* LoginInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputModel.swift; sourceTree = "<group>"; };
 		3E8AFAC6207F2C3B00C562AF /* ListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListVC.swift; sourceTree = "<group>"; };
@@ -195,6 +203,8 @@
 		3E2FA182206BEE4D0000DAD7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3E7F49AE2087265300A0AB56 /* LoginFlow */,
+				3E7F49AF2087265300A0AB56 /* MainFlow */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -259,6 +269,7 @@
 		3E2FA18E206BEE4E0000DAD7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3E7F49B52087296400A0AB56 /* DTOInterface.swift */,
 				3E5B335A2080DD5000A295C1 /* FeedModel */,
 				3E2FA196206BEF740000DAD7 /* UserSessionModel */,
 			);
@@ -463,6 +474,31 @@
 			path = FeedAPIWorker;
 			sourceTree = "<group>";
 		};
+		3E7F49AE2087265300A0AB56 /* LoginFlow */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LoginFlow;
+			sourceTree = "<group>";
+		};
+		3E7F49AF2087265300A0AB56 /* MainFlow */ = {
+			isa = PBXGroup;
+			children = (
+				3E7F49B02087265300A0AB56 /* FeedListTableViewCell */,
+			);
+			path = MainFlow;
+			sourceTree = "<group>";
+		};
+		3E7F49B02087265300A0AB56 /* FeedListTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				3E7F49B12087266200A0AB56 /* FeedListTableViewCell.swift */,
+				3E7F49B32087267C00A0AB56 /* FeedListTableViewCell.xib */,
+				3E7F49B720872A2600A0AB56 /* FeedListCellPresenter.swift */,
+			);
+			path = FeedListTableViewCell;
+			sourceTree = "<group>";
+		};
 		3E8AFAC0207CF74900C562AF /* HUDDisplayHelper */ = {
 			isa = PBXGroup;
 			children = (
@@ -583,6 +619,7 @@
 				3E2FA18F206BEE4E0000DAD7 /* Assets.xcassets in Resources */,
 				3EB167A0206CDBC000A82D11 /* Login.storyboard in Resources */,
 				3E2FA190206BEE4E0000DAD7 /* LaunchScreen.storyboard in Resources */,
+				3E7F49B42087267C00A0AB56 /* FeedListTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -660,6 +697,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E58BA8E206CDF49001DEB34 /* UIImageView+Extensions.swift in Sources */,
+				3E7F49B22087266200A0AB56 /* FeedListTableViewCell.swift in Sources */,
 				3EB1679E206CDB5000A82D11 /* ViewControllersProvider.swift in Sources */,
 				3E90AF812079E897006ED70D /* LoginVC.swift in Sources */,
 				3E5B335F2080DE0F00A295C1 /* SwiftyJSON.swift in Sources */,
@@ -678,7 +716,9 @@
 				3E7F49A42087084600A0AB56 /* ReachabilityService.swift in Sources */,
 				3E5B335C2080DD9B00A295C1 /* FeedItemJSONModel.swift in Sources */,
 				3E7F49A7208708A500A0AB56 /* ErrorConstants.swift in Sources */,
+				3E7F49B62087296400A0AB56 /* DTOInterface.swift in Sources */,
 				3E58BA95206CDF49001DEB34 /* Foundation+Extensions.swift in Sources */,
+				3E7F49B820872A2600A0AB56 /* FeedListCellPresenter.swift in Sources */,
 				3E58BA91206CDF49001DEB34 /* SafariService+Extension.swift in Sources */,
 				3E58BA89206CDF49001DEB34 /* UIViewController+Extensions.swift in Sources */,
 				3EB167A2206CDBDB00A82D11 /* ServiceLocator.swift in Sources */,
