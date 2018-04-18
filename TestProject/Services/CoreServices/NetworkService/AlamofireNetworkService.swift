@@ -13,43 +13,29 @@ class AlamofireNetworkClient {
     
     // MARK: - Vars
     
-    static let shared = AlamofireNetworkClient("Test", url: "mockedURL")
-    fileprivate let baseURL: String
+    static let shared = AlamofireNetworkClient()
+    fileprivate let baseURL: String = "https://api.iextrading.com/1.0/"
     
     fileprivate let manager = Alamofire.SessionManager.default
     
     // MARK: - Initialization
     
-    private init () {
-        manager = Alamofire.SessionManager.default
-        manager.setHeader("application/json", key: "Content-Type")
-    }
+    private init () {}
     
-    fileprivate func generalRequestWithPath( _ path: String, method: HTTPMethod, encoding: ParametersEncoding, parameters: [String : AnyObject]?, data: [Data], headers: [String : String]?, withAuthorization: Bool, callback: @escaping DataRequestCallback) -> URLSessionTask? {
+    // MARK: - Private
+    
+    fileprivate func generalRequestWithPath( _ path: String, method: HTTPMethod, encoding: ParametersEncoding, parameters: [String : AnyObject]?, headers: [String : String]?, withAuthorization: Bool, callback: @escaping DataRequestCallback) -> () {
         
         if BaseReachabilityService.sharedReachabilityService.isConnected() == false {
             callback(.failure(nil, ErrorConstants.noConnection))
-            return nil
+            return
         }
         
-        if baseURL == NetworkClient.mockedURLKey {
-            callback(.failure(nil, "Open 311 is not configured"))
-            return nil
-        }
-        
-        let finalURL = buildFinalURL()
-        
-        guard let url = finalURL else {
-            callback(.failure(nil, "Cannot build URL"))
-            return nil
-        }
-        
-        var requestParameters = parameters ?? [String : AnyObject]()
         if withAuthorization {
-            if let authKey = key {
-                requestParameters[apiKey] = authKey as AnyObject
-            }
+            // add token here
         }
+        
+        let url = baseURL + path
         
         var requestTask: DataRequest? = nil
         
@@ -58,7 +44,6 @@ class AlamofireNetworkClient {
                 callback(DataRequestResult.failure(nil, ErrorConstants.baseError))
                 return
             }
-            
             
             let statusCode = response.statusCode
             let validCodes = Array(200..<300)
@@ -75,27 +60,23 @@ class AlamofireNetworkClient {
                 }
                 
                 if let data = dataResponse.data {
-                    let errorString = NetworkClient.convertErrorData(data: data)
+                    let errorString = AlamofireNetworkClient.convertErrorData(data: data)
                     callback(DataRequestResult.failure(data, errorString))
-                    return
+                } else {
+                    callback(DataRequestResult.failure(nil, ErrorConstants.baseError))
                 }
-                
-                
-                callback(DataRequestResult.failure(nil, ErrorConstants.baseError))
-                return
             }
             
         }
         
         switch encoding {
         case .json:
-            requestTask = manager.request(url, method: method, parameters: requestParameters, encoding: JSONEncoding.default, headers: headers)
+            requestTask = manager.request(url, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
         case .urlEncoded:
-            requestTask = manager.request(url, method: method, parameters: requestParameters, headers: headers)
-        
-        requestTask?.validate().responseData(completionHandler: completionHandler)
-        
-        return requestTask?.task
+            requestTask = manager.request(url, method: method, parameters: parameters, headers: headers)
+            
+            requestTask?.validate().responseData(completionHandler: completionHandler)
+        }
     }
     
     fileprivate static func convertErrorData(data: Data?) -> String {
@@ -135,7 +116,7 @@ extension AlamofireNetworkClient: NetworkService {
               encoding: ParametersEncoding,
               withAuthorization: Bool,
               callback: @escaping DataRequestCallback) -> () {
-        
+        generalRequestWithPath(path, method: .get, encoding: encoding, parameters: parameters, headers: headers, withAuthorization: withAuthorization, callback: callback)
     }
     
     func POST( _ path: String,
@@ -144,7 +125,7 @@ extension AlamofireNetworkClient: NetworkService {
                encoding: ParametersEncoding,
                data: [Data], withAuthorization: Bool,
                callback: @escaping DataRequestCallback) -> () {
-        
+                generalRequestWithPath(path, method: .post, encoding: encoding, parameters: parameters, headers: headers, withAuthorization: withAuthorization, callback: callback)
     }
     
     func PUT( _ path: String,
@@ -154,7 +135,7 @@ extension AlamofireNetworkClient: NetworkService {
               data: [Data],
               withAuthorization: Bool,
               callback: @escaping DataRequestCallback) -> () {
-        
+        generalRequestWithPath(path, method: .put, encoding: encoding, parameters: parameters, headers: headers, withAuthorization: withAuthorization, callback: callback)
     }
     
     func PATCH(_ path: String,
@@ -164,7 +145,7 @@ extension AlamofireNetworkClient: NetworkService {
                data: [Data],
                withAuthorization: Bool,
                callback: @escaping DataRequestCallback) -> () {
-        
+        generalRequestWithPath(path, method: .patch, encoding: encoding, parameters: parameters, headers: headers, withAuthorization: withAuthorization, callback: callback)
     }
     
     func DELETE(_ path: String,
@@ -173,6 +154,6 @@ extension AlamofireNetworkClient: NetworkService {
                 withAuthorization: Bool,
                 encoding: ParametersEncoding,
                 callback: @escaping DataRequestCallback) -> () {
-        
+                generalRequestWithPath(path, method: .delete, encoding: encoding, parameters: parameters, headers: headers, withAuthorization: withAuthorization, callback: callback)
     }
 }

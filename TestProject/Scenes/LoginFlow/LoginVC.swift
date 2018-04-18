@@ -31,6 +31,7 @@ class LoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        FeedAPIWorker().fetchNews()
         setupTap()
         configureScene()
         presenter.triggerInitialState()
