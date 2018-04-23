@@ -25,7 +25,9 @@ class ListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupTableView()
         setupScene()
+        presenter.fetchData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,6 +40,58 @@ class ListVC: UIViewController {
     
     private func setupScene() {
         router = ListRouter(viewController: self)
+        presenter.output = self
+    }
+    
+    private func setupTableView() {
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.registerCellsWithIdentifiers([FeedListTableViewCell.cellIdentifier()])
+        tableView.estimatedRowHeight = 85.0
+        tableView.rowHeight = UITableViewAutomaticDimension
+    }
+}
+
+// MARK: - ListPresenterOutput
+
+extension ListVC: ListPresenterOutput {
+    func listSceneStateDidChange(_ state: ListSceneState) {
+        switch state {
+        case .isLoading:
+            HudHelper.showHUDInView(view, animated: true)
+        case .feedDidFetch(let items, let errorText):
+            HudHelper.hideHUDInView(view, animated: false)
+            if !items.isEmpty {
+                tableView.reloadData()
+            }
+        }
+    }
+}
+
+// MARK: - UITableViewDataSource
+
+extension ListVC: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return presenter.feedItems.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = FeedListTableViewCell.dequeueFromTableView(tableView)
+        
+        guard let item = presenter.feedItems[safe: indexPath.row] else {
+            return cell
+        }
+        
+        cell.configureWithObject(item)
+        return cell
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension ListVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
 }
 
