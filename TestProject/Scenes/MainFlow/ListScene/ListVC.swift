@@ -17,6 +17,7 @@ class ListVC: UIViewController {
     
     // MARK: - Vars
     
+    fileprivate var refreshControl: UIRefreshControl?
     fileprivate let presenter = ListPresenter()
     fileprivate var router: ListRouter?
     
@@ -44,11 +45,27 @@ class ListVC: UIViewController {
     }
     
     private func setupTableView() {
-        tableView.dataSource = self
-        tableView.delegate = self
         tableView.registerCellsWithIdentifiers([FeedListTableViewCell.cellIdentifier()])
         tableView.estimatedRowHeight = 85.0
         tableView.rowHeight = UITableViewAutomaticDimension
+        setupRefreshControl()
+    }
+    
+    private func setupRefreshControl() {
+        refreshControl = UIRefreshControl()
+        refreshControl?.tintColor = .blue
+        refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.backgroundView = refreshControl
+        }
+    }
+    
+    // MARK: - Actions
+    
+    @objc fileprivate func refresh() {
+        presenter.fetchData()
     }
 }
 
@@ -59,8 +76,10 @@ extension ListVC: ListPresenterOutput {
         switch state {
         case .isLoading:
             HudHelper.showHUDInView(view, animated: true)
+            refreshControl?.beginRefreshing()
         case .feedDidFetch(let items, let errorText):
             HudHelper.hideHUDInView(view, animated: false)
+            refreshControl?.endRefreshing()
             if !items.isEmpty {
                 tableView.reloadData()
             }
@@ -82,6 +101,7 @@ extension ListVC: UITableViewDataSource {
             return cell
         }
         
+        cell.delegate = self
         cell.configureWithObject(item)
         return cell
     }
@@ -92,6 +112,15 @@ extension ListVC: UITableViewDataSource {
 extension ListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
+    }
+}
+
+// MARK: - FeedListTableViewCellInteractable
+
+extension ListVC: FeedListTableViewCellInteractable {
+    func linkDidTapInCell(_ cell: FeedListTableViewCell) {
+        guard let index = tableView.indexPath(for: cell) else {return}
+        
     }
 }
 

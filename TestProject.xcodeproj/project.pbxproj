@@ -28,7 +28,6 @@
 		3E58BA93206CDF49001DEB34 /* Bool+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E58BA83206CDF49001DEB34 /* Bool+Extensions.swift */; };
 		3E58BA94206CDF49001DEB34 /* String+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E58BA85206CDF49001DEB34 /* String+Validation.swift */; };
 		3E58BA95206CDF49001DEB34 /* Foundation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E58BA86206CDF49001DEB34 /* Foundation+Extensions.swift */; };
-		3E58BA96206CDF49001DEB34 /* MapView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E58BA88206CDF49001DEB34 /* MapView+Extensions.swift */; };
 		3E5B335C2080DD9B00A295C1 /* FeedItemJSONModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5B335B2080DD9B00A295C1 /* FeedItemJSONModel.swift */; };
 		3E5B335F2080DE0F00A295C1 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5B335E2080DE0F00A295C1 /* SwiftyJSON.swift */; };
 		3E7F49A42087084600A0AB56 /* ReachabilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F49A32087084600A0AB56 /* ReachabilityService.swift */; };
@@ -82,7 +81,6 @@
 		3E58BA83206CDF49001DEB34 /* Bool+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bool+Extensions.swift"; sourceTree = "<group>"; };
 		3E58BA85206CDF49001DEB34 /* String+Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Validation.swift"; sourceTree = "<group>"; };
 		3E58BA86206CDF49001DEB34 /* Foundation+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Foundation+Extensions.swift"; sourceTree = "<group>"; };
-		3E58BA88206CDF49001DEB34 /* MapView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MapView+Extensions.swift"; sourceTree = "<group>"; };
 		3E5B335B2080DD9B00A295C1 /* FeedItemJSONModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedItemJSONModel.swift; sourceTree = "<group>"; };
 		3E5B335E2080DE0F00A295C1 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		3E7F49A32087084600A0AB56 /* ReachabilityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityService.swift; sourceTree = "<group>"; };
@@ -307,7 +305,6 @@
 				3E58BA6E206CDF49001DEB34 /* UIKit+Exntenions */,
 				3E58BA7F206CDF49001DEB34 /* SafariService+Extension */,
 				3E58BA82206CDF49001DEB34 /* Foundation+Extensions */,
-				3E58BA87206CDF49001DEB34 /* MapKit+Extensions */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -416,14 +413,6 @@
 				3E58BA85206CDF49001DEB34 /* String+Validation.swift */,
 			);
 			path = "String+Extensions";
-			sourceTree = "<group>";
-		};
-		3E58BA87206CDF49001DEB34 /* MapKit+Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				3E58BA88206CDF49001DEB34 /* MapView+Extensions.swift */,
-			);
-			path = "MapKit+Extensions";
 			sourceTree = "<group>";
 		};
 		3E5B335A2080DD5000A295C1 /* FeedModel */ = {
@@ -723,7 +712,6 @@
 				3E58BA89206CDF49001DEB34 /* UIViewController+Extensions.swift in Sources */,
 				3EB167A2206CDBDB00A82D11 /* ServiceLocator.swift in Sources */,
 				3E58BA8F206CDF49001DEB34 /* UICollectionViewCell+Extensions.swift in Sources */,
-				3E58BA96206CDF49001DEB34 /* MapView+Extensions.swift in Sources */,
 				3E8AFAC7207F2C3B00C562AF /* ListVC.swift in Sources */,
 				3E58BA94206CDF49001DEB34 /* String+Validation.swift in Sources */,
 				3EE6E5F92085B6700072D0AE /* NetworkService.swift in Sources */,

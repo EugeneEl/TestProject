@@ -79,14 +79,24 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8r6-t5-IpG">
+                                        <rect key="frame" x="16" y="-0.5" width="311" height="21"/>
+                                        <connections>
+                                            <action selector="linkDidTap" destination="Pkq-1k-UOz" eventType="touchUpInside" id="pOa-HY-DYj"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="obc-tB-J8c" firstAttribute="top" secondItem="eNk-xw-GKf" secondAttribute="top" id="2GF-Nq-RoU"/>
+                                    <constraint firstItem="8r6-t5-IpG" firstAttribute="trailing" secondItem="obc-tB-J8c" secondAttribute="trailing" id="2Lb-Ma-ISp"/>
+                                    <constraint firstItem="8r6-t5-IpG" firstAttribute="leading" secondItem="obc-tB-J8c" secondAttribute="leading" id="4Og-m0-GLR"/>
+                                    <constraint firstItem="8r6-t5-IpG" firstAttribute="bottom" secondItem="obc-tB-J8c" secondAttribute="bottom" id="5QF-df-K2v"/>
                                     <constraint firstItem="obc-tB-J8c" firstAttribute="leading" secondItem="eNk-xw-GKf" secondAttribute="leading" constant="16" id="SXY-dF-8Wl"/>
                                     <constraint firstAttribute="trailing" secondItem="obc-tB-J8c" secondAttribute="trailing" constant="16" id="ddh-SK-am9"/>
                                     <constraint firstAttribute="height" constant="20" id="mEZ-pT-Ucp"/>
                                     <constraint firstAttribute="bottom" secondItem="obc-tB-J8c" secondAttribute="bottom" id="nZS-gU-vd7"/>
+                                    <constraint firstItem="8r6-t5-IpG" firstAttribute="top" secondItem="obc-tB-J8c" secondAttribute="top" id="pzf-LK-ZQq"/>
                                 </constraints>
                             </view>
                         </subviews>
