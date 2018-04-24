@@ -30,6 +30,7 @@
 		3E58BA95206CDF49001DEB34 /* Foundation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E58BA86206CDF49001DEB34 /* Foundation+Extensions.swift */; };
 		3E5B335C2080DD9B00A295C1 /* FeedItemJSONModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5B335B2080DD9B00A295C1 /* FeedItemJSONModel.swift */; };
 		3E5B335F2080DE0F00A295C1 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5B335E2080DE0F00A295C1 /* SwiftyJSON.swift */; };
+		3E701198208EFF6800B28B5A /* SafariControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E701197208EFF6800B28B5A /* SafariControllerHelper.swift */; };
 		3E7F49A42087084600A0AB56 /* ReachabilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F49A32087084600A0AB56 /* ReachabilityService.swift */; };
 		3E7F49A7208708A500A0AB56 /* ErrorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F49A6208708A500A0AB56 /* ErrorConstants.swift */; };
 		3E7F49A920870B1900A0AB56 /* ServiceLocatorConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F49A820870B1900A0AB56 /* ServiceLocatorConfigurator.swift */; };
@@ -83,6 +84,7 @@
 		3E58BA86206CDF49001DEB34 /* Foundation+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Foundation+Extensions.swift"; sourceTree = "<group>"; };
 		3E5B335B2080DD9B00A295C1 /* FeedItemJSONModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedItemJSONModel.swift; sourceTree = "<group>"; };
 		3E5B335E2080DE0F00A295C1 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		3E701197208EFF6800B28B5A /* SafariControllerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariControllerHelper.swift; sourceTree = "<group>"; };
 		3E7F49A32087084600A0AB56 /* ReachabilityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityService.swift; sourceTree = "<group>"; };
 		3E7F49A6208708A500A0AB56 /* ErrorConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorConstants.swift; sourceTree = "<group>"; };
 		3E7F49A820870B1900A0AB56 /* ServiceLocatorConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLocatorConfigurator.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 		3E2FA183206BEE4D0000DAD7 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				3E701196208EFF5D00B28B5A /* SafariControllerHelper */,
 				3E7F49A52087089B00A0AB56 /* ErrorConstants */,
 				3E8AFAC0207CF74900C562AF /* HUDDisplayHelper */,
 				3E90AF7D2079E782006ED70D /* ImageAttachment */,
@@ -429,6 +432,14 @@
 				3E5B335E2080DE0F00A295C1 /* SwiftyJSON.swift */,
 			);
 			path = 3rdParty;
+			sourceTree = "<group>";
+		};
+		3E701196208EFF5D00B28B5A /* SafariControllerHelper */ = {
+			isa = PBXGroup;
+			children = (
+				3E701197208EFF6800B28B5A /* SafariControllerHelper.swift */,
+			);
+			path = SafariControllerHelper;
 			sourceTree = "<group>";
 		};
 		3E7F49A22087083A00A0AB56 /* ReachabilityService */ = {
@@ -692,6 +703,7 @@
 				3E5B335F2080DE0F00A295C1 /* SwiftyJSON.swift in Sources */,
 				3E58BA90206CDF49001DEB34 /* UICollectionView+Extensions.swift in Sources */,
 				3E90AF832079E8A6006ED70D /* LoginPresenter.swift in Sources */,
+				3E701198208EFF6800B28B5A /* SafariControllerHelper.swift in Sources */,
 				3E2FA198206BEF830000DAD7 /* UserSessionModel.swift in Sources */,
 				3E58BA92206CDF49001DEB34 /* StatusBarHelper.swift in Sources */,
 				3E58BA8D206CDF49001DEB34 /* UITableViewCell+Extensions.swift in Sources */,

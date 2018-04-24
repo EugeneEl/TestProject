@@ -46,4 +46,8 @@ final class ListPresenter {
         }
     }
     
+    func provideURLForIndex(_ index: Int) -> URL? {
+        let item = feedItems[safe: index]
+        return item?.url
+    }
 }

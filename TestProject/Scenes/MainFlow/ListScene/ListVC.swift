@@ -20,6 +20,7 @@ class ListVC: UIViewController {
     fileprivate var refreshControl: UIRefreshControl?
     fileprivate let presenter = ListPresenter()
     fileprivate var router: ListRouter?
+    fileprivate var safariControllerHelper: SafariControllerHelper?
     
     // MARK: - Lifecycle
     
@@ -42,6 +43,7 @@ class ListVC: UIViewController {
     private func setupScene() {
         router = ListRouter(viewController: self)
         presenter.output = self
+        safariControllerHelper = SafariControllerHelper(viewController: self)
     }
     
     private func setupTableView() {
@@ -119,8 +121,9 @@ extension ListVC: UITableViewDelegate {
 
 extension ListVC: FeedListTableViewCellInteractable {
     func linkDidTapInCell(_ cell: FeedListTableViewCell) {
-        guard let index = tableView.indexPath(for: cell) else {return}
-        
+        guard let indexPath = tableView.indexPath(for: cell),
+            let url = presenter.provideURLForIndex(indexPath.row) else {return}
+        safariControllerHelper?.openURLInSafariViewController(url)
     }
 }
 
