@@ -41,6 +41,7 @@ extension FeedListTableViewCell: DataObjectConfigurable {
     func configureWithObject(_ object: FeedItemJSONModel) {
         titleLabel.text = object.headline
         summaryLabel.text = object.summary
+        print("object.summary: \(object.summary)")
         linkLabel.text = object.url.absoluteString
         dateLabel.text = FeedListCellPresenter.provideDateTextForFeedItem(object)
     }

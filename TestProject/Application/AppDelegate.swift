@@ -19,9 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        window = UIWindow()
-        window?.frame = UIScreen.main.bounds
-        
+        setupWindow()
         ServiceLocatorConfigurator.setupServices()
         setupKeyboardManager()
         setupNavigation()
@@ -39,6 +37,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func setupNavigation() {
         router = RootRouter(window)
         router?.buildNavigationFlow()
+    }
+    
+    private func setupWindow() {
+        window = UIWindow()
+        window?.frame = UIScreen.main.bounds
     }
 }
 
