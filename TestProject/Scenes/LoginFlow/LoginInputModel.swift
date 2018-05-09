@@ -15,6 +15,8 @@ struct LoginInputModel {
     let email: String
     let password: String
     
+    private static let minPasswordLength = 6
+    
     // MARK: - Public
     
     mutating func changeEmail(_ email: String) {
@@ -26,6 +28,6 @@ struct LoginInputModel {
     }
     
     func isModelValid() -> Bool {
-        return email.isValidEmail() && password.length > 6
+        return email.isValidEmail() && password.length > LoginInputModel.minPasswordLength
     }
 }
