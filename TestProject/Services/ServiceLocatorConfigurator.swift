@@ -14,5 +14,6 @@ final class ServiceLocatorConfigurator {
     
     static func setupServices() {
         ServiceLocator.sharedLocator.registerSingleton(AlamofireNetworkClient.shared as NetworkService)
+        ServiceLocator.sharedLocator.registerSingleton(KeychainSecureStorage.sharedSecureStorage as SecureStorageService)
     }
 }

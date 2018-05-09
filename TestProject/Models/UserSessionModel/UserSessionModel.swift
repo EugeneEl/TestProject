@@ -9,6 +9,11 @@
 import Foundation
 
 struct UserSessionModel {
-    let userName: String
     let token: String
+    
+    // MARK: - Initialization
+    
+    init(email: String, password: String) {
+        self.token = "23SDFEDSEEW2323ksldkl@#$22ssdds"
+    }
 }

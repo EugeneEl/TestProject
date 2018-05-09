@@ -68,5 +68,8 @@ final class LoginPresenter {
     
     func loginDidTap() {
         loginState = .isLogging
+        let userSessionModel = UserSessionModel(email: model.email, password: model.password)
+        UserSessionService.shared.openUserSessionWithModel(userSessionModel)
+        loginState = .loginSuccess
     }
 }

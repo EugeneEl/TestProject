@@ -26,9 +26,10 @@ final class RootRouter {
     
     /// Build navigaion flow.
     func buildNavigationFlow() {
-        let initialViewController = createInitialViewController()
+        let initialViewControllers = createInitialViewControllers()
         
-        let rootNavigationController = BaseNavigationController(rootViewController: initialViewController)
+        let rootNavigationController = BaseNavigationController()
+        rootNavigationController.viewControllers = initialViewControllers
         
         window?.rootViewController = rootNavigationController
         window?.makeKeyAndVisible()
@@ -36,9 +37,16 @@ final class RootRouter {
     
     /// Create initial `UIViewController` depending on user flow.
     ///
-    /// - Returns: An instance of `UIViewController` which will be set as a root.
-    func createInitialViewController() -> UIViewController {
-        return LoginVC.instantiateFromStoryboardId(.login)
+    /// - Returns: An array of `UIViewController` which will be set as for navigation.
+    func createInitialViewControllers() -> [UIViewController] {
+        let loginVC = LoginVC.instantiateFromStoryboardId(.login)
+        loginVC.enforceLoadView()
+        
+        if UserSessionService.shared.canRestoreUsesSession() {
+            return [loginVC, ListVC.instantiateFromStoryboardId(.main)]
+        } else {
+            return [loginVC]
+        }
     }
     
     /// Replace rootViewController with the new one. Used to change navigation "on the fly".

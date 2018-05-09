@@ -8,17 +8,33 @@
 
 import Foundation
 
-//final class UserSessionService {
-//    
-//    // MARK: - Vars
-//    
-//    static let shared = UserSessionService()
-//    
-//    var isLogges: Bool
-//    fileprivate (set) internal var sessionModel: UserSessionModel?
-//    
-//    // MARK: - Initialization
-//    
-//    private init() {}
-//}
+final class UserSessionService {
+    
+    // MARK: - Vars
+    
+    static let shared = UserSessionService()
+    
+    var isLogged: Bool = false
+    fileprivate (set) internal var sessionModel: UserSessionModel?
+    fileprivate let userSessionStorage = UserSessionStorage()
+    
+    // MARK: - Initialization
+    
+    private init() {}
+    
+    // MARK: - Public
+    
+    func openUserSessionWithModel(_ model: UserSessionModel) {
+        userSessionStorage.updateCredentials(model)
+        isLogged = true
+    }
+    
+    func closeUserSession() {
+        
+    }
+    
+    func canRestoreUsesSession() -> Bool {
+        return userSessionStorage.hasToken()
+    }
+}
 

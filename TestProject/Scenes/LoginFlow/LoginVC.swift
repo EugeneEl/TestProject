@@ -66,7 +66,7 @@ class LoginVC: UIViewController {
     }
     
     @IBAction fileprivate func didTapSignIn(_ sender: UIButton) {
-        router?.navigateToMainScene()
+        presenter.loginDidTap()
     }
 }
 
