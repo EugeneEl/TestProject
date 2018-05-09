@@ -41,6 +41,12 @@ class LoginVC: UIViewController {
         presenter.triggerInitialState()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        configureUI()
+    }
+    
     // MARK: - Private
     
     private func configureScene() {
@@ -85,6 +91,23 @@ extension LoginVC: UITextFieldDelegate {
         }
         
         return true
+    }
+}
+
+// MARK: - ViewControllerUIConfigurating
+
+extension LoginVC: ViewControllerUIConfigurating {
+    var navigationBarAppearance: NavigationBarAppearance? {
+        return nil
+    }
+    
+    var isNavigationBarHidden: Bool {
+        return true
+        
+    }
+    
+    var isBackButtonVisible: Bool {
+        return false
     }
 }
 

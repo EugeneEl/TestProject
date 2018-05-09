@@ -92,7 +92,7 @@ extension ViewControllerUIConfigurating where Self: UIViewController {
         
         //hide back button if needed
         if !isBackButtonVisible && navigationBarAppearance == nil {
-            //self.navigationItem.leftBarButtonItem = nil
+            self.navigationItem.leftBarButtonItem = nil
         }
     }
     
@@ -125,21 +125,10 @@ extension ViewControllerUIConfigurating where Self: UIViewController {
             setupNavigationTitle(appearance.navigationTitle, titleColor: appearance.navigationTitleColor)
             
             // setup barItems if needed
-            if let leftItem = appearance.leftItem {
-                navigationItem.leftBarButtonItem = leftItem
-            } else {
-                if isBackButtonVisible {
-//                    replaceBackButton()
-                } else {
-                    navigationItem.leftBarButtonItem = nil
-                }
-            }
             
-            if let rightItem = appearance.rightItem {
-                navigationItem.rightBarButtonItem = rightItem
-            } else {
-                navigationItem.rightBarButtonItem = nil
-            }
+            navigationItem.leftBarButtonItem = appearance.leftItem
+            navigationItem.setHidesBackButton(!isBackButtonVisible, animated: false)
+            navigationItem.rightBarButtonItem = appearance.rightItem
             
         } else {
             navigationController?.navigationBar.isHidden = true
