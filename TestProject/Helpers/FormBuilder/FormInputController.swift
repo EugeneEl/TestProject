@@ -1,4 +1,4 @@
-//
+ //
 //  FormInputController.swift
 //  TestProject
 //
@@ -8,16 +8,29 @@
 
 import Foundation
 
+ protocol FormInputConrollerOutput: class {
+    func textDidChangeInForm(_ text: String)
+ }
+ 
 final class FormInputConroller {
     
     // MAKR: - Vars
     
     private let formConfigurating: FormInputViewConfigurating
+    weak var delegate: FormInputConrollerOutput?
     
     // MARK: - Initialization
     
     init(formConfigurating: FormInputViewConfigurating, formInputViewUI: FormInputViewUI) {
         self.formConfigurating = formConfigurating
         self.formConfigurating.setupFormInputViewWithFormUI(formInputViewUI)
+    }
+}
+
+// MARK: - FormInputViewOutput
+
+extension FormInputConroller: FormInputViewOutput {
+    func textDidChangeInForm(_ text: String) {
+        delegate?.textDidChangeInForm(text)
     }
 }
