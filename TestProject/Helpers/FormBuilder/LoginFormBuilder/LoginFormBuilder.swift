@@ -9,6 +9,11 @@
 import Foundation
 import UIKit
 
+enum FormControllerType {
+    case email
+    case password
+}
+
 /// Form types for composing Login Screen.
 enum LoginFormType {
     case email
@@ -28,6 +33,8 @@ enum LoginFormType {
                                                         autocorrectionType: .no,
                                                         isSecureTextEntry: true)
     
+    static let inputHeight: CGFloat = 44
+    
     // MARK: - Vars
     // MARK: - Public
     
@@ -36,6 +43,15 @@ enum LoginFormType {
                                    formKeyboardUI: keyboardUI,
                                    textFont: LoginFormType.font,
                                    placeholderRightPadding: LoginFormType.offset)
+    }
+    
+    var formControllerType: FormControllerType {
+        switch self {
+        case .email:
+            return .email
+        case .password:
+            return .password
+        }
     }
     
     // MARK: - Private
@@ -69,7 +85,7 @@ final class LoginFormBuilder {
     static func provideInputControlModuleForFragment(_ formType: LoginFormType) -> (FormInputConroller, UIView) {
         
         let view = FormInputView.instantiateView()
-        let inputControl = FormInputConroller(formConfigurating: view, formInputViewUI: formType.formUI)
+        let inputControl = FormInputConroller(formConfigurating: view, formInputViewUI: formType.formUI, formType: formType.formControllerType)
         
         return (inputControl, view)
     }

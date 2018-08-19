@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
  protocol FormInputConrollerOutput: class {
-    func textDidChangeInForm(_ text: String)
+    func textDidChangeInForm(_ text: String, formType: FormControllerType)
  }
  
  final class FormInputConroller: NSObject {
@@ -18,12 +18,15 @@ import UIKit
     // MAKR: - Vars
     
     private let formConfigurating: FormInputViewConfigurating
+    private let formType: FormControllerType
+    
     weak var delegate: FormInputConrollerOutput?
     
     // MARK: - Initialization
     
-    init(formConfigurating: FormInputViewConfigurating, formInputViewUI: FormInputViewUI) {
+    init(formConfigurating: FormInputViewConfigurating, formInputViewUI: FormInputViewUI, formType: FormControllerType) {
         self.formConfigurating = formConfigurating
+        self.formType = formType
         super.init()
         self.formConfigurating.setupFormInputViewWithFormUI(formInputViewUI, delegate: self)
     }
@@ -37,7 +40,7 @@ import UIKit
         var txtAfterUpdate:NSString = textField.text! as NSString
         txtAfterUpdate = txtAfterUpdate.replacingCharacters(in: range, with: string) as NSString
         
-        delegate?.textDidChangeInForm(txtAfterUpdate as String)
+        delegate?.textDidChangeInForm(txtAfterUpdate as String, formType: formType)
         
         return true
     }

@@ -39,7 +39,7 @@ final class RootRouter {
     ///
     /// - Returns: An array of `UIViewController` which will be set as for navigation.
     func createInitialViewControllers() -> [UIViewController] {
-        let loginVC = LoginVC.instantiateFromStoryboardId(.login)
+        let loginVC = NewLoginVC.instantiateFromStoryboardId(.login)
         loginVC.enforceLoadView()
         
         if UserSessionService.shared.canRestoreUsesSession() {

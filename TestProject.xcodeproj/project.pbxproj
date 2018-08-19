@@ -46,6 +46,8 @@
 		3E82D03021295277001A2720 /* FormInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E82D02F21295277001A2720 /* FormInputView.swift */; };
 		3E82D033212955A2001A2720 /* FormInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E82D032212955A2001A2720 /* FormInputController.swift */; };
 		3E82D03621295901001A2720 /* LoginFormBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E82D03521295901001A2720 /* LoginFormBuilder.swift */; };
+		3E82D03821296227001A2720 /* NewLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E82D03721296227001A2720 /* NewLoginVC.swift */; };
+		3E82D03A21296278001A2720 /* NewLoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E82D03921296278001A2720 /* NewLoginPresenter.swift */; };
 		3E8AFAC2207CF76400C562AF /* HUDDisplayHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8AFAC1207CF76400C562AF /* HUDDisplayHelper.swift */; };
 		3E8AFAC4207CFC4F00C562AF /* LoginInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8AFAC3207CFC4F00C562AF /* LoginInputModel.swift */; };
 		3E8AFAC7207F2C3B00C562AF /* ListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8AFAC6207F2C3B00C562AF /* ListVC.swift */; };
@@ -107,6 +109,8 @@
 		3E82D02F21295277001A2720 /* FormInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormInputView.swift; sourceTree = "<group>"; };
 		3E82D032212955A2001A2720 /* FormInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormInputController.swift; sourceTree = "<group>"; };
 		3E82D03521295901001A2720 /* LoginFormBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormBuilder.swift; sourceTree = "<group>"; };
+		3E82D03721296227001A2720 /* NewLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLoginVC.swift; sourceTree = "<group>"; };
+		3E82D03921296278001A2720 /* NewLoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLoginPresenter.swift; sourceTree = "<group>"; };
 		3E8AFAC1207CF76400C562AF /* HUDDisplayHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUDDisplayHelper.swift; sourceTree = "<group>"; };
 		3E8AFAC3207CFC4F00C562AF /* LoginInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputModel.swift; sourceTree = "<group>"; };
 		3E8AFAC6207F2C3B00C562AF /* ListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListVC.swift; sourceTree = "<group>"; };
@@ -210,6 +214,8 @@
 				3E90AF822079E8A6006ED70D /* LoginPresenter.swift */,
 				3E90AF842079E8AF006ED70D /* LoginRouter.swift */,
 				3E8AFAC3207CFC4F00C562AF /* LoginInputModel.swift */,
+				3E82D03721296227001A2720 /* NewLoginVC.swift */,
+				3E82D03921296278001A2720 /* NewLoginPresenter.swift */,
 			);
 			path = LoginFlow;
 			sourceTree = "<group>";
@@ -783,9 +789,11 @@
 				3E82D03021295277001A2720 /* FormInputView.swift in Sources */,
 				3E8AFAC7207F2C3B00C562AF /* ListVC.swift in Sources */,
 				3E58BA94206CDF49001DEB34 /* String+Validation.swift in Sources */,
+				3E82D03A21296278001A2720 /* NewLoginPresenter.swift in Sources */,
 				3E59D5E220A3315800853254 /* SecureStorageService.swift in Sources */,
 				3EE6E5F92085B6700072D0AE /* NetworkService.swift in Sources */,
 				3E2FA192206BEE4E0000DAD7 /* AppDelegate.swift in Sources */,
+				3E82D03821296227001A2720 /* NewLoginVC.swift in Sources */,
 				3E58BA8C206CDF49001DEB34 /* UITableView+Extensions.swift in Sources */,
 				3E8AFACB207F2C5300C562AF /* ListRouter.swift in Sources */,
 				3E90AF7F2079E78F006ED70D /* ImageAttachment.swift in Sources */,
