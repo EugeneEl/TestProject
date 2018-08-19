@@ -42,6 +42,9 @@
 		3E7F49B42087267C00A0AB56 /* FeedListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E7F49B32087267C00A0AB56 /* FeedListTableViewCell.xib */; };
 		3E7F49B62087296400A0AB56 /* DTOInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F49B52087296400A0AB56 /* DTOInterface.swift */; };
 		3E7F49B820872A2600A0AB56 /* FeedListCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F49B720872A2600A0AB56 /* FeedListCellPresenter.swift */; };
+		3E82D02E2129526C001A2720 /* FormInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E82D02D2129526C001A2720 /* FormInputView.xib */; };
+		3E82D03021295277001A2720 /* FormInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E82D02F21295277001A2720 /* FormInputView.swift */; };
+		3E82D033212955A2001A2720 /* FormInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E82D032212955A2001A2720 /* FormInputController.swift */; };
 		3E8AFAC2207CF76400C562AF /* HUDDisplayHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8AFAC1207CF76400C562AF /* HUDDisplayHelper.swift */; };
 		3E8AFAC4207CFC4F00C562AF /* LoginInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8AFAC3207CFC4F00C562AF /* LoginInputModel.swift */; };
 		3E8AFAC7207F2C3B00C562AF /* ListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8AFAC6207F2C3B00C562AF /* ListVC.swift */; };
@@ -99,6 +102,9 @@
 		3E7F49B32087267C00A0AB56 /* FeedListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedListTableViewCell.xib; sourceTree = "<group>"; };
 		3E7F49B52087296400A0AB56 /* DTOInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTOInterface.swift; sourceTree = "<group>"; };
 		3E7F49B720872A2600A0AB56 /* FeedListCellPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedListCellPresenter.swift; sourceTree = "<group>"; };
+		3E82D02D2129526C001A2720 /* FormInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormInputView.xib; sourceTree = "<group>"; };
+		3E82D02F21295277001A2720 /* FormInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormInputView.swift; sourceTree = "<group>"; };
+		3E82D032212955A2001A2720 /* FormInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormInputController.swift; sourceTree = "<group>"; };
 		3E8AFAC1207CF76400C562AF /* HUDDisplayHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUDDisplayHelper.swift; sourceTree = "<group>"; };
 		3E8AFAC3207CFC4F00C562AF /* LoginInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputModel.swift; sourceTree = "<group>"; };
 		3E8AFAC6207F2C3B00C562AF /* ListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListVC.swift; sourceTree = "<group>"; };
@@ -218,6 +224,7 @@
 		3E2FA183206BEE4D0000DAD7 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				3E82D03121295590001A2720 /* FormBuilder */,
 				3E701196208EFF5D00B28B5A /* SafariControllerHelper */,
 				3E7F49A52087089B00A0AB56 /* ErrorConstants */,
 				3E8AFAC0207CF74900C562AF /* HUDDisplayHelper */,
@@ -494,6 +501,7 @@
 		3E7F49AE2087265300A0AB56 /* LoginFlow */ = {
 			isa = PBXGroup;
 			children = (
+				3E82D02C2129525E001A2720 /* FormInputView */,
 			);
 			path = LoginFlow;
 			sourceTree = "<group>";
@@ -514,6 +522,23 @@
 				3E7F49B720872A2600A0AB56 /* FeedListCellPresenter.swift */,
 			);
 			path = FeedListTableViewCell;
+			sourceTree = "<group>";
+		};
+		3E82D02C2129525E001A2720 /* FormInputView */ = {
+			isa = PBXGroup;
+			children = (
+				3E82D02D2129526C001A2720 /* FormInputView.xib */,
+				3E82D02F21295277001A2720 /* FormInputView.swift */,
+			);
+			path = FormInputView;
+			sourceTree = "<group>";
+		};
+		3E82D03121295590001A2720 /* FormBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				3E82D032212955A2001A2720 /* FormInputController.swift */,
+			);
+			path = FormBuilder;
 			sourceTree = "<group>";
 		};
 		3E8AFAC0207CF74900C562AF /* HUDDisplayHelper */ = {
@@ -636,6 +661,7 @@
 				3E2FA18F206BEE4E0000DAD7 /* Assets.xcassets in Resources */,
 				3EB167A0206CDBC000A82D11 /* Login.storyboard in Resources */,
 				3E2FA190206BEE4E0000DAD7 /* LaunchScreen.storyboard in Resources */,
+				3E82D02E2129526C001A2720 /* FormInputView.xib in Resources */,
 				3E7F49B42087267C00A0AB56 /* FeedListTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -742,6 +768,7 @@
 				3E58BA89206CDF49001DEB34 /* UIViewController+Extensions.swift in Sources */,
 				3EB167A2206CDBDB00A82D11 /* ServiceLocator.swift in Sources */,
 				3E58BA8F206CDF49001DEB34 /* UICollectionViewCell+Extensions.swift in Sources */,
+				3E82D03021295277001A2720 /* FormInputView.swift in Sources */,
 				3E8AFAC7207F2C3B00C562AF /* ListVC.swift in Sources */,
 				3E58BA94206CDF49001DEB34 /* String+Validation.swift in Sources */,
 				3E59D5E220A3315800853254 /* SecureStorageService.swift in Sources */,
@@ -755,6 +782,7 @@
 				3E2FA19C206BEFDE0000DAD7 /* UserSessionService.swift in Sources */,
 				3E59D5DF20A3310C00853254 /* UserSessionStorage.swift in Sources */,
 				3E58BA8B206CDF49001DEB34 /* UIColor.swift in Sources */,
+				3E82D033212955A2001A2720 /* FormInputController.swift in Sources */,
 				3E90AF852079E8AF006ED70D /* LoginRouter.swift in Sources */,
 				3E58BA93206CDF49001DEB34 /* Bool+Extensions.swift in Sources */,
 				3E8AFAC4207CFC4F00C562AF /* LoginInputModel.swift in Sources */,
