@@ -7,12 +7,13 @@
 //
 
 import Foundation
+import UIKit
 
  protocol FormInputConrollerOutput: class {
     func textDidChangeInForm(_ text: String)
  }
  
-final class FormInputConroller {
+ final class FormInputConroller: NSObject {
     
     // MAKR: - Vars
     
@@ -23,14 +24,21 @@ final class FormInputConroller {
     
     init(formConfigurating: FormInputViewConfigurating, formInputViewUI: FormInputViewUI) {
         self.formConfigurating = formConfigurating
-        self.formConfigurating.setupFormInputViewWithFormUI(formInputViewUI)
+        super.init()
+        self.formConfigurating.setupFormInputViewWithFormUI(formInputViewUI, delegate: self)
     }
 }
 
-// MARK: - FormInputViewOutput
-
-extension FormInputConroller: FormInputViewOutput {
-    func textDidChangeInForm(_ text: String) {
-        delegate?.textDidChangeInForm(text)
+ // MARK: - UITextFieldDelegate
+ 
+ extension FormInputConroller: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        var txtAfterUpdate:NSString = textField.text! as NSString
+        txtAfterUpdate = txtAfterUpdate.replacingCharacters(in: range, with: string) as NSString
+        
+        delegate?.textDidChangeInForm(txtAfterUpdate as String)
+        
+        return true
     }
-}
+ }
