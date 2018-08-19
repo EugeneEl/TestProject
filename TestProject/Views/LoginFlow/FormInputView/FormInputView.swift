@@ -13,6 +13,7 @@ struct FormKeyboardUI {
     let keyboardType: UIKeyboardType
     let capitalizationType: UITextAutocapitalizationType
     let autocorrectionType: UITextAutocorrectionType
+    let isSecureTextEntry: Bool 
 }
 
 struct FormInputViewUI {

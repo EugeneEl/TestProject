@@ -34,11 +34,13 @@ enum LoginFormType {
         case .email:
             return FormKeyboardUI(keyboardType: .emailAddress,
                                   capitalizationType: .none,
-                                  autocorrectionType: .no)
+                                  autocorrectionType: .no,
+                                  isSecureTextEntry: false)
         case .password:
             return FormKeyboardUI(keyboardType: .default,
                                   capitalizationType: .none,
-                                  autocorrectionType: .no)
+                                  autocorrectionType: .no,
+                                  isSecureTextEntry: true)
         }
     }
 }
