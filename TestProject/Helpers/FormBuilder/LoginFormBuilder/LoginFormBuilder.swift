@@ -14,11 +14,21 @@ enum LoginFormType {
     case email
     case password
     
-    // MARK: - Vars
+    // MARK: - Constants
     
     private static let font = UIFont.systemFont(ofSize: 15)
     private static let offset: CGFloat = 8
     
+    private static let emailKeyboardUI = FormKeyboardUI(keyboardType: .emailAddress,
+                                                        capitalizationType: .none,
+                                                        autocorrectionType: .no,
+                                                        isSecureTextEntry: false)
+    private static let passwordKeyboardUI = FormKeyboardUI(keyboardType: .default,
+                                                        capitalizationType: .none,
+                                                        autocorrectionType: .no,
+                                                        isSecureTextEntry: true)
+    
+    // MARK: - Vars
     // MARK: - Public
     
     var formUI: FormInputViewUI {
@@ -33,15 +43,9 @@ enum LoginFormType {
     private var keyboardUI: FormKeyboardUI {
         switch self {
         case .email:
-            return FormKeyboardUI(keyboardType: .emailAddress,
-                                  capitalizationType: .none,
-                                  autocorrectionType: .no,
-                                  isSecureTextEntry: false)
+            return LoginFormType.emailKeyboardUI
         case .password:
-            return FormKeyboardUI(keyboardType: .default,
-                                  capitalizationType: .none,
-                                  autocorrectionType: .no,
-                                  isSecureTextEntry: true)
+            return LoginFormType.passwordKeyboardUI
         }
     }
     
