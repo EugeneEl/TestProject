@@ -38,6 +38,10 @@ class ListVC: UIViewController {
         configureUI()
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     // MARK: - Private
     
     private func setupScene() {

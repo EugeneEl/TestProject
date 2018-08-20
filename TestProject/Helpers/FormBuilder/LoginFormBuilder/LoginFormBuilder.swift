@@ -22,7 +22,8 @@ enum LoginFormType {
     // MARK: - Constants
     
     private static let font = UIFont.systemFont(ofSize: 15)
-    private static let offset: CGFloat = 8
+    private static let rightOffset: CGFloat = 8
+    private static let leftOffset: CGFloat = 8
     
     private static let emailKeyboardUI = FormKeyboardUI(keyboardType: .emailAddress,
                                                         capitalizationType: .none,
@@ -42,7 +43,8 @@ enum LoginFormType {
         return FormInputViewUI(placeholderText: placeholderText,
                                    formKeyboardUI: keyboardUI,
                                    textFont: LoginFormType.font,
-                                   placeholderRightPadding: LoginFormType.offset)
+                                   placeholderRightPadding: LoginFormType.rightOffset,
+                                   placeholderLeftPadding: LoginFormType.leftOffset)
     }
     
     var formControllerType: FormControllerType {

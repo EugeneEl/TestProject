@@ -21,6 +21,7 @@ struct FormInputViewUI {
     let formKeyboardUI: FormKeyboardUI
     let textFont: UIFont
     let placeholderRightPadding: CGFloat
+    let placeholderLeftPadding: CGFloat
 }
 
 protocol FormInputViewConfigurating: class {
@@ -32,6 +33,7 @@ final class FormInputView: UIView {
     // MARK: - Outlets
     
     @IBOutlet fileprivate weak var textField: UITextField!
+    @IBOutlet fileprivate weak var leftPaddingConstraint: NSLayoutConstraint!
     
     // MARK: - Public
     
@@ -42,9 +44,9 @@ final class FormInputView: UIView {
         leftViewLabel.text = formUI.placeholderText
         
         let width = leftViewLabel.intrinsicContentSize.width + formUI.placeholderRightPadding
-        
         leftViewLabel.bounds = CGRect(x: 0, y: 0, width: width, height: textField.bounds.size.height)
         textField.font = formUI.textFont
+        leftPaddingConstraint.constant = formUI.placeholderLeftPadding
         
         textField.isSecureTextEntry = formUI.formKeyboardUI.isSecureTextEntry
         textField.leftViewMode = .always

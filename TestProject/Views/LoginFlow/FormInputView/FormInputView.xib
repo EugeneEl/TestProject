@@ -33,6 +33,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="leftPaddingConstraint" destination="oxa-yR-MdU" id="gzK-jJ-q2K"/>
                 <outlet property="textField" destination="ltn-xs-LZo" id="mQX-rh-LZZ"/>
             </connections>
         </view>

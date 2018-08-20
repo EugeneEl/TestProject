@@ -22,7 +22,22 @@ final class NewLoginVC: UIViewController {
     
     // MARK: - Lifecycle
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        tableView.backgroundColor = UIColor(hex: "4527A0")
+        view.backgroundColor = UIColor(hex: "4527A0")
+    }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        configureUI()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -33,7 +48,6 @@ extension NewLoginVC: UITableViewDataSource {
             return cell
         }
         
-        let section = indexPath.section
         let row = indexPath.row
         
         guard let loginFormType = presenter.formTypes[safe: row] else {
@@ -67,4 +81,31 @@ extension NewLoginVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return LoginFormType.inputHeight
     }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = UIColor(hex: "4527A0")
+        return view
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 150
+    }
 }
+ 
+ // MARK: - ViewControllerUIConfigurating
+ 
+ extension NewLoginVC: ViewControllerUIConfigurating {
+    var navigationBarAppearance: NavigationBarAppearance? {
+        return nil
+    }
+    
+    var isNavigationBarHidden: Bool {
+        return true
+        
+    }
+    
+    var isBackButtonVisible: Bool {
+        return false
+    }
+ }
