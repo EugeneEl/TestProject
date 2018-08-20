@@ -63,8 +63,9 @@ extension NewLoginVC: UITableViewDataSource {
         
         presenter.inputControllers.append(inputControl)
         
+        cell.backgroundColor = .clear
         cell.contentView.addSubview(fragemntView)
-        fragemntView.constraintToSuperviewEdges()
+        fragemntView.constraintToSuperviewEdges(leading: 16, trainling: 16, bottom: 0, top: 0)
         
         cellsDictionary[indexPath] = cell
         return cell
@@ -83,13 +84,12 @@ extension NewLoginVC: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView()
-        view.backgroundColor = UIColor(hex: "4527A0")
+        let view = LoginHeaderView.instantiateView()
         return view
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 150
+        return 190
     }
 }
  
