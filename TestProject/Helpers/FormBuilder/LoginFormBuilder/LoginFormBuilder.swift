@@ -40,11 +40,29 @@ enum LoginFormType {
     // MARK: - Public
     
     var formUI: FormInputViewUI {
+        switch self {
+        case .email:
+            return FormInputViewUI(placeholderText: placeholderText,
+                                   formKeyboardUI: keyboardUI,
+                                   textFont: LoginFormType.font,
+                                   placeholderRightPadding: LoginFormType.rightOffset,
+                                   placeholderLeftPadding: LoginFormType.leftOffset,
+                                   isSeparatorVisible: true)
+        case .password:
+            return FormInputViewUI(placeholderText: placeholderText,
+                                   formKeyboardUI: keyboardUI,
+                                   textFont: LoginFormType.font,
+                                   placeholderRightPadding: LoginFormType.rightOffset,
+                                   placeholderLeftPadding: LoginFormType.leftOffset,
+                                   isSeparatorVisible: false)
+            
+        }
         return FormInputViewUI(placeholderText: placeholderText,
                                    formKeyboardUI: keyboardUI,
                                    textFont: LoginFormType.font,
                                    placeholderRightPadding: LoginFormType.rightOffset,
-                                   placeholderLeftPadding: LoginFormType.leftOffset)
+                                   placeholderLeftPadding: LoginFormType.leftOffset,
+                                   isSeparatorVisible: false)
     }
     
     var formControllerType: FormControllerType {

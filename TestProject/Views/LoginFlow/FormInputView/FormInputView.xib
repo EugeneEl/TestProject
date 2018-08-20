@@ -22,9 +22,19 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hFm-kM-ycW">
+                    <rect key="frame" x="16" y="43" width="359" height="1"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="xKh-hq-sXY"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="hFm-kM-ycW" secondAttribute="trailing" id="79u-8J-dWx"/>
+                <constraint firstItem="hFm-kM-ycW" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="MqH-GF-Hwr"/>
+                <constraint firstAttribute="bottom" secondItem="hFm-kM-ycW" secondAttribute="bottom" id="dSn-j8-7Ao"/>
                 <constraint firstItem="ltn-xs-LZo" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="e5p-tG-FFn"/>
                 <constraint firstItem="ltn-xs-LZo" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="oxa-yR-MdU"/>
                 <constraint firstItem="ltn-xs-LZo" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="qeT-ba-WZ5"/>
@@ -34,6 +44,7 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="leftPaddingConstraint" destination="oxa-yR-MdU" id="gzK-jJ-q2K"/>
+                <outlet property="separatorView" destination="hFm-kM-ycW" id="Pfz-96-KCd"/>
                 <outlet property="textField" destination="ltn-xs-LZo" id="mQX-rh-LZZ"/>
             </connections>
         </view>

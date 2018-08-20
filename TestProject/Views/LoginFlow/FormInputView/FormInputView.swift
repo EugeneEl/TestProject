@@ -22,6 +22,7 @@ struct FormInputViewUI {
     let textFont: UIFont
     let placeholderRightPadding: CGFloat
     let placeholderLeftPadding: CGFloat
+    let isSeparatorVisible: Bool
 }
 
 protocol FormInputViewConfigurating: class {
@@ -34,6 +35,7 @@ final class FormInputView: UIView {
     
     @IBOutlet fileprivate weak var textField: UITextField!
     @IBOutlet fileprivate weak var leftPaddingConstraint: NSLayoutConstraint!
+    @IBOutlet fileprivate weak var separatorView: UIView!
     
     // MARK: - Public
     
@@ -60,5 +62,6 @@ extension FormInputView: FormInputViewConfigurating {
     func setupFormInputViewWithFormUI(_ formUI: FormInputViewUI, delegate: UITextFieldDelegate) {
         textField.delegate = delegate
         setupTextFieldWithFormUI(formUI)
+        separatorView.isHidden = !formUI.isSeparatorVisible
     }
 }
