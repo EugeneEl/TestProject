@@ -49,7 +49,7 @@ protocol ViewControllerUIConfigurating {
     var navigationBarAppearance: NavigationBarAppearance? {get}
     var isNavigationBarHidden: Bool {get}
     var isBackButtonVisible: Bool {get}
-    func configureUI()
+    func configureNavigationBarUI()
 }
 
 /*
@@ -76,7 +76,7 @@ extension ViewControllerUIConfigurating where Self: UIViewController {
         return true
     }
     
-    func configureUI() {
+    func configureNavigationBarUI() {
         
         if let nc = self.navigationController as? BaseNavigationController {
             nc.statusBarStyle = statusBarStyle

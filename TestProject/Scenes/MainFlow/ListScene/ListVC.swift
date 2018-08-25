@@ -35,7 +35,7 @@ class ListVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        configureUI()
+        configureNavigationBarUI()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

@@ -34,6 +34,9 @@ final class LoginPresenter {
     
     weak var output: LoginPresenterOutput?
     
+    let formTypes = [LoginFormType.email, LoginFormType.password]
+    var inputControllers: [FormInputConroller] = []
+    
     fileprivate (set) internal var model: LoginInputModel
     fileprivate (set) internal var loginState: LoginSceneState {
         didSet {

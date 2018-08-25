@@ -23,4 +23,21 @@ final class LoginFormBuilder {
         
         return (inputControl, view)
     }
+    
+    /// Provide static cell for form.
+    ///
+    /// - Parameters:
+    ///   - formType: `LoginFormType` type.
+    ///   - formView: View to add as cell subView.
+    /// - Returns: `UITableViewCell` instance.
+    static func provideCellForFormType(_ formType: LoginFormType, formView: UIView) -> UITableViewCell {
+        
+        let cell = UITableViewCell()
+        cell.selectionStyle = .none
+        cell.backgroundColor = .clear
+        cell.contentView.addSubview(formView)
+        formView.constraintToSuperviewEdges(leading: 16, trainling: 16, bottom: 0, top: 0)
+        
+        return cell
+    }
 }

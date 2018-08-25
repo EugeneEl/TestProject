@@ -15,9 +15,14 @@ final class NewLoginVC: UIViewController {
     
     @IBOutlet fileprivate weak var tableView: UITableView!
     
+    // MARK: - Constants
+    
+    fileprivate static let headerHeight: CGFloat = 150
+    fileprivate static let footerHeight: CGFloat = 66
+
     // MARK: - Vars
     
-    private let presenter = NewLoginPresenter()
+    private let presenter = LoginPresenter()
     fileprivate var cellsDictionary = [IndexPath : UITableViewCell]()
     
     // MARK: - Lifecycle
@@ -25,17 +30,24 @@ final class NewLoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = Constants.Colors.background
+        setupUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        configureUI()
+        configureNavigationBarUI()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+    
+    // MARK: - Private
+    // MARK: - Helpers
+    
+    private func setupUI() {
+        view.backgroundColor = Constants.Colors.background
     }
 }
 
@@ -52,19 +64,14 @@ extension NewLoginVC: UITableViewDataSource {
         guard let loginFormType = presenter.formTypes[safe: row] else {
             return UITableViewCell()
         }
-        
-        let cell = UITableViewCell()
-        cell.selectionStyle = .none
+
         let formModule = LoginFormBuilder.provideInputControlModuleForFragment(loginFormType)
         
         let inputControl = formModule.0
-        let fragemntView = formModule.1
+        let formView = formModule.1
+        let cell = LoginFormBuilder.provideCellForFormType(loginFormType, formView: formView)
         
         presenter.inputControllers.append(inputControl)
-        
-        cell.backgroundColor = .clear
-        cell.contentView.addSubview(fragemntView)
-        fragemntView.constraintToSuperviewEdges(leading: 16, trainling: 16, bottom: 0, top: 0)
         
         cellsDictionary[indexPath] = cell
         return cell
@@ -88,11 +95,11 @@ extension NewLoginVC: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 190
+        return NewLoginVC.headerHeight
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 66
+        return NewLoginVC.footerHeight
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
