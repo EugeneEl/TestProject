@@ -7,17 +7,18 @@
 //
 
 import Foundation
+import UIKit
 
 /// LoginRouter encapsulates logic for navigation on login scene.
 final class LoginRouter {
     
     // MARK: - Vars
     
-    private weak var viewController: LoginVC?
+    private weak var viewController: UIViewController?
     
     // MARK: - Initialization
     
-    init(viewController: LoginVC) {
+    init(viewController: UIViewController) {
         self.viewController = viewController
     }
     

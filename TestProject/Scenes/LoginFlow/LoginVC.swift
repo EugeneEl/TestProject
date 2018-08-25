@@ -33,7 +33,6 @@ class LoginVC: UIViewController {
         
         setupTap()
         configureScene()
-        presenter.triggerInitialState()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,9 +79,9 @@ extension LoginVC: UITextFieldDelegate {
         // usually for static forms I prefer to use some more flexible solutions.
         // this implementation in UIViewController is for simplicity in demo projects.
         if textField == emailTextField {
-            presenter.updateEmail(txtAfterUpdate as String)
+            //presenter.updateEmail(txtAfterUpdate as String)
         } else if textField == passwordTextField {
-            presenter.updatePassword(txtAfterUpdate as String)
+            //presenter.updatePassword(txtAfterUpdate as String)
         }
         
         return true

@@ -1,15 +1,15 @@
  //
-//  NewLoginVC.swift
-//  TestProject
-//
-//  Created by Eugene Goloboyar on 19.08.2018.
-//  Copyright © 2018 Eugene Goloboyar. All rights reserved.
-//
-
-import Foundation
-import UIKit
-
-final class NewLoginVC: UIViewController {
+ //  NewLoginVC.swift
+ //  TestProject
+ //
+ //  Created by Eugene Goloboyar on 19.08.2018.
+ //  Copyright © 2018 Eugene Goloboyar. All rights reserved.
+ //
+ 
+ import Foundation
+ import UIKit
+ 
+ final class NewLoginVC: UIViewController {
     
     // MARK: - Outlets
     
@@ -19,10 +19,11 @@ final class NewLoginVC: UIViewController {
     
     fileprivate static let headerHeight: CGFloat = 150
     fileprivate static let footerHeight: CGFloat = 66
-
+    
     // MARK: - Vars
     
-    private let presenter = LoginPresenter()
+    fileprivate let presenter = LoginPresenter()
+    fileprivate var router: LoginRouter?
     fileprivate var cellsDictionary = [IndexPath : UITableViewCell]()
     
     // MARK: - Lifecycle
@@ -30,6 +31,7 @@ final class NewLoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupScene()
         setupUI()
     }
     
@@ -46,14 +48,19 @@ final class NewLoginVC: UIViewController {
     // MARK: - Private
     // MARK: - Helpers
     
+    private func setupScene() {
+        presenter.output = self
+        router = LoginRouter(viewController: self)
+    }
+    
     private func setupUI() {
         view.backgroundColor = Constants.Colors.background
     }
-}
-
-// MARK: - UITableViewDataSource
-
-extension NewLoginVC: UITableViewDataSource {
+ }
+ 
+ // MARK: - UITableViewDataSource
+ 
+ extension NewLoginVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = cellsDictionary[indexPath] {
             return cell
@@ -64,7 +71,7 @@ extension NewLoginVC: UITableViewDataSource {
         guard let loginFormType = presenter.formTypes[safe: row] else {
             return UITableViewCell()
         }
-
+        
         let formModule = LoginFormBuilder.provideInputControlModuleForFragment(loginFormType)
         
         let inputControl = formModule.0
@@ -80,11 +87,11 @@ extension NewLoginVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter.formTypes.count
     }
-}
-
-// MARK: - UITableViewDelegate
+ }
  
-extension NewLoginVC: UITableViewDelegate {
+ // MARK: - UITableViewDelegate
+ 
+ extension NewLoginVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return LoginFormType.inputHeight
     }
@@ -104,9 +111,36 @@ extension NewLoginVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footerView = LoginFooterView.instantiateView()
+        footerView.delegate = self
         return footerView
     }
-}
+ }
+ 
+ // MARK: - LoginFooterViewInteracting
+ 
+ extension NewLoginVC: LoginFooterViewInteracting {
+    func loginDidTap() {
+        presenter.loginDidTap()
+    }
+ }
+ 
+ // MARK: - LoginPresenterOutput
+ 
+ extension NewLoginVC: LoginPresenterOutput {
+    func loginStateDidChange(_ state: LoginSceneState) {
+        switch state {
+        case .isLogging:
+            HudHelper.showHUDInView(view, animated: true)
+        case .loginInput(let model):
+            HudHelper.hideHUDInView(view, animated: false)
+        case .loginFail(let error):
+            HudHelper.hideHUDInView(view, animated: false)
+        case .loginSuccess:
+            HudHelper.hideHUDInView(view, animated: false)
+            router?.navigateToMainScene()
+        }
+    }
+ }
  
  // MARK: - ViewControllerUIConfigurating
  
