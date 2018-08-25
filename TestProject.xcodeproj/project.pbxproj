@@ -36,6 +36,7 @@
 		3E6288312131274A001A7E18 /* LoginFormType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6288302131274A001A7E18 /* LoginFormType.swift */; };
 		3E6288342131286B001A7E18 /* LoginFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6288332131286B001A7E18 /* LoginFooterView.swift */; };
 		3E62883621312879001A7E18 /* LoginFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E62883521312879001A7E18 /* LoginFooterView.xib */; };
+		3E628838213131F1001A7E18 /* InputFormUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E628837213131F1001A7E18 /* InputFormUI.swift */; };
 		3E701198208EFF6800B28B5A /* SafariControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E701197208EFF6800B28B5A /* SafariControllerHelper.swift */; };
 		3E7F49A42087084600A0AB56 /* ReachabilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F49A32087084600A0AB56 /* ReachabilityService.swift */; };
 		3E7F49A7208708A500A0AB56 /* ErrorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F49A6208708A500A0AB56 /* ErrorConstants.swift */; };
@@ -105,6 +106,7 @@
 		3E6288302131274A001A7E18 /* LoginFormType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormType.swift; sourceTree = "<group>"; };
 		3E6288332131286B001A7E18 /* LoginFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFooterView.swift; sourceTree = "<group>"; };
 		3E62883521312879001A7E18 /* LoginFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginFooterView.xib; sourceTree = "<group>"; };
+		3E628837213131F1001A7E18 /* InputFormUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFormUI.swift; sourceTree = "<group>"; };
 		3E701197208EFF6800B28B5A /* SafariControllerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariControllerHelper.swift; sourceTree = "<group>"; };
 		3E7F49A32087084600A0AB56 /* ReachabilityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityService.swift; sourceTree = "<group>"; };
 		3E7F49A6208708A500A0AB56 /* ErrorConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorConstants.swift; sourceTree = "<group>"; };
@@ -561,6 +563,7 @@
 			children = (
 				3E82D02D2129526C001A2720 /* FormInputView.xib */,
 				3E82D02F21295277001A2720 /* FormInputView.swift */,
+				3E628837213131F1001A7E18 /* InputFormUI.swift */,
 			);
 			path = FormInputView;
 			sourceTree = "<group>";
@@ -809,6 +812,7 @@
 				3E82D03F212A8F1B001A2720 /* LoginHeaderView.swift in Sources */,
 				3EE6E5FB2085B67B0072D0AE /* AlamofireNetworkService.swift in Sources */,
 				3E7F49AD20870CA500A0AB56 /* FeedAPIWorker.swift in Sources */,
+				3E628838213131F1001A7E18 /* InputFormUI.swift in Sources */,
 				3E2FA195206BEEAD0000DAD7 /* RootRouter.swift in Sources */,
 				3E8AFAC9207F2C4B00C562AF /* ListPresenter.swift in Sources */,
 				3E8AFAC2207CF76400C562AF /* HUDDisplayHelper.swift in Sources */,
