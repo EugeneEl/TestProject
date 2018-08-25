@@ -16,28 +16,15 @@ class MenuTabBarVC: UITabBarController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        //configureNavigationBarUI()
+        navigationItem.hidesBackButton = true
     }
     
     // MARK: - Public
     
     func setupNavigationWithLaunchOptions(_ options: [UIApplicationLaunchOptionsKey: Any]?) {
-        viewControllers = [ListVC.instantiateFromStoryboardId(.main), SettingsVC.instantiateFromStoryboardId(.settings)]
-    }
-}
-
-// MARK: - ViewControllerUIConfigurating
-
-extension MenuTabBarVC: ViewControllerUIConfigurating {
-    var navigationBarAppearance: NavigationBarAppearance? {
-        return nil
-    }
-    
-    var isNavigationBarHidden: Bool {
-        return true
-    }
-    
-    var isBackButtonVisible: Bool {
-        return false
+        
+        let mainNavigationVC = BaseNavigationController(rootViewController: ListVC.instantiateFromStoryboardId(.main))
+        let settingsNavigationVC = BaseNavigationController(rootViewController: SettingsVC.instantiateFromStoryboardId(.settings))
+        viewControllers = [mainNavigationVC, settingsNavigationVC]
     }
 }

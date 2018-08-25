@@ -37,11 +37,11 @@ extension SettingsVC: ViewControllerUIConfigurating {
     var navigationBarAppearance: NavigationBarAppearance? {
         return NavigationBarAppearance(isSeparatorVisible: false,
                                        translucent: false,
-                                       navigationBarColor: .white,
+                                       navigationBarColor: Constants.Colors.background,
                                        navigationBarTintColor: .black,
                                        navigationTitle: "Profile",
-                                       navigationTitleColor: .black,
-                                       leftItem: UIBarButtonItem(),
+                                       navigationTitleColor: .white,
+                                       leftItem: nil,
                                        rightItem: nil)
     }
     
