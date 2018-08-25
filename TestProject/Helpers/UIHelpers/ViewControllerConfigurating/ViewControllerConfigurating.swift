@@ -49,7 +49,7 @@ protocol ViewControllerUIConfigurating {
     var navigationBarAppearance: NavigationBarAppearance? {get}
     var isNavigationBarHidden: Bool {get}
     var isBackButtonVisible: Bool {get}
-    func configureUI()
+    func configureNavigationBarUI()
 }
 
 /*
@@ -57,9 +57,7 @@ protocol ViewControllerUIConfigurating {
  */
 extension ViewControllerUIConfigurating where Self: UIViewController {
     fileprivate var navigationViewFrame: CGRect { return CGRect(x: 0, y: 0, width: 100, height: 40) }
-    fileprivate var logoFrame: CGRect { return CGRect(x: -3, y: 5, width: 28, height: 28) }
     fileprivate var titleFrame: CGRect { return CGRect(x: 28, y: 0, width: 100, height: 20) }
-    fileprivate var paddingBetweenLogoAndTitle: CGFloat { return 5 }
     
     // override to customize nav bar appearance
     var navigationBarAppearance: NavigationBarAppearance? {
@@ -67,7 +65,7 @@ extension ViewControllerUIConfigurating where Self: UIViewController {
     }
     
     var statusBarStyle: UIStatusBarStyle {
-        return .default
+        return UIStatusBarStyle.lightContent
     }
     
     var isNavigationBarHidden: Bool {
@@ -78,7 +76,7 @@ extension ViewControllerUIConfigurating where Self: UIViewController {
         return true
     }
     
-    func configureUI() {
+    func configureNavigationBarUI() {
         
         if let nc = self.navigationController as? BaseNavigationController {
             nc.statusBarStyle = statusBarStyle

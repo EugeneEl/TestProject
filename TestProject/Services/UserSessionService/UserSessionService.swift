@@ -30,7 +30,7 @@ final class UserSessionService {
     }
     
     func closeUserSession() {
-        
+        userSessionStorage.removeCredentials()
     }
     
     func canRestoreUsesSession() -> Bool {
