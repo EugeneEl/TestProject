@@ -9,6 +9,20 @@
 import Foundation
 import UIKit
 
+enum FormInputRightViewMode {
+    case showPassword(Bool)
+    
+    var image: UIImage {
+        switch self {
+        case .showPassword(let isVisible):
+            if isVisible {
+                return #imageLiteral(resourceName: "showPassword")
+            } else {
+                return #imageLiteral(resourceName: "hidePassword")
+            }
+        }
+    }
+}
 struct FormKeyboardUI {
     let keyboardType: UIKeyboardType
     let capitalizationType: UITextAutocapitalizationType
@@ -16,12 +30,17 @@ struct FormKeyboardUI {
     let isSecureTextEntry: Bool
 }
 
+struct FormPlaceholderUI {
+    let text: String
+    let rightPadding: CGFloat
+    let leftPadding: CGFloat
+    let width: CGFloat
+}
+
 struct FormInputViewUI {
-    let placeholderText: String
-    let formKeyboardUI: FormKeyboardUI
+    let placeholderUI: FormPlaceholderUI
+    let keyboardUI: FormKeyboardUI
     let textFont: UIFont
-    let placeholderRightPadding: CGFloat
-    let placeholderLeftPadding: CGFloat
     let isSeparatorVisible: Bool
 }
 
@@ -37,22 +56,74 @@ final class FormInputView: UIView {
     @IBOutlet fileprivate weak var leftPaddingConstraint: NSLayoutConstraint!
     @IBOutlet fileprivate weak var separatorView: UIView!
     
+    // MARK: - Vars
+    
+    fileprivate var showPasswordButton: UIButton?
+    fileprivate var rightViewMode: FormInputRightViewMode?
+    
     // MARK: - Public
     
     // MARK: - Private
     
     fileprivate func setupTextFieldWithFormUI(_ formUI: FormInputViewUI) {
         let leftViewLabel = UILabel()
-        leftViewLabel.text = formUI.placeholderText
+        leftViewLabel.text = formUI.placeholderUI.text
         
-        let width = leftViewLabel.intrinsicContentSize.width + formUI.placeholderRightPadding
+        let leftPadding = formUI.placeholderUI.leftPadding
+        let rightPadding = formUI.placeholderUI.rightPadding
+        let placeholderWidth = formUI.placeholderUI.width
+        
+        let width = placeholderWidth + rightPadding
         leftViewLabel.bounds = CGRect(x: 0, y: 0, width: width, height: textField.bounds.size.height)
         textField.font = formUI.textFont
-        leftPaddingConstraint.constant = formUI.placeholderLeftPadding
+        leftPaddingConstraint.constant = leftPadding
+
+        setupSecureEntry(formUI.keyboardUI.isSecureTextEntry)
         
-        textField.isSecureTextEntry = formUI.formKeyboardUI.isSecureTextEntry
+        textField.keyboardType = formUI.keyboardUI.keyboardType
+        textField.autocorrectionType = formUI.keyboardUI.autocorrectionType
+        textField.autocapitalizationType = formUI.keyboardUI.capitalizationType
         textField.leftViewMode = .always
         textField.leftView = leftViewLabel
+    }
+    
+    fileprivate func setupSecureEntry(_ isSecureEntry: Bool) {
+        textField.isSecureTextEntry = isSecureEntry
+        
+        if isSecureEntry {
+            let button = UIButton()
+            let mode = FormInputRightViewMode.showPassword(true)
+
+            button.addTarget(self, action: #selector(showPassword), for: .touchUpInside)
+            button.frame = CGRect(x: 0, y: 0, width: 36, height: 32)
+            button.setImage(mode.image, for: .normal)
+            
+            showPasswordButton = button
+            rightViewMode = mode
+            textField.rightViewMode = .always
+            textField.rightView = showPasswordButton
+        }
+    }
+    
+    @objc fileprivate func showPassword() {
+        guard let mode = rightViewMode else {
+            return
+        }
+        switch mode {
+        case .showPassword(var isVisible):
+            isVisible.toggle()
+            textField.isSecureTextEntry = isVisible
+            if textField.isFirstResponder {
+                textField.becomeFirstResponder()
+            }
+            
+            // refresh cursor fix after isSecureEntry
+            let currentText = textField.text
+            textField.text = ""
+            textField.text = currentText
+            rightViewMode = .showPassword(isVisible)
+            showPasswordButton?.setImage(rightViewMode?.image, for: .normal)
+        }
     }
 }
 

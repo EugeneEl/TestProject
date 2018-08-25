@@ -25,7 +25,7 @@ final class NewLoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.backgroundColor = UIColor(hex: "4527A0")
+        //tableView.backgroundColor = UIColor(hex: "4527A0")
         view.backgroundColor = UIColor(hex: "4527A0")
     }
     
@@ -90,6 +90,15 @@ extension NewLoginVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 190
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 66
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = LoginFooterView.instantiateView()
+        return footerView
     }
 }
  

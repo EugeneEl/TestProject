@@ -33,6 +33,9 @@
 		3E59D5E420A3316600853254 /* KeychainStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E59D5E320A3316600853254 /* KeychainStorage.swift */; };
 		3E5B335C2080DD9B00A295C1 /* FeedItemJSONModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5B335B2080DD9B00A295C1 /* FeedItemJSONModel.swift */; };
 		3E5B335F2080DE0F00A295C1 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5B335E2080DE0F00A295C1 /* SwiftyJSON.swift */; };
+		3E6288312131274A001A7E18 /* LoginFormType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6288302131274A001A7E18 /* LoginFormType.swift */; };
+		3E6288342131286B001A7E18 /* LoginFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6288332131286B001A7E18 /* LoginFooterView.swift */; };
+		3E62883621312879001A7E18 /* LoginFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E62883521312879001A7E18 /* LoginFooterView.xib */; };
 		3E701198208EFF6800B28B5A /* SafariControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E701197208EFF6800B28B5A /* SafariControllerHelper.swift */; };
 		3E7F49A42087084600A0AB56 /* ReachabilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F49A32087084600A0AB56 /* ReachabilityService.swift */; };
 		3E7F49A7208708A500A0AB56 /* ErrorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F49A6208708A500A0AB56 /* ErrorConstants.swift */; };
@@ -99,6 +102,9 @@
 		3E59D5E320A3316600853254 /* KeychainStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStorage.swift; sourceTree = "<group>"; };
 		3E5B335B2080DD9B00A295C1 /* FeedItemJSONModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedItemJSONModel.swift; sourceTree = "<group>"; };
 		3E5B335E2080DE0F00A295C1 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		3E6288302131274A001A7E18 /* LoginFormType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormType.swift; sourceTree = "<group>"; };
+		3E6288332131286B001A7E18 /* LoginFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFooterView.swift; sourceTree = "<group>"; };
+		3E62883521312879001A7E18 /* LoginFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginFooterView.xib; sourceTree = "<group>"; };
 		3E701197208EFF6800B28B5A /* SafariControllerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariControllerHelper.swift; sourceTree = "<group>"; };
 		3E7F49A32087084600A0AB56 /* ReachabilityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityService.swift; sourceTree = "<group>"; };
 		3E7F49A6208708A500A0AB56 /* ErrorConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorConstants.swift; sourceTree = "<group>"; };
@@ -473,6 +479,15 @@
 			path = 3rdParty;
 			sourceTree = "<group>";
 		};
+		3E6288322131285D001A7E18 /* LoginFooterView */ = {
+			isa = PBXGroup;
+			children = (
+				3E6288332131286B001A7E18 /* LoginFooterView.swift */,
+				3E62883521312879001A7E18 /* LoginFooterView.xib */,
+			);
+			path = LoginFooterView;
+			sourceTree = "<group>";
+		};
 		3E701196208EFF5D00B28B5A /* SafariControllerHelper */ = {
 			isa = PBXGroup;
 			children = (
@@ -516,6 +531,7 @@
 		3E7F49AE2087265300A0AB56 /* LoginFlow */ = {
 			isa = PBXGroup;
 			children = (
+				3E6288322131285D001A7E18 /* LoginFooterView */,
 				3E82D03B212A8EF1001A2720 /* LoginHeaderView */,
 				3E82D02C2129525E001A2720 /* FormInputView */,
 			);
@@ -562,6 +578,7 @@
 			isa = PBXGroup;
 			children = (
 				3E82D03521295901001A2720 /* LoginFormBuilder.swift */,
+				3E6288302131274A001A7E18 /* LoginFormType.swift */,
 			);
 			path = LoginFormBuilder;
 			sourceTree = "<group>";
@@ -694,6 +711,7 @@
 				3E82D03D212A8F0A001A2720 /* LoginHeaderView.xib in Resources */,
 				3E2FA191206BEE4E0000DAD7 /* Main.storyboard in Resources */,
 				3E2FA18F206BEE4E0000DAD7 /* Assets.xcassets in Resources */,
+				3E62883621312879001A7E18 /* LoginFooterView.xib in Resources */,
 				3EB167A0206CDBC000A82D11 /* Login.storyboard in Resources */,
 				3E2FA190206BEE4E0000DAD7 /* LaunchScreen.storyboard in Resources */,
 				3E82D02E2129526C001A2720 /* FormInputView.xib in Resources */,
@@ -797,6 +815,7 @@
 				3E59D5E420A3316600853254 /* KeychainStorage.swift in Sources */,
 				3E7F49A920870B1900A0AB56 /* ServiceLocatorConfigurator.swift in Sources */,
 				3E7F49A42087084600A0AB56 /* ReachabilityService.swift in Sources */,
+				3E6288312131274A001A7E18 /* LoginFormType.swift in Sources */,
 				3E5B335C2080DD9B00A295C1 /* FeedItemJSONModel.swift in Sources */,
 				3E7F49A7208708A500A0AB56 /* ErrorConstants.swift in Sources */,
 				3E7F49B62087296400A0AB56 /* DTOInterface.swift in Sources */,
@@ -810,6 +829,7 @@
 				3E8AFAC7207F2C3B00C562AF /* ListVC.swift in Sources */,
 				3E58BA94206CDF49001DEB34 /* String+Validation.swift in Sources */,
 				3E82D03A21296278001A2720 /* NewLoginPresenter.swift in Sources */,
+				3E6288342131286B001A7E18 /* LoginFooterView.swift in Sources */,
 				3E59D5E220A3315800853254 /* SecureStorageService.swift in Sources */,
 				3EE6E5F92085B6700072D0AE /* NetworkService.swift in Sources */,
 				3E2FA192206BEE4E0000DAD7 /* AppDelegate.swift in Sources */,
