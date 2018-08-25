@@ -12,6 +12,7 @@ import UIKit
 enum StoryboardId: String {
     case main = "Main"
     case login = "Login"
+    case settings = "Settings"
 }
 
 extension UIStoryboard {

@@ -20,13 +20,14 @@ final class RootRouter {
     
     init(_ window: UIWindow?) {
         self.window = window
+        self.addListeners()
     }
     
     // MARK: - Public
     
     /// Build navigaion flow.
-    func buildNavigationFlow() {
-        let initialViewControllers = createInitialViewControllers()
+    func buildNavigationFlow(_ options: [UIApplicationLaunchOptionsKey: Any]?) {
+        let initialViewControllers = createInitialViewControllersWithOptions(options)
         
         let rootNavigationController = BaseNavigationController()
         rootNavigationController.viewControllers = initialViewControllers
@@ -38,12 +39,14 @@ final class RootRouter {
     /// Create initial `UIViewController` depending on user flow.
     ///
     /// - Returns: An array of `UIViewController` which will be set as for navigation.
-    func createInitialViewControllers() -> [UIViewController] {
+    func createInitialViewControllersWithOptions(_ options: [UIApplicationLaunchOptionsKey: Any]?) -> [UIViewController] {
         let loginVC = NewLoginVC.instantiateFromStoryboardId(.login)
         loginVC.enforceLoadView()
         
         if UserSessionService.shared.canRestoreUsesSession() {
-            return [loginVC, ListVC.instantiateFromStoryboardId(.main)]
+            let menuTabBarVC = MenuTabBarVC.instantiateFromStoryboardId(.main)
+            menuTabBarVC.setupNavigationWithLaunchOptions(options)
+            return [loginVC, MenuTabBarVC.instantiateFromStoryboardId(.main)]
         } else {
             return [loginVC]
         }
@@ -58,5 +61,27 @@ final class RootRouter {
             return
         }
         window?.rootViewController = newViewController
+    }
+    
+    // MARK: - Private
+    
+    private func addListeners() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(handleLogout), name: UserSessionServiceNotification.logout, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(handleLogin), name: UserSessionServiceNotification.login, object: nil)
+    }
+    
+    @objc private func handleLogout() {
+        if let navigationController = window?.rootViewController as? UINavigationController {
+            navigationController.popViewController(animated: true)
+        }
+    }
+    
+    @objc private func handleLogin() {
+        if let navigationController = window?.rootViewController as? UINavigationController {
+            let menuTabBarVC = MenuTabBarVC.instantiateFromStoryboardId(.main)
+            menuTabBarVC.setupNavigationWithLaunchOptions(nil)
+            navigationController.pushViewController(menuTabBarVC, animated: true)
+        }
     }
 }

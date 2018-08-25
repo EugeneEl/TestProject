@@ -8,13 +8,21 @@
 
 import Foundation
 
+struct UserSessionServiceNotification {
+    static let login = NSNotification.Name(rawValue: "UserDidLogin")
+    static let logout = NSNotification.Name(rawValue: "UserDidLogout")
+}
+
 final class UserSessionService {
     
     // MARK: - Vars
     
     static let shared = UserSessionService()
     
+    private let nc = NotificationCenter.default
+    
     var isLogged: Bool = false
+    
     fileprivate (set) internal var sessionModel: UserSessionModel?
     fileprivate let userSessionStorage = UserSessionStorage()
     
@@ -27,10 +35,12 @@ final class UserSessionService {
     func openUserSessionWithModel(_ model: UserSessionModel) {
         userSessionStorage.updateCredentials(model)
         isLogged = true
+        nc.post(name: UserSessionServiceNotification.login, object: nil)
     }
     
     func closeUserSession() {
         userSessionStorage.removeCredentials()
+        nc.post(name: UserSessionServiceNotification.logout, object: nil)
     }
     
     func canRestoreUsesSession() -> Bool {

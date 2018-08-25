@@ -137,7 +137,7 @@
             HudHelper.hideHUDInView(view, animated: false)
         case .loginSuccess:
             HudHelper.hideHUDInView(view, animated: false)
-            router?.navigateToMainScene()
+//            router?.navigateToMainScene()
         }
     }
  }

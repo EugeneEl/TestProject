@@ -43,6 +43,9 @@
 		3E62884421313CB4001A7E18 /* LoginInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E62884021313CB4001A7E18 /* LoginInputModel.swift */; };
 		3E62884521313CB4001A7E18 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E62884121313CB4001A7E18 /* LoginPresenter.swift */; };
 		3E62884621313CB4001A7E18 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E62884221313CB4001A7E18 /* LoginRouter.swift */; };
+		3E62884821317A6A001A7E18 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E62884721317A6A001A7E18 /* Settings.storyboard */; };
+		3E62884B21317AA1001A7E18 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E62884A21317AA1001A7E18 /* SettingsVC.swift */; };
+		3E62884D21317AB0001A7E18 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E62884C21317AB0001A7E18 /* SettingsPresenter.swift */; };
 		3E701198208EFF6800B28B5A /* SafariControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E701197208EFF6800B28B5A /* SafariControllerHelper.swift */; };
 		3E7F49A42087084600A0AB56 /* ReachabilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F49A32087084600A0AB56 /* ReachabilityService.swift */; };
 		3E7F49A7208708A500A0AB56 /* ErrorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F49A6208708A500A0AB56 /* ErrorConstants.swift */; };
@@ -113,6 +116,9 @@
 		3E62884021313CB4001A7E18 /* LoginInputModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInputModel.swift; sourceTree = "<group>"; };
 		3E62884121313CB4001A7E18 /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		3E62884221313CB4001A7E18 /* LoginRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
+		3E62884721317A6A001A7E18 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		3E62884A21317AA1001A7E18 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		3E62884C21317AB0001A7E18 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
 		3E701197208EFF6800B28B5A /* SafariControllerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariControllerHelper.swift; sourceTree = "<group>"; };
 		3E7F49A32087084600A0AB56 /* ReachabilityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityService.swift; sourceTree = "<group>"; };
 		3E7F49A6208708A500A0AB56 /* ErrorConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorConstants.swift; sourceTree = "<group>"; };
@@ -209,6 +215,7 @@
 				3E2FA194206BEEAD0000DAD7 /* RootRouter.swift */,
 				3E2FA181206BEE4D0000DAD7 /* LoginFlow */,
 				3E2FA180206BEE4D0000DAD7 /* MainFlow */,
+				3E62884921317A89001A7E18 /* SettingsFlow */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -275,6 +282,7 @@
 				3E2FA188206BEE4D0000DAD7 /* LaunchScreen.storyboard */,
 				3EB1679F206CDBC000A82D11 /* Login.storyboard */,
 				3E2FA189206BEE4D0000DAD7 /* Main.storyboard */,
+				3E62884721317A6A001A7E18 /* Settings.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -506,6 +514,16 @@
 			path = LoginScene;
 			sourceTree = "<group>";
 		};
+		3E62884921317A89001A7E18 /* SettingsFlow */ = {
+			isa = PBXGroup;
+			children = (
+				3E62884A21317AA1001A7E18 /* SettingsVC.swift */,
+				3E62884C21317AB0001A7E18 /* SettingsPresenter.swift */,
+			);
+			name = SettingsFlow;
+			path = TestProject/Scenes/SettingsFlow;
+			sourceTree = SOURCE_ROOT;
+		};
 		3E701196208EFF5D00B28B5A /* SafariControllerHelper */ = {
 			isa = PBXGroup;
 			children = (
@@ -735,6 +753,7 @@
 				3E2FA190206BEE4E0000DAD7 /* LaunchScreen.storyboard in Resources */,
 				3E82D02E2129526C001A2720 /* FormInputView.xib in Resources */,
 				3E7F49B42087267C00A0AB56 /* FeedListTableViewCell.xib in Resources */,
+				3E62884821317A6A001A7E18 /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -819,11 +838,13 @@
 				3E82D03621295901001A2720 /* LoginFormBuilder.swift in Sources */,
 				3E58BA90206CDF49001DEB34 /* UICollectionView+Extensions.swift in Sources */,
 				3E701198208EFF6800B28B5A /* SafariControllerHelper.swift in Sources */,
+				3E62884D21317AB0001A7E18 /* SettingsPresenter.swift in Sources */,
 				3E2FA198206BEF830000DAD7 /* UserSessionModel.swift in Sources */,
 				3E58BA92206CDF49001DEB34 /* StatusBarHelper.swift in Sources */,
 				3E62884421313CB4001A7E18 /* LoginInputModel.swift in Sources */,
 				3E62883D21313B86001A7E18 /* MenuTabBarVC.swift in Sources */,
 				3E58BA8D206CDF49001DEB34 /* UITableViewCell+Extensions.swift in Sources */,
+				3E62884B21317AA1001A7E18 /* SettingsVC.swift in Sources */,
 				3EB167A5206CDCB900A82D11 /* ViewControllerConfigurating.swift in Sources */,
 				3E82D03F212A8F1B001A2720 /* LoginHeaderView.swift in Sources */,
 				3E62884321313CB4001A7E18 /* NewLoginVC.swift in Sources */,

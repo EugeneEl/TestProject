@@ -87,11 +87,6 @@ extension ViewControllerUIConfigurating where Self: UIViewController {
         }
         
         navigationController?.setNavigationBarHidden(isNavigationBarHidden, animated: true)
-        
-        //hide back button if needed
-        if !isBackButtonVisible && navigationBarAppearance == nil {
-            self.navigationItem.leftBarButtonItem = nil
-        }
     }
     
     fileprivate func configureNavigationBar(_ appearance: NavigationBarAppearance) {
@@ -109,7 +104,7 @@ extension ViewControllerUIConfigurating where Self: UIViewController {
                     let img = UIImage()
                     self.navigationController?.navigationBar.shadowImage = img
                     self.navigationController?.navigationBar.setBackgroundImage(img, for: UIBarMetrics.default)
-                }
+                } 
             }
             
             // setup translucency
@@ -123,10 +118,21 @@ extension ViewControllerUIConfigurating where Self: UIViewController {
             setupNavigationTitle(appearance.navigationTitle, titleColor: appearance.navigationTitleColor)
             
             // setup barItems if needed
+            if let leftItem = appearance.leftItem {
+                navigationItem.leftBarButtonItem = leftItem
+            } else {
+                if isBackButtonVisible {
+                    //
+                } else {
+                    navigationItem.leftBarButtonItem = nil
+                }
+            }
             
-            navigationItem.leftBarButtonItem = appearance.leftItem
-            navigationItem.setHidesBackButton(!isBackButtonVisible, animated: false)
-            navigationItem.rightBarButtonItem = appearance.rightItem
+            if let rightItem = appearance.rightItem {
+                navigationItem.rightBarButtonItem = rightItem
+            } else {
+                navigationItem.rightBarButtonItem = nil
+            }
             
         } else {
             navigationController?.navigationBar.isHidden = true

@@ -137,10 +137,10 @@ extension ListVC: ViewControllerUIConfigurating {
     var navigationBarAppearance: NavigationBarAppearance? {
         return NavigationBarAppearance(isSeparatorVisible: false,
                                        translucent: false,
-                                       navigationBarColor: .white,
-                                       navigationBarTintColor: .black,
+                                       navigationBarColor: Constants.Colors.background,
+                                       navigationBarTintColor: .white,
                                        navigationTitle: "News",
-                                       navigationTitleColor: .black,
+                                       navigationTitleColor: .white,
                                        leftItem: nil,
                                        rightItem: nil)
     }

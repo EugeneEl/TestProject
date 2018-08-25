@@ -13,13 +13,31 @@ class MenuTabBarVC: UITabBarController {
     
     // MARK: - Lifecycle
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //configureNavigationBarUI()
     }
     
     // MARK: - Public
     
     func setupNavigationWithLaunchOptions(_ options: [UIApplicationLaunchOptionsKey: Any]?) {
-        viewControllers = [ListVC.instantiateFromStoryboardId(.main), ListVC.instantiateFromStoryboardId(.main)]
+        viewControllers = [ListVC.instantiateFromStoryboardId(.main), SettingsVC.instantiateFromStoryboardId(.settings)]
+    }
+}
+
+// MARK: - ViewControllerUIConfigurating
+
+extension MenuTabBarVC: ViewControllerUIConfigurating {
+    var navigationBarAppearance: NavigationBarAppearance? {
+        return nil
+    }
+    
+    var isNavigationBarHidden: Bool {
+        return true
+    }
+    
+    var isBackButtonVisible: Bool {
+        return false
     }
 }

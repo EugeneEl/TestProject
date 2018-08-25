@@ -23,7 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ServiceLocatorConfigurator.setupServices()
         UserSessionService.shared.closeUserSession()
         setupKeyboardManager()
-        setupNavigation()
+        
+        router = RootRouter(window)
+        router?.buildNavigationFlow(launchOptions)
 
         return true
     }
@@ -33,11 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func setupKeyboardManager() {
         IQKeyboardManager.shared().isEnableAutoToolbar = true
         IQKeyboardManager.shared().isEnabled = true
-    }
-    
-    private func setupNavigation() {
-        router = RootRouter(window)
-        router?.buildNavigationFlow()
     }
     
     private func setupWindow() {

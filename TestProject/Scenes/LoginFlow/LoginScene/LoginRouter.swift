@@ -21,11 +21,4 @@ final class LoginRouter {
     init(viewController: UIViewController) {
         self.viewController = viewController
     }
-    
-    // MARK: - Public
-    
-    func navigateToMainScene() {
-        let listVC = ListVC.instantiateFromStoryboardId(.main)
-        viewController?.navigationController?.pushViewController(listVC, animated: true)
-    }
 }
