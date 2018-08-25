@@ -28,6 +28,6 @@ class LoginHeaderView: UIView {
     
     private func setupUI() {
         logoImageView.image = Bundle.provideAppIcon()
-        backgroundColor = UIColor(hex: "4527A0")
+        backgroundColor = Constants.Colors.background
     }
 }

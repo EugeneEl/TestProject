@@ -25,8 +25,7 @@ final class NewLoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //tableView.backgroundColor = UIColor(hex: "4527A0")
-        view.backgroundColor = UIColor(hex: "4527A0")
+        view.backgroundColor = Constants.Colors.background
     }
     
     override func viewWillAppear(_ animated: Bool) {

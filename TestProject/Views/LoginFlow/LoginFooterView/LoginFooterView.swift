@@ -43,9 +43,9 @@ class LoginFooterView: UIView {
     // MARK: - Helpers
     
     private func setupUI() {
-        backgroundColor = UIColor(hex: "4527A0")
+        backgroundColor = Constants.Colors.background
         loginButton.cornerRadius = 3
-        loginButton.backgroundColor = UIColor(hex: "66BB6A")
+        loginButton.backgroundColor = Constants.Colors.controls
         loginButton.setTitle("Login", for: .normal)
         loginButton.setTitleColor(.white, for: .normal)
     }

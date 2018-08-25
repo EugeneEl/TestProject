@@ -37,6 +37,7 @@
 		3E6288342131286B001A7E18 /* LoginFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6288332131286B001A7E18 /* LoginFooterView.swift */; };
 		3E62883621312879001A7E18 /* LoginFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E62883521312879001A7E18 /* LoginFooterView.xib */; };
 		3E628838213131F1001A7E18 /* InputFormUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E628837213131F1001A7E18 /* InputFormUI.swift */; };
+		3E62883A21313263001A7E18 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E62883921313263001A7E18 /* Constants.swift */; };
 		3E701198208EFF6800B28B5A /* SafariControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E701197208EFF6800B28B5A /* SafariControllerHelper.swift */; };
 		3E7F49A42087084600A0AB56 /* ReachabilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F49A32087084600A0AB56 /* ReachabilityService.swift */; };
 		3E7F49A7208708A500A0AB56 /* ErrorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F49A6208708A500A0AB56 /* ErrorConstants.swift */; };
@@ -107,6 +108,7 @@
 		3E6288332131286B001A7E18 /* LoginFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFooterView.swift; sourceTree = "<group>"; };
 		3E62883521312879001A7E18 /* LoginFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginFooterView.xib; sourceTree = "<group>"; };
 		3E628837213131F1001A7E18 /* InputFormUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFormUI.swift; sourceTree = "<group>"; };
+		3E62883921313263001A7E18 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3E701197208EFF6800B28B5A /* SafariControllerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariControllerHelper.swift; sourceTree = "<group>"; };
 		3E7F49A32087084600A0AB56 /* ReachabilityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityService.swift; sourceTree = "<group>"; };
 		3E7F49A6208708A500A0AB56 /* ErrorConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorConstants.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				3E2FA185206BEE4D0000DAD7 /* Assets.xcassets */,
+				3E62883921313263001A7E18 /* Constants.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -834,6 +837,7 @@
 				3E58BA94206CDF49001DEB34 /* String+Validation.swift in Sources */,
 				3E82D03A21296278001A2720 /* NewLoginPresenter.swift in Sources */,
 				3E6288342131286B001A7E18 /* LoginFooterView.swift in Sources */,
+				3E62883A21313263001A7E18 /* Constants.swift in Sources */,
 				3E59D5E220A3315800853254 /* SecureStorageService.swift in Sources */,
 				3EE6E5F92085B6700072D0AE /* NetworkService.swift in Sources */,
 				3E2FA192206BEE4E0000DAD7 /* AppDelegate.swift in Sources */,
