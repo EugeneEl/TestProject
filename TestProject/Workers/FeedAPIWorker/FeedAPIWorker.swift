@@ -20,7 +20,7 @@ final class FeedAPIWorker {
     // MARK: - Public
     
     func fetchNewsWithCompletionSuccess(_ success: @escaping FetchFeedListCompletionSuccess, failure: @escaping FetchFeedListCompletionFail) {
-        let path = "stock/market/news/last/100"
+        let path = "/stock/aapl/news/last/20"
         
         networkService.GET(path, parameters: nil, headers: nil, encoding: .urlEncoded, withAuthorization: true) { (result) in
             switch result {
