@@ -31,7 +31,6 @@
 		3E59D5DF20A3310C00853254 /* UserSessionStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E59D5DE20A3310C00853254 /* UserSessionStorage.swift */; };
 		3E59D5E220A3315800853254 /* SecureStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E59D5E120A3315800853254 /* SecureStorageService.swift */; };
 		3E59D5E420A3316600853254 /* KeychainStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E59D5E320A3316600853254 /* KeychainStorage.swift */; };
-		3E5B335C2080DD9B00A295C1 /* FeedItemJSONModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5B335B2080DD9B00A295C1 /* FeedItemJSONModel.swift */; };
 		3E5B335F2080DE0F00A295C1 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5B335E2080DE0F00A295C1 /* SwiftyJSON.swift */; };
 		3E6288312131274A001A7E18 /* LoginFormType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6288302131274A001A7E18 /* LoginFormType.swift */; };
 		3E6288342131286B001A7E18 /* LoginFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6288332131286B001A7E18 /* LoginFooterView.swift */; };
@@ -118,7 +117,6 @@
 		3E59D5DE20A3310C00853254 /* UserSessionStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSessionStorage.swift; sourceTree = "<group>"; };
 		3E59D5E120A3315800853254 /* SecureStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStorageService.swift; sourceTree = "<group>"; };
 		3E59D5E320A3316600853254 /* KeychainStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStorage.swift; sourceTree = "<group>"; };
-		3E5B335B2080DD9B00A295C1 /* FeedItemJSONModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedItemJSONModel.swift; sourceTree = "<group>"; };
 		3E5B335E2080DE0F00A295C1 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		3E6288302131274A001A7E18 /* LoginFormType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormType.swift; sourceTree = "<group>"; };
 		3E6288332131286B001A7E18 /* LoginFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFooterView.swift; sourceTree = "<group>"; };
@@ -340,7 +338,6 @@
 			children = (
 				3E6288532132A3D7001A7E18 /* CoreData */,
 				3E7F49B52087296400A0AB56 /* DTOInterface.swift */,
-				3E5B335A2080DD5000A295C1 /* FeedModel */,
 				3E2FA196206BEF740000DAD7 /* UserSessionModel */,
 			);
 			path = Models;
@@ -497,14 +494,6 @@
 				3E59D5E320A3316600853254 /* KeychainStorage.swift */,
 			);
 			path = SecureStorageService;
-			sourceTree = "<group>";
-		};
-		3E5B335A2080DD5000A295C1 /* FeedModel */ = {
-			isa = PBXGroup;
-			children = (
-				3E5B335B2080DD9B00A295C1 /* FeedItemJSONModel.swift */,
-			);
-			path = FeedModel;
 			sourceTree = "<group>";
 		};
 		3E5B335D2080DDCB00A295C1 /* 3rdParty */ = {
@@ -972,7 +961,6 @@
 				3E7F49A42087084600A0AB56 /* ReachabilityService.swift in Sources */,
 				3E6288312131274A001A7E18 /* LoginFormType.swift in Sources */,
 				3E62886C2132A811001A7E18 /* FeedItemEntity+CoreDataProperties.swift in Sources */,
-				3E5B335C2080DD9B00A295C1 /* FeedItemJSONModel.swift in Sources */,
 				3E7F49A7208708A500A0AB56 /* ErrorConstants.swift in Sources */,
 				3E7F49B62087296400A0AB56 /* DTOInterface.swift in Sources */,
 				3E58BA95206CDF49001DEB34 /* Foundation+Extensions.swift in Sources */,
