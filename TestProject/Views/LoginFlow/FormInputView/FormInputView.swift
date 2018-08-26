@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol FormInputViewConfigurating: class {
-    func setupFormInputViewWithFormUI(_ formUI: FormInputViewUI, delegate: UITextFieldDelegate)
+    func setupFormInputViewWithFormUI(_ formUI: FormInputViewUI, delegate: UITextFieldDelegate, text: String?)
 }
 
 final class FormInputView: UIView {
@@ -95,9 +95,10 @@ final class FormInputView: UIView {
 // MARK: - FormInputViewConfigurating
 
 extension FormInputView: FormInputViewConfigurating {
-    func setupFormInputViewWithFormUI(_ formUI: FormInputViewUI, delegate: UITextFieldDelegate) {
+    func setupFormInputViewWithFormUI(_ formUI: FormInputViewUI, delegate: UITextFieldDelegate, text: String?) {
         textField.delegate = delegate
         setupTextFieldWithFormUI(formUI)
         separatorView.isHidden = !formUI.isSeparatorVisible
+        textField.text = text
     }
 }

@@ -37,11 +37,19 @@ final class LoginPresenter {
     let formTypes = [LoginFormType.email, LoginFormType.password]
     var inputControllers: [FormInputConroller] = []
     
-    fileprivate (set) internal var model: LoginInputModel = LoginInputModel(email: "", password: "")
-    fileprivate (set) internal var loginState: LoginSceneState = .loginInput(LoginInputModel(email: "", password: "")) {
+    fileprivate (set) internal var model: LoginInputModel
+    fileprivate (set) internal var loginState: LoginSceneState  {
         didSet {
             output?.loginStateDidChange(loginState)
         }
+    }
+    
+    // MARK: - Initialization
+    
+    init() {
+        let testModel = LoginInputModel(email: "testmail@gmail.com", password: "123456")
+        self.model = testModel
+        self.loginState = .loginInput(testModel)
     }
     
     // MARK: - Public
@@ -51,6 +59,15 @@ final class LoginPresenter {
         let userSessionModel = UserSessionModel(email: model.email, password: model.password)
         UserSessionService.shared.openUserSessionWithModel(userSessionModel)
         loginState = .loginSuccess
+    }
+    
+    func provideTextForForm(_ form: LoginFormType) -> String {
+        switch form {
+        case .email:
+            return model.email
+        case .password:
+            return model.password
+        }
     }
     
     // MAKR: - Private
