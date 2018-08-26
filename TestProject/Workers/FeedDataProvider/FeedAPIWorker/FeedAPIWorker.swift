@@ -24,7 +24,7 @@ final class FeedAPIWorker: FeedAPIProtocol {
     // MARK: - Public
     
     func fetchNewsWithCompletionSuccess(_ success: @escaping FetchFeedListCompletionSuccess, failure: @escaping FetchFeedListCompletionFail) {
-        let path = "/stock/aapl/news/last/1000"
+        let path = "/stock/aapl/news/last/5"
         
         networkService.GET(path, parameters: nil, headers: nil, encoding: .urlEncoded, withAuthorization: true) { (result) in
             switch result {

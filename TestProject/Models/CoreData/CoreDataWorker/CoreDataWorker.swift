@@ -17,11 +17,6 @@ enum Result<T>{
     case failure(Error)
 }
 
-enum CoreDataWorkerError: Error{
-    case cannotFetch(String)
-    case cannotSave(Error)
-}
-
 
 protocol NewCoreDataWorkerProtocol {
     func get<Entity: ManagedObjectConvertible>
@@ -48,6 +43,10 @@ extension NewCoreDataWorkerProtocol {
     }
 }
 
+enum CoreDataWorkerError: Error{
+    case cannotFetch(String)
+    case cannotSave(Error)
+}
 
 class NewCoreDataWorker: NewCoreDataWorkerProtocol {
     let coreData: CoreDataServiceProtocol

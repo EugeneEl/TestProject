@@ -25,7 +25,7 @@ final class CoreDataService: CoreDataServiceProtocol {
     var errorHandler: (Error) -> Void = {_ in }
     
     lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "DataModel")
+        let container = NSPersistentContainer(name: "TestProject")
         container.loadPersistentStores(completionHandler: { [weak self](storeDescription, error) in
             if let error = error {
                 NSLog("CoreData error \(error), \(error._userInfo)")

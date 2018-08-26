@@ -48,7 +48,6 @@
 		3E62884D21317AB0001A7E18 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E62884C21317AB0001A7E18 /* SettingsPresenter.swift */; };
 		3E628850213294EE001A7E18 /* InsetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E62884F213294EE001A7E18 /* InsetLabel.swift */; };
 		3E628852213299F7001A7E18 /* MenuTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E628851213299F7001A7E18 /* MenuTabBarItem.swift */; };
-		3E6288562132A3F6001A7E18 /* TestProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3E6288542132A3F6001A7E18 /* TestProject.xcdatamodeld */; };
 		3E62886A2132A811001A7E18 /* FeedItemEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6288672132A810001A7E18 /* FeedItemEntity+CoreDataClass.swift */; };
 		3E62886B2132A811001A7E18 /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6288682132A810001A7E18 /* FeedItem.swift */; };
 		3E62886C2132A811001A7E18 /* FeedItemEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6288692132A810001A7E18 /* FeedItemEntity+CoreDataProperties.swift */; };
@@ -61,6 +60,7 @@
 		3E62887F2132AF79001A7E18 /* FeedDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E62887E2132AF79001A7E18 /* FeedDataProvider.swift */; };
 		3E6288812132B0C0001A7E18 /* FeedAPIWorkerJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6288802132B0C0001A7E18 /* FeedAPIWorkerJSON.swift */; };
 		3E6288832132B111001A7E18 /* Feed.json in Resources */ = {isa = PBXBuildFile; fileRef = 3E6288822132B111001A7E18 /* Feed.json */; };
+		3E6288842132B980001A7E18 /* TestProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3E6288542132A3F6001A7E18 /* TestProject.xcdatamodeld */; };
 		3E701198208EFF6800B28B5A /* SafariControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E701197208EFF6800B28B5A /* SafariControllerHelper.swift */; };
 		3E7F49A42087084600A0AB56 /* ReachabilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F49A32087084600A0AB56 /* ReachabilityService.swift */; };
 		3E7F49A7208708A500A0AB56 /* ErrorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F49A6208708A500A0AB56 /* ErrorConstants.swift */; };
@@ -974,11 +974,11 @@
 				3E62886C2132A811001A7E18 /* FeedItemEntity+CoreDataProperties.swift in Sources */,
 				3E5B335C2080DD9B00A295C1 /* FeedItemJSONModel.swift in Sources */,
 				3E7F49A7208708A500A0AB56 /* ErrorConstants.swift in Sources */,
-				3E6288562132A3F6001A7E18 /* TestProject.xcdatamodeld in Sources */,
 				3E7F49B62087296400A0AB56 /* DTOInterface.swift in Sources */,
 				3E58BA95206CDF49001DEB34 /* Foundation+Extensions.swift in Sources */,
 				3E62884621313CB4001A7E18 /* LoginRouter.swift in Sources */,
 				3E62886A2132A811001A7E18 /* FeedItemEntity+CoreDataClass.swift in Sources */,
+				3E6288842132B980001A7E18 /* TestProject.xcdatamodeld in Sources */,
 				3E7F49B820872A2600A0AB56 /* FeedListCellPresenter.swift in Sources */,
 				3E58BA91206CDF49001DEB34 /* SafariService+Extension.swift in Sources */,
 				3E628850213294EE001A7E18 /* InsetLabel.swift in Sources */,

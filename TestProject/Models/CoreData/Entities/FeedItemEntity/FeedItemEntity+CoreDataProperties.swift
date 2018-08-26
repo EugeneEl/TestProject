@@ -15,7 +15,7 @@ extension FeedItemEntity {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<FeedItemEntity> {
         return NSFetchRequest<FeedItemEntity>(entityName: "FeedItemEntity")
     }
-
+    
     @NSManaged public var summary: String?
     @NSManaged public var headline: String?
     @NSManaged public var url: String?

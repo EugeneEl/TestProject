@@ -9,6 +9,12 @@
 import Foundation
 import CoreData
 
+extension NSManagedObject {
+    static func entityName() -> String {
+        return String(describing: self)
+    }
+}
+
 // thanks to Michal Wojtysiak for providing approch for converting CoreData --> Plain Object
 // I took this from https://swifting.io/blog/2016/11/27/28-better-coredata-with-swift-generics/
 
@@ -43,18 +49,21 @@ extension ManagedObjectProtocol where Self: NSManagedObject {
     static func fetch(from context: NSManagedObjectContext, with predicate: NSPredicate?,
                       sortDescriptors: [NSSortDescriptor]?, fetchLimit: Int?) -> [Self]? {
         
-        let fetchRequest = Self.fetchRequest()
-        fetchRequest.sortDescriptors = sortDescriptors
-        fetchRequest.predicate = predicate
-        fetchRequest.returnsObjectsAsFaults = false
-        
-        if let fetchLimit = fetchLimit {
-            fetchRequest.fetchLimit = fetchLimit
-        }
-        
         var result: [Self]?
         context.performAndWait { () -> Void in
+            
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:Self.entityName())
+            fetchRequest.sortDescriptors = sortDescriptors
+            fetchRequest.predicate = predicate
+            fetchRequest.returnsObjectsAsFaults = false
+            print("fetchRequest: \(fetchRequest)")
+            
+            if let fetchLimit = fetchLimit {
+                fetchRequest.fetchLimit = fetchLimit
+            }
+            
             do {
+                print(fetchRequest)
                 result = try context.fetch(fetchRequest) as? [Self]
             } catch {
                 result = nil
