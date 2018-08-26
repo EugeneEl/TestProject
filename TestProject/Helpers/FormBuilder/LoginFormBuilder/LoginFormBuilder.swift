@@ -16,10 +16,10 @@ final class LoginFormBuilder {
     /// - Parameters:
     ///   - formType: `LoginFormType` type.
     /// - Returns: A tuple with `FormInputConroller` inputControl (contains input logic) and `UIView` instance for form.
-    static func provideInputControlModuleForFragment(_ formType: LoginFormType) -> (FormInputConroller, UIView) {
+    static func provideInputControlModuleForFragment(_ formType: LoginFormType, initalText: String) -> (FormInputConroller, UIView) {
         
         let view = FormInputView.instantiateView()
-        let inputControl = FormInputConroller(formConfigurating: view, formInputViewUI: formType.formUI, formType: formType.formControllerType)
+        let inputControl = FormInputConroller(formConfigurating: view, formInputViewUI: formType.formUI, formType: formType.formControllerType, initalText: initalText)
         
         return (inputControl, view)
     }

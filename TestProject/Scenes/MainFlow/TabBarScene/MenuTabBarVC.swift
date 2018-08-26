@@ -13,10 +13,10 @@ class MenuTabBarVC: UITabBarController {
     
     // MARK: - Lifecycle
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        navigationItem.hidesBackButton = true
+        setupTabBarUI()
     }
     
     // MARK: - Public
@@ -26,5 +26,12 @@ class MenuTabBarVC: UITabBarController {
         let mainNavigationVC = BaseNavigationController(rootViewController: ListVC.instantiateFromStoryboardId(.main))
         let settingsNavigationVC = BaseNavigationController(rootViewController: SettingsVC.instantiateFromStoryboardId(.settings))
         viewControllers = [mainNavigationVC, settingsNavigationVC]
+    }
+    
+    // MARK: - Private
+    
+    private func setupTabBarUI() {
+        tabBar.tintColor = .white
+        tabBar.barTintColor = Constants.Colors.background
     }
 }

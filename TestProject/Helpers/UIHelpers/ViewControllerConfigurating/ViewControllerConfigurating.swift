@@ -119,7 +119,7 @@ extension ViewControllerUIConfigurating where Self: UIViewController {
                 navigationItem.leftBarButtonItem = leftItem
             } else {
                 if isBackButtonVisible {
-                    //
+                    // replace back button
                 } else {
                     navigationItem.setHidesBackButton(true, animated:true);
                 }

@@ -19,16 +19,18 @@ import UIKit
     
     private let formConfigurating: FormInputViewConfigurating
     private let formType: FormControllerType
+    fileprivate (set) internal var text: String?
     
     weak var delegate: FormInputConrollerOutput?
     
     // MARK: - Initialization
     
-    init(formConfigurating: FormInputViewConfigurating, formInputViewUI: FormInputViewUI, formType: FormControllerType) {
+    init(formConfigurating: FormInputViewConfigurating, formInputViewUI: FormInputViewUI, formType: FormControllerType, initalText: String?) {
         self.formConfigurating = formConfigurating
         self.formType = formType
+        self.text = initalText
         super.init()
-        self.formConfigurating.setupFormInputViewWithFormUI(formInputViewUI, delegate: self)
+        self.formConfigurating.setupFormInputViewWithFormUI(formInputViewUI, delegate: self, text: initalText)
     }
 }
 

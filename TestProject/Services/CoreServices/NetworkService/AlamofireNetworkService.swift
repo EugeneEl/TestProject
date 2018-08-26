@@ -37,6 +37,8 @@ class AlamofireNetworkClient {
         
         let url = baseURL + path
         
+        print(url)
+        
         var requestTask: DataRequest? = nil
         
         let completionHandler: ((DataResponse<Data>) -> Void) = { (dataResponse) in

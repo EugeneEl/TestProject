@@ -72,7 +72,8 @@
             return UITableViewCell()
         }
         
-        let formModule = LoginFormBuilder.provideInputControlModuleForFragment(loginFormType)
+        let text = presenter.provideTextForForm(loginFormType)
+        let formModule = LoginFormBuilder.provideInputControlModuleForFragment(loginFormType, initalText: text)
         
         let inputControl = formModule.0
         let formView = formModule.1

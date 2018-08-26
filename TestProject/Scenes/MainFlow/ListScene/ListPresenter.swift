@@ -10,7 +10,7 @@ import Foundation
 
 enum ListSceneState {
     case isLoading
-    case feedDidFetch([FeedItemJSONModel], String?)
+    case feedDidFetch([FeedItem], String?)
 }
 
 protocol ListPresenterOutput: class {
@@ -28,21 +28,23 @@ final class ListPresenter {
             output?.listSceneStateDidChange(state)
         }
     }
-    private let feedAPIWorker = FeedAPIWorker()
-    private (set) internal var feedItems = [FeedItemJSONModel]()
+    
+    private let dataProvider = FeedDataProvider(dataWorker: FeedDataWorker(), apiWorker: FeedAPIWorkerJSON())
+    private (set) internal var feedItems = [FeedItem]()
     
     // MARK: - Public
     
     func fetchData() {
         state = .isLoading
         
-        feedAPIWorker.fetchNewsWithCompletionSuccess({[weak self] (items) in
+        dataProvider.fetchItemsUsingLocalData(true, success: {[weak self] (items) in
             guard let strongSelf = self else {return}
             strongSelf.feedItems = items
-            strongSelf.state = .feedDidFetch(strongSelf.feedItems, nil)
-        }) {[weak self] (errorText) in
+            strongSelf.state = .feedDidFetch(items, nil)
+        }) {[weak self] (error, cachedItems) in
             guard let strongSelf = self else {return}
-            strongSelf.state = .feedDidFetch(strongSelf.feedItems, errorText)
+            strongSelf.feedItems = cachedItems
+            strongSelf.state = .feedDidFetch(cachedItems, error)
         }
     }
     
