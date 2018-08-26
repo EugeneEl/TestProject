@@ -36,14 +36,14 @@ final class ListPresenter {
     func fetchData() {
         state = .isLoading
         
-        feedAPIWorker.fetchNewsWithCompletionSuccess({[weak self] (items) in
-            guard let strongSelf = self else {return}
-            strongSelf.feedItems = items
-            strongSelf.state = .feedDidFetch(strongSelf.feedItems, nil)
-        }) {[weak self] (errorText) in
-            guard let strongSelf = self else {return}
-            strongSelf.state = .feedDidFetch(strongSelf.feedItems, errorText)
-        }
+//        feedAPIWorker.fetchNewsWithCompletionSuccess({[weak self] (items) in
+//            guard let strongSelf = self else {return}
+//            strongSelf.feedItems = items
+//            strongSelf.state = .feedDidFetch(strongSelf.feedItems, nil)
+//        }) {[weak self] (errorText) in
+//            guard let strongSelf = self else {return}
+//            strongSelf.state = .feedDidFetch(strongSelf.feedItems, errorText)
+//        }
     }
     
     func provideURLForIndex(_ index: Int) -> URL? {
