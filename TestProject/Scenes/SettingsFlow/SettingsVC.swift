@@ -17,6 +17,12 @@ final class SettingsVC: UIViewController {
     
     // MARK: - Lifecycle
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        tabBarItem = MenuTabBarItem.settings.tabBarItem
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         

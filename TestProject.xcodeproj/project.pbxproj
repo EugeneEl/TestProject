@@ -46,6 +46,8 @@
 		3E62884821317A6A001A7E18 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E62884721317A6A001A7E18 /* Settings.storyboard */; };
 		3E62884B21317AA1001A7E18 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E62884A21317AA1001A7E18 /* SettingsVC.swift */; };
 		3E62884D21317AB0001A7E18 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E62884C21317AB0001A7E18 /* SettingsPresenter.swift */; };
+		3E628850213294EE001A7E18 /* InsetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E62884F213294EE001A7E18 /* InsetLabel.swift */; };
+		3E628852213299F7001A7E18 /* MenuTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E628851213299F7001A7E18 /* MenuTabBarItem.swift */; };
 		3E701198208EFF6800B28B5A /* SafariControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E701197208EFF6800B28B5A /* SafariControllerHelper.swift */; };
 		3E7F49A42087084600A0AB56 /* ReachabilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F49A32087084600A0AB56 /* ReachabilityService.swift */; };
 		3E7F49A7208708A500A0AB56 /* ErrorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F49A6208708A500A0AB56 /* ErrorConstants.swift */; };
@@ -119,6 +121,8 @@
 		3E62884721317A6A001A7E18 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		3E62884A21317AA1001A7E18 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		3E62884C21317AB0001A7E18 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
+		3E62884F213294EE001A7E18 /* InsetLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetLabel.swift; sourceTree = "<group>"; };
+		3E628851213299F7001A7E18 /* MenuTabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTabBarItem.swift; sourceTree = "<group>"; };
 		3E701197208EFF6800B28B5A /* SafariControllerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariControllerHelper.swift; sourceTree = "<group>"; };
 		3E7F49A32087084600A0AB56 /* ReachabilityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityService.swift; sourceTree = "<group>"; };
 		3E7F49A6208708A500A0AB56 /* ErrorConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorConstants.swift; sourceTree = "<group>"; };
@@ -499,6 +503,7 @@
 			isa = PBXGroup;
 			children = (
 				3E62883C21313B86001A7E18 /* MenuTabBarVC.swift */,
+				3E628851213299F7001A7E18 /* MenuTabBarItem.swift */,
 			);
 			path = TabBarScene;
 			sourceTree = "<group>";
@@ -523,6 +528,14 @@
 			name = SettingsFlow;
 			path = TestProject/Scenes/SettingsFlow;
 			sourceTree = SOURCE_ROOT;
+		};
+		3E62884E213294D1001A7E18 /* InsetLabel */ = {
+			isa = PBXGroup;
+			children = (
+				3E62884F213294EE001A7E18 /* InsetLabel.swift */,
+			);
+			path = InsetLabel;
+			sourceTree = "<group>";
 		};
 		3E701196208EFF5D00B28B5A /* SafariControllerHelper */ = {
 			isa = PBXGroup;
@@ -577,6 +590,7 @@
 		3E7F49AF2087265300A0AB56 /* MainFlow */ = {
 			isa = PBXGroup;
 			children = (
+				3E62884E213294D1001A7E18 /* InsetLabel */,
 				3E7F49B02087265300A0AB56 /* FeedListTableViewCell */,
 			);
 			path = MainFlow;
@@ -866,6 +880,7 @@
 				3E62884621313CB4001A7E18 /* LoginRouter.swift in Sources */,
 				3E7F49B820872A2600A0AB56 /* FeedListCellPresenter.swift in Sources */,
 				3E58BA91206CDF49001DEB34 /* SafariService+Extension.swift in Sources */,
+				3E628850213294EE001A7E18 /* InsetLabel.swift in Sources */,
 				3E58BA89206CDF49001DEB34 /* UIViewController+Extensions.swift in Sources */,
 				3EB167A2206CDBDB00A82D11 /* ServiceLocator.swift in Sources */,
 				3E58BA8F206CDF49001DEB34 /* UICollectionViewCell+Extensions.swift in Sources */,
@@ -878,6 +893,7 @@
 				3EE6E5F92085B6700072D0AE /* NetworkService.swift in Sources */,
 				3E2FA192206BEE4E0000DAD7 /* AppDelegate.swift in Sources */,
 				3E58BA8C206CDF49001DEB34 /* UITableView+Extensions.swift in Sources */,
+				3E628852213299F7001A7E18 /* MenuTabBarItem.swift in Sources */,
 				3E8AFACB207F2C5300C562AF /* ListRouter.swift in Sources */,
 				3E90AF7F2079E78F006ED70D /* ImageAttachment.swift in Sources */,
 				3E58BA8A206CDF49001DEB34 /* UIView.swift in Sources */,

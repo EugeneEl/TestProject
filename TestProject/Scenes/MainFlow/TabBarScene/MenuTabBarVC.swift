@@ -13,12 +13,6 @@ class MenuTabBarVC: UITabBarController {
     
     // MARK: - Lifecycle
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        navigationItem.hidesBackButton = true
-    }
-    
     // MARK: - Public
     
     func setupNavigationWithLaunchOptions(_ options: [UIApplicationLaunchOptionsKey: Any]?) {

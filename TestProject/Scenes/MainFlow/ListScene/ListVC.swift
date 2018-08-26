@@ -24,6 +24,12 @@ class ListVC: UIViewController {
     
     // MARK: - Lifecycle
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        tabBarItem = MenuTabBarItem.feed.tabBarItem
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,13 +54,16 @@ class ListVC: UIViewController {
         router = ListRouter(viewController: self)
         presenter.output = self
         safariControllerHelper = SafariControllerHelper(viewController: self)
+        view.backgroundColor = UIColor(hex: "ffffff")
     }
     
     private func setupTableView() {
+        tableView.backgroundColor = UIColor(hex: "ffffff")
         tableView.registerCellsWithIdentifiers([FeedListTableViewCell.cellIdentifier()])
         tableView.estimatedRowHeight = 85.0
         tableView.rowHeight = UITableViewAutomaticDimension
         setupRefreshControl()
+        tableView.contentInset = UIEdgeInsetsMake(0, 0, 44, 0)
     }
     
     private func setupRefreshControl() {

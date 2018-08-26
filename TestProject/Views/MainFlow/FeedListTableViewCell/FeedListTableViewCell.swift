@@ -23,12 +23,24 @@ class FeedListTableViewCell: UITableViewCell {
     @IBOutlet fileprivate weak var summaryLabel: UILabel!
     @IBOutlet fileprivate weak var linkLabel: UILabel!
     
-    // MARK: - Vars
+    // MAKR: - Constants
     
-    weak var delegate: FeedListTableViewCellInteractable?
     fileprivate static let shadowColor = UIColor.black.withAlphaComponent(0.5).cgColor
     fileprivate static let shadowRadius: CGFloat = 4
     fileprivate static let shadowOffset: CGSize = CGSize(width: 0, height: 2)
+    
+    // MARK: - Vars
+    
+    weak var delegate: FeedListTableViewCellInteractable?
+    
+    // MARK: - Override
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        contentView.backgroundColor = UIColor(hex: "f1f1f1")
+        addShadow()
+    }
     
     // MARK: - Actions
     
