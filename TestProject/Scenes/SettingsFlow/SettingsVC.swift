@@ -26,7 +26,7 @@ final class SettingsVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        view.backgroundColor = UIColor(hex: "ffffff")
+        view.backgroundColor = Constants.Colors.grey
         configureNavigationBarUI()
     }
     

@@ -13,5 +13,6 @@ struct Constants {
     struct Colors {
         static let background = UIColor(hex: "4527A0")
         static let controls = UIColor(hex: "66BB6A")
+        static let grey = UIColor(hex: "ffffff")
     }
 }

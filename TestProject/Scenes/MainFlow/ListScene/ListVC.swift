@@ -54,11 +54,11 @@ class ListVC: UIViewController {
         router = ListRouter(viewController: self)
         presenter.output = self
         safariControllerHelper = SafariControllerHelper(viewController: self)
-        view.backgroundColor = UIColor(hex: "ffffff")
+        view.backgroundColor = Constants.Colors.grey
     }
     
     private func setupTableView() {
-        tableView.backgroundColor = UIColor(hex: "ffffff")
+        tableView.backgroundColor = Constants.Colors.grey
         tableView.registerCellsWithIdentifiers([FeedListTableViewCell.cellIdentifier()])
         tableView.estimatedRowHeight = 85.0
         tableView.rowHeight = UITableViewAutomaticDimension

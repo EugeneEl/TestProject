@@ -38,7 +38,7 @@ class FeedListTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        contentView.backgroundColor = UIColor(hex: "f1f1f1")
+        contentView.backgroundColor = Constants.Colors.grey
         addShadow()
     }
     
