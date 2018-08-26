@@ -43,7 +43,14 @@ extension ManagedObjectProtocol where Self: NSManagedObject {
     }
     
     static func insertNew(in context: NSManagedObjectContext) -> Self {
-        return Self(context:context)
+        let entityDescription = NSEntityDescription.entity(forEntityName: Self.entityName(), in: context);
+        
+        var entity: Self?
+        context.performAndWait {
+            entity = Self(entity: entityDescription!, insertInto: context)
+        }
+        
+        return entity!
     }
     
     static func fetch(from context: NSManagedObjectContext, with predicate: NSPredicate?,
