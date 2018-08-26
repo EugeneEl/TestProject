@@ -80,5 +80,39 @@ extension ManagedObjectProtocol where Self: NSManagedObject {
         }
         return result
     }
+}
+
+extension ManagedObjectProtocol where Self: NSManagedObject {
+    static func createDefaultFetchRequest() -> NSFetchRequest<Self> {
+        return NSFetchRequest(entityName: entityName())
+    }
     
+    static func fetchAllInContext(context: NSManagedObjectContext) -> [Self] {
+        let request = Self.createDefaultFetchRequest()
+        
+        request.returnsObjectsAsFaults = true
+        request.includesPropertyValues = false
+        
+        var fetchObjects: [Self]?
+        context.performAndWait {
+            guard let result = try! context.fetch(request) as? [Self] else { fatalError("Fetched objects have wrong type") }
+            fetchObjects = result
+        }
+        
+        return fetchObjects!
+    }
+    
+    static func deleteAllInContext(context: NSManagedObjectContext) {
+        context.performAndWait {
+            let fetchedObjects = Self.fetchAllInContext(context: context)
+            
+            if fetchedObjects.count > 0 {
+                context.performAndWait {
+                    for obj in fetchedObjects {
+                        context.delete(obj)
+                    }
+                }
+            }
+        }
+    }
 }

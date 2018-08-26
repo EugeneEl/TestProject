@@ -21,7 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         setupWindow()
         ServiceLocatorConfigurator.setupServices()
-        UserSessionService.shared.closeUserSession()
         setupKeyboardManager()
         
         router = RootRouter(window)

@@ -45,7 +45,7 @@ final class RootRouter {
         
         if UserSessionService.shared.canRestoreUsesSession() {
             let menuTabBarVC = MenuTabBarVC.instantiateFromStoryboardId(.main)
-            menuTabBarVC.setupNavigationWithLaunchOptions(options)
+            menuTabBarVC.configureWithLaunchOptions(options)
             return [loginVC, MenuTabBarVC.instantiateFromStoryboardId(.main)]
         } else {
             return [loginVC]

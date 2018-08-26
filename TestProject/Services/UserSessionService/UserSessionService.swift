@@ -38,13 +38,25 @@ final class UserSessionService {
         nc.post(name: UserSessionServiceNotification.login, object: nil)
     }
     
-    func closeUserSession() {
-        userSessionStorage.removeCredentials()
-        nc.post(name: UserSessionServiceNotification.logout, object: nil)
+    func closeUserSessionWithCopletion(_ completion: @escaping ()->()) {
+        clearDataWithCompletion {
+            completion()
+        }
     }
     
     func canRestoreUsesSession() -> Bool {
         return userSessionStorage.hasToken()
+    }
+    
+    // MARK: - Private
+    
+    private func clearDataWithCompletion(_ completion: @escaping ()->()) {
+        let worker = FeedDataWorker()
+        worker.deleteItems {
+            self.userSessionStorage.removeCredentials()
+            self.nc.post(name: UserSessionServiceNotification.logout, object: nil)
+            completion()
+        }
     }
 }
 

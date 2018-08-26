@@ -11,6 +11,7 @@ import Foundation
 protocol FeedDataControllerProtocol {
     func fetchItems(completion: @escaping ([FeedItem]) -> Void)
     func updateItems(items: [FeedItem])
+    func deleteItems(completion: @escaping () -> Void)
 }
 
 class FeedDataWorker: FeedDataControllerProtocol {
@@ -28,7 +29,7 @@ class FeedDataWorker: FeedDataControllerProtocol {
     // MARK: - Public
     
     func fetchItems(completion: @escaping ([FeedItem]) -> Void) {
-        worker.get{ [weak self](result: Result<[FeedItem]>) in
+        worker.get{(result: Result<[FeedItem]>) in
             switch result {
             case .success(let items):
                 completion(items)
@@ -43,6 +44,12 @@ class FeedDataWorker: FeedDataControllerProtocol {
         worker.upsert(entities: items) { (error) in
             guard let error = error else { return }
             print("\(error)")
+        }
+    }
+    
+    func deleteItems(completion: @escaping () -> Void) {
+        worker.delete {(result: Result<[FeedItem]>) in
+            completion()
         }
     }
 }
