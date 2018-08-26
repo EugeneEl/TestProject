@@ -20,6 +20,7 @@ final class SettingsVC: UIViewController {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        presenter.output = self
         tabBarItem = MenuTabBarItem.settings.tabBarItem
     }
     
@@ -35,6 +36,21 @@ final class SettingsVC: UIViewController {
     
     @IBAction fileprivate func logoutDidTap() {
         presenter.handleLogoutTap()
+    }
+}
+
+// MARK: - SettingsPresenterOutput
+
+extension SettingsVC: SettingsPresenterOutput {
+    func stateDidChange(_ state: SettingsSceneState) {
+        switch state {
+        case .initial:
+            break
+        case .isLogouting:
+            HudHelper.showHUDInView(view, animated: true)
+        case .logouted:
+            HudHelper.hideHUDInView(view, animated: false)
+        }
     }
 }
 
