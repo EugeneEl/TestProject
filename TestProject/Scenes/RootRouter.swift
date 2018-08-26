@@ -80,7 +80,7 @@ final class RootRouter {
     @objc private func handleLogin() {
         if let navigationController = window?.rootViewController as? UINavigationController {
             let menuTabBarVC = MenuTabBarVC.instantiateFromStoryboardId(.main)
-            menuTabBarVC.setupNavigationWithLaunchOptions(nil)
+            menuTabBarVC.configureWithLaunchOptions(nil)
             navigationController.pushViewController(menuTabBarVC, animated: true)
         }
     }
