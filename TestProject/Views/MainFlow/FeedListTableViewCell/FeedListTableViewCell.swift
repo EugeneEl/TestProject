@@ -52,9 +52,9 @@ class FeedListTableViewCell: UITableViewCell {
 // MARK: - DataObjectConfigurable
 
 extension FeedListTableViewCell: DataObjectConfigurable {
-    typealias DataObject = FeedItemJSONModel
+    typealias DataObject = FeedItem
     
-    func configureWithObject(_ object: FeedItemJSONModel) {
+    func configureWithObject(_ object: FeedItem) {
         titleLabel.text = object.headline
         summaryLabel.text = object.summary
         print("object.summary: \(object.summary)")

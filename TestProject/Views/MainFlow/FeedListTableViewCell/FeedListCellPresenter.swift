@@ -28,7 +28,7 @@ final class FeedListCellPresenter {
     ///
     /// - Parameter feed: `FeedItemJSONModel` to provide date.
     /// - Returns: `String?` with date text.
-    static func provideDateTextForFeedItem(_ feed: FeedItemJSONModel) -> String? {
+    static func provideDateTextForFeedItem(_ feed: FeedItem) -> String? {
         return dateFormatter.string(from: feed.datetime)
     }
 }

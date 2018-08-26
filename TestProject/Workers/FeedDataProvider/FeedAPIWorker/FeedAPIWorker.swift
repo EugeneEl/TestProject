@@ -11,11 +11,11 @@ import Foundation
 typealias FetchFeedListCompletionSuccess = (_ rssItems: [FeedItem]) -> ()
 typealias FetchFeedListCompletionFail = (_ errorText: String) -> ()
 
-protocol FeedbackAPIProtocol {
+protocol FeedAPIProtocol {
     func fetchNewsWithCompletionSuccess(_ success: @escaping FetchFeedListCompletionSuccess, failure: @escaping FetchFeedListCompletionFail)
 }
 
-final class FeedAPIWorker: FeedbackAPIProtocol {
+final class FeedAPIWorker: FeedAPIProtocol {
     
     // MARK: - Vars
     
@@ -51,3 +51,5 @@ final class FeedAPIWorker: FeedbackAPIProtocol {
         }
     }
 }
+
+

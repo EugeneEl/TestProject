@@ -8,10 +8,43 @@
 
 import Foundation
 
+typealias FeedFetchCompletionSuccess = (_ rssItems: [FeedItem]) -> ()
+typealias FeedFetchCompletionFail = (_ errorText: String, _ cachedItems: [FeedItem]) -> ()
+
 final class FeedDataProvider {
     
     // MARK: - Public
     
+    private let dataWorker: FeedDataControllerProtocol
+    private let apiWorker: FeedAPIProtocol
     
+    // MARK: Initialization
     
+    init(dataWorker: FeedDataControllerProtocol, apiWorker: FeedAPIProtocol) {
+        self.dataWorker = dataWorker
+        self.apiWorker = apiWorker
+    }
+    
+    // MARK: - Public
+    
+    func fetchItemsUsingLocalData(_ isUsingLocalData: Bool, success: @escaping FeedFetchCompletionSuccess, failure: @escaping FeedFetchCompletionFail) {
+        apiWorker.fetchNewsWithCompletionSuccess({[weak self] (items) in
+            guard let strongSelf = self else {return}
+            // update local storage
+            if isUsingLocalData {
+                strongSelf.dataWorker.updateItems(items: items)
+            }
+            success(items)
+        }) {[weak self] (error) in
+            guard let strongSelf = self else {return}
+            // attempt to fetch last saved
+            if isUsingLocalData {
+                strongSelf.dataWorker.fetchItems(completion: { (items) in
+                    failure(error, items)
+                })
+            } else {
+                failure(error, [])
+            }
+        }
+    }
 }
