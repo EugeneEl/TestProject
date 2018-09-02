@@ -16,6 +16,8 @@
 		3E2FA198206BEF830000DAD7 /* UserSessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FA197206BEF830000DAD7 /* UserSessionModel.swift */; };
 		3E2FA19C206BEFDE0000DAD7 /* UserSessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FA19B206BEFDE0000DAD7 /* UserSessionService.swift */; };
 		3E39BB0D213BD3D200254BF8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E39BB0A213BD3D200254BF8 /* User.swift */; };
+		3E39BB11213BD47F00254BF8 /* UserEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E39BB0F213BD47F00254BF8 /* UserEntity+CoreDataProperties.swift */; };
+		3E39BB12213BD47F00254BF8 /* UserEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E39BB10213BD47F00254BF8 /* UserEntity+CoreDataClass.swift */; };
 		3E51D690213BCC0100724C0A /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E51D68F213BCC0100724C0A /* ApplicationCoordinator.swift */; };
 		3E51D692213BCF5A00724C0A /* AuthWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E51D691213BCF5A00724C0A /* AuthWorker.swift */; };
 		3E58BA89206CDF49001DEB34 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E58BA70206CDF49001DEB34 /* UIViewController+Extensions.swift */; };
@@ -106,6 +108,8 @@
 		3E2FA197206BEF830000DAD7 /* UserSessionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSessionModel.swift; sourceTree = "<group>"; };
 		3E2FA19B206BEFDE0000DAD7 /* UserSessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSessionService.swift; sourceTree = "<group>"; };
 		3E39BB0A213BD3D200254BF8 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		3E39BB0F213BD47F00254BF8 /* UserEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UserEntity+CoreDataProperties.swift"; path = "/Users/evgenij/TestProject/TestProject/Models/CoreData/Entities/UserEntity/UserEntity+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		3E39BB10213BD47F00254BF8 /* UserEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UserEntity+CoreDataClass.swift"; path = "/Users/evgenij/TestProject/TestProject/Models/CoreData/Entities/UserEntity/UserEntity+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		3E51D68F213BCC0100724C0A /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
 		3E51D691213BCF5A00724C0A /* AuthWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthWorker.swift; sourceTree = "<group>"; };
 		3E58BA70206CDF49001DEB34 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
@@ -384,6 +388,8 @@
 		3E39BB08213BD3D200254BF8 /* UserEntity */ = {
 			isa = PBXGroup;
 			children = (
+				3E39BB10213BD47F00254BF8 /* UserEntity+CoreDataClass.swift */,
+				3E39BB0F213BD47F00254BF8 /* UserEntity+CoreDataProperties.swift */,
 				3E39BB0A213BD3D200254BF8 /* User.swift */,
 			);
 			path = UserEntity;
@@ -1002,6 +1008,7 @@
 				3E8AFAC9207F2C4B00C562AF /* ListPresenter.swift in Sources */,
 				3E8AFAC2207CF76400C562AF /* HUDDisplayHelper.swift in Sources */,
 				3E62887B2132AB70001A7E18 /* ManagedObjectConvertible.swift in Sources */,
+				3E39BB12213BD47F00254BF8 /* UserEntity+CoreDataClass.swift in Sources */,
 				3E59D5E420A3316600853254 /* KeychainStorage.swift in Sources */,
 				3E7F49A920870B1900A0AB56 /* ServiceLocatorConfigurator.swift in Sources */,
 				3E7F49A42087084600A0AB56 /* ReachabilityService.swift in Sources */,
@@ -1034,6 +1041,7 @@
 				3E8AFACB207F2C5300C562AF /* ListRouter.swift in Sources */,
 				3E90AF7F2079E78F006ED70D /* ImageAttachment.swift in Sources */,
 				3E58BA8A206CDF49001DEB34 /* UIView.swift in Sources */,
+				3E39BB11213BD47F00254BF8 /* UserEntity+CoreDataProperties.swift in Sources */,
 				3E90AF7C2079E6C6006ED70D /* BaseNavigationController.swift in Sources */,
 				3E62886B2132A811001A7E18 /* FeedItem.swift in Sources */,
 				3E2FA19C206BEFDE0000DAD7 /* UserSessionService.swift in Sources */,

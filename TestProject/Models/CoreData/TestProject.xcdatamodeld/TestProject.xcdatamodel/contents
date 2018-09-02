@@ -8,7 +8,7 @@
         <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="UserEntity" representedClassName=".UserEntity" syncable="YES" codeGenerationType="class">
+    <entity name="UserEntity" representedClassName=".UserEntity" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
