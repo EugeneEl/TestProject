@@ -8,7 +8,12 @@
         <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="UserEntity" representedClassName=".UserEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="FeedItemEntity" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="UserEntity" positionX="-63" positionY="27" width="128" height="75"/>
     </elements>
 </model>

@@ -8,44 +8,38 @@
 
 import Foundation
 
-struct UserSessionServiceNotification {
-    static let login = NSNotification.Name(rawValue: "UserDidLogin")
-    static let logout = NSNotification.Name(rawValue: "UserDidLogout")
-}
-
 final class UserSessionService {
     
     // MARK: - Vars
     
-    static let shared = UserSessionService()
-    
-    private let nc = NotificationCenter.default
-    
     var isLogged: Bool = false
-    
-    fileprivate (set) internal var sessionModel: UserSessionModel?
-    fileprivate let userSessionStorage = UserSessionStorage()
+
+    fileprivate let userSessionStorage: UserSessionStorage
+    fileprivate let feedDataWorker: FeedDataWorker
     
     // MARK: - Initialization
     
-    private init() {}
+    init?(userSessionStorage: UserSessionStorage, feedDataWorker: FeedDataWorker) {
+        if !userSessionStorage.hasToken() {
+            return nil
+        } else {
+            self.userSessionStorage = userSessionStorage
+            self.feedDataWorker = feedDataWorker
+        }
+    }
+    
+    init(model: UserSessionModel, userSessionStorage: UserSessionStorage, feedDataWorker: FeedDataWorker) {
+        self.userSessionStorage = userSessionStorage
+        self.feedDataWorker = feedDataWorker
+        self.userSessionStorage.updateCredentials(model)
+    }
     
     // MARK: - Public
-    
-    func openUserSessionWithModel(_ model: UserSessionModel) {
-        userSessionStorage.updateCredentials(model)
-        isLogged = true
-        nc.post(name: UserSessionServiceNotification.login, object: nil)
-    }
     
     func closeUserSessionWithCopletion(_ completion: @escaping ()->()) {
         clearDataWithCompletion {
             completion()
         }
-    }
-    
-    func canRestoreUsesSession() -> Bool {
-        return userSessionStorage.hasToken()
     }
     
     // MARK: - Private
@@ -54,7 +48,6 @@ final class UserSessionService {
         let worker = FeedDataWorker()
         worker.deleteItems {
             self.userSessionStorage.removeCredentials()
-            self.nc.post(name: UserSessionServiceNotification.logout, object: nil)
             completion()
         }
     }

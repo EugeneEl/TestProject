@@ -34,8 +34,8 @@ final class SettingsPresenter {
     
     func handleLogoutTap() {
         state = .isLogouting
-        UserSessionService.shared.closeUserSessionWithCopletion {
-            self.state = .logouted
-        }
+//        UserSessionService.shared.closeUserSessionWithCopletion {
+//            self.state = .logouted
+//        }
     }
 }

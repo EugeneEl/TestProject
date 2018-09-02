@@ -15,12 +15,12 @@ final class RootRouter {
     // MARK: - Vars
     
     let window: UIWindow?
+    let appCoordinator: ApplicationCoordinator = ApplicationCoordinator()
     
     // MARK: - Initialization
     
     init(_ window: UIWindow?) {
         self.window = window
-//        self.addListeners()
     }
     
     // MARK: - Public
@@ -43,22 +43,18 @@ final class RootRouter {
         let loginVC = NewLoginVC.instantiateFromStoryboardId(.login)
         loginVC.enforceLoadView()
         
-        if UserSessionService.shared.canRestoreUsesSession() {
-            let menuTabBarVC = MenuTabBarVC.instantiateFromStoryboardId(.main)
-            menuTabBarVC.configureWithLaunchOptions(options)
-            return [loginVC, MenuTabBarVC.instantiateFromStoryboardId(.main)]
-        } else {
-            return [loginVC]
-        }
+        return [loginVC]
+        
+//        if UserSessionService.shared.canRestoreUsesSession() {
+//            let menuTabBarVC = MenuTabBarVC.instantiateFromStoryboardId(.main)
+//            menuTabBarVC.configureWithLaunchOptions(options)
+//            return [loginVC, MenuTabBarVC.instantiateFromStoryboardId(.main)]
+//        } else {
+//            return [loginVC]
+//        }
     }
-    
+
     // MARK: - Private
-    
-//    private func addListeners() {
-//        let notificationCenter = NotificationCenter.default
-//        notificationCenter.addObserver(self, selector: #selector(handleLogout), name: UserSessionServiceNotification.logout, object: nil)
-//        notificationCenter.addObserver(self, selector: #selector(handleLogin), name: UserSessionServiceNotification.login, object: nil)
-//    }
     
     @objc private func handleLogout() {
         if let navigationController = window?.rootViewController as? UINavigationController {
@@ -71,6 +67,17 @@ final class RootRouter {
             let menuTabBarVC = MenuTabBarVC.instantiateFromStoryboardId(.main)
             menuTabBarVC.configureWithLaunchOptions(nil)
             navigationController.pushViewController(menuTabBarVC, animated: true)
+        }
+    }
+}
+
+// MARK: - LoginRouterDelegate
+
+extension RootRouter: LoginRouterDelegate {
+    func userDidLoginWithSession(_ session: UserSessionService) {
+        if let nc = window?.rootViewController as? UINavigationController {
+            let menuTabBarVC = MenuTabBarVC.instantiateFromStoryboardId(.main)
+            nc.pushViewController(menuTabBarVC, animated: true)
         }
     }
 }
