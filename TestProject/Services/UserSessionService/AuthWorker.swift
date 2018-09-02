@@ -13,7 +13,7 @@ enum AuthFlow {
     case login(LoginInputModel)
 }
 
-typealias AuthCompletionSuccess = (_ withFlow: AuthFlow) -> ()
+typealias AuthCompletionSuccess = (_ withFlow: AuthFlow, _ user: User) -> ()
 typealias AuthCompletionFailure = (_ withFlow: AuthFlow, _ errorText: String) -> ()
 
 protocol AuthUserProtocol {
@@ -45,6 +45,13 @@ final class AuthWorker {
             break
         case .login(let model):
             break
+        }
+        
+        let json = JSON(localFileName: "User")
+        if let user = User(json: json) {
+            success(flow, user)
+        } else {
+            failure(flow, "Cannot fetch user")
         }
     }
 }
