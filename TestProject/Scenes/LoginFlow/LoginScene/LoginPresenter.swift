@@ -44,12 +44,14 @@ final class LoginPresenter {
         }
     }
     
+    fileprivate let userSessionService: UserSessionService
+    
     // MARK: - Initialization
     
-    init() {
-        let testModel = LoginInputModel(email: "testmail@gmail.com", password: "123456")
-        self.model = testModel
-        self.loginState = .loginInput(testModel)
+    init(userSessionService: UserSessionService, model: LoginInputModel) {
+        self.model = model
+        self.userSessionService = userSessionService
+        self.loginState = .loginInput(model)
     }
     
     // MARK: - Public
@@ -57,7 +59,7 @@ final class LoginPresenter {
     func loginDidTap() {
         loginState = .isLogging
         let userSessionModel = UserSessionModel(email: model.email, password: model.password)
-        UserSessionService.shared.openUserSessionWithModel(userSessionModel)
+        userSessionService.openUserSessionWithModel(userSessionModel)
         loginState = .loginSuccess
     }
     
