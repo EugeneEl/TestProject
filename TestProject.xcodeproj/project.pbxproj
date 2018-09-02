@@ -60,6 +60,7 @@
 		3E6288812132B0C0001A7E18 /* FeedAPIWorkerJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6288802132B0C0001A7E18 /* FeedAPIWorkerJSON.swift */; };
 		3E6288832132B111001A7E18 /* Feed.json in Resources */ = {isa = PBXBuildFile; fileRef = 3E6288822132B111001A7E18 /* Feed.json */; };
 		3E6288842132B980001A7E18 /* TestProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3E6288542132A3F6001A7E18 /* TestProject.xcdatamodeld */; };
+		3E67933C2135B42400BCAAFA /* LoginAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E67933B2135B42400BCAAFA /* LoginAssembler.swift */; };
 		3E701198208EFF6800B28B5A /* SafariControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E701197208EFF6800B28B5A /* SafariControllerHelper.swift */; };
 		3E7F49A42087084600A0AB56 /* ReachabilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F49A32087084600A0AB56 /* ReachabilityService.swift */; };
 		3E7F49A7208708A500A0AB56 /* ErrorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F49A6208708A500A0AB56 /* ErrorConstants.swift */; };
@@ -146,6 +147,7 @@
 		3E62887E2132AF79001A7E18 /* FeedDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDataProvider.swift; sourceTree = "<group>"; };
 		3E6288802132B0C0001A7E18 /* FeedAPIWorkerJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedAPIWorkerJSON.swift; sourceTree = "<group>"; };
 		3E6288822132B111001A7E18 /* Feed.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Feed.json; sourceTree = "<group>"; };
+		3E67933B2135B42400BCAAFA /* LoginAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAssembler.swift; sourceTree = "<group>"; };
 		3E701197208EFF6800B28B5A /* SafariControllerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariControllerHelper.swift; sourceTree = "<group>"; };
 		3E7F49A32087084600A0AB56 /* ReachabilityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityService.swift; sourceTree = "<group>"; };
 		3E7F49A6208708A500A0AB56 /* ErrorConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorConstants.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 			children = (
 				3E2FA187206BEE4D0000DAD7 /* Storyboards */,
 				3E2FA18A206BEE4E0000DAD7 /* Application */,
+				3E6793382135B33500BCAAFA /* Routers */,
 				3E2FA17F206BEE4D0000DAD7 /* Scenes */,
 				3E2FA18D206BEE4E0000DAD7 /* Services */,
 				3E2FA18E206BEE4E0000DAD7 /* Models */,
@@ -529,6 +532,7 @@
 				3E62884021313CB4001A7E18 /* LoginInputModel.swift */,
 				3E62884121313CB4001A7E18 /* LoginPresenter.swift */,
 				3E62884221313CB4001A7E18 /* LoginRouter.swift */,
+				3E67933B2135B42400BCAAFA /* LoginAssembler.swift */,
 			);
 			path = LoginScene;
 			sourceTree = "<group>";
@@ -624,6 +628,30 @@
 				3E62887C2132AB90001A7E18 /* CoreDataWorker.swift */,
 			);
 			path = CoreDataWorker;
+			sourceTree = "<group>";
+		};
+		3E6793382135B33500BCAAFA /* Routers */ = {
+			isa = PBXGroup;
+			children = (
+				3E6793392135B33500BCAAFA /* MainRouter */,
+				3E67933A2135B33500BCAAFA /* LoginRouter */,
+			);
+			name = Routers;
+			path = TestProject/Routers;
+			sourceTree = SOURCE_ROOT;
+		};
+		3E6793392135B33500BCAAFA /* MainRouter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MainRouter;
+			sourceTree = "<group>";
+		};
+		3E67933A2135B33500BCAAFA /* LoginRouter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LoginRouter;
 			sourceTree = "<group>";
 		};
 		3E701196208EFF5D00B28B5A /* SafariControllerHelper */ = {
@@ -990,6 +1018,7 @@
 				3E62886B2132A811001A7E18 /* FeedItem.swift in Sources */,
 				3E2FA19C206BEFDE0000DAD7 /* UserSessionService.swift in Sources */,
 				3E6288792132AB70001A7E18 /* CoreDataStack.swift in Sources */,
+				3E67933C2135B42400BCAAFA /* LoginAssembler.swift in Sources */,
 				3E59D5DF20A3310C00853254 /* UserSessionStorage.swift in Sources */,
 				3E58BA8B206CDF49001DEB34 /* UIColor.swift in Sources */,
 				3E82D033212955A2001A2720 /* FormInputController.swift in Sources */,

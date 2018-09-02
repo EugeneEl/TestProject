@@ -20,7 +20,7 @@ final class RootRouter {
     
     init(_ window: UIWindow?) {
         self.window = window
-        self.addListeners()
+//        self.addListeners()
     }
     
     // MARK: - Public
@@ -52,24 +52,13 @@ final class RootRouter {
         }
     }
     
-    /// Replace rootViewController with the new one. Used to change navigation "on the fly".
-    ///
-    /// - Parameter newViewController: An instance of `UIViewController` to be set as a new root.
-    func changeRootViewControllerWithoutAnimation(_ newViewController: UIViewController) {
-        if (window?.rootViewController == nil) {
-            window?.rootViewController = newViewController
-            return
-        }
-        window?.rootViewController = newViewController
-    }
-    
     // MARK: - Private
     
-    private func addListeners() {
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(handleLogout), name: UserSessionServiceNotification.logout, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(handleLogin), name: UserSessionServiceNotification.login, object: nil)
-    }
+//    private func addListeners() {
+//        let notificationCenter = NotificationCenter.default
+//        notificationCenter.addObserver(self, selector: #selector(handleLogout), name: UserSessionServiceNotification.logout, object: nil)
+//        notificationCenter.addObserver(self, selector: #selector(handleLogin), name: UserSessionServiceNotification.login, object: nil)
+//    }
     
     @objc private func handleLogout() {
         if let navigationController = window?.rootViewController as? UINavigationController {
