@@ -15,12 +15,12 @@ final class FeedDataProvider {
     
     // MARK: - Public
     
-    private let dataWorker: FeedDataControllerProtocol
+    private let dataWorker: FeedItemDataWorkerProtocol
     private let apiWorker: FeedAPIProtocol
     
     // MARK: Initialization
     
-    init(dataWorker: FeedDataControllerProtocol, apiWorker: FeedAPIProtocol) {
+    init(dataWorker: FeedItemDataWorkerProtocol, apiWorker: FeedAPIProtocol) {
         self.dataWorker = dataWorker
         self.apiWorker = apiWorker
     }
@@ -32,15 +32,17 @@ final class FeedDataProvider {
             guard let strongSelf = self else {return}
             // update local storage
             if isUsingLocalData {
-                strongSelf.dataWorker.updateItems(items: items)
+                strongSelf.dataWorker.updateFeedItems(items, completion: { (error) in
+
+                })
             }
             success(items)
         }) {[weak self] (error) in
             guard let strongSelf = self else {return}
             // attempt to fetch last saved
             if isUsingLocalData {
-                strongSelf.dataWorker.fetchItems(completion: { (items) in
-                    failure(error, items)
+                strongSelf.dataWorker.getFeedItems(completion: { (items) in
+                    success(items)
                 })
             } else {
                 failure(error, [])
@@ -49,8 +51,8 @@ final class FeedDataProvider {
     }
     
     func clearData() {
-        dataWorker.deleteItems {
-            print("deleted")
+        dataWorker.deleteFeedItems { (error) in
+            print("deleted all items")
         }
     }
 }

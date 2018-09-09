@@ -24,9 +24,22 @@ extension FeedItem: ManagedObjectConvertible {
     func toManagedObject(in context: NSManagedObjectContext) -> FeedItemEntity? {
         // TEST StockAPI doesn't provide ids do I will use URL as keys
         let predicate = NSPredicate(format: "identifier == %@", url.absoluteString)
-        let item = FeedItemEntity()
+        let item = FeedItemEntity.findOrCreateInContext(context, with: url.absoluteString, creationConfigurationBlock: { (feedItemEntity) in
+            if let entity = feedItemEntity as? FeedItemEntity {
+                entity.source = self.source
+                entity.headline = self.headline
+                entity.datetime = self.datetime as? NSDate
+                entity.summary = self.summary
+                entity.identifier = self.url.absoluteString
+                entity.url = self.url.absoluteString
+            }
+        }, entityName: "FeedItemEntity")
 
-        return item
+        return item as? FeedItemEntity
+    }
+    
+    static var entityName: String {
+        return "FeedItemEntity"
     }
 }
 

@@ -9,39 +9,9 @@
 import Foundation
 import CoreData
 
-// thanks to Michal Wojtysiak for providing approch for converting CoreData --> Plain Object
-// I took this from https://swifting.io/blog/2016/11/27/28-better-coredata-with-swift-generics/
-
 enum Result<T>{
     case success(T)
     case failure(Error)
-}
-
-
-protocol NewCoreDataWorkerProtocol {
-    func get<Entity: ManagedObjectConvertible>
-        (with predicate: NSPredicate?,
-         sortDescriptors: [NSSortDescriptor]?,
-         fetchLimit: Int?,
-         completion: @escaping (Result<[Entity]>) -> Void)
-    func upsert<Entity: ManagedObjectConvertible>
-        (entities: [Entity],
-         completion: @escaping (Error?) -> Void)
-    func delete<Entity: ManagedObjectConvertible>
-        (completion: @escaping (Result<[Entity]>) -> Void)
-}
-
-extension NewCoreDataWorkerProtocol {
-    func get<Entity: ManagedObjectConvertible>
-        (with predicate: NSPredicate? = nil,
-         sortDescriptors: [NSSortDescriptor]? = nil,
-         fetchLimit: Int? = nil,
-         completion: @escaping (Result<[Entity]>) -> Void) {
-        get(with: predicate,
-            sortDescriptors: sortDescriptors,
-            fetchLimit: fetchLimit,
-            completion: completion)
-    }
 }
 
 enum CoreDataWorkerError: Error{
@@ -50,7 +20,13 @@ enum CoreDataWorkerError: Error{
     case cannotDelete(Error)
 }
 
-class NewCoreDataWorker: NewCoreDataWorkerProtocol {
+protocol FeedItemDataWorkerProtocol {
+    func getFeedItems(completion: @escaping ([FeedItem]) -> Void)
+    func updateFeedItems(_ feedItems: [FeedItem], completion: @escaping (Error?) -> Void)
+    func deleteFeedItems(completion: @escaping (Error?) -> Void)
+}
+
+class FeedItemDataWorker: FeedItemDataWorkerProtocol {
     
     let coreData: CoreDataServiceProtocol
     
@@ -58,37 +34,22 @@ class NewCoreDataWorker: NewCoreDataWorkerProtocol {
         self.coreData = coreData
     }
     
-    func get<Entity: ManagedObjectConvertible>
-        (with predicate: NSPredicate?,
-         sortDescriptors: [NSSortDescriptor]?,
-         fetchLimit: Int?,
-         completion: @escaping (Result<[Entity]>) -> Void) {
-        coreData.performForegroundTask { context in
-            do {
-                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FeedItemEntity")
-
-                fetchRequest.predicate = predicate
-                fetchRequest.sortDescriptors = sortDescriptors
-                if let fetchLimit = fetchLimit {
-                    fetchRequest.fetchLimit = fetchLimit
-                }
-                let results = try context.fetch(fetchRequest) as! [Entity.ManagedObject]
-                let items: [Entity] = results.flatMap { $0.toEntity() as? Entity } ?? []
-                completion(.success(items))
-            } catch {
-                let fetchError = CoreDataWorkerError.cannotFetch("Cannot fetch error: \(error))")
-                completion(.failure(fetchError))
+    func getFeedItems(completion: @escaping ([FeedItem]) -> Void) {
+        coreData.performForegroundTask { (context) in
+            if let feedbackCoreDataItems = FeedItemEntity.fetchAllInContext(context: context, entityName: FeedItem.entityName) as? [FeedItemEntity] {
+                let items = feedbackCoreDataItems.flatMap({FeedItem(entity: $0)})
+                completion(items)
+            } else {
+                completion([])
             }
         }
     }
     
-    func upsert<Entity: ManagedObjectConvertible>
-        (entities: [Entity],
-         completion: @escaping (Error?) -> Void) {
-        
-        coreData.performBackgroundTask { context in
-            let objects = entities.flatMap({ (entity) -> Entity.ManagedObject? in
-                return entity.toManagedObject(in: context)
+    func updateFeedItems(_ feedItems: [FeedItem], completion: @escaping (Error?) -> Void) {
+        coreData.performForegroundTask { (context) in
+            
+            feedItems.forEach({ (item) in
+                item.toManagedObject(in: context)
             })
             do {
                 try context.save()
@@ -100,32 +61,17 @@ class NewCoreDataWorker: NewCoreDataWorkerProtocol {
         }
     }
     
-    func delete<Entity>(completion: @escaping (Result<[Entity]>) -> Void) where Entity : ManagedObjectConvertible {
+    func deleteFeedItems(completion: @escaping (Error?) -> Void) {
         coreData.performForegroundTask { context in
-            do {
-                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FeedItemEntity")
-                let results = try context.fetch(fetchRequest) as? [Entity.ManagedObject]
-                
-                guard let savedObjects = results else {
-                    print("nothing to delete")
-                    completion(.success([]))
-                    return
-                }
-                
-                for obj in savedObjects {
-                    context.delete(obj)
-                }
+            FeedItemEntity.deleteAllInContext(context: context, entityName: FeedItem.entityName)
                 do {
                     try context.save()
                     print("success delete")
-                    completion(.success([]))
+                     completion(nil)
                 } catch {
-                    completion(.failure(error))
+                     completion(error)
                 }
-            } catch {
-                let fetchError = CoreDataWorkerError.cannotFetch("Cannot fetch error: \(error))")
-                completion(.failure(fetchError))
-            }
         }
     }
 }
+
