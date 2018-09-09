@@ -45,5 +45,8 @@ final class ApplicationCoordinator: Coordinator {
         } else {
             navigationController?.viewControllers = [loginVC]
         }
+        
+        window.rootViewController = navigationController
+        window.makeKeyAndVisible()
     }
 }
