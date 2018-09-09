@@ -18,8 +18,8 @@ class ListVC: UIViewController {
     // MARK: - Vars
     
     fileprivate var refreshControl: UIRefreshControl?
-    fileprivate let presenter = ListPresenter()
-    fileprivate var router: ListRouter?
+    var presenter: ListPresenter?
+    var router: ListRouter?
     fileprivate var safariControllerHelper: SafariControllerHelper?
     
     // MARK: - Lifecycle
@@ -34,7 +34,8 @@ class ListVC: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
-        setupScene()
+        safariControllerHelper = SafariControllerHelper(viewController: self)
+        view.backgroundColor = Constants.Colors.grey
         presenter.fetchData()
     }
     
@@ -49,13 +50,6 @@ class ListVC: UIViewController {
     }
     
     // MARK: - Private
-    
-    private func setupScene() {
-        router = ListRouter(viewController: self)
-        presenter.output = self
-        safariControllerHelper = SafariControllerHelper(viewController: self)
-        view.backgroundColor = Constants.Colors.grey
-    }
     
     private func setupTableView() {
         tableView.backgroundColor = Constants.Colors.grey

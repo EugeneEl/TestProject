@@ -44,13 +44,13 @@ final class LoginPresenter {
         }
     }
     
-    fileprivate let userSessionService: UserSessionService
+    fileprivate let authWorker: AuthWorker
     
     // MARK: - Initialization
     
-    init(userSessionService: UserSessionService, model: LoginInputModel) {
+    init(authWorker: AuthWorker, model: LoginInputModel) {
         self.model = model
-        self.userSessionService = userSessionService
+        self.authWorker = authWorker
         self.loginState = .loginInput(model)
     }
     

@@ -15,7 +15,7 @@ final class RootRouter {
     // MARK: - Vars
     
     let window: UIWindow?
-    let appCoordinator: ApplicationCoordinator = ApplicationCoordinator()
+    //let appCoordinator: ApplicationCoordinator = ApplicationCoordinator()
     
     // MARK: - Initialization
     

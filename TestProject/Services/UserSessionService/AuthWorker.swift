@@ -27,13 +27,8 @@ final class AuthWorker {
     // MARK: - Vars
     
     private let networkService: NetworkService = ServiceLocator.inject()
-    private let appCoordinator: ApplicationCoordinator
     
     // MARK: - Initialization
-    
-    init(appCoordinator: ApplicationCoordinator) {
-        self.appCoordinator = appCoordinator
-    }
     
     // MARK: - Public
     

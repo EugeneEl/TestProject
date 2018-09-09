@@ -7,24 +7,36 @@
 //
 
 import Foundation
+import UIKit
 
-final class ApplicationCoordinator {
+final class ApplicationCoordinator: Coordinator {
     
-//    private let storage: UserSessionStorage
-//
-//    init(storage: UserSessionStorage) {
-//        self.storage = storage
-//    }
+    // MARK: - Vars
     
+    private var window: UIWindow
+    private let userSessionService: UserSessionService
+    private (set) internal var childCoordinators: [Coordinator] = []
+    private var navigationController: BaseNavigationController?
     
-//    static func buildLoginAssebler() -> LoginAssembler {
-//        let assembler = LoginAssembler(userSessionService: <#T##UserSessionService#>,
-//                                       model: <#T##LoginInputModel#>)
-//    }
+    // MARK: - Initialization
     
-//    func buildLoginAssebmler() -> LoginAssembler {
-//        let loginModel = LoginInputModel(email: "mail@yandex.ru", password: "123456")
-//        let assembler = LoginAssembler(userSessionService: <#T##UserSessionService#>,
-//                                       model: <#T##LoginInputModel#>)
-//    }
+    init(window: UIWindow, userSessionStorage: UserSessionStorage) {
+        self.window = window
+        self.userSessionService = UserSessionService(userSessionStorage: userSessionStorage)
+        super.init(flow: .root)
+    }
+    
+    // MARK: - Public
+    
+    func startWithLaunchOptions(_ options: [UIApplicationLaunchOptionsKey: Any]?) {
+        self.navigationController = BaseNavigationController()
+        window.rootViewController = navigationController
+        if userSessionService.isUserSessionRestored() {
+            // start main
+            let mainCoordinator = MainCoordinator(menuTabBarVC: MenuTabBarVC.instantiateFromStoryboardId(.main))
+            
+        } else {
+            // start login
+        }
+    }
 }

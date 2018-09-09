@@ -1,0 +1,26 @@
+//
+//  ListSceneBuilder.swift
+//  TestProject
+//
+//  Created by Eugene Goloboyar on 09.09.2018.
+//  Copyright © 2018 Eugene Goloboyar. All rights reserved.
+//
+
+import Foundation
+
+struct ListSceneBuilder {
+    
+//    let feedbackDataProvider: FeedDataProvider(dataWorker: FeedDataWorker(), apiWorker: FeedAPIWorker())
+    let feedDataProvider: FeedDataProvider
+    
+    func buildListScene() -> ListVC {
+        let vc = ListVC.instantiateFromStoryboardId(.main)
+        let presenter = ListPresenter(dataProvider: feedDataProvider)
+        presenter.output = vc
+        let router = ListRouter(viewController: vc)
+        vc.router = router
+        vc.presenter = presenter
+        
+        return vc
+    }
+}

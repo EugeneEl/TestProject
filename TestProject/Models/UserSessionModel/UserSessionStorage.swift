@@ -25,6 +25,10 @@ final class UserSessionStorage {
         return secureStorage.readObjectForKey(UserSessionStorage.tokenKey) != nil
     }
     
+    func provideToken() -> String? {
+        return secureStorage.readObjectForKey(UserSessionStorage.tokenKey) as? String
+    }
+    
     func removeCredentials() {
         secureStorage.deleteObjectForKey(UserSessionStorage.tokenKey)
     }

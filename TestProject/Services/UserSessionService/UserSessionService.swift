@@ -8,48 +8,71 @@
 
 import Foundation
 
+final class UserSession {
+    
+//    let user: User
+    let identifier: String
+    
+    // MARK: - Initialization
+    
+    init(identifier: String) {
+//        self.user = user
+        self.identifier = identifier
+    }
+}
+
 final class UserSessionService {
     
     // MARK: - Vars
     
-    var isLogged: Bool = false
-
-    fileprivate let userSessionStorage: UserSessionStorage
-    fileprivate let feedDataWorker: FeedDataWorker
+    fileprivate (set) internal var userSessionIdentifier: String?
     
-    // MARK: - Initialization
-    
-    init?(userSessionStorage: UserSessionStorage, feedDataWorker: FeedDataWorker) {
-        if !userSessionStorage.hasToken() {
-            return nil
-        } else {
-            self.userSessionStorage = userSessionStorage
-            self.feedDataWorker = feedDataWorker
+    // MARK: - UserSession
+    private (set) var userSession: UserSession? {
+        didSet {
+            userSessionIdentifier = userSession?.identifier
         }
     }
     
-    init(model: UserSessionModel, userSessionStorage: UserSessionStorage, feedDataWorker: FeedDataWorker) {
+    fileprivate let userSessionStorage: UserSessionStorage
+
+    // MARK: - Initialization
+    
+    init(userSessionStorage: UserSessionStorage) {
         self.userSessionStorage = userSessionStorage
-        self.feedDataWorker = feedDataWorker
-        self.userSessionStorage.updateCredentials(model)
     }
+    
+    func isUserSessionRestored() -> Bool {
+        if let token = userSessionStorage.provideToken() {
+            let session = UserSession(identifier: token)
+            userSession = session
+            return true
+        } else {
+            return false
+        }
+    }
+    
+//    init(model: UserSessionModel, userSessionStorage: UserSessionStorage, feedDataWorker: FeedDataWorker) {
+//        self.userSessionStorage = userSessionStorage
+//        self.userSessionStorage.updateCredentials(model)
+//    }
     
     // MARK: - Public
     
     func closeUserSessionWithCopletion(_ completion: @escaping ()->()) {
-        clearDataWithCompletion {
-            completion()
-        }
+//        clearDataWithCompletion {
+//            completion()
+//        }
     }
     
     // MARK: - Private
-    
-    private func clearDataWithCompletion(_ completion: @escaping ()->()) {
-        let worker = FeedDataWorker()
-        worker.deleteItems {
-            self.userSessionStorage.removeCredentials()
-            completion()
-        }
-    }
+//
+//    private func clearDataWithCompletion(_ completion: @escaping ()->()) {
+//        let worker = FeedDataWorker()
+//        worker.deleteItems {
+//            self.userSessionStorage.removeCredentials()
+//            completion()
+//        }
+//    }
 }
 
