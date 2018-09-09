@@ -59,7 +59,7 @@ final class UserSessionService {
     
     // MARK: - Public
     
-    func closeUserSessionWithCopletion(_ completion: @escaping ()->()) {
+    func closeUserSessionWithCompletion(_ completion: @escaping ()->()) {
 //        clearDataWithCompletion {
 //            completion()
 //        }

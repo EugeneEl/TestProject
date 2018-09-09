@@ -1,5 +1,5 @@
 //
-//  ListSceneBuilder.swift
+//  SettingsSceneBuilder.swift
 //  TestProject
 //
 //  Created by Eugene Goloboyar on 09.09.2018.
@@ -8,24 +8,22 @@
 
 import Foundation
 
-struct ListSceneBuilder {
+struct SettingsSceneBuilder {
     
     // MARK: - Vars
     
-    let feedDataProvider: FeedDataProvider
+    let userSessionService: UserSessionService
     
     // MARK: - Public
     
-    func buildListScene() -> BaseNavigationController {
-        let vc = ListVC.instantiateFromStoryboardId(.main)
-        let presenter = ListPresenter(dataProvider: feedDataProvider)
+    func buildSettingsScene() -> BaseNavigationController {
+        let vc = SettingsVC.instantiateFromStoryboardId(.settings)
+        let presenter = SettingsPresenter(userSessionService: userSessionService)
         presenter.output = vc
-        let router = ListRouter(viewController: vc)
-        vc.router = router
         vc.presenter = presenter
         
         let navigationController = BaseNavigationController(rootViewController: vc)
-    
+        
         return navigationController
     }
 }

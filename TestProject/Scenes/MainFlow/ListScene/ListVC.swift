@@ -36,7 +36,7 @@ class ListVC: UIViewController {
         setupTableView()
         safariControllerHelper = SafariControllerHelper(viewController: self)
         view.backgroundColor = Constants.Colors.grey
-        presenter.fetchData()
+        presenter?.fetchData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,7 +74,7 @@ class ListVC: UIViewController {
     // MARK: - Actions
     
     @objc fileprivate func refresh() {
-        presenter.fetchData()
+        presenter?.fetchData()
     }
 }
 
@@ -100,13 +100,13 @@ extension ListVC: ListPresenterOutput {
 
 extension ListVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.feedItems.count
+        return presenter?.feedItems.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = FeedListTableViewCell.dequeueFromTableView(tableView)
         
-        guard let item = presenter.feedItems[safe: indexPath.row] else {
+        guard let item = presenter?.feedItems[safe: indexPath.row] else {
             return cell
         }
         
@@ -129,7 +129,7 @@ extension ListVC: UITableViewDelegate {
 extension ListVC: FeedListTableViewCellInteractable {
     func linkDidTapInCell(_ cell: FeedListTableViewCell) {
         guard let indexPath = tableView.indexPath(for: cell),
-            let url = presenter.provideURLForIndex(indexPath.row) else {return}
+            let url = presenter?.provideURLForIndex(indexPath.row) else {return}
         safariControllerHelper?.openURLInSafariViewController(url)
     }
 }

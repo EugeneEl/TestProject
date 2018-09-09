@@ -30,13 +30,20 @@ final class ApplicationCoordinator: Coordinator {
     
     func startWithLaunchOptions(_ options: [UIApplicationLaunchOptionsKey: Any]?) {
         self.navigationController = BaseNavigationController()
+        let loginCoordinator = LoginCoordinator(navigationController: navigationController!)
+        childCoordinators.append(loginCoordinator)
+        let loginVC = loginCoordinator.buildLoginScreen()
+        loginVC.enforceLoadView()
+        
         window.rootViewController = navigationController
         if userSessionService.isUserSessionRestored() {
-            // start main
-            let mainCoordinator = MainCoordinator(menuTabBarVC: MenuTabBarVC.instantiateFromStoryboardId(.main))
+            let mainCoordinator = MainCoordinator(userSessionService: userSessionService)
+            childCoordinators.append(mainCoordinator)
+            let mainMenuVC = mainCoordinator.buildMainMenuWithLaunchOptions(options)
             
+            navigationController?.viewControllers = [loginVC, mainMenuVC]
         } else {
-            // start login
+            navigationController?.viewControllers = [loginVC]
         }
     }
 }

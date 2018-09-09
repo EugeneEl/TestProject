@@ -12,6 +12,8 @@
 		3E13F8422145491900CD09D5 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E13F8412145491900CD09D5 /* MainCoordinator.swift */; };
 		3E13F844214549A200CD09D5 /* ListSceneBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E13F843214549A200CD09D5 /* ListSceneBuilder.swift */; };
 		3E13F84621454B0600CD09D5 /* ListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E13F84521454B0600CD09D5 /* ListCoordinator.swift */; };
+		3E13F8482145597600CD09D5 /* SettingsSceneBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E13F8472145597600CD09D5 /* SettingsSceneBuilder.swift */; };
+		3E13F84C21455ACE00CD09D5 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E13F84B21455ACE00CD09D5 /* SettingsCoordinator.swift */; };
 		3E2FA18F206BEE4E0000DAD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E2FA185206BEE4D0000DAD7 /* Assets.xcassets */; };
 		3E2FA190206BEE4E0000DAD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E2FA188206BEE4D0000DAD7 /* LaunchScreen.storyboard */; };
 		3E2FA191206BEE4E0000DAD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E2FA189206BEE4D0000DAD7 /* Main.storyboard */; };
@@ -109,6 +111,8 @@
 		3E13F8412145491900CD09D5 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		3E13F843214549A200CD09D5 /* ListSceneBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSceneBuilder.swift; sourceTree = "<group>"; };
 		3E13F84521454B0600CD09D5 /* ListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCoordinator.swift; sourceTree = "<group>"; };
+		3E13F8472145597600CD09D5 /* SettingsSceneBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSceneBuilder.swift; sourceTree = "<group>"; };
+		3E13F84B21455ACE00CD09D5 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
 		3E2FA169206BED940000DAD7 /* TestProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E2FA185206BEE4D0000DAD7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3E2FA188206BEE4D0000DAD7 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -578,6 +582,7 @@
 			children = (
 				3E62884A21317AA1001A7E18 /* SettingsVC.swift */,
 				3E62884C21317AB0001A7E18 /* SettingsPresenter.swift */,
+				3E13F8472145597600CD09D5 /* SettingsSceneBuilder.swift */,
 			);
 			name = SettingsFlow;
 			path = TestProject/Scenes/SettingsFlow;
@@ -682,6 +687,7 @@
 			children = (
 				3E13F8412145491900CD09D5 /* MainCoordinator.swift */,
 				3E13F84521454B0600CD09D5 /* ListCoordinator.swift */,
+				3E13F84B21455ACE00CD09D5 /* SettingsCoordinator.swift */,
 			);
 			path = MainCoordinator;
 			sourceTree = "<group>";
@@ -1053,6 +1059,7 @@
 				3E58BA8F206CDF49001DEB34 /* UICollectionViewCell+Extensions.swift in Sources */,
 				3E82D03021295277001A2720 /* FormInputView.swift in Sources */,
 				3E8AFAC7207F2C3B00C562AF /* ListVC.swift in Sources */,
+				3E13F84C21455ACE00CD09D5 /* SettingsCoordinator.swift in Sources */,
 				3E58BA94206CDF49001DEB34 /* String+Validation.swift in Sources */,
 				3E6288342131286B001A7E18 /* LoginFooterView.swift in Sources */,
 				3E62883A21313263001A7E18 /* Constants.swift in Sources */,
@@ -1061,6 +1068,7 @@
 				3E2FA192206BEE4E0000DAD7 /* AppDelegate.swift in Sources */,
 				3E58BA8C206CDF49001DEB34 /* UITableView+Extensions.swift in Sources */,
 				3E628852213299F7001A7E18 /* MenuTabBarItem.swift in Sources */,
+				3E13F8482145597600CD09D5 /* SettingsSceneBuilder.swift in Sources */,
 				3E39BB0D213BD3D200254BF8 /* User.swift in Sources */,
 				3E8AFACB207F2C5300C562AF /* ListRouter.swift in Sources */,
 				3E90AF7F2079E78F006ED70D /* ImageAttachment.swift in Sources */,

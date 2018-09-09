@@ -7,46 +7,33 @@
 //
 
 import Foundation
+import UIKit
 
 class MainCoordinator: Coordinator {
     
     // MARK: - Vars
     
-    private let listBuilder = ListSceneBuilder(feedDataProvider: FeedDataProvider(dataWorker: FeedDataWorker(),
-                                                                                  apiWorker: FeedAPIWorker()))
-    let menuTabBarVC: MenuTabBarVC
-//
-//    let loginAssembler = LoginAssembler(authWorker: AuthWorker(),
-//                                        model: LoginInputModel(email: "",
-//                                                               password: ""))
+    let menuTabBarVC = MenuTabBarVC.instantiateFromStoryboardId(.main)
+    let listCoordinator: ListCoordinator = ListCoordinator()
+    let settingsCoordinator: SettingsCoordinator
     
     // MARK: - Initialization
     
-    init(menuTabBarVC: MenuTabBarVC) {
-        self.menuTabBarVC = menuTabBarVC
+    init(userSessionService: UserSessionService) {
+        self.settingsCoordinator = SettingsCoordinator(userSessionService: userSessionService)
         super.init(flow: .tabBar)
     }
     
     // MARK: - Public
     
-    private func setupNavigationWithLaunchOptions(_ options: [UIApplicationLaunchOptionsKey: Any]?) {
-        let mainNavigationVC = BaseNavigationController(rootViewController: listBuilder.buildListScene())
+    func buildMainMenuWithLaunchOptions(_ options: [UIApplicationLaunchOptionsKey: Any]?) -> UIViewController {
+        let mainNavigationVC = listCoordinator.provideListScene()
+        let settingsNavigationVC = settingsCoordinator.provideSettingsScene()
+
+        menuTabBarVC.viewControllers = [mainNavigationVC, settingsNavigationVC]
         
-        let settingsNavigationVC = BaseNavigationController(rootViewController: SettingsVC.instantiateFromStoryboardId(.settings))
-        viewControllers = [mainNavigationVC, settingsNavigationVC]
+        return menuTabBarVC
     }
-    
-//    func buildListScreen() -> ListVC {
-//
-//    }
-//
-//    func buildSettingsScreen() -> SettingsVC {
-//
-//    }
-    
-//    func buildListScreen() -> NewLoginVC {
-//        //return loginAssembler.assembleLoginSceneWithDelegate(delegate: self)
-//    }
 }
 
 

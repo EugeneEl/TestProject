@@ -28,14 +28,23 @@ final class SettingsPresenter {
         }
     }
     
+    private let userSessionService: UserSessionService
+    
     weak var output: SettingsPresenterOutput?
+    
+    // MARK: - Initialization
+    
+    init(userSessionService: UserSessionService) {
+        self.userSessionService = userSessionService
+    }
     
     // MARK: - Public
     
     func handleLogoutTap() {
         state = .isLogouting
-//        UserSessionService.shared.closeUserSessionWithCopletion {
-//            self.state = .logouted
-//        }
+        userSessionService.closeUserSessionWithCompletion {[weak self] in
+            guard let strongSelf = self else {return}
+            strongSelf.state = .logouted
+        }
     }
 }

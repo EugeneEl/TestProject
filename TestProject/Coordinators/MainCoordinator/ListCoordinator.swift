@@ -7,12 +7,11 @@
 //
 
 import Foundation
+import UIKit
 
 class ListCoordinator: Coordinator {
     
     // MARK: - Vars
-    
-    let navigationController: BaseNavigationController?
     
     private let listBuilder = ListSceneBuilder(feedDataProvider: FeedDataProvider(dataWorker: FeedDataWorker(),
                                                                           apiWorker: FeedAPIWorker()))
@@ -24,7 +23,7 @@ class ListCoordinator: Coordinator {
     }
     
     func provideListScene() -> UIViewController {
-        self.navigationController = BaseNavigationController(rootViewController: listBuilder.buildListScene())
-        return self.navigationController
+        let navigationController = BaseNavigationController(rootViewController: listBuilder.buildListScene())
+        return navigationController
     }
 }
