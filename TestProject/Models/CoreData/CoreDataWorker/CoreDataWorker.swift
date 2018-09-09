@@ -65,10 +65,8 @@ class NewCoreDataWorker: NewCoreDataWorkerProtocol {
          completion: @escaping (Result<[Entity]>) -> Void) {
         coreData.performForegroundTask { context in
             do {
-                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Entity.ManagedObject.entityName())
-                
-                print("name: \(Entity.ManagedObject.entityName())")
-                
+                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FeedItemEntity")
+
                 fetchRequest.predicate = predicate
                 fetchRequest.sortDescriptors = sortDescriptors
                 if let fetchLimit = fetchLimit {
@@ -105,7 +103,7 @@ class NewCoreDataWorker: NewCoreDataWorkerProtocol {
     func delete<Entity>(completion: @escaping (Result<[Entity]>) -> Void) where Entity : ManagedObjectConvertible {
         coreData.performForegroundTask { context in
             do {
-                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Entity.ManagedObject.entityName())
+                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FeedItemEntity")
                 let results = try context.fetch(fetchRequest) as? [Entity.ManagedObject]
                 
                 guard let savedObjects = results else {

@@ -92,6 +92,7 @@ final class ApplicationCoordinator: Coordinator {
 
 extension ApplicationCoordinator: UserSessionServiceDelegate {
     func userSessionStateDidChange(_ userSessionState: UserSessionState) {
+        childCoordinators.removeAll()
         switch userSessionState {
         case .opened(let session):
             startWithLaunchOptions(nil)

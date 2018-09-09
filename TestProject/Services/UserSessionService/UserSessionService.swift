@@ -8,36 +8,6 @@
 
 import Foundation
 
-struct DataWorkers {
-    
-    let feedbackDataWorker = FeedDataProvider(dataWorker: FeedDataWorker(),
-                                              apiWorker: FeedAPIWorker())
-}
-
-final class UserSession {
-    
-    let workers = DataWorkers()
-    let identifier: String
-    
-    // MARK: - Initialization
-    
-    init(identifier: String) {
-        self.identifier = identifier
-    }
-    
-    // MARK: - Public
-    
-    func closeSession() {
-        workers.feedbackDataWorker.clearData()
-    }
-}
-
-enum State<T> {
-    case isLoading
-    case success(T?)
-    case error(String, T?)
-}
-
 enum UserSessionState {
     case opened(UserSession)
     case closed(UserSession)
