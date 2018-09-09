@@ -71,13 +71,14 @@ final class RootRouter {
     }
 }
 
-// MARK: - LoginRouterDelegate
+//// MARK: - LoginRouterDelegate
+//
+//extension RootRouter: LoginRouterDelegate {
+//    func userDidLoginWithSession(_ session: UserSessionService) {
+//        if let nc = window?.rootViewController as? UINavigationController {
+//            let menuTabBarVC = MenuTabBarVC.instantiateFromStoryboardId(.main)
+//            nc.pushViewController(menuTabBarVC, animated: true)
+//        }
+//    }
+//}
 
-extension RootRouter: LoginRouterDelegate {
-    func userDidLoginWithSession(_ session: UserSessionService) {
-        if let nc = window?.rootViewController as? UINavigationController {
-            let menuTabBarVC = MenuTabBarVC.instantiateFromStoryboardId(.main)
-            nc.pushViewController(menuTabBarVC, animated: true)
-        }
-    }
-}

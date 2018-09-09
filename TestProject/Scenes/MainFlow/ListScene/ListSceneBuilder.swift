@@ -16,16 +16,14 @@ struct ListSceneBuilder {
     
     // MARK: - Public
     
-    func buildListScene() -> BaseNavigationController {
+    func buildListScene() -> ListVC {
         let vc = ListVC.instantiateFromStoryboardId(.main)
         let presenter = ListPresenter(dataProvider: feedDataProvider)
-        presenter.output = vc
         let router = ListRouter(viewController: vc)
         vc.router = router
         vc.presenter = presenter
+        presenter.output = vc
         
-        let navigationController = BaseNavigationController(rootViewController: vc)
-    
-        return navigationController
+        return vc
     }
 }

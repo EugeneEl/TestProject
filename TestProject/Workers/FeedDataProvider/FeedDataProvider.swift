@@ -47,4 +47,10 @@ final class FeedDataProvider {
             }
         }
     }
+    
+    func clearData() {
+        dataWorker.deleteItems {
+            print("deleted")
+        }
+    }
 }

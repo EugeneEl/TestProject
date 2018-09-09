@@ -12,30 +12,21 @@ class LoginCoordinator: Coordinator {
     
     // MARK: - Vars
     
-    let navigationController: BaseNavigationController
-    
-    let loginBuilder = LoginSceneBuilder(authWorker: AuthWorker(),
-                                        model: LoginInputModel(email: "",
-                                                                password: ""))
+    let loginBuilder: LoginSceneBuilder
     
     // MARK: - Initialization
     
-    init(navigationController: BaseNavigationController) {
-        self.navigationController = navigationController
+    init(userSessionService: UserSessionService) {
+        self.loginBuilder = LoginSceneBuilder(userSessionService: userSessionService,
+                             model: LoginInputModel(email: "",
+                                                    password: ""))
         super.init(flow: .login)
     }
     
     // MARK: - Public
     
     func buildLoginScreen() -> NewLoginVC {
-        return loginBuilder.buildLoginSceneWithDelegate(delegate: self)
+        return loginBuilder.buildLoginScene()
     }
 }
 
-// MARK: - LoginRouterDelegate
-
-extension LoginCoordinator: LoginRouterDelegate {
-    func userDidLoginWithSession(_ session: UserSessionService) {
-        
-    }
-}

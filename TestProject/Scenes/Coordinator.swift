@@ -16,7 +16,7 @@ enum CoordinatorFlow {
     case settings
 }
 
-class Coordinator {
+class Coordinator: NSObject {
     
     // MARK: - Vars
     
@@ -26,5 +26,6 @@ class Coordinator {
     
     init(flow: CoordinatorFlow) {
         self.flow = flow
+        super.init()
     }
 }

@@ -9,11 +9,11 @@
 import Foundation
 import CoreData
 
-extension NSManagedObject {
-    static func entityName() -> String {
-        return String(describing: self)
-    }
-}
+//extension NSManagedObject {
+//    static func entityName() -> String {
+//        return String(describing: self)
+//    }
+//}
 
 // thanks to Michal Wojtysiak for providing approch for converting CoreData --> Plain Object
 // I took this from https://swifting.io/blog/2016/11/27/28-better-coredata-with-swift-generics/
@@ -24,6 +24,10 @@ protocol ManagedObjectProtocol {
 }
 
 extension ManagedObjectProtocol where Self: NSManagedObject {
+    
+    static func entityName() -> String {
+        return String(describing: self)
+    }
     
     static func getOrCreateSingle(with id: String, from context: NSManagedObjectContext) -> Self {
         let result = single(with: id, from: context) ?? insertNew(in: context)

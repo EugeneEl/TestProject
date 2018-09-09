@@ -10,14 +10,13 @@ import Foundation
 
 struct LoginSceneBuilder {
     
-    let authWorker: AuthWorker
+    let userSessionService: UserSessionService
     let model: LoginInputModel
     
-    func buildLoginSceneWithDelegate(delegate: LoginRouterDelegate) -> NewLoginVC {
+    func buildLoginScene() -> NewLoginVC {
         let vc = NewLoginVC.instantiateFromStoryboardId(.login)
         let router = LoginRouter(viewController: vc)
-        router.delegate = delegate
-        let presenter = LoginPresenter(authWorker: authWorker, model: model)
+        let presenter = LoginPresenter(userSessionService: userSessionService, model: model)
         vc.presenter = presenter
         vc.router = router
         

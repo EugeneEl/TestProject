@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol LoginRouterDelegate: class {
-    func userDidLoginWithSession(_ session: UserSessionService)
+    func userDidLogin(_ user: User)
 }
 
 /// LoginRouter encapsulates logic for navigation on login scene.

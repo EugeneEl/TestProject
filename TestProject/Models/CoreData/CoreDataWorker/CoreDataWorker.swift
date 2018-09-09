@@ -67,13 +67,15 @@ class NewCoreDataWorker: NewCoreDataWorkerProtocol {
             do {
                 let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Entity.ManagedObject.entityName())
                 
+                print("name: \(Entity.ManagedObject.entityName())")
+                
                 fetchRequest.predicate = predicate
                 fetchRequest.sortDescriptors = sortDescriptors
                 if let fetchLimit = fetchLimit {
                     fetchRequest.fetchLimit = fetchLimit
                 }
-                let results = try context.fetch(fetchRequest) as? [Entity.ManagedObject]
-                let items: [Entity] = results?.flatMap { $0.toEntity() as? Entity } ?? []
+                let results = try context.fetch(fetchRequest) as! [Entity.ManagedObject]
+                let items: [Entity] = results.flatMap { $0.toEntity() as? Entity } ?? []
                 completion(.success(items))
             } catch {
                 let fetchError = CoreDataWorkerError.cannotFetch("Cannot fetch error: \(error))")
@@ -96,6 +98,7 @@ class NewCoreDataWorker: NewCoreDataWorkerProtocol {
             } catch {
                 completion(CoreDataWorkerError.cannotSave(error))
             }
+            print("success save")
         }
     }
     

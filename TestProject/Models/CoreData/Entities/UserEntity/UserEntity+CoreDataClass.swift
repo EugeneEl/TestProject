@@ -28,4 +28,8 @@ extension User: ManagedObjectConvertible {
         
         return entity
     }
+    
+    var entityName: String {
+        return "UserEntity"
+    }
 }

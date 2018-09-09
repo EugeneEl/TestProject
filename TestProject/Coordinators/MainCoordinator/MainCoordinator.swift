@@ -14,13 +14,14 @@ class MainCoordinator: Coordinator {
     // MARK: - Vars
     
     let menuTabBarVC = MenuTabBarVC.instantiateFromStoryboardId(.main)
-    let listCoordinator: ListCoordinator = ListCoordinator()
+    let listCoordinator: ListCoordinator
     let settingsCoordinator: SettingsCoordinator
     
     // MARK: - Initialization
     
     init(userSessionService: UserSessionService) {
         self.settingsCoordinator = SettingsCoordinator(userSessionService: userSessionService)
+        self.listCoordinator = ListCoordinator(userSession: userSessionService.userSession!)
         super.init(flow: .tabBar)
     }
     

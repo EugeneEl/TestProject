@@ -13,7 +13,7 @@ final class FeedAPIWorkerJSON: FeedAPIProtocol {
     // MARK: - FeedAPIProtocol
     
     func fetchNewsWithCompletionSuccess(_ success: @escaping FetchFeedListCompletionSuccess, failure: @escaping FetchFeedListCompletionFail) {
-
+        
         let json = JSON(localFileName: "Feed")
         
         var models = [FeedItem]()

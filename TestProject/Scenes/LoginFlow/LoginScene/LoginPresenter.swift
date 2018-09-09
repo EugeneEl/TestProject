@@ -44,13 +44,13 @@ final class LoginPresenter {
         }
     }
     
-    fileprivate let authWorker: AuthWorker
+    fileprivate let userSessionService: UserSessionService
     
     // MARK: - Initialization
     
-    init(authWorker: AuthWorker, model: LoginInputModel) {
+    init(userSessionService: UserSessionService, model: LoginInputModel) {
         self.model = model
-        self.authWorker = authWorker
+        self.userSessionService = userSessionService
         self.loginState = .loginInput(model)
     }
     
@@ -58,9 +58,13 @@ final class LoginPresenter {
     
     func loginDidTap() {
         loginState = .isLogging
-        let userSessionModel = UserSessionModel(email: model.email, password: model.password)
-//        userSessionService.openUserSessionWithModel(userSessionModel)
-        loginState = .loginSuccess
+        userSessionService.openUserSessionWithModel(model, success: {[weak self] (flow, user) in
+            guard let strongSelf = self else {return}
+            strongSelf.loginState = .loginSuccess
+        }) {[weak self] (flow, errorText) in
+            guard let strongSelf = self else {return}
+            strongSelf.loginState = .loginFail(error: errorText)
+        }
     }
     
     func provideTextForForm(_ form: LoginFormType) -> String {

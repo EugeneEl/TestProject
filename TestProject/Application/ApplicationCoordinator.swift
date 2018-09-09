@@ -24,22 +24,18 @@ final class ApplicationCoordinator: Coordinator {
         self.window = window
         self.userSessionService = UserSessionService(userSessionStorage: userSessionStorage)
         super.init(flow: .root)
+        self.userSessionService.addListener(self)
     }
     
     // MARK: - Public
     
     func startWithLaunchOptions(_ options: [UIApplicationLaunchOptionsKey: Any]?) {
-        self.navigationController = BaseNavigationController()
-        let loginCoordinator = LoginCoordinator(navigationController: navigationController!)
-        childCoordinators.append(loginCoordinator)
-        let loginVC = loginCoordinator.buildLoginScreen()
-        loginVC.enforceLoadView()
+        navigationController = BaseNavigationController()
+        let loginVC = buildLoginFlow()
         
         window.rootViewController = navigationController
         if userSessionService.isUserSessionRestored() {
-            let mainCoordinator = MainCoordinator(userSessionService: userSessionService)
-            childCoordinators.append(mainCoordinator)
-            let mainMenuVC = mainCoordinator.buildMainMenuWithLaunchOptions(options)
+            let mainMenuVC = buildMainFlowWithOptions(options)
             
             navigationController?.viewControllers = [loginVC, mainMenuVC]
         } else {
@@ -48,5 +44,61 @@ final class ApplicationCoordinator: Coordinator {
         
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
+    }
+    
+    // MARK: - Private
+    
+    private func buildMainFlowWithOptions(_ options: [UIApplicationLaunchOptionsKey: Any]?) -> UIViewController {
+        let mainCoordinator = MainCoordinator(userSessionService: userSessionService)
+        addCoordinator(mainCoordinator)
+        let mainMenuVC = mainCoordinator.buildMainMenuWithLaunchOptions(options)
+        
+        return mainMenuVC
+    }
+    
+    fileprivate func startLoginFlow() {
+        
+    }
+    
+    private func buildLoginFlow() -> UIViewController {
+        let loginCoordinator = LoginCoordinator(userSessionService: userSessionService)
+        addCoordinator(loginCoordinator)
+        let loginVC = loginCoordinator.buildLoginScreen()
+        loginVC.enforceLoadView()
+        
+        return loginVC
+    }
+    
+    fileprivate func addCoordinator(_ coordinator: Coordinator) {
+        var isInserted = false
+        for childCoordinator in childCoordinators {
+            if childCoordinator.flow == coordinator.flow {
+                isInserted = true
+                break
+            }
+        }
+        
+        if !isInserted {
+            childCoordinators.append(coordinator)
+        }
+    }
+    
+    fileprivate func removeCoordinatorWithFlow(_ flow: CoordinatorFlow) {
+       childCoordinators = childCoordinators.filter { $0.flow != flow }
+    }
+}
+
+// MARK: - UserSessionServiceDelegate
+
+extension ApplicationCoordinator: UserSessionServiceDelegate {
+    func userSessionStateDidChange(_ userSessionState: UserSessionState) {
+        switch userSessionState {
+        case .opened(let session):
+            startWithLaunchOptions(nil)
+        case .closed(let session):
+            removeCoordinatorWithFlow(.tabBar)
+            navigationController?.viewControllers.removeAll()
+            startWithLaunchOptions(nil)
+        }
     }
 }

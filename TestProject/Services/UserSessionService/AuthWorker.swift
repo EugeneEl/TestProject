@@ -9,7 +9,6 @@
 import Foundation
 
 enum AuthFlow {
-    case existingUser
     case login(LoginInputModel)
 }
 
@@ -36,8 +35,6 @@ final class AuthWorker {
                           success: @escaping AuthCompletionSuccess,
                           failure: @escaping AuthCompletionFailure) {
         switch flow {
-        case .existingUser:
-            break
         case .login(let model):
             break
         }

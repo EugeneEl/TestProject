@@ -13,12 +13,12 @@ class ListCoordinator: Coordinator {
     
     // MARK: - Vars
     
-    private let listBuilder = ListSceneBuilder(feedDataProvider: FeedDataProvider(dataWorker: FeedDataWorker(),
-                                                                          apiWorker: FeedAPIWorker()))
+    private let listBuilder: ListSceneBuilder
     
     // MARK: - Initialization
     
-    init() {
+    init(userSession: UserSession) {
+        self.listBuilder = ListSceneBuilder(feedDataProvider: userSession.workers.feedbackDataWorker)
         super.init(flow: .list)
     }
     

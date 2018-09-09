@@ -8,28 +8,58 @@
 
 import Foundation
 
+struct DataWorkers {
+    
+    let feedbackDataWorker = FeedDataProvider(dataWorker: FeedDataWorker(),
+                                              apiWorker: FeedAPIWorker())
+}
+
 final class UserSession {
     
-//    let user: User
+    let workers = DataWorkers()
     let identifier: String
     
     // MARK: - Initialization
     
     init(identifier: String) {
-//        self.user = user
         self.identifier = identifier
     }
+    
+    // MARK: - Public
+    
+    func closeSession() {
+        workers.feedbackDataWorker.clearData()
+    }
+}
+
+enum State<T> {
+    case isLoading
+    case success(T?)
+    case error(String, T?)
+}
+
+enum UserSessionState {
+    case opened(UserSession)
+    case closed(UserSession)
+}
+
+protocol UserSessionServiceDelegate: class {
+    func userSessionStateDidChange( _ userSessionState: UserSessionState)
 }
 
 final class UserSessionService {
     
     // MARK: - Vars
     
+    private var delegates = NSHashTable<AnyObject>.weakObjects()
+    
     fileprivate (set) internal var userSessionIdentifier: String?
+    fileprivate let authWorker = AuthWorker()
     
     // MARK: - UserSession
     private (set) var userSession: UserSession? {
         didSet {
+            oldValue?.closeSession()
             userSessionIdentifier = userSession?.identifier
         }
     }
@@ -52,27 +82,39 @@ final class UserSessionService {
         }
     }
     
-//    init(model: UserSessionModel, userSessionStorage: UserSessionStorage, feedDataWorker: FeedDataWorker) {
-//        self.userSessionStorage = userSessionStorage
-//        self.userSessionStorage.updateCredentials(model)
-//    }
+    func addListener(_ listener: UserSessionServiceDelegate) {
+        delegates.add(listener)
+    }
+    
+    func openUserSessionWithModel(_ model: LoginInputModel, success: @escaping AuthCompletionSuccess, failure: @escaping AuthCompletionFailure) {
+        authWorker.authUserWithFlow(.login(model), success: {[weak self] (authFlow, user) in
+            guard let strongSelf = self else {return}
+            let session = UserSession(identifier: user.identifier)
+            strongSelf.userSession = session
+            strongSelf.userSessionStorage.updateSessionID(user.identifier)
+            strongSelf.delegates.allObjects.forEach { delegate in
+                if let listener = delegate as? UserSessionServiceDelegate {
+                    listener.userSessionStateDidChange(.opened(session))
+                }
+            }
+            success(authFlow, user)
+        }) {[weak self] (authFlow, errorText) in
+            failure(authFlow, errorText)
+        }
+    }
     
     // MARK: - Public
     
     func closeUserSessionWithCompletion(_ completion: @escaping ()->()) {
-//        clearDataWithCompletion {
-//            completion()
-//        }
+        if let session = userSession {
+            userSessionStorage.removeCredentials()
+            delegates.allObjects.forEach { delegate in
+                if let listener = delegate as? UserSessionServiceDelegate {
+                    listener.userSessionStateDidChange(.closed(session))
+                }
+            }
+            userSession = nil
+        }
     }
-    
-    // MARK: - Private
-//
-//    private func clearDataWithCompletion(_ completion: @escaping ()->()) {
-//        let worker = FeedDataWorker()
-//        worker.deleteItems {
-//            self.userSessionStorage.removeCredentials()
-//            completion()
-//        }
-//    }
 }
 

@@ -17,8 +17,8 @@ final class UserSessionStorage {
     
     // MARK: - Public
     
-    func updateCredentials(_ userSessionModel: UserSessionModel) {
-        secureStorage.updateObject(userSessionModel.token as AnyObject, forKey: UserSessionStorage.tokenKey)
+    func updateSessionID(_ sessionID: String) {
+        secureStorage.updateObject(sessionID as AnyObject, forKey: UserSessionStorage.tokenKey)
     }
     
     func hasToken() -> Bool {

@@ -16,14 +16,12 @@ struct SettingsSceneBuilder {
     
     // MARK: - Public
     
-    func buildSettingsScene() -> BaseNavigationController {
+    func buildSettingsScene() -> SettingsVC {
         let vc = SettingsVC.instantiateFromStoryboardId(.settings)
         let presenter = SettingsPresenter(userSessionService: userSessionService)
         presenter.output = vc
         vc.presenter = presenter
-        
-        let navigationController = BaseNavigationController(rootViewController: vc)
-        
-        return navigationController
+
+        return vc
     }
 }
