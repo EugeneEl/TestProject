@@ -14,7 +14,7 @@ class LoginCoordinator: Coordinator {
     
     let navigationController: BaseNavigationController
     
-    let loginAssembler = LoginAssembler(authWorker: AuthWorker(),
+    let loginBuilder = LoginSceneBuilder(authWorker: AuthWorker(),
                                         model: LoginInputModel(email: "",
                                                                 password: ""))
     
@@ -28,7 +28,7 @@ class LoginCoordinator: Coordinator {
     // MARK: - Public
     
     func buildLoginScreen() -> NewLoginVC {
-        return loginAssembler.assembleLoginSceneWithDelegate(delegate: self)
+        return loginBuilder.buildLoginSceneWithDelegate(delegate: self)
     }
 }
 

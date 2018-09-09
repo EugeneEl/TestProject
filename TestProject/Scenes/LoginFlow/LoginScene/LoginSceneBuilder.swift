@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct LoginAssembler {
+struct LoginSceneBuilder {
     
     let authWorker: AuthWorker
     let model: LoginInputModel
     
-    func assembleLoginSceneWithDelegate(delegate: LoginRouterDelegate) -> NewLoginVC {
+    func buildLoginSceneWithDelegate(delegate: LoginRouterDelegate) -> NewLoginVC {
         let vc = NewLoginVC.instantiateFromStoryboardId(.login)
         let router = LoginRouter(viewController: vc)
         router.delegate = delegate
