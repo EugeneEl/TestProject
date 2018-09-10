@@ -33,9 +33,5 @@ extension FeedItem: ManagedObjectConvertible {
 
         return entity
     }
-    
-    static var entityName: String {
-        return "FeedItemEntity"
-    }
 }
 
