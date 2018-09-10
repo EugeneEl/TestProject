@@ -14,9 +14,7 @@ final class FeedAPIWorkerJSON: FeedAPIProtocol {
     
     func fetchNewsWithCompletionSuccess(_ success: @escaping FetchFeedListCompletionSuccess, failure: @escaping FetchFeedListCompletionFail) {
         
-        let path = Bundle.main.path(forResource: "Feed", ofType: "json")!
-        let jsonString = try? String(contentsOfFile: path, encoding: String.Encoding.utf8)
-        let json = JSON(parseJSON: jsonString!)
+        let json = JSON(localFileName: "Feed")
         
         var models = [FeedItem]()
         for (_,subJson):(String, JSON) in json {

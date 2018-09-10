@@ -13,14 +13,13 @@ final class SettingsVC: UIViewController {
     
     // MARK: - Vars
     
-    private let presenter = SettingsPresenter()
+    var presenter: SettingsPresenter?
     
     // MARK: - Lifecycle
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        presenter.output = self
         tabBarItem = MenuTabBarItem.settings.tabBarItem
     }
     
@@ -35,7 +34,7 @@ final class SettingsVC: UIViewController {
     // MARK: - Actions
     
     @IBAction fileprivate func logoutDidTap() {
-        presenter.handleLogoutTap()
+        presenter?.handleLogoutTap()
     }
 }
 

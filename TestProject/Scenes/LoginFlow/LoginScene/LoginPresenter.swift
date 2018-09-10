@@ -44,21 +44,27 @@ final class LoginPresenter {
         }
     }
     
+    fileprivate let userSessionService: UserSessionService
+    
     // MARK: - Initialization
     
-    init() {
-        let testModel = LoginInputModel(email: "testmail@gmail.com", password: "123456")
-        self.model = testModel
-        self.loginState = .loginInput(testModel)
+    init(userSessionService: UserSessionService, model: LoginInputModel) {
+        self.model = model
+        self.userSessionService = userSessionService
+        self.loginState = .loginInput(model)
     }
     
     // MARK: - Public
     
     func loginDidTap() {
         loginState = .isLogging
-        let userSessionModel = UserSessionModel(email: model.email, password: model.password)
-        UserSessionService.shared.openUserSessionWithModel(userSessionModel)
-        loginState = .loginSuccess
+        userSessionService.openUserSessionWithModel(model, success: {[weak self] (flow, user) in
+            guard let strongSelf = self else {return}
+            strongSelf.loginState = .loginSuccess
+        }) {[weak self] (flow, errorText) in
+            guard let strongSelf = self else {return}
+            strongSelf.loginState = .loginFail(error: errorText)
+        }
     }
     
     func provideTextForForm(_ form: LoginFormType) -> String {

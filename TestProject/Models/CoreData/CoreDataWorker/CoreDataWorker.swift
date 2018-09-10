@@ -9,14 +9,10 @@
 import Foundation
 import CoreData
 
-// thanks to Michal Wojtysiak for providing approch for converting CoreData --> Plain Object
-// I took this from https://swifting.io/blog/2016/11/27/28-better-coredata-with-swift-generics/
-
 enum Result<T>{
     case success(T)
     case failure(Error)
 }
-
 
 protocol NewCoreDataWorkerProtocol {
     func get<Entity: ManagedObjectConvertible>
@@ -111,6 +107,7 @@ class NewCoreDataWorker: NewCoreDataWorkerProtocol {
                     return
                 }
                 
+                print("savedObjects: \(savedObjects.count)")
                 for obj in savedObjects {
                     context.delete(obj)
                 }
@@ -128,3 +125,6 @@ class NewCoreDataWorker: NewCoreDataWorkerProtocol {
         }
     }
 }
+
+
+

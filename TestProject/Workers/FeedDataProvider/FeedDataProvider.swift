@@ -40,11 +40,17 @@ final class FeedDataProvider {
             // attempt to fetch last saved
             if isUsingLocalData {
                 strongSelf.dataWorker.fetchItems(completion: { (items) in
-                    failure(error, items)
+                    success(items)
                 })
             } else {
                 failure(error, [])
             }
+        }
+    }
+    
+    func clearData() {
+        dataWorker.deleteItems {
+            print("deleted")
         }
     }
 }

@@ -29,8 +29,14 @@ final class ListPresenter {
         }
     }
     
-    private let dataProvider = FeedDataProvider(dataWorker: FeedDataWorker(), apiWorker: FeedAPIWorker())
+    private let dataProvider: FeedDataProvider
     private (set) internal var feedItems = [FeedItem]()
+    
+    // MARK: - Initialization
+    
+    init(dataProvider: FeedDataProvider) {
+        self.dataProvider = dataProvider
+    }
     
     // MARK: - Public
     

@@ -9,18 +9,18 @@
 import Foundation
 import CoreData
 
-extension NSManagedObject {
-    static func entityName() -> String {
-        return String(describing: self)
-    }
-}
-
 // thanks to Michal Wojtysiak for providing approch for converting CoreData --> Plain Object
 // I took this from https://swifting.io/blog/2016/11/27/28-better-coredata-with-swift-generics/
 
 protocol ManagedObjectProtocol {
     associatedtype Entity
     func toEntity() -> Entity?
+}
+
+extension NSManagedObject {
+    class func entityName() -> String {
+        return String(describing: self)
+    }
 }
 
 extension ManagedObjectProtocol where Self: NSManagedObject {
@@ -116,3 +116,4 @@ extension ManagedObjectProtocol where Self: NSManagedObject {
         }
     }
 }
+
