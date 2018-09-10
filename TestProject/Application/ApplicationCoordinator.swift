@@ -56,10 +56,6 @@ final class ApplicationCoordinator: Coordinator {
         return mainMenuVC
     }
     
-    fileprivate func startLoginFlow() {
-        
-    }
-    
     private func buildLoginFlow() -> UIViewController {
         let loginCoordinator = LoginCoordinator(userSessionService: userSessionService)
         addCoordinator(loginCoordinator)

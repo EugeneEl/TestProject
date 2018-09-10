@@ -10,7 +10,7 @@ import Foundation
 
 struct DataWorkers {
     
-    let feedbackDataWorker = FeedDataProvider(dataWorker: FeedItemDataWorker(),
+    let feedbackDataWorker = FeedDataProvider(dataWorker: FeedDataWorker(),
                                               apiWorker: FeedAPIWorker())
 }
 

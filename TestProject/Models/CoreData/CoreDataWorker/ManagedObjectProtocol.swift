@@ -9,12 +9,6 @@
 import Foundation
 import CoreData
 
-//extension NSManagedObject {
-//    static func entityName() -> String {
-//        return String(describing: self)
-//    }
-//}
-
 // thanks to Michal Wojtysiak for providing approch for converting CoreData --> Plain Object
 // I took this from https://swifting.io/blog/2016/11/27/28-better-coredata-with-swift-generics/
 
@@ -24,92 +18,93 @@ protocol ManagedObjectProtocol {
 }
 
 extension NSManagedObject {
+    class func entityName() -> String {
+        return String(describing: self)
+    }
+}
+
+extension ManagedObjectProtocol where Self: NSManagedObject {
     
-    typealias CreationConfigurationBlock = (_ entity: NSManagedObject) -> ()
-    
-    static func findOrCreateInContext(_ context: NSManagedObjectContext, with id: String, creationConfigurationBlock: CreationConfigurationBlock?, entityName: String) -> NSManagedObject {
-        let predicate = NSPredicate(format: "identifier==%@", id)
-        guard let obj = findOrFetchInContext(context: context, entityName: entityName, matchingPredicate: predicate) else {
-            let newObject = createEntityInContext(context: context, entityName: entityName)
-            context.performAndWait {
-                creationConfigurationBlock?(newObject)
-            }
-            return newObject
-        }
-        return obj
+    static func getOrCreateSingle(with id: String, from context: NSManagedObjectContext) -> Self {
+        let result = single(with: id, from: context) ?? insertNew(in: context)
+        result.setValue(id, forKey: "identifier")
+        return result
     }
     
-    static func createEntityInContext(context: NSManagedObjectContext, entityName: String) -> NSManagedObject {
-        let entityDescription = NSEntityDescription.entity(forEntityName: entityName, in: context);
+    static func single(from context: NSManagedObjectContext, with predicate: NSPredicate?,
+                       sortDescriptors: [NSSortDescriptor]?) -> Self? {
+        return fetch(from: context, with: predicate,
+                     sortDescriptors: sortDescriptors, fetchLimit: 1)?.first
+    }
+    
+    static func single(with id: String, from context: NSManagedObjectContext) -> Self? {
+        let predicate = NSPredicate(format: "identifier == %@", id)
+        return single(from: context, with: predicate, sortDescriptors: nil)
+    }
+    
+    static func insertNew(in context: NSManagedObjectContext) -> Self {
+        let entityDescription = NSEntityDescription.entity(forEntityName: Self.entityName(), in: context);
         
-        var entity: NSManagedObject?
+        var entity: Self?
         context.performAndWait {
-            entity = NSManagedObject(entity: entityDescription!, insertInto: context)
+            entity = Self(entity: entityDescription!, insertInto: context)
         }
         
         return entity!
     }
     
-    static func fetchInContext(_ context: NSManagedObjectContext, entityName: String, configurationBlock: (NSFetchRequest<NSFetchRequestResult>) -> () = { _ in }) -> [NSManagedObject] {
+    static func fetch(from context: NSManagedObjectContext, with predicate: NSPredicate?,
+                      sortDescriptors: [NSSortDescriptor]?, fetchLimit: Int?) -> [Self]? {
         
-        let request:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: entityName)
-        configurationBlock(request)
-        
-        var result = [NSManagedObject]()
-        context.performAndWait() {
-            guard let fetchObjects = try! context.fetch(request) as? [NSManagedObject] else { fatalError("Fetched objects have wrong type") }
-            result = fetchObjects
-        }
-        
-        return result
-    }
-    
-    static func findOrFetchInContext(context: NSManagedObjectContext, entityName: String, matchingPredicate predicate: NSPredicate) -> NSManagedObject? {
-        guard let obj = materializedObjectInContext(context, matchingPredicate: predicate) else {
-            return fetchInContext(context, entityName: entityName) { request in
-                request.predicate = predicate
-                request.returnsObjectsAsFaults = false
-                request.fetchLimit = 1
-                }.first
-        }
-        return obj
-    }
-    
-    static func materializedObjectInContext(_ context: NSManagedObjectContext, matchingPredicate predicate: NSPredicate) -> NSManagedObject? {
-        
-        var res: NSManagedObject?
-        context.performAndWait {
-            for obj in context.registeredObjects where !obj.isFault {
-                guard let foundObject = obj as? NSManagedObject, predicate.evaluate(with: foundObject) else { continue }
-                res = foundObject
+        var result: [Self]?
+        context.performAndWait { () -> Void in
+            
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:Self.entityName())
+            fetchRequest.sortDescriptors = sortDescriptors
+            fetchRequest.predicate = predicate
+            fetchRequest.returnsObjectsAsFaults = false
+            print("fetchRequest: \(fetchRequest)")
+            
+            if let fetchLimit = fetchLimit {
+                fetchRequest.fetchLimit = fetchLimit
+            }
+            
+            do {
+                print(fetchRequest)
+                result = try context.fetch(fetchRequest) as? [Self]
+            } catch {
+                result = nil
+                //Report Error
+                print("CoreData fetch error \(error)")
             }
         }
-        return res
+        return result
     }
-//
-//    static func createDefaultFetchRequestWithName(_ entityName: String) -> NSFetchRequest<NSManagedObject> {
-//        return NSFetchRequest(entityName: entityName)
-//    }
+}
+
+extension ManagedObjectProtocol where Self: NSManagedObject {
+    static func createDefaultFetchRequest() -> NSFetchRequest<Self> {
+        return NSFetchRequest(entityName: entityName())
+    }
     
-    static func fetchAllInContext(context: NSManagedObjectContext, entityName: String) -> [NSManagedObject] {
+    static func fetchAllInContext(context: NSManagedObjectContext) -> [Self] {
+        let request = Self.createDefaultFetchRequest()
         
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
-        print("request: \(request)")
         request.returnsObjectsAsFaults = true
         request.includesPropertyValues = false
         
-        var fetchObjects: [NSManagedObject]?
+        var fetchObjects: [Self]?
         context.performAndWait {
-            guard let result = try! context.fetch(request) as? [NSManagedObject] else { fatalError("Fetched objects have wrong type") }
+            guard let result = try! context.fetch(request) as? [Self] else { fatalError("Fetched objects have wrong type") }
             fetchObjects = result
         }
         
         return fetchObjects!
     }
     
-    static func deleteAllInContext(context: NSManagedObjectContext, entityName: String) {
+    static func deleteAllInContext(context: NSManagedObjectContext) {
         context.performAndWait {
-            let fetchedObjects = fetchAllInContext(context: context, entityName: entityName)
+            let fetchedObjects = Self.fetchAllInContext(context: context)
             
             if fetchedObjects.count > 0 {
                 context.performAndWait {
@@ -119,5 +114,6 @@ extension NSManagedObject {
                 }
             }
         }
+    }
 }
-}
+

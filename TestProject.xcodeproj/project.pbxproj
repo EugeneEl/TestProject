@@ -20,7 +20,6 @@
 		3E2FA191206BEE4E0000DAD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E2FA189206BEE4D0000DAD7 /* Main.storyboard */; };
 		3E2FA192206BEE4E0000DAD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FA18B206BEE4E0000DAD7 /* AppDelegate.swift */; };
 		3E2FA193206BEE4E0000DAD7 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E2FA18C206BEE4E0000DAD7 /* Info.plist */; };
-		3E2FA195206BEEAD0000DAD7 /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FA194206BEEAD0000DAD7 /* RootRouter.swift */; };
 		3E2FA198206BEF830000DAD7 /* UserSessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FA197206BEF830000DAD7 /* UserSessionModel.swift */; };
 		3E2FA19C206BEFDE0000DAD7 /* UserSessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FA19B206BEFDE0000DAD7 /* UserSessionService.swift */; };
 		3E39BB0D213BD3D200254BF8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E39BB0A213BD3D200254BF8 /* User.swift */; };
@@ -121,7 +120,6 @@
 		3E2FA189206BEE4D0000DAD7 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		3E2FA18B206BEE4E0000DAD7 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3E2FA18C206BEE4E0000DAD7 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3E2FA194206BEEAD0000DAD7 /* RootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootRouter.swift; sourceTree = "<group>"; };
 		3E2FA197206BEF830000DAD7 /* UserSessionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSessionModel.swift; sourceTree = "<group>"; };
 		3E2FA19B206BEFDE0000DAD7 /* UserSessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSessionService.swift; sourceTree = "<group>"; };
 		3E39BB0A213BD3D200254BF8 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -269,7 +267,6 @@
 		3E2FA17F206BEE4D0000DAD7 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				3E2FA194206BEEAD0000DAD7 /* RootRouter.swift */,
 				3E2FA181206BEE4D0000DAD7 /* LoginFlow */,
 				3E2FA180206BEE4D0000DAD7 /* MainFlow */,
 				3E62884921317A89001A7E18 /* SettingsFlow */,
@@ -1032,7 +1029,6 @@
 				3E6288712132AB11001A7E18 /* FeedAPIWorker.swift in Sources */,
 				3E628838213131F1001A7E18 /* InputFormUI.swift in Sources */,
 				3E6288732132AB23001A7E18 /* FeedDataWorker.swift in Sources */,
-				3E2FA195206BEEAD0000DAD7 /* RootRouter.swift in Sources */,
 				3E8AFAC9207F2C4B00C562AF /* ListPresenter.swift in Sources */,
 				3E8AFAC2207CF76400C562AF /* HUDDisplayHelper.swift in Sources */,
 				3E62887B2132AB70001A7E18 /* ManagedObjectConvertible.swift in Sources */,
