@@ -21,19 +21,12 @@ class MenuTabBarVC: UITabBarController {
         super.viewDidLoad()
         
         setupTabBarUI()
-        setupNavigationWithLaunchOptions(launchOptions)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         configureNavigationBarUI()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        print(viewControllers)
     }
     
     // MARK: - Public
@@ -47,14 +40,6 @@ class MenuTabBarVC: UITabBarController {
     private func setupTabBarUI() {
         tabBar.tintColor = .white
         tabBar.barTintColor = Constants.Colors.background
-    }
-    
-    private func setupNavigationWithLaunchOptions(_ options: [UIApplicationLaunchOptionsKey: Any]?) {
-        let mainVC = ListVC.instantiateFromStoryboardId(.main)
-        let mainNavigationVC = BaseNavigationController(rootViewController: mainVC)
-        mainNavigationVC.enforceLoadView()
-        let settingsNavigationVC = BaseNavigationController(rootViewController: SettingsVC.instantiateFromStoryboardId(.settings))
-        viewControllers = [mainNavigationVC, settingsNavigationVC]
     }
 }
 

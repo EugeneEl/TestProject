@@ -18,8 +18,8 @@ class ListVC: UIViewController {
     // MARK: - Vars
     
     fileprivate var refreshControl: UIRefreshControl?
-    fileprivate let presenter = ListPresenter()
-    fileprivate var router: ListRouter?
+    var presenter: ListPresenter?
+    var router: ListRouter?
     fileprivate var safariControllerHelper: SafariControllerHelper?
     
     // MARK: - Lifecycle
@@ -34,8 +34,9 @@ class ListVC: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
-        setupScene()
-        presenter.fetchData()
+        safariControllerHelper = SafariControllerHelper(viewController: self)
+        view.backgroundColor = Constants.Colors.grey
+        presenter?.fetchData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,13 +50,6 @@ class ListVC: UIViewController {
     }
     
     // MARK: - Private
-    
-    private func setupScene() {
-        router = ListRouter(viewController: self)
-        presenter.output = self
-        safariControllerHelper = SafariControllerHelper(viewController: self)
-        view.backgroundColor = Constants.Colors.grey
-    }
     
     private func setupTableView() {
         tableView.backgroundColor = Constants.Colors.grey
@@ -80,7 +74,7 @@ class ListVC: UIViewController {
     // MARK: - Actions
     
     @objc fileprivate func refresh() {
-        presenter.fetchData()
+        presenter?.fetchData()
     }
 }
 
@@ -106,13 +100,13 @@ extension ListVC: ListPresenterOutput {
 
 extension ListVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.feedItems.count
+        return presenter?.feedItems.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = FeedListTableViewCell.dequeueFromTableView(tableView)
         
-        guard let item = presenter.feedItems[safe: indexPath.row] else {
+        guard let item = presenter?.feedItems[safe: indexPath.row] else {
             return cell
         }
         
@@ -135,7 +129,7 @@ extension ListVC: UITableViewDelegate {
 extension ListVC: FeedListTableViewCellInteractable {
     func linkDidTapInCell(_ cell: FeedListTableViewCell) {
         guard let indexPath = tableView.indexPath(for: cell),
-            let url = presenter.provideURLForIndex(indexPath.row) else {return}
+            let url = presenter?.provideURLForIndex(indexPath.row) else {return}
         safariControllerHelper?.openURLInSafariViewController(url)
     }
 }

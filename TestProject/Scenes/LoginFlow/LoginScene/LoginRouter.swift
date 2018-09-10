@@ -9,11 +9,16 @@
 import Foundation
 import UIKit
 
+protocol LoginRouterDelegate: class {
+    func userDidLogin(_ user: User)
+}
+
 /// LoginRouter encapsulates logic for navigation on login scene.
 final class LoginRouter {
     
     // MARK: - Vars
     
+    weak var delegate: LoginRouterDelegate?
     private weak var viewController: UIViewController?
     
     // MARK: - Initialization

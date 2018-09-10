@@ -52,6 +52,15 @@ public enum Type :Int{
     case unknown
 }
 
+extension JSON {
+    init(localFileName: String) {
+        let path = Bundle.main.path(forResource: localFileName, ofType: "json")!
+        let jsonString = try? String(contentsOfFile: path, encoding: String.Encoding.utf8)
+        self = JSON(parseJSON: jsonString!)
+
+    }
+}
+
 // MARK: - JSON Base
 public struct JSON {
 

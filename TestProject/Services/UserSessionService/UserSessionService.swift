@@ -8,54 +8,82 @@
 
 import Foundation
 
-struct UserSessionServiceNotification {
-    static let login = NSNotification.Name(rawValue: "UserDidLogin")
-    static let logout = NSNotification.Name(rawValue: "UserDidLogout")
+enum UserSessionState {
+    case opened(UserSession)
+    case closed(UserSession)
+}
+
+protocol UserSessionServiceDelegate: class {
+    func userSessionStateDidChange( _ userSessionState: UserSessionState)
 }
 
 final class UserSessionService {
     
     // MARK: - Vars
     
-    static let shared = UserSessionService()
+    private var delegates = NSHashTable<AnyObject>.weakObjects()
     
-    private let nc = NotificationCenter.default
+    fileprivate (set) internal var userSessionIdentifier: String?
+    fileprivate let authWorker = AuthWorker()
     
-    var isLogged: Bool = false
-    
-    fileprivate (set) internal var sessionModel: UserSessionModel?
-    fileprivate let userSessionStorage = UserSessionStorage()
-    
-    // MARK: - Initialization
-    
-    private init() {}
-    
-    // MARK: - Public
-    
-    func openUserSessionWithModel(_ model: UserSessionModel) {
-        userSessionStorage.updateCredentials(model)
-        isLogged = true
-        nc.post(name: UserSessionServiceNotification.login, object: nil)
-    }
-    
-    func closeUserSessionWithCopletion(_ completion: @escaping ()->()) {
-        clearDataWithCompletion {
-            completion()
+    // MARK: - UserSession
+    private (set) var userSession: UserSession? {
+        didSet {
+            oldValue?.closeSession()
+            userSessionIdentifier = userSession?.identifier
         }
     }
     
-    func canRestoreUsesSession() -> Bool {
-        return userSessionStorage.hasToken()
+    fileprivate let userSessionStorage: UserSessionStorage
+
+    // MARK: - Initialization
+    
+    init(userSessionStorage: UserSessionStorage) {
+        self.userSessionStorage = userSessionStorage
     }
     
-    // MARK: - Private
+    func isUserSessionRestored() -> Bool {
+        if let token = userSessionStorage.provideToken() {
+            let session = UserSession(identifier: token)
+            userSession = session
+            return true
+        } else {
+            return false
+        }
+    }
     
-    private func clearDataWithCompletion(_ completion: @escaping ()->()) {
-        let worker = FeedDataWorker()
-        worker.deleteItems {
-            self.userSessionStorage.removeCredentials()
-            self.nc.post(name: UserSessionServiceNotification.logout, object: nil)
-            completion()
+    func addListener(_ listener: UserSessionServiceDelegate) {
+        delegates.add(listener)
+    }
+    
+    func openUserSessionWithModel(_ model: LoginInputModel, success: @escaping AuthCompletionSuccess, failure: @escaping AuthCompletionFailure) {
+        authWorker.authUserWithFlow(.login(model), success: {[weak self] (authFlow, user) in
+            guard let strongSelf = self else {return}
+            let session = UserSession(identifier: user.identifier)
+            strongSelf.userSession = session
+            strongSelf.userSessionStorage.updateSessionID(user.identifier)
+            strongSelf.delegates.allObjects.forEach { delegate in
+                if let listener = delegate as? UserSessionServiceDelegate {
+                    listener.userSessionStateDidChange(.opened(session))
+                }
+            }
+            success(authFlow, user)
+        }) {[weak self] (authFlow, errorText) in
+            failure(authFlow, errorText)
+        }
+    }
+    
+    // MARK: - Public
+    
+    func closeUserSessionWithCompletion(_ completion: @escaping ()->()) {
+        if let session = userSession {
+            userSessionStorage.removeCredentials()
+            delegates.allObjects.forEach { delegate in
+                if let listener = delegate as? UserSessionServiceDelegate {
+                    listener.userSessionStateDidChange(.closed(session))
+                }
+            }
+            userSession = nil
         }
     }
 }

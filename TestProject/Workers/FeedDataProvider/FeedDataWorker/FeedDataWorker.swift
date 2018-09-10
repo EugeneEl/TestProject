@@ -8,6 +8,8 @@
 
 import Foundation
 
+
+
 protocol FeedDataControllerProtocol {
     func fetchItems(completion: @escaping ([FeedItem]) -> Void)
     func updateItems(items: [FeedItem])
@@ -15,11 +17,11 @@ protocol FeedDataControllerProtocol {
 }
 
 class FeedDataWorker: FeedDataControllerProtocol {
-
+    
     // MAKR: - Vars
     
     private let worker: NewCoreDataWorkerProtocol
- 
+    
     // MARK: - Initialization
     
     init(worker: NewCoreDataWorkerProtocol = NewCoreDataWorker()){

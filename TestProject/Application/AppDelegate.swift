@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Vars
     
     var window: UIWindow?
-    fileprivate (set) internal var router: RootRouter?
+    fileprivate (set) internal var applicationCoordinator: ApplicationCoordinator?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
@@ -23,8 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ServiceLocatorConfigurator.setupServices()
         setupKeyboardManager()
         
-        router = RootRouter(window)
-        router?.buildNavigationFlow(launchOptions)
+        applicationCoordinator = ApplicationCoordinator(window: window!, userSessionStorage: UserSessionStorage())
+        applicationCoordinator?.startWithLaunchOptions(launchOptions)
 
         return true
     }

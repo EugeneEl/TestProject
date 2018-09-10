@@ -23,14 +23,15 @@ extension FeedItemEntity: ManagedObjectProtocol {
 extension FeedItem: ManagedObjectConvertible {
     func toManagedObject(in context: NSManagedObjectContext) -> FeedItemEntity? {
         // TEST StockAPI doesn't provide ids do I will use URL as keys
-        let item = FeedItemEntity.getOrCreateSingle(with: url.absoluteString, from: context)
-        
-        item.datetime = datetime as NSDate?
-        item.summary = summary
-        item.headline = headline
-        item.url = url.absoluteString
-        item.source = source
-        return item
+        let entity = FeedItemEntity.getOrCreateSingle(with: url.absoluteString, from: context)
+        entity.source = self.source
+        entity.headline = self.headline
+        entity.datetime = self.datetime as? NSDate
+        entity.summary = self.summary
+        entity.identifier = self.url.absoluteString
+        entity.url = self.url.absoluteString
+
+        return entity
     }
 }
 

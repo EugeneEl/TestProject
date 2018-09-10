@@ -22,8 +22,8 @@
     
     // MARK: - Vars
     
-    fileprivate let presenter = LoginPresenter()
-    fileprivate var router: LoginRouter?
+    var presenter: LoginPresenter?
+    var router: LoginRouter?
     fileprivate var cellsDictionary = [IndexPath : UITableViewCell]()
     
     // MARK: - Lifecycle
@@ -49,8 +49,7 @@
     // MARK: - Helpers
     
     private func setupScene() {
-        presenter.output = self
-        router = LoginRouter(viewController: self)
+        presenter?.output = self
     }
     
     private func setupUI() {
@@ -68,25 +67,25 @@
         
         let row = indexPath.row
         
-        guard let loginFormType = presenter.formTypes[safe: row] else {
+        guard let dataPresenter = presenter, let loginFormType = presenter?.formTypes[safe: row] else {
             return UITableViewCell()
         }
         
-        let text = presenter.provideTextForForm(loginFormType)
+        let text = dataPresenter.provideTextForForm(loginFormType)
         let formModule = LoginFormBuilder.provideInputControlModuleForFragment(loginFormType, initalText: text)
         
         let inputControl = formModule.0
         let formView = formModule.1
         let cell = LoginFormBuilder.provideCellForFormType(loginFormType, formView: formView)
         
-        presenter.inputControllers.append(inputControl)
+        presenter?.inputControllers.append(inputControl)
         
         cellsDictionary[indexPath] = cell
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.formTypes.count
+        return presenter?.formTypes.count ?? 0
     }
  }
  
@@ -121,7 +120,7 @@
  
  extension NewLoginVC: LoginFooterViewInteracting {
     func loginDidTap() {
-        presenter.loginDidTap()
+        presenter?.loginDidTap()
     }
  }
  
@@ -138,7 +137,6 @@
             HudHelper.hideHUDInView(view, animated: false)
         case .loginSuccess:
             HudHelper.hideHUDInView(view, animated: false)
-//            router?.navigateToMainScene()
         }
     }
  }
