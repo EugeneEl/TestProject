@@ -9,11 +9,16 @@
 import Foundation
 import UIKit
 
+protocol SettingsViewOutput: class {
+    func handleLogoutTap()
+    var  settingsViewInput: SettingsViewInput? {get set}
+}
+
 final class SettingsVC: UIViewController {
     
     // MARK: - Vars
     
-    var presenter: SettingsPresenter?
+    var presenter: SettingsViewOutput?
     
     // MARK: - Lifecycle
     
@@ -40,7 +45,7 @@ final class SettingsVC: UIViewController {
 
 // MARK: - SettingsPresenterOutput
 
-extension SettingsVC: SettingsPresenterOutput {
+extension SettingsVC: SettingsViewInput {
     func stateDidChange(_ state: SettingsSceneState) {
         switch state {
         case .initial:
