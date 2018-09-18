@@ -24,15 +24,15 @@ enum LoginSceneState {
     case loginFail(error: String)
 }
 
-protocol LoginPresenterOutput: class {
+protocol LoginViewInput: class {
     func loginStateDidChange(_ state: LoginSceneState)
 }
 
-final class LoginPresenter {
+final class LoginPresenter: LoginViewOutput {
     
     // MARK: - Vars
     
-    weak var output: LoginPresenterOutput?
+    weak var loginViewInput: LoginViewInput?
     
     let formTypes = [LoginFormType.email, LoginFormType.password]
     var inputControllers: [FormInputConroller] = []
@@ -40,7 +40,7 @@ final class LoginPresenter {
     fileprivate (set) internal var model: LoginInputModel
     fileprivate (set) internal var loginState: LoginSceneState  {
         didSet {
-            output?.loginStateDidChange(loginState)
+            loginViewInput?.loginStateDidChange(loginState)
         }
     }
     

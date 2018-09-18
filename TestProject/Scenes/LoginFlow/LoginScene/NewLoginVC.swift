@@ -9,6 +9,14 @@
  import Foundation
  import UIKit
  
+ protocol LoginViewOutput: class {
+    func provideTextForForm(_ formType: LoginFormType) -> String
+    func loginDidTap()
+    var inputControllers: [FormInputConroller]  {get set}
+    var formTypes: [LoginFormType] {get}
+    var loginViewInput: LoginViewInput? {get set}
+ }
+ 
  final class NewLoginVC: UIViewController {
     
     // MARK: - Outlets
@@ -22,7 +30,7 @@
     
     // MARK: - Vars
     
-    var presenter: LoginPresenter?
+    var presenter: LoginViewOutput?
     var router: LoginRouter?
     fileprivate var cellsDictionary = [IndexPath : UITableViewCell]()
     
@@ -30,8 +38,7 @@
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupScene()
+
         setupUI()
     }
     
@@ -47,10 +54,6 @@
     
     // MARK: - Private
     // MARK: - Helpers
-    
-    private func setupScene() {
-        presenter?.output = self
-    }
     
     private func setupUI() {
         view.backgroundColor = Constants.Colors.background
@@ -126,7 +129,7 @@
  
  // MARK: - LoginPresenterOutput
  
- extension NewLoginVC: LoginPresenterOutput {
+ extension NewLoginVC: LoginViewInput {
     func loginStateDidChange(_ state: LoginSceneState) {
         switch state {
         case .isLogging:
