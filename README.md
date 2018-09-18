@@ -11,7 +11,7 @@ I don't use VIPER, Redux and other buzzwords architectures;
 I don't like RxSwift/ReactiveCocoa because these libs are architectural dependencies. 
 They cannot be isolated via some interface and replaced in the project later (without pain).
 <i>didSet</i> is enough for me to achieve bindings. Also if I want to achieve smth like ordered 'signals' I can simply use async <i>Operation</i>. 
-- CoreData models are covered by "plain objects". It helps to isolate higher level code from the data layer implementation; 
+- CoreData models are covered by "plain objects". It helps to isolate higher level code from the data layer implementation details; 
 - CocoaPods as a dependency manager. 
 
 Features:
