@@ -13,19 +13,19 @@ enum ListSceneState {
     case feedDidFetch([FeedItem], String?)
 }
 
-protocol ListPresenterOutput: class {
+protocol ListViewInput: class {
     func listSceneStateDidChange(_ state: ListSceneState)
 }
 
-final class ListPresenter {
+final class ListPresenter: ListViewOutput {
    
     // MARK: - Vars
     
-    weak var output: ListPresenterOutput?
+    weak var listViewInput: ListViewInput?
     
     private var state: ListSceneState = .feedDidFetch([], nil) {
         didSet {
-            output?.listSceneStateDidChange(state)
+            listViewInput?.listSceneStateDidChange(state)
         }
     }
     
