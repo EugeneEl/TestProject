@@ -42,6 +42,8 @@ final class UserSessionService {
         self.userSessionStorage = userSessionStorage
     }
     
+    // MARK: - Public
+    
     func isUserSessionRestored() -> Bool {
         if let token = userSessionStorage.provideToken() {
             let session = UserSession(identifier: token)
@@ -72,8 +74,6 @@ final class UserSessionService {
             failure(authFlow, errorText)
         }
     }
-    
-    // MARK: - Public
     
     func closeUserSessionWithCompletion(_ completion: @escaping ()->()) {
         if let session = userSession {
