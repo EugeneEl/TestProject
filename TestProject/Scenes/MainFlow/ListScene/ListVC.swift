@@ -9,6 +9,13 @@
 import Foundation
 import UIKit
 
+protocol ListViewOutput: class {
+    func provideURLForIndex(_ index: Int) -> URL?
+    func fetchData()
+    var feedItems: [FeedItem] {get}
+    var listViewInput: ListViewInput? {get set}
+}
+
 class ListVC: UIViewController {
  
     // MARK: - Outlets
@@ -18,7 +25,7 @@ class ListVC: UIViewController {
     // MARK: - Vars
     
     fileprivate var refreshControl: UIRefreshControl?
-    var presenter: ListPresenter?
+    var presenter: ListViewOutput?
     var router: ListRouter?
     fileprivate var safariControllerHelper: SafariControllerHelper?
     
@@ -80,7 +87,7 @@ class ListVC: UIViewController {
 
 // MARK: - ListPresenterOutput
 
-extension ListVC: ListPresenterOutput {
+extension ListVC: ListViewInput {
     func listSceneStateDidChange(_ state: ListSceneState) {
         switch state {
         case .isLoading:

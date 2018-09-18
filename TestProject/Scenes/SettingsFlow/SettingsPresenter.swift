@@ -14,23 +14,23 @@ enum SettingsSceneState {
     case logouted
 }
 
-protocol SettingsPresenterOutput: class {
+protocol SettingsViewInput: class {
     func stateDidChange(_ state: SettingsSceneState)
 }
 
-final class SettingsPresenter {
+final class SettingsPresenter: SettingsViewOutput {
     
     // MARK: - Vars
     
     private var state: SettingsSceneState = .initial {
         didSet {
-            output?.stateDidChange(state)
+            settingsViewInput?.stateDidChange(state)
         }
     }
     
     private let userSessionService: UserSessionService
     
-    weak var output: SettingsPresenterOutput?
+    weak var settingsViewInput: SettingsViewInput?
     
     // MARK: - Initialization
     
