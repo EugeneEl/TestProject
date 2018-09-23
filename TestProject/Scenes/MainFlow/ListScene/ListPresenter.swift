@@ -21,11 +21,11 @@ final class ListPresenter: ListViewOutput {
    
     // MARK: - Vars
     
-    weak var listViewInput: ListViewInput?
+    weak var view: ListViewInput?
     
     private var state: ListSceneState = .feedDidFetch([], nil) {
         didSet {
-            listViewInput?.listSceneStateDidChange(state)
+            view?.listSceneStateDidChange(state)
         }
     }
     

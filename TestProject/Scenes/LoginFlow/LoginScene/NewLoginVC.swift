@@ -14,7 +14,7 @@
     func loginDidTap()
     var inputControllers: [FormInputConroller]  {get set}
     var formTypes: [LoginFormType] {get}
-    var loginViewInput: LoginViewInput? {get set}
+    var view: LoginViewInput? {get set}
  }
  
  final class NewLoginVC: UIViewController {

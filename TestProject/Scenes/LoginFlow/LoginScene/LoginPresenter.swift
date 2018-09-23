@@ -32,7 +32,7 @@ final class LoginPresenter: LoginViewOutput {
     
     // MARK: - Vars
     
-    weak var loginViewInput: LoginViewInput?
+    weak var view: LoginViewInput?
     
     let formTypes = [LoginFormType.email, LoginFormType.password]
     var inputControllers: [FormInputConroller] = []
@@ -40,7 +40,7 @@ final class LoginPresenter: LoginViewOutput {
     fileprivate (set) internal var model: LoginInputModel
     fileprivate (set) internal var loginState: LoginSceneState  {
         didSet {
-            loginViewInput?.loginStateDidChange(loginState)
+            view?.loginStateDidChange(loginState)
         }
     }
     

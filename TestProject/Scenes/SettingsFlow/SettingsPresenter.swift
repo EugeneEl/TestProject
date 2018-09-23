@@ -24,13 +24,13 @@ final class SettingsPresenter: SettingsViewOutput {
     
     private var state: SettingsSceneState = .initial {
         didSet {
-            settingsViewInput?.stateDidChange(state)
+            view?.stateDidChange(state)
         }
     }
     
     private let userSessionService: UserSessionService
     
-    weak var settingsViewInput: SettingsViewInput?
+    weak var view: SettingsViewInput?
     
     // MARK: - Initialization
     
