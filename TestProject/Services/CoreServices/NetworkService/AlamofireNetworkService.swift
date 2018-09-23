@@ -24,11 +24,11 @@ class AlamofireNetworkClient {
     
     // MARK: - Private
     
-    fileprivate func generalRequestWithPath( _ path: String, method: HTTPMethod, encoding: ParametersEncoding, parameters: [String : AnyObject]?, headers: [String : String]?, withAuthorization: Bool, callback: @escaping DataRequestCallback) -> () {
+    fileprivate func generalRequestWithPath( _ path: String, method: HTTPMethod, encoding: ParametersEncoding, parameters: [String : AnyObject]?, headers: [String : String]?, withAuthorization: Bool, callback: @escaping DataRequestCallback) -> Cancellable? {
         
         if BaseReachabilityService.sharedReachabilityService.isConnected() == false {
-            callback(.failure(nil, ErrorConstants.noConnection))
-            return
+            callback(.failure(nil, ErrorConstants.noConnection, nil))
+            return nil
         }
         
         if withAuthorization {
@@ -43,7 +43,7 @@ class AlamofireNetworkClient {
         
         let completionHandler: ((DataResponse<Data>) -> Void) = { (dataResponse) in
             guard let response = dataResponse.response else {
-                callback(DataRequestResult.failure(nil, ErrorConstants.baseError))
+                callback(DataRequestResult.failure(nil, ErrorConstants.baseError, nil))
                 return
             }
             
@@ -56,16 +56,16 @@ class AlamofireNetworkClient {
                 if let error = dataResponse.result.error {
                     let code = (error as NSError).code
                     if code == -1003 || code == -1005 || code == -1009 || code == -999  {
-                        callback(DataRequestResult.failure(nil, ErrorConstants.noConnection))
+                        callback(DataRequestResult.failure(nil, ErrorConstants.noConnection, statusCode))
                         return
                     }
                 }
                 
                 if let data = dataResponse.data {
                     let errorString = AlamofireNetworkClient.convertErrorData(data: data)
-                    callback(DataRequestResult.failure(data, errorString))
+                    callback(DataRequestResult.failure(data, errorString, statusCode))
                 } else {
-                    callback(DataRequestResult.failure(nil, ErrorConstants.baseError))
+                    callback(DataRequestResult.failure(nil, ErrorConstants.baseError, statusCode ))
                 }
             }
             
@@ -74,10 +74,11 @@ class AlamofireNetworkClient {
         switch encoding {
         case .json:
             requestTask = manager.request(url, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+            return requestTask
         case .urlEncoded:
             requestTask = manager.request(url, method: method, parameters: parameters, headers: headers)
             
-            requestTask?.validate().responseData(completionHandler: completionHandler)
+            return requestTask?.validate().responseData(completionHandler: completionHandler)
         }
     }
     
@@ -108,6 +109,13 @@ class AlamofireNetworkClient {
     }
 }
 
+// MARK: - Cancellable
+
+extension DataRequest: Cancellable {
+    func cancelRequest() {
+        cancel()
+    }
+}
 
 // MARK: - OpenFeedbackNetworkService
 
@@ -117,8 +125,8 @@ extension AlamofireNetworkClient: NetworkService {
               headers: [String : String]?,
               encoding: ParametersEncoding,
               withAuthorization: Bool,
-              callback: @escaping DataRequestCallback) -> () {
-        generalRequestWithPath(path, method: .get, encoding: encoding, parameters: parameters, headers: headers, withAuthorization: withAuthorization, callback: callback)
+              callback: @escaping DataRequestCallback) -> Cancellable? {
+        return generalRequestWithPath(path, method: .get, encoding: encoding, parameters: parameters, headers: headers, withAuthorization: withAuthorization, callback: callback)
     }
     
     func POST( _ path: String,
@@ -126,8 +134,8 @@ extension AlamofireNetworkClient: NetworkService {
                headers: [String : String]?,
                encoding: ParametersEncoding,
                data: [Data], withAuthorization: Bool,
-               callback: @escaping DataRequestCallback) -> () {
-                generalRequestWithPath(path, method: .post, encoding: encoding, parameters: parameters, headers: headers, withAuthorization: withAuthorization, callback: callback)
+               callback: @escaping DataRequestCallback) -> Cancellable? {
+                return generalRequestWithPath(path, method: .post, encoding: encoding, parameters: parameters, headers: headers, withAuthorization: withAuthorization, callback: callback)
     }
     
     func PUT( _ path: String,
@@ -136,8 +144,8 @@ extension AlamofireNetworkClient: NetworkService {
               encoding: ParametersEncoding,
               data: [Data],
               withAuthorization: Bool,
-              callback: @escaping DataRequestCallback) -> () {
-        generalRequestWithPath(path, method: .put, encoding: encoding, parameters: parameters, headers: headers, withAuthorization: withAuthorization, callback: callback)
+              callback: @escaping DataRequestCallback) -> Cancellable? {
+        return generalRequestWithPath(path, method: .put, encoding: encoding, parameters: parameters, headers: headers, withAuthorization: withAuthorization, callback: callback)
     }
     
     func PATCH(_ path: String,
@@ -146,8 +154,8 @@ extension AlamofireNetworkClient: NetworkService {
                encoding: ParametersEncoding,
                data: [Data],
                withAuthorization: Bool,
-               callback: @escaping DataRequestCallback) -> () {
-        generalRequestWithPath(path, method: .patch, encoding: encoding, parameters: parameters, headers: headers, withAuthorization: withAuthorization, callback: callback)
+               callback: @escaping DataRequestCallback) -> Cancellable? {
+        return generalRequestWithPath(path, method: .patch, encoding: encoding, parameters: parameters, headers: headers, withAuthorization: withAuthorization, callback: callback)
     }
     
     func DELETE(_ path: String,
@@ -155,7 +163,7 @@ extension AlamofireNetworkClient: NetworkService {
                 headers: [String : String]?,
                 withAuthorization: Bool,
                 encoding: ParametersEncoding,
-                callback: @escaping DataRequestCallback) -> () {
-                generalRequestWithPath(path, method: .delete, encoding: encoding, parameters: parameters, headers: headers, withAuthorization: withAuthorization, callback: callback)
+                callback: @escaping DataRequestCallback) -> Cancellable? {
+                return generalRequestWithPath(path, method: .delete, encoding: encoding, parameters: parameters, headers: headers, withAuthorization: withAuthorization, callback: callback)
     }
 }

@@ -44,7 +44,7 @@ final class FeedAPIWorker: FeedAPIProtocol {
                 }
                 
                 success(models)
-            case .failure(let errorJSON, let errorString):
+            case .failure(let errorJSON, let errorString, let statusCode):
                 print(errorString)
                 failure(errorString ?? ErrorConstants.baseError)
             }
