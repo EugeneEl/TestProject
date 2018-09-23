@@ -14,6 +14,21 @@ enum CoordinatorFlow {
     case tabBar
     case list
     case settings
+    
+    var flowIndex: Int {
+        switch self {
+        case .root:
+            return 0
+        case .login:
+            return 1
+        case .tabBar:
+            return 2
+        case .list:
+            return 3
+        case .settings:
+            return 4
+        }
+    }
 }
 
 class Coordinator: NSObject {
@@ -27,5 +42,15 @@ class Coordinator: NSObject {
     init(flow: CoordinatorFlow) {
         self.flow = flow
         super.init()
+    }
+}
+
+extension Coordinator {
+    static func == (lhs: Coordinator, rhs: Coordinator) -> Bool {
+        return lhs.flow == rhs.flow
+    }
+    
+    override var hash: Int {
+        return flow.flowIndex
     }
 }

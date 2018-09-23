@@ -13,7 +13,7 @@ protocol ListViewOutput: class {
     func provideURLForIndex(_ index: Int) -> URL?
     func fetchData()
     var feedItems: [FeedItem] {get}
-    var listViewInput: ListViewInput? {get set}
+    var view: ListViewInput? {get set}
 }
 
 class ListVC: UIViewController {

@@ -22,7 +22,7 @@ struct ListSceneBuilder {
         let router = ListRouter(viewController: vc)
         vc.router = router
         vc.presenter = presenter
-        presenter.listViewInput = vc
+        presenter.view = vc
         
         return vc
     }

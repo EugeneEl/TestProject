@@ -12,7 +12,7 @@ final class FeedAPIWorkerJSON: FeedAPIProtocol {
     
     // MARK: - FeedAPIProtocol
     
-    func fetchNewsWithCompletionSuccess(_ success: @escaping FetchFeedListCompletionSuccess, failure: @escaping FetchFeedListCompletionFail) {
+    func fetchNewsWithCompletionSuccess(_ success: @escaping FetchFeedListCompletionSuccess, failure: @escaping FetchFeedListCompletionFail) -> Cancellable? {
         
         let json = JSON(localFileName: "Feed")
         
@@ -24,5 +24,6 @@ final class FeedAPIWorkerJSON: FeedAPIProtocol {
         }
         
         success(models)
+        return nil
     }
 }

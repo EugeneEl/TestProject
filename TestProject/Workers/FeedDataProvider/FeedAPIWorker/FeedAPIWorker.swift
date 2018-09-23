@@ -12,7 +12,7 @@ typealias FetchFeedListCompletionSuccess = (_ rssItems: [FeedItem]) -> ()
 typealias FetchFeedListCompletionFail = (_ errorText: String) -> ()
 
 protocol FeedAPIProtocol {
-    func fetchNewsWithCompletionSuccess(_ success: @escaping FetchFeedListCompletionSuccess, failure: @escaping FetchFeedListCompletionFail)
+    func fetchNewsWithCompletionSuccess(_ success: @escaping FetchFeedListCompletionSuccess, failure: @escaping FetchFeedListCompletionFail) -> Cancellable?
 }
 
 final class FeedAPIWorker: FeedAPIProtocol {
@@ -23,10 +23,10 @@ final class FeedAPIWorker: FeedAPIProtocol {
     
     // MARK: - Public
     
-    func fetchNewsWithCompletionSuccess(_ success: @escaping FetchFeedListCompletionSuccess, failure: @escaping FetchFeedListCompletionFail) {
+    func fetchNewsWithCompletionSuccess(_ success: @escaping FetchFeedListCompletionSuccess, failure: @escaping FetchFeedListCompletionFail) -> Cancellable? {
         let path = "/stock/aapl/news/last/5"
         
-        networkService.GET(path, parameters: nil, headers: nil, encoding: .urlEncoded, withAuthorization: true) { (result) in
+        return networkService.GET(path, parameters: nil, headers: nil, encoding: .urlEncoded, withAuthorization: true) { (result) in
             switch result {
             case .success(let rawData):
                 guard let data = rawData else {
@@ -44,7 +44,7 @@ final class FeedAPIWorker: FeedAPIProtocol {
                 }
                 
                 success(models)
-            case .failure(let errorJSON, let errorString):
+            case .failure(let errorJSON, let errorString, let statusCode):
                 print(errorString)
                 failure(errorString ?? ErrorConstants.baseError)
             }
