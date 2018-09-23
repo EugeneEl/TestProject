@@ -16,11 +16,17 @@ class AlamofireNetworkClient {
     static let shared = AlamofireNetworkClient()
     fileprivate let baseURL: String = "https://api.iextrading.com/1.0/"
     
-    fileprivate let manager = Alamofire.SessionManager.default
+    fileprivate var manager = Alamofire.SessionManager.default
     
     // MARK: - Initialization
     
-    private init () {}
+    private init () {
+        NetworkDebugger.setupDebugger()
+        let configuration = URLSessionConfiguration.default
+        configuration.httpAdditionalHeaders = SessionManager.defaultHTTPHeaders
+        NetworkDebugger.setupNetworkDebugger(configuration)
+        manager = Alamofire.SessionManager(configuration: configuration)
+    }
     
     // MARK: - Private
     

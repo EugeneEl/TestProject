@@ -53,7 +53,7 @@ final class FeedDataProvider {
     }
     
     func clearData() {
-        requests.forEach { (let request) in
+        requests.forEach { (request) in
             request?.cancelRequest()
         }
         dataWorker.deleteItems {

@@ -56,6 +56,14 @@ class ListVC: UIViewController {
         return .lightContent
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        for i in 0 ..< 100 {
+            presenter?.fetchData()
+        }
+    }
+    
     // MARK: - Private
     
     private func setupTableView() {

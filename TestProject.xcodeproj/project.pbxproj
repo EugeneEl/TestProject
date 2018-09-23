@@ -99,6 +99,7 @@
 		3EB167A0206CDBC000A82D11 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EB1679F206CDBC000A82D11 /* Login.storyboard */; };
 		3EB167A2206CDBDB00A82D11 /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB167A1206CDBDB00A82D11 /* ServiceLocator.swift */; };
 		3EB167A5206CDCB900A82D11 /* ViewControllerConfigurating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB167A4206CDCB900A82D11 /* ViewControllerConfigurating.swift */; };
+		3ECBF33F2157749200A43623 /* NetwordDebugger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECBF33E2157749200A43623 /* NetwordDebugger.swift */; };
 		3EE6E5F92085B6700072D0AE /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE6E5F82085B6700072D0AE /* NetworkService.swift */; };
 		3EE6E5FB2085B67B0072D0AE /* AlamofireNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE6E5FA2085B67B0072D0AE /* AlamofireNetworkService.swift */; };
 		FAF7E67B1CA116DA667E27F7 /* Pods_TestProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A120D72992D64EB408E3EC /* Pods_TestProject.framework */; };
@@ -199,6 +200,7 @@
 		3EB1679F206CDBC000A82D11 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		3EB167A1206CDBDB00A82D11 /* ServiceLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
 		3EB167A4206CDCB900A82D11 /* ViewControllerConfigurating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerConfigurating.swift; sourceTree = "<group>"; };
+		3ECBF33E2157749200A43623 /* NetwordDebugger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetwordDebugger.swift; sourceTree = "<group>"; };
 		3EE6E5F82085B6700072D0AE /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		3EE6E5FA2085B67B0072D0AE /* AlamofireNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireNetworkService.swift; sourceTree = "<group>"; };
 		B73E8503C402DEAB28BE21A1 /* Pods-TestProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestProject/Pods-TestProject.release.xcconfig"; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 		3E2FA183206BEE4D0000DAD7 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				3ECBF33D2157748500A43623 /* NetwordDebugger */,
 				3E82D03121295590001A2720 /* FormBuilder */,
 				3E701196208EFF5D00B28B5A /* SafariControllerHelper */,
 				3E7F49A52087089B00A0AB56 /* ErrorConstants */,
@@ -835,6 +838,14 @@
 			path = UIHelpers/ViewControllerConfigurating;
 			sourceTree = "<group>";
 		};
+		3ECBF33D2157748500A43623 /* NetwordDebugger */ = {
+			isa = PBXGroup;
+			children = (
+				3ECBF33E2157749200A43623 /* NetwordDebugger.swift */,
+			);
+			path = NetwordDebugger;
+			sourceTree = "<group>";
+		};
 		3EE6E5F72085B6640072D0AE /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
@@ -864,7 +875,6 @@
 				3E2FA166206BED940000DAD7 /* Frameworks */,
 				3E2FA167206BED940000DAD7 /* Resources */,
 				85C84D4594AF44A837374BFB /* [CP] Embed Pods Frameworks */,
-				62BEBCA146F4EC3A870FA02C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -932,21 +942,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		62BEBCA146F4EC3A870FA02C /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestProject/Pods-TestProject-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		85C84D4594AF44A837374BFB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -955,6 +950,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-TestProject/Pods-TestProject-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Dotzu/Dotzu.framework",
 				"${BUILT_PRODUCTS_DIR}/FXKeychain/FXKeychain.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/Localize-Swift/Localize_Swift.framework",
@@ -965,6 +961,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Dotzu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FXKeychain.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Localize_Swift.framework",
@@ -1066,6 +1063,7 @@
 				3E59D5E220A3315800853254 /* SecureStorageService.swift in Sources */,
 				3EE6E5F92085B6700072D0AE /* NetworkService.swift in Sources */,
 				3E2FA192206BEE4E0000DAD7 /* AppDelegate.swift in Sources */,
+				3ECBF33F2157749200A43623 /* NetwordDebugger.swift in Sources */,
 				3E58BA8C206CDF49001DEB34 /* UITableView+Extensions.swift in Sources */,
 				3E628852213299F7001A7E18 /* MenuTabBarItem.swift in Sources */,
 				3E13F8482145597600CD09D5 /* SettingsSceneBuilder.swift in Sources */,
