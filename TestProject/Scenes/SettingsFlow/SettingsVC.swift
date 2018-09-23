@@ -11,7 +11,7 @@ import UIKit
 
 protocol SettingsViewOutput: class {
     func handleLogoutTap()
-    var  settingsViewInput: SettingsViewInput? {get set}
+    var  view: SettingsViewInput? {get set}
 }
 
 final class SettingsVC: UIViewController {

@@ -18,7 +18,7 @@ struct LoginSceneBuilder {
         let router = LoginRouter(viewController: vc)
         let presenter = LoginPresenter(userSessionService: userSessionService, model: model)
         vc.presenter = presenter
-        vc.presenter?.loginViewInput = vc
+        vc.presenter?.view = vc
         vc.router = router
         
         return vc

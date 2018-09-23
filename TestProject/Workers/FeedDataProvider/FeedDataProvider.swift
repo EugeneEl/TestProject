@@ -18,6 +18,8 @@ final class FeedDataProvider {
     private let dataWorker: FeedDataControllerProtocol
     private let apiWorker: FeedAPIProtocol
     
+    private var request: Cancellable?
+    
     // MARK: Initialization
     
     init(dataWorker: FeedDataControllerProtocol, apiWorker: FeedAPIProtocol) {
@@ -28,7 +30,8 @@ final class FeedDataProvider {
     // MARK: - Public
     
     func fetchItemsUsingLocalData(_ isUsingLocalData: Bool, success: @escaping FeedFetchCompletionSuccess, failure: @escaping FeedFetchCompletionFail) {
-        apiWorker.fetchNewsWithCompletionSuccess({[weak self] (items) in
+        request?.cancelRequest()
+        request = apiWorker.fetchNewsWithCompletionSuccess({[weak self] (items) in
             guard let strongSelf = self else {return}
             // update local storage
             if isUsingLocalData {
@@ -49,6 +52,7 @@ final class FeedDataProvider {
     }
     
     func clearData() {
+        request?.cancelRequest()
         dataWorker.deleteItems {
             print("deleted")
         }

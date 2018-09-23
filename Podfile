@@ -38,6 +38,12 @@ pod 'MBProgressHUD'
 # Homepage: https://github.com/jdg/MBProgressHUD
 # Source: https://github.com/jdg/MBProgressHUD.git
 
+pod 'Dotzu'
+# In-App iOS Debugging Tool With Enhanced Logging, Networking Info, Crash reporting And More.
+# This fork is used for screen recording with Replay kit.
+# Homepage: https://github.com/remirobert/Dotzu
+# Source: https://github.com/remirobert/Dotzu.git
+
 end
 
 post_install do |installer|

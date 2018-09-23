@@ -15,7 +15,7 @@ final class ApplicationCoordinator: Coordinator {
     
     private var window: UIWindow
     private let userSessionService: UserSessionService
-    private (set) internal var childCoordinators: [Coordinator] = []
+    private (set) internal var childCoordinators: Set<Coordinator> = []
     private var navigationController: BaseNavigationController?
     
     // MARK: - Initialization
@@ -66,17 +66,7 @@ final class ApplicationCoordinator: Coordinator {
     }
     
     fileprivate func addCoordinator(_ coordinator: Coordinator) {
-        var isInserted = false
-        for childCoordinator in childCoordinators {
-            if childCoordinator.flow == coordinator.flow {
-                isInserted = true
-                break
-            }
-        }
-        
-        if !isInserted {
-            childCoordinators.append(coordinator)
-        }
+        childCoordinators.insert(coordinator)
     }
     
     fileprivate func removeCoordinatorWithFlow(_ flow: CoordinatorFlow) {
