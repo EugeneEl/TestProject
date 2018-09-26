@@ -14,6 +14,10 @@ protocol FeedDataControllerProtocol {
     func fetchItems(completion: @escaping ([FeedItem]) -> Void)
     func updateItems(items: [FeedItem])
     func deleteItems(completion: @escaping () -> Void)
+    
+    func fetchItemByID(_ id: String, completion: @escaping (FeedItem?) -> ())
+    func updateItem(item: FeedItem, completion:  @escaping () -> ())
+    func deleteItemByID(_ id: String, completion: @escaping () -> ())
 }
 
 class FeedDataWorker: FeedDataControllerProtocol {
@@ -34,7 +38,7 @@ class FeedDataWorker: FeedDataControllerProtocol {
         worker.get{(result: Result<[FeedItem]>) in
             switch result {
             case .success(let items):
-                completion(items)
+                completion(items ?? [])
             case .failure(let error):
                 print("\(error)")
                 completion([])
@@ -53,5 +57,28 @@ class FeedDataWorker: FeedDataControllerProtocol {
         worker.delete {(result: Result<[FeedItem]>) in
             completion()
         }
+    }
+    
+    func fetchItemByID(_ id: String, completion: @escaping (FeedItem?) -> ()) {
+        worker.getById(id: id) { (result: Result<FeedItemEntity>) in
+            switch result {
+            case .success(let entity):
+                guard let unwrappedEntity = entity else {
+                    completion(nil)
+                    return
+                }
+                completion(FeedItem(entity: unwrappedEntity))
+            case .failure(let error):
+                completion(nil)
+            }
+        }
+    }
+    
+    func updateItem(item: FeedItem, completion:  @escaping () -> ()) {
+        
+    }
+    
+    func deleteItemByID(_ id: String, completion: @escaping () -> ()) {
+        
     }
 }

@@ -129,15 +129,24 @@ extension ListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let item = presenter?.feedItems[safe: indexPath.row] else {return}
+        let worker = FeedDataWorker()
+        let entity = worker.fetchItemByID(item.url.absoluteString) { (itemInStore) in
+            print("itemInStore: \(itemInStore)")
+        }
+        print("next step")
+    }
 }
 
 // MARK: - FeedListTableViewCellInteractable
 
 extension ListVC: FeedListTableViewCellInteractable {
     func linkDidTapInCell(_ cell: FeedListTableViewCell) {
-        guard let indexPath = tableView.indexPath(for: cell),
-            let url = presenter?.provideURLForIndex(indexPath.row) else {return}
-        safariControllerHelper?.openURLInSafariViewController(url)
+//        guard let indexPath = tableView.indexPath(for: cell),
+//            let url = presenter?.provideURLForIndex(indexPath.row) else {return}
+//        safariControllerHelper?.openURLInSafariViewController(url)
     }
 }
 

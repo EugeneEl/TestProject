@@ -16,6 +16,7 @@ protocol CoreDataServiceProtocol:class {
     var backgroundContext: NSManagedObjectContext {get}
     func performBackgroundTask(_ block: @escaping (NSManagedObjectContext) -> Void)
     func performForegroundTask(_ block: @escaping (NSManagedObjectContext) -> Void)
+    func performForegroundTaskAndWait(_ block: @escaping (NSManagedObjectContext) -> Void)
 }
 
 
@@ -47,6 +48,12 @@ final class CoreDataService: CoreDataServiceProtocol {
     
     func performForegroundTask(_ block: @escaping (NSManagedObjectContext) -> Void) {
         self.viewContext.perform {
+            block(self.viewContext)
+        }
+    }
+    
+    func performForegroundTaskAndWait(_ block: @escaping (NSManagedObjectContext) -> Void) {
+        self.viewContext.performAndWait {
             block(self.viewContext)
         }
     }

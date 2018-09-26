@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 enum Result<T>{
-    case success(T)
+    case success(T?)
     case failure(Error)
 }
 
@@ -25,6 +25,8 @@ protocol NewCoreDataWorkerProtocol {
          completion: @escaping (Error?) -> Void)
     func delete<Entity: ManagedObjectConvertible>
         (completion: @escaping (Result<[Entity]>) -> Void)
+    
+    func getById<Entity: ManagedObjectProtocol>(id: String, completion: @escaping(Result<Entity>)-> ()) where Entity: NSManagedObject
 }
 
 extension NewCoreDataWorkerProtocol {
@@ -92,6 +94,13 @@ class NewCoreDataWorker: NewCoreDataWorkerProtocol {
             } catch {
                 completion(CoreDataWorkerError.cannotSave(error))
             }
+        }
+    }
+    
+    func getById<Entity: ManagedObjectProtocol>(id: String, completion: @escaping(Result<Entity>)-> ()) where Entity: NSManagedObject {
+        coreData.performForegroundTaskAndWait { (context) in
+           let entity = Entity.single(with: id, from: context)
+            completion(Result.success(entity))
         }
     }
     
