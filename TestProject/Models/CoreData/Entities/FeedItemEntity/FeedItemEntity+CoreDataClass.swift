@@ -15,12 +15,12 @@ public class FeedItemEntity: NSManagedObject {
 }
 
 extension FeedItemEntity: ManagedObjectProtocol {
-    func toEntity() -> FeedItem? {
+    func toPlainObject() -> FeedItem? {
         return FeedItem(entity: self)
     }
 }
 
-extension FeedItem: ManagedObjectConvertible {
+extension FeedItem: PlainObjectConvertible {
     func toManagedObject(in context: NSManagedObjectContext) -> FeedItemEntity? {
         // TEST StockAPI doesn't provide ids do I will use URL as keys
         let entity = FeedItemEntity.getOrCreateSingle(with: url.absoluteString, from: context)

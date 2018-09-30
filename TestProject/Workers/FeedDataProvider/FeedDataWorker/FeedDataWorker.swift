@@ -54,20 +54,22 @@ class FeedDataWorker: FeedDataControllerProtocol {
     }
     
     func deleteItems(completion: @escaping () -> Void) {
-        worker.delete {(result: Result<[FeedItem]>) in
+        worker.deleteAll {(result: Result<[FeedItem]>) in
             completion()
         }
     }
     
     func fetchItemByID(_ id: String, completion: @escaping (FeedItem?) -> ()) {
-        worker.getById(id: id) { (result: Result<FeedItemEntity>) in
+        
+
+        worker.getById(id: id) { (result: Result<FeedItem>) in
             switch result {
             case .success(let entity):
                 guard let unwrappedEntity = entity else {
                     completion(nil)
                     return
                 }
-                completion(FeedItem(entity: unwrappedEntity))
+                completion(unwrappedEntity)
             case .failure(let error):
                 completion(nil)
             }

@@ -40,7 +40,7 @@ final class ListPresenter: ListViewOutput {
     
     // MARK: - Public
     
-    func fetchData() {
+    func fetchData() { 
         state = .isLoading
         
         dataProvider.fetchItemsUsingLocalData(true, success: {[weak self] (items) in
