@@ -47,22 +47,20 @@ class FeedDataWorker: FeedDataControllerProtocol {
     }
     
     func updateItems(items: [FeedItem]){
-        worker.upsert(entities: items) { (error) in
+        worker.upsert(entities: items, operationQueue: .background) { (error) in
             guard let error = error else { return }
             print("\(error)")
         }
     }
     
     func deleteItems(completion: @escaping () -> Void) {
-        worker.deleteAll {(result: Result<[FeedItem]>) in
+        worker.deleteAll(operationQueue: .main) {(result: Result<[FeedItem]>) in
             completion()
         }
     }
     
     func fetchItemByID(_ id: String, completion: @escaping (FeedItem?) -> ()) {
-        
-
-        worker.getById(id: id) { (result: Result<FeedItem>) in
+        worker.getById(id: id, operationQueue: .main) { (result: Result<FeedItem>) in
             switch result {
             case .success(let entity):
                 guard let unwrappedEntity = entity else {
