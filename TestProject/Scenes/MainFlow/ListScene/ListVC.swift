@@ -154,12 +154,15 @@ extension ListVC: FeedListTableViewCellInteractable {
 
 extension ListVC: ViewControllerUIConfigurating {
     var navigationBarAppearance: NavigationBarAppearance? {
-        return NavigationBarAppearance(isSeparatorVisible: false,
-                                       translucent: false,
-                                       navigationBarColor: Constants.Colors.background,
-                                       navigationBarTintColor: .white,
-                                       navigationTitle: "News",
-                                       navigationTitleColor: .white,
+        let navigationBarTitleUI = NavigationBarTitleUI(color: .white, font: UIFont.systemFont(ofSize: 15))
+        let navigationBarUI = NavigationBarUI(isSeparatorVisible: false,
+                                              translucent: false,
+                                              navigationBarColor: Constants.Colors.background,
+                                              navigationBarTintColor: .white,
+                                              titleStyle: .text("News", navigationBarTitleUI))
+        
+        
+        return NavigationBarAppearance(navigationBarUI: navigationBarUI,
                                        leftItem: nil,
                                        rightItem: nil)
     }

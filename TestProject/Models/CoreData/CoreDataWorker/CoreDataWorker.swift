@@ -14,7 +14,7 @@ enum Result<T>{
     case failure(Error)
 }
 
-enum DataFetchOperationType {
+enum DataOperationQueueType {
     case main
     case background
 }
@@ -24,23 +24,23 @@ protocol NewCoreDataWorkerProtocol {
         (with predicate: NSPredicate?,
          sortDescriptors: [NSSortDescriptor]?,
          fetchLimit: Int?,
-         operationQueue: DataFetchOperationType,
+         operationQueue: DataOperationQueueType,
          completion: @escaping (Result<[PlainObject]>) -> ())
     func upsert<PlainObject: PlainObjectConvertible>
         (entities: [PlainObject],
-         operationQueue: DataFetchOperationType,
+         operationQueue: DataOperationQueueType,
          completion: @escaping (Error?) -> ())
     func deleteAll<PlainObject: PlainObjectConvertible>
-        (operationQueue: DataFetchOperationType,
+        (operationQueue: DataOperationQueueType,
          completion: @escaping (Result<[PlainObject]>) -> ())
     
     func getById<PlainObject: PlainObjectConvertible>(id: String,
-                                                      operationQueue: DataFetchOperationType,
+                                                      operationQueue: DataOperationQueueType,
                                                       completion: @escaping(Result<PlainObject>)-> ())
     func updateByPlainObject<PlainObject: PlainObjectConvertible>(item: PlainObject,
-                                                                  operationQueue: DataFetchOperationType, completion: @escaping(Result<PlainObject>)-> ())
+                                                                  operationQueue: DataOperationQueueType, completion: @escaping(Result<PlainObject>)-> ())
     func deleteById<PlainObject: PlainObjectConvertible>(id: String,
-                                                         operationQueue: DataFetchOperationType,
+                                                         operationQueue: DataOperationQueueType,
                                                          completion: @escaping (Result<PlainObject>) -> ())
 }
 
@@ -49,7 +49,7 @@ extension NewCoreDataWorkerProtocol {
         (with predicate: NSPredicate? = nil,
          sortDescriptors: [NSSortDescriptor]? = nil,
          fetchLimit: Int? = nil,
-         operationQueue: DataFetchOperationType = .main,
+         operationQueue: DataOperationQueueType = .main,
          completion: @escaping (Result<[PlainObject]>) -> Void) {
         get(with: predicate,
             sortDescriptors: sortDescriptors,
@@ -76,7 +76,7 @@ class NewCoreDataWorker: NewCoreDataWorkerProtocol {
         (with predicate: NSPredicate?,
          sortDescriptors: [NSSortDescriptor]?,
          fetchLimit: Int?,
-         operationQueue: DataFetchOperationType,
+         operationQueue: DataOperationQueueType,
          completion: @escaping (Result<[PlainObject]>) -> Void) {
         coreData.performTaskOnDataOperationQueue(operationQueue) { context in
             do {
@@ -98,7 +98,7 @@ class NewCoreDataWorker: NewCoreDataWorkerProtocol {
     }
     
     func upsert<PlainObject: PlainObjectConvertible>
-        (entities: [PlainObject],          operationQueue: DataFetchOperationType,
+        (entities: [PlainObject],          operationQueue: DataOperationQueueType,
          completion: @escaping (Error?) -> Void) {
         
         coreData.performTaskOnDataOperationQueue(operationQueue) { context in
@@ -114,7 +114,7 @@ class NewCoreDataWorker: NewCoreDataWorkerProtocol {
         }
     }
     
-    func getById<PlainObject: PlainObjectConvertible>(id: String,          operationQueue: DataFetchOperationType, completion: @escaping(Result<PlainObject>)-> ()) {
+    func getById<PlainObject: PlainObjectConvertible>(id: String,          operationQueue: DataOperationQueueType, completion: @escaping(Result<PlainObject>)-> ()) {
         coreData.performForegroundTaskAndWait { (context) in
             let entity = PlainObject.ManagedObject.single(with: id, from: context) as? PlainObject.ManagedObject
             let plainObject = entity?.toPlainObject() as? PlainObject
@@ -123,7 +123,7 @@ class NewCoreDataWorker: NewCoreDataWorkerProtocol {
         }
     }
     
-    func updateByPlainObject<PlainObject>(item: PlainObject,          operationQueue: DataFetchOperationType, completion: @escaping (Result<PlainObject>) -> ()) where PlainObject : PlainObjectConvertible {
+    func updateByPlainObject<PlainObject>(item: PlainObject,          operationQueue: DataOperationQueueType, completion: @escaping (Result<PlainObject>) -> ()) where PlainObject : PlainObjectConvertible {
         coreData.performTaskOnDataOperationQueue(operationQueue) { context in
             let object = item.toManagedObject(in: context)
             do {
@@ -135,7 +135,7 @@ class NewCoreDataWorker: NewCoreDataWorkerProtocol {
         }
     }
     
-    func deleteById<PlainObject: PlainObjectConvertible>(id: String,          operationQueue: DataFetchOperationType, completion: @escaping (Result<PlainObject>) -> ()) {
+    func deleteById<PlainObject: PlainObjectConvertible>(id: String,          operationQueue: DataOperationQueueType, completion: @escaping (Result<PlainObject>) -> ()) {
         coreData.performTaskOnDataOperationQueue(operationQueue) { context in
             do {
                 let entity = PlainObject.ManagedObject.single(with: id, from: context) as? PlainObject.ManagedObject
@@ -161,7 +161,7 @@ class NewCoreDataWorker: NewCoreDataWorkerProtocol {
         }
     }
     
-    func deleteAll<PlainObject>(operationQueue: DataFetchOperationType, completion: @escaping (Result<[PlainObject]>) -> Void) where PlainObject : PlainObjectConvertible {
+    func deleteAll<PlainObject>(operationQueue: DataOperationQueueType, completion: @escaping (Result<[PlainObject]>) -> Void) where PlainObject : PlainObjectConvertible {
         coreData.performTaskOnDataOperationQueue(operationQueue) { context in
             do {
                 let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: PlainObject.ManagedObject.entityName())

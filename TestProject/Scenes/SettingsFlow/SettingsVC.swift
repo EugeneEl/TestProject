@@ -62,12 +62,15 @@ extension SettingsVC: SettingsViewInput {
 
 extension SettingsVC: ViewControllerUIConfigurating {
     var navigationBarAppearance: NavigationBarAppearance? {
-        return NavigationBarAppearance(isSeparatorVisible: false,
-                                       translucent: false,
-                                       navigationBarColor: Constants.Colors.background,
-                                       navigationBarTintColor: .black,
-                                       navigationTitle: "Profile",
-                                       navigationTitleColor: .white,
+        let navigationBarTitleUI = NavigationBarTitleUI(color: .white, font: UIFont.systemFont(ofSize: 15))
+        let navigationBarUI = NavigationBarUI(isSeparatorVisible: false,
+                                              translucent: false,
+                                              navigationBarColor: Constants.Colors.background,
+                                              navigationBarTintColor: .black,
+                                              titleStyle: .text("Profile", navigationBarTitleUI))
+        
+        
+        return NavigationBarAppearance(navigationBarUI: navigationBarUI,
                                        leftItem: nil,
                                        rightItem: nil)
     }

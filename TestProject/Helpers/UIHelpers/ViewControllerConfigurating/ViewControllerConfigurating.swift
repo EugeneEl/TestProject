@@ -14,15 +14,33 @@ enum TitleStyle {
     case cropped(percents: Int)
 }
 
-struct NavigationBarAppearance {
+struct NavigationBarTitleUI {
+    let color: UIColor
+    let font: UIFont
+}
+
+enum NavigationBarTitleStyle {
+    case text(String, NavigationBarTitleUI)
+    case customView(UIView)
+}
+
+struct NavigationBarUI {
     var isSeparatorVisible: Bool?
     var translucent: Bool
-    var navigationBarColor: UIColor?
-    var navigationBarTintColor: UIColor
-    var navigationTitle: String?
-    var navigationTitleColor: UIColor
-    var leftItem: UIBarButtonItem?
-    var rightItem: UIBarButtonItem?
+    let navigationBarColor: UIColor?
+    let navigationBarTintColor: UIColor
+    let titleStyle: NavigationBarTitleStyle
+}
+
+enum NavigationBarItem {
+    case single(UIBarButtonItem)
+    case multiple([UIBarButtonItem])
+}
+
+struct NavigationBarAppearance {
+    var navigationBarUI: NavigationBarUI
+    var leftItem: NavigationBarItem?
+    var rightItem: NavigationBarItem?
 }
 
 extension NavigationBarAppearance {
@@ -96,74 +114,93 @@ extension ViewControllerUIConfigurating where Self: UIViewController {
             navigationBar?.isHidden = false
             
             // remove separator if needed
-            if let visible = appearance.isSeparatorVisible {
+            if let visible = appearance.navigationBarUI.isSeparatorVisible {
                 if !visible {
-                    let img = UIImage()
-                    self.navigationController?.navigationBar.shadowImage = img
-                    self.navigationController?.navigationBar.setBackgroundImage(img, for: UIBarMetrics.default)
+                    hideSeparator()
                 } 
             }
             
             // setup translucency
-            navigationBar?.isTranslucent = appearance.translucent
+            navigationBar?.isTranslucent = appearance.navigationBarUI.translucent
             
             // setup navigation bar colors
-            navigationController?.navigationBar.barTintColor = appearance.navigationBarColor
-            navigationController?.navigationBar.tintColor = appearance.navigationBarTintColor
+            navigationController?.navigationBar.barTintColor = appearance.navigationBarUI.navigationBarColor
+            navigationController?.navigationBar.tintColor = appearance.navigationBarUI.navigationBarTintColor
             
             // setup navigation title
-            setupNavigationTitle(appearance.navigationTitle, titleColor: appearance.navigationTitleColor)
+            setupNavigationTitleWithStyle(appearance.navigationBarUI.titleStyle)
             
-            // setup barItems if needed
-            if let leftItem = appearance.leftItem {
-                navigationItem.leftBarButtonItem = leftItem
-            } else {
-                if isBackButtonVisible {
-                    // replace back button
-                } else {
-                    navigationItem.setHidesBackButton(true, animated:true);
-                }
-            }
-            
-            if let rightItem = appearance.rightItem {
-                navigationItem.rightBarButtonItem = rightItem
-            } else {
-                navigationItem.rightBarButtonItem = nil
-            }
-            
+            setupItemsWithAppearance(appearance)
         } else {
             navigationController?.navigationBar.isHidden = true
         }
     }
     
-    fileprivate func setupNavigationTitle(_ title: String?, titleColor: UIColor) {
-        let navigationTitleView = UIView(frame: navigationViewFrame)
-        
-        let titleConfigurationBlock = {[unowned self] () -> UILabel in
-            let titleLabel = UILabel(frame: self.titleFrame)
-            titleLabel.text = title
-            titleLabel.textColor = titleColor
-            titleLabel.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.semibold)
-            
-            titleLabel.textAlignment = .center
-            
-            return titleLabel
-        }
-        
-        let label = titleConfigurationBlock()
-        navigationTitleView.addSubview(label)
-        var width = label.intrinsicContentSize.width
-        if width > 180 {
-            label.snp.makeConstraints { make in
-                make.centerX.equalTo(label.superview!)
-                make.centerY.equalTo(label.superview!)
-                make.width.equalTo(width)
-                make.height.equalTo(label.intrinsicContentSize.height)
+    fileprivate func hideSeparator() {
+        let img = UIImage()
+        self.navigationController?.navigationBar.shadowImage = img
+        self.navigationController?.navigationBar.setBackgroundImage(img, for: UIBarMetrics.default)
+    }
+    
+    fileprivate func setupItemsWithAppearance(_ appearance: NavigationBarAppearance) {
+        if let leftNavigationItem = appearance.leftItem {
+            switch leftNavigationItem {
+            case .single(let item):
+                navigationItem.leftBarButtonItem = item
+            case .multiple(let items):
+                navigationItem.leftBarButtonItems = items
             }
         } else {
-            label.constraintToSuperViewCenterRelyOnIntristicSize()
+            if isBackButtonVisible {
+                // replace back button
+            } else {
+                navigationItem.setHidesBackButton(true, animated:true);
+            }
         }
-        navigationTitleView.frame.size.width = width
-        navigationItem.titleView = navigationTitleView
+        
+        if let rightNavigationItem = appearance.rightItem {
+            switch rightNavigationItem {
+            case .single(let item):
+                navigationItem.rightBarButtonItem = item
+            case .multiple(let items):
+                navigationItem.rightBarButtonItems = items
+            }
+        }
+    }
+    
+    fileprivate func setupNavigationTitleWithStyle(_ style: NavigationBarTitleStyle) {
+        switch style {
+        case .text(let titleText, let ui):
+            let navigationTitleView = UIView(frame: navigationViewFrame)
+            
+            let titleConfigurationBlock = {[unowned self] () -> UILabel in
+                let titleLabel = UILabel(frame: self.titleFrame)
+                titleLabel.text = titleText
+                titleLabel.textColor = ui.color
+                titleLabel.font = ui.font
+                
+                titleLabel.textAlignment = .center
+                
+                return titleLabel
+            }
+            
+            let label = titleConfigurationBlock()
+            navigationTitleView.addSubview(label)
+            var width = label.intrinsicContentSize.width
+            if width > 180 {
+                label.snp.makeConstraints { make in
+                    make.centerX.equalTo(label.superview!)
+                    make.centerY.equalTo(label.superview!)
+                    make.width.equalTo(width)
+                    make.height.equalTo(label.intrinsicContentSize.height)
+                }
+            } else {
+                label.constraintToSuperViewCenterRelyOnIntristicSize()
+            }
+            navigationTitleView.frame.size.width = width
+            navigationItem.titleView = navigationTitleView
+        case .customView(let view):
+            navigationItem.titleView = view
+        }
     }
 }

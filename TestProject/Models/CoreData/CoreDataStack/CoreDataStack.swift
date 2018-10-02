@@ -15,7 +15,7 @@ protocol CoreDataServiceProtocol:class {
     var viewContext: NSManagedObjectContext {get}
     var backgroundContext: NSManagedObjectContext {get}
     
-    func performTaskOnDataOperationQueue(_ dataOperationType: DataFetchOperationType, _ block: @escaping (NSManagedObjectContext) -> Void)
+    func performTaskOnDataOperationQueue(_ dataOperationType: DataOperationQueueType, _ block: @escaping (NSManagedObjectContext) -> Void)
     func performForegroundTaskAndWait(_ block: @escaping (NSManagedObjectContext) -> Void)
 }
 
@@ -46,7 +46,7 @@ final class CoreDataService: CoreDataServiceProtocol {
         return self.persistentContainer.newBackgroundContext()
     }()
     
-    func performTaskOnDataOperationQueue(_ dataOperationType: DataFetchOperationType, _ block: @escaping (NSManagedObjectContext) -> Void) {
+    func performTaskOnDataOperationQueue(_ dataOperationType: DataOperationQueueType, _ block: @escaping (NSManagedObjectContext) -> Void) {
         switch dataOperationType {
         case .main:
             viewContext.performAndWait {block(self.viewContext)}
