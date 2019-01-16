@@ -92,6 +92,10 @@ final class LoginPresenter: LoginViewOutput {
 // MARK: - FormInputConrollerOutput
 
 extension LoginPresenter: FormInputConrollerOutput {
+    func textFieldDoneDidTapInFormType(_ formType: FormControllerType) {
+        
+    }
+    
     func textDidChangeInForm(_ text: String, formType: FormControllerType) {
         switch formType {
         case .email:

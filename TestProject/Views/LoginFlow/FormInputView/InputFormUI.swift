@@ -12,7 +12,7 @@ import UIKit
 enum FormInputRightViewMode {
     case showPassword(Bool)
     
-    var image: UIImage {
+    var image: UIImage? {
         switch self {
         case .showPassword(let isVisible):
             if isVisible {
@@ -23,6 +23,7 @@ enum FormInputRightViewMode {
         }
     }
 }
+
 struct FormKeyboardUI {
     let keyboardType: UIKeyboardType
     let capitalizationType: UITextAutocapitalizationType
@@ -37,9 +38,24 @@ struct FormPlaceholderUI {
     let width: CGFloat
 }
 
+struct FloatingPlaceholderAttribute {
+    let color: UIColor
+    let font: UIFont
+}
+
+struct FloatingTextFieldAttribute {
+    let activeInputLineColor: UIColor
+    let activePlaceholder: FloatingPlaceholderAttribute
+    let inactivePlaceholder: FloatingPlaceholderAttribute
+    let textInput: FloatingPlaceholderAttribute
+}
+
+enum TextFieldType {
+    case floating(attribute: FloatingTextFieldAttribute)
+}
+
 struct FormInputViewUI {
-    let placeholderUI: FormPlaceholderUI
+    let textFieldType: TextFieldType
     let keyboardUI: FormKeyboardUI
-    let textFont: UIFont
-    let isSeparatorVisible: Bool
+    let placeholderText: String
 }

@@ -74,15 +74,16 @@
             return UITableViewCell()
         }
         
-        let text = dataPresenter.provideTextForForm(loginFormType)
-        let formModule = LoginFormBuilder.provideInputControlModuleForFragment(loginFormType, initalText: text)
+//        let text = dataPresenter.provideTextForForm(loginFormType)
+//        let formModule = LoginFormBuilder.provideInputControlModuleForFragment(loginFormType, initalText: text)
+//
+//        let inputControl = formModule.0
+//        let formView = formModule.1
+//        let cell = LoginFormBuilder.provideCellForFormType(loginFormType, formView: formView)
         
-        let inputControl = formModule.0
-        let formView = formModule.1
-        let cell = LoginFormBuilder.provideCellForFormType(loginFormType, formView: formView)
+//        presenter?.inputControllers.append(inputControl)
         
-        presenter?.inputControllers.append(inputControl)
-        
+        let cell = UITableViewCell()
         cellsDictionary[indexPath] = cell
         return cell
     }
@@ -96,7 +97,7 @@
  
  extension NewLoginVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return LoginFormType.inputHeight
+        return 55
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
