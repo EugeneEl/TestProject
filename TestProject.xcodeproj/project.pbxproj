@@ -102,6 +102,9 @@
 		3ED84D0A21EF022E0005122A /* FormValidators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED84D0921EF022E0005122A /* FormValidators.swift */; };
 		3ED84D0C21EF02790005122A /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED84D0B21EF02790005122A /* String+Localization.swift */; };
 		3ED84D0E21EF02B20005122A /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED84D0D21EF02B20005122A /* String+Extensions.swift */; };
+		3ED84D1421EF0D5C0005122A /* Proxima Nova Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3ED84D1121EF0D5C0005122A /* Proxima Nova Semibold.otf */; };
+		3ED84D1521EF0D5C0005122A /* Proxima Nova Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3ED84D1221EF0D5C0005122A /* Proxima Nova Regular.otf */; };
+		3ED84D1621EF0D5C0005122A /* Proxima Nova Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3ED84D1321EF0D5C0005122A /* Proxima Nova Bold.otf */; };
 		3EE6E5F92085B6700072D0AE /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE6E5F82085B6700072D0AE /* NetworkService.swift */; };
 		3EE6E5FB2085B67B0072D0AE /* AlamofireNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE6E5FA2085B67B0072D0AE /* AlamofireNetworkService.swift */; };
 		FAF7E67B1CA116DA667E27F7 /* Pods_TestProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A120D72992D64EB408E3EC /* Pods_TestProject.framework */; };
@@ -206,6 +209,9 @@
 		3ED84D0921EF022E0005122A /* FormValidators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormValidators.swift; sourceTree = "<group>"; };
 		3ED84D0B21EF02790005122A /* String+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localization.swift"; sourceTree = "<group>"; };
 		3ED84D0D21EF02B20005122A /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		3ED84D1121EF0D5C0005122A /* Proxima Nova Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Semibold.otf"; sourceTree = "<group>"; };
+		3ED84D1221EF0D5C0005122A /* Proxima Nova Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Regular.otf"; sourceTree = "<group>"; };
+		3ED84D1321EF0D5C0005122A /* Proxima Nova Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Bold.otf"; sourceTree = "<group>"; };
 		3EE6E5F82085B6700072D0AE /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		3EE6E5FA2085B67B0072D0AE /* AlamofireNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireNetworkService.swift; sourceTree = "<group>"; };
 		B73E8503C402DEAB28BE21A1 /* Pods-TestProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestProject/Pods-TestProject.release.xcconfig"; sourceTree = "<group>"; };
@@ -255,6 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				3E2FA187206BEE4D0000DAD7 /* Storyboards */,
+				3E2FA184206BEE4D0000DAD7 /* Resources */,
 				3E2FA18A206BEE4E0000DAD7 /* Application */,
 				3E6793382135B33500BCAAFA /* Coordinators */,
 				3E2FA17F206BEE4D0000DAD7 /* Scenes */,
@@ -264,7 +271,6 @@
 				3E58BA6D206CDF49001DEB34 /* Extensions */,
 				3E2FA183206BEE4D0000DAD7 /* Helpers */,
 				3E5B335D2080DDCB00A295C1 /* 3rdParty */,
-				3E2FA184206BEE4D0000DAD7 /* Resources */,
 				3E2FA186206BEE4D0000DAD7 /* ScreenProviders */,
 				3E2FA182206BEE4D0000DAD7 /* Views */,
 			);
@@ -324,6 +330,7 @@
 		3E2FA184206BEE4D0000DAD7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3ED84D0F21EF0D5C0005122A /* Fonts */,
 				3E2FA185206BEE4D0000DAD7 /* Assets.xcassets */,
 				3E62883921313263001A7E18 /* Constants.swift */,
 			);
@@ -862,6 +869,24 @@
 			path = FormValidators;
 			sourceTree = "<group>";
 		};
+		3ED84D0F21EF0D5C0005122A /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				3ED84D1021EF0D5C0005122A /* Proxima */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		3ED84D1021EF0D5C0005122A /* Proxima */ = {
+			isa = PBXGroup;
+			children = (
+				3ED84D1121EF0D5C0005122A /* Proxima Nova Semibold.otf */,
+				3ED84D1221EF0D5C0005122A /* Proxima Nova Regular.otf */,
+				3ED84D1321EF0D5C0005122A /* Proxima Nova Bold.otf */,
+			);
+			path = Proxima;
+			sourceTree = "<group>";
+		};
 		3EE6E5F72085B6640072D0AE /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
@@ -943,10 +968,13 @@
 				3E82D03D212A8F0A001A2720 /* LoginHeaderView.xib in Resources */,
 				3E2FA191206BEE4E0000DAD7 /* Main.storyboard in Resources */,
 				3E6288832132B111001A7E18 /* Feed.json in Resources */,
+				3ED84D1621EF0D5C0005122A /* Proxima Nova Bold.otf in Resources */,
 				3E39BB14213BDA1600254BF8 /* User.json in Resources */,
 				3E2FA18F206BEE4E0000DAD7 /* Assets.xcassets in Resources */,
 				3E62883621312879001A7E18 /* LoginFooterView.xib in Resources */,
+				3ED84D1521EF0D5C0005122A /* Proxima Nova Regular.otf in Resources */,
 				3EB167A0206CDBC000A82D11 /* Login.storyboard in Resources */,
+				3ED84D1421EF0D5C0005122A /* Proxima Nova Semibold.otf in Resources */,
 				3E2FA190206BEE4E0000DAD7 /* LaunchScreen.storyboard in Resources */,
 				3E82D02E2129526C001A2720 /* FormInputView.xib in Resources */,
 				3E7F49B42087267C00A0AB56 /* FeedListTableViewCell.xib in Resources */,
