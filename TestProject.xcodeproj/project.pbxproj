@@ -105,6 +105,11 @@
 		3ED84D1421EF0D5C0005122A /* Proxima Nova Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3ED84D1121EF0D5C0005122A /* Proxima Nova Semibold.otf */; };
 		3ED84D1521EF0D5C0005122A /* Proxima Nova Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3ED84D1221EF0D5C0005122A /* Proxima Nova Regular.otf */; };
 		3ED84D1621EF0D5C0005122A /* Proxima Nova Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3ED84D1321EF0D5C0005122A /* Proxima Nova Bold.otf */; };
+		3ED84D1821EF17050005122A /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED84D1721EF17050005122A /* SignInVC.swift */; };
+		3ED84D1A21EF1F300005122A /* SignInMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED84D1921EF1F300005122A /* SignInMainView.swift */; };
+		3ED84D1C21EF23420005122A /* NSMutableAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED84D1B21EF23420005122A /* NSMutableAttributedString+Extensions.swift */; };
+		3ED84D2121EF24350005122A /* LoginWorkersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED84D2021EF24350005122A /* LoginWorkersFactory.swift */; };
+		3ED84D2321EF244F0005122A /* AppConfigurationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED84D2221EF244F0005122A /* AppConfigurationProvider.swift */; };
 		3EE6E5F92085B6700072D0AE /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE6E5F82085B6700072D0AE /* NetworkService.swift */; };
 		3EE6E5FB2085B67B0072D0AE /* AlamofireNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE6E5FA2085B67B0072D0AE /* AlamofireNetworkService.swift */; };
 		FAF7E67B1CA116DA667E27F7 /* Pods_TestProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A120D72992D64EB408E3EC /* Pods_TestProject.framework */; };
@@ -212,6 +217,11 @@
 		3ED84D1121EF0D5C0005122A /* Proxima Nova Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Semibold.otf"; sourceTree = "<group>"; };
 		3ED84D1221EF0D5C0005122A /* Proxima Nova Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Regular.otf"; sourceTree = "<group>"; };
 		3ED84D1321EF0D5C0005122A /* Proxima Nova Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Bold.otf"; sourceTree = "<group>"; };
+		3ED84D1721EF17050005122A /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
+		3ED84D1921EF1F300005122A /* SignInMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInMainView.swift; sourceTree = "<group>"; };
+		3ED84D1B21EF23420005122A /* NSMutableAttributedString+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Extensions.swift"; sourceTree = "<group>"; };
+		3ED84D2021EF24350005122A /* LoginWorkersFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorkersFactory.swift; sourceTree = "<group>"; };
+		3ED84D2221EF244F0005122A /* AppConfigurationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigurationProvider.swift; sourceTree = "<group>"; };
 		3EE6E5F82085B6700072D0AE /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		3EE6E5FA2085B67B0072D0AE /* AlamofireNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireNetworkService.swift; sourceTree = "<group>"; };
 		B73E8503C402DEAB28BE21A1 /* Pods-TestProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestProject/Pods-TestProject.release.xcconfig"; sourceTree = "<group>"; };
@@ -362,6 +372,7 @@
 				3E2FA18B206BEE4E0000DAD7 /* AppDelegate.swift */,
 				3E2FA18C206BEE4E0000DAD7 /* Info.plist */,
 				3E51D68F213BCC0100724C0A /* ApplicationCoordinator.swift */,
+				3ED84D2221EF244F0005122A /* AppConfigurationProvider.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -542,6 +553,7 @@
 				3E58BA85206CDF49001DEB34 /* String+Validation.swift */,
 				3ED84D0B21EF02790005122A /* String+Localization.swift */,
 				3ED84D0D21EF02B20005122A /* String+Extensions.swift */,
+				3ED84D1B21EF23420005122A /* NSMutableAttributedString+Extensions.swift */,
 			);
 			path = "String+Extensions";
 			sourceTree = "<group>";
@@ -589,6 +601,8 @@
 				3E62884121313CB4001A7E18 /* LoginPresenter.swift */,
 				3E62884221313CB4001A7E18 /* LoginRouter.swift */,
 				3E67933B2135B42400BCAAFA /* LoginSceneBuilder.swift */,
+				3ED84D1721EF17050005122A /* SignInVC.swift */,
+				3ED84D1921EF1F300005122A /* SignInMainView.swift */,
 			);
 			path = LoginScene;
 			sourceTree = "<group>";
@@ -744,6 +758,7 @@
 		3E7F49AA20870C8600A0AB56 /* Workers */ = {
 			isa = PBXGroup;
 			children = (
+				3ED84D1D21EF24260005122A /* WorkersFactory */,
 				3E62886D2132AB11001A7E18 /* FeedDataProvider */,
 			);
 			path = Workers;
@@ -885,6 +900,30 @@
 				3ED84D1321EF0D5C0005122A /* Proxima Nova Bold.otf */,
 			);
 			path = Proxima;
+			sourceTree = "<group>";
+		};
+		3ED84D1D21EF24260005122A /* WorkersFactory */ = {
+			isa = PBXGroup;
+			children = (
+				3ED84D1E21EF24260005122A /* LoginWorkersFactory */,
+				3ED84D1F21EF24260005122A /* ListWorkersFactory */,
+			);
+			path = WorkersFactory;
+			sourceTree = "<group>";
+		};
+		3ED84D1E21EF24260005122A /* LoginWorkersFactory */ = {
+			isa = PBXGroup;
+			children = (
+				3ED84D2021EF24350005122A /* LoginWorkersFactory.swift */,
+			);
+			path = LoginWorkersFactory;
+			sourceTree = "<group>";
+		};
+		3ED84D1F21EF24260005122A /* ListWorkersFactory */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ListWorkersFactory;
 			sourceTree = "<group>";
 		};
 		3EE6E5F72085B6640072D0AE /* NetworkService */ = {
@@ -1081,6 +1120,8 @@
 				3E6288732132AB23001A7E18 /* FeedDataWorker.swift in Sources */,
 				3E8AFAC9207F2C4B00C562AF /* ListPresenter.swift in Sources */,
 				3E8AFAC2207CF76400C562AF /* HUDDisplayHelper.swift in Sources */,
+				3ED84D2321EF244F0005122A /* AppConfigurationProvider.swift in Sources */,
+				3ED84D1821EF17050005122A /* SignInVC.swift in Sources */,
 				3E62887B2132AB70001A7E18 /* ManagedObjectConvertible.swift in Sources */,
 				3E59D5E420A3316600853254 /* KeychainStorage.swift in Sources */,
 				3E7F49A920870B1900A0AB56 /* ServiceLocatorConfigurator.swift in Sources */,
@@ -1098,6 +1139,7 @@
 				3E62886A2132A811001A7E18 /* FeedItemEntity+CoreDataClass.swift in Sources */,
 				3ED84D0C21EF02790005122A /* String+Localization.swift in Sources */,
 				3E6288842132B980001A7E18 /* TestProject.xcdatamodeld in Sources */,
+				3ED84D1C21EF23420005122A /* NSMutableAttributedString+Extensions.swift in Sources */,
 				3E13F83E2145395200CD09D5 /* Coordinator.swift in Sources */,
 				3E7F49B820872A2600A0AB56 /* FeedListCellPresenter.swift in Sources */,
 				3E13F84621454B0600CD09D5 /* ListCoordinator.swift in Sources */,
@@ -1138,6 +1180,8 @@
 				3E62887A2132AB70001A7E18 /* ManagedObjectProtocol.swift in Sources */,
 				3E58BA93206CDF49001DEB34 /* Bool+Extensions.swift in Sources */,
 				3E379FD82151E99200E50051 /* UserEntity+CoreDataProperties.swift in Sources */,
+				3ED84D2121EF24350005122A /* LoginWorkersFactory.swift in Sources */,
+				3ED84D1A21EF1F300005122A /* SignInMainView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
