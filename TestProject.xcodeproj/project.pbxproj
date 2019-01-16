@@ -19,7 +19,6 @@
 		3E2FA190206BEE4E0000DAD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E2FA188206BEE4D0000DAD7 /* LaunchScreen.storyboard */; };
 		3E2FA191206BEE4E0000DAD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E2FA189206BEE4D0000DAD7 /* Main.storyboard */; };
 		3E2FA192206BEE4E0000DAD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FA18B206BEE4E0000DAD7 /* AppDelegate.swift */; };
-		3E2FA193206BEE4E0000DAD7 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E2FA18C206BEE4E0000DAD7 /* Info.plist */; };
 		3E2FA198206BEF830000DAD7 /* UserSessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FA197206BEF830000DAD7 /* UserSessionModel.swift */; };
 		3E2FA19C206BEFDE0000DAD7 /* UserSessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FA19B206BEFDE0000DAD7 /* UserSessionService.swift */; };
 		3E379FD72151E99200E50051 /* UserEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E379FD52151E99200E50051 /* UserEntity+CoreDataClass.swift */; };
@@ -924,7 +923,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E2FA193206BEE4E0000DAD7 /* Info.plist in Resources */,
 				3E82D03D212A8F0A001A2720 /* LoginHeaderView.xib in Resources */,
 				3E2FA191206BEE4E0000DAD7 /* Main.storyboard in Resources */,
 				3E6288832132B111001A7E18 /* Feed.json in Resources */,
@@ -953,8 +951,13 @@
 				"${BUILT_PRODUCTS_DIR}/Dotzu/Dotzu.framework",
 				"${BUILT_PRODUCTS_DIR}/FXKeychain/FXKeychain.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
-				"${BUILT_PRODUCTS_DIR}/Localize-Swift/Localize_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
+				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
+				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
+				"${BUILT_PRODUCTS_DIR}/MotionAnimator/MotionAnimator.framework",
+				"${BUILT_PRODUCTS_DIR}/MotionInterchange/MotionInterchange.framework",
+				"${BUILT_PRODUCTS_DIR}/MotionTransitioning/MotionTransitioning.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
@@ -964,8 +967,13 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Dotzu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FXKeychain.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Localize_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionAnimator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionInterchange.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionTransitioning.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
@@ -1205,7 +1213,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = EGS.TestProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1220,7 +1228,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = EGS.TestProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

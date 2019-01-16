@@ -13,7 +13,7 @@ class MenuTabBarVC: UITabBarController {
     
     // MARK: - Vars
     
-    private var launchOptions: [UIApplicationLaunchOptionsKey: Any]?
+    private var launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     
     // MARK: - Lifecycle
     
@@ -31,7 +31,7 @@ class MenuTabBarVC: UITabBarController {
     
     // MARK: - Public
     
-    func configureWithLaunchOptions(_ options: [UIApplicationLaunchOptionsKey: Any]?) {
+    func configureWithLaunchOptions(_ options: [UIApplication.LaunchOptionsKey: Any]?) {
         launchOptions = options
     }
     

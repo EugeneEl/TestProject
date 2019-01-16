@@ -29,7 +29,7 @@ final class ApplicationCoordinator: Coordinator {
     
     // MARK: - Public
     
-    func startWithLaunchOptions(_ options: [UIApplicationLaunchOptionsKey: Any]?) {
+    func startWithLaunchOptions(_ options: [UIApplication.LaunchOptionsKey: Any]?) {
         navigationController = BaseNavigationController()
         let loginVC = buildLoginFlow()
         
@@ -48,7 +48,7 @@ final class ApplicationCoordinator: Coordinator {
     
     // MARK: - Private
     
-    private func buildMainFlowWithOptions(_ options: [UIApplicationLaunchOptionsKey: Any]?) -> UIViewController {
+    private func buildMainFlowWithOptions(_ options: [UIApplication.LaunchOptionsKey: Any]?) -> UIViewController {
         let mainCoordinator = MainCoordinator(userSessionService: userSessionService)
         addCoordinator(mainCoordinator)
         let mainMenuVC = mainCoordinator.buildMainMenuWithLaunchOptions(options)

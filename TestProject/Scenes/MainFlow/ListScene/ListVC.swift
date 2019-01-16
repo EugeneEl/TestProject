@@ -62,9 +62,9 @@ class ListVC: UIViewController {
         tableView.backgroundColor = Constants.Colors.grey
         tableView.registerCellsWithIdentifiers([FeedListTableViewCell.cellIdentifier()])
         tableView.estimatedRowHeight = 85.0
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         setupRefreshControl()
-        tableView.contentInset = UIEdgeInsetsMake(0, 0, 44, 0)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 44, right: 0)
     }
     
     private func setupRefreshControl() {
@@ -126,8 +126,7 @@ extension ListVC: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension ListVC: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat  {  return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
