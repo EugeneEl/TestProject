@@ -14,6 +14,7 @@ final class SignInVC: UIViewController {
     // MARK: - Vars
     
     fileprivate let mainView = SignInMainView()
+    fileprivate let presenter = SignInPresenter()
     
     // MARK: - Initialization
     
@@ -31,6 +32,7 @@ final class SignInVC: UIViewController {
         super.viewDidLoad()
         
         setupUI()
+        setupInputControllers()
     }
     
     // MARK: - Private
@@ -41,5 +43,13 @@ final class SignInVC: UIViewController {
         mainView.snp.makeConstraints { maker in
             maker.edges.equalToSuperview()
         }
+    }
+    
+    fileprivate func setupInputControllers() {
+        let emailController = LoginFormModuleProvider.setupModuleForLoginFormType(.email, containerView: mainView.emailView)
+        let passwordController = LoginFormModuleProvider.setupModuleForLoginFormType(.password, containerView: mainView.passwordView)
+        
+        presenter.addInputController(emailController)
+        presenter.addInputController(passwordController)
     }
 }

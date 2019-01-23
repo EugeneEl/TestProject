@@ -53,7 +53,7 @@ final class SignInMainView: UIView {
     // MARK: - Helpers
     
     fileprivate func setupUI() {
-        backgroundColor = Constants.Colors.lightBlue
+        backgroundColor = .white
         addSubview(scrollView)
         scrollView.addSubview(stackView)
         scrollView.snp.makeConstraints { maker in
@@ -61,9 +61,6 @@ final class SignInMainView: UIView {
         }
         stackView.snp.makeConstraints { maker in
             maker.edges.equalToSuperview()
-        }
-        stackView.snp.makeConstraints { maker in
-            maker.width.equalTo(self.snp.width)
         }
         scrollView.snp.makeConstraints { maker in
             maker.width.equalTo(stackView.snp.width)
@@ -77,24 +74,16 @@ final class SignInMainView: UIView {
     
     fileprivate func setupStackView() {
         emailView.snp.makeConstraints { maker in
-            maker.height.equalTo(44)
+            maker.height.equalTo(85)
         }
-        emailView.backgroundColor = .yellow
-        
         passwordView.snp.makeConstraints { maker in
-            maker.height.equalTo(44)
+            maker.height.equalTo(85)
         }
-        passwordView.backgroundColor = .green
-        let topPaddingView = UIView()
         let bottomPaddingView = UIView()
         
-        stackView.addArrangedSubview(topPaddingView)
+        stackView.addEmptyViewWithFixedValue(210)
         stackView.addArrangedSubview(emailView)
         stackView.addArrangedSubview(passwordView)
         stackView.addArrangedSubview(bottomPaddingView)
-        
-        topPaddingView.snp.makeConstraints { maker in
-            maker.height.equalTo(210)
-        }
     }
 }

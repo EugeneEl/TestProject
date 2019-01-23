@@ -27,13 +27,13 @@ extension String {
         for attribute in attributes {
             switch attribute {
             case .color(let color):
-                attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: color , range: NSMakeRange(0, length))
+                attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: color , range: NSMakeRange(0, nsstringLength))
                 
             case .font(let font):
-                attributedString.addAttribute(NSAttributedString.Key.font, value: font, range: NSMakeRange(0, length))
+                attributedString.addAttribute(NSAttributedString.Key.font, value: font, range: NSMakeRange(0, nsstringLength))
                 
             case .characterSpacing(let characterSpacing):
-                attributedString.addAttribute(NSAttributedString.Key.kern, value: characterSpacing, range: NSMakeRange(0,length))
+                attributedString.addAttribute(NSAttributedString.Key.kern, value: characterSpacing, range: NSMakeRange(0,nsstringLength))
                 
             case .minimumLineHeight(let minimumLineHeight):
                 pargraphStyle.minimumLineHeight = minimumLineHeight
@@ -46,7 +46,7 @@ extension String {
             }
         }
         
-        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: pargraphStyle, range: NSMakeRange(0, length))
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: pargraphStyle, range: NSMakeRange(0, nsstringLength))
         
         return attributedString
     }

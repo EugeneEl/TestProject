@@ -74,6 +74,9 @@
 		3E6288842132B980001A7E18 /* TestProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3E6288542132A3F6001A7E18 /* TestProject.xcdatamodeld */; };
 		3E67933C2135B42400BCAAFA /* LoginSceneBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E67933B2135B42400BCAAFA /* LoginSceneBuilder.swift */; };
 		3E701198208EFF6800B28B5A /* SafariControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E701197208EFF6800B28B5A /* SafariControllerHelper.swift */; };
+		3E737CBC21F88F3B00811413 /* UIStackView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E737CBB21F88F3B00811413 /* UIStackView+Extensions.swift */; };
+		3E737CBE21F8905000811413 /* SignInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E737CBD21F8905000811413 /* SignInPresenter.swift */; };
+		3E737CC121F8925700811413 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3E737CC321F8925700811413 /* Localizable.strings */; };
 		3E7F49A42087084600A0AB56 /* ReachabilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F49A32087084600A0AB56 /* ReachabilityService.swift */; };
 		3E7F49A7208708A500A0AB56 /* ErrorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F49A6208708A500A0AB56 /* ErrorConstants.swift */; };
 		3E7F49A920870B1900A0AB56 /* ServiceLocatorConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F49A820870B1900A0AB56 /* ServiceLocatorConfigurator.swift */; };
@@ -186,6 +189,9 @@
 		3E6288822132B111001A7E18 /* Feed.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Feed.json; sourceTree = "<group>"; };
 		3E67933B2135B42400BCAAFA /* LoginSceneBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSceneBuilder.swift; sourceTree = "<group>"; };
 		3E701197208EFF6800B28B5A /* SafariControllerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariControllerHelper.swift; sourceTree = "<group>"; };
+		3E737CBB21F88F3B00811413 /* UIStackView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extensions.swift"; sourceTree = "<group>"; };
+		3E737CBD21F8905000811413 /* SignInPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInPresenter.swift; sourceTree = "<group>"; };
+		3E737CC221F8925700811413 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3E7F49A32087084600A0AB56 /* ReachabilityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityService.swift; sourceTree = "<group>"; };
 		3E7F49A6208708A500A0AB56 /* ErrorConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorConstants.swift; sourceTree = "<group>"; };
 		3E7F49A820870B1900A0AB56 /* ServiceLocatorConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLocatorConfigurator.swift; sourceTree = "<group>"; };
@@ -343,6 +349,7 @@
 				3ED84D0F21EF0D5C0005122A /* Fonts */,
 				3E2FA185206BEE4D0000DAD7 /* Assets.xcassets */,
 				3E62883921313263001A7E18 /* Constants.swift */,
+				3E737CC321F8925700811413 /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -451,6 +458,7 @@
 		3E58BA6E206CDF49001DEB34 /* UIKit+Exntenions */ = {
 			isa = PBXGroup;
 			children = (
+				3E737CBA21F88F2E00811413 /* UIStackView+Extensions */,
 				3E58BA6F206CDF49001DEB34 /* UIViewController+Extensions */,
 				3E58BA71206CDF49001DEB34 /* UIView+Exnentsions */,
 				3E58BA73206CDF49001DEB34 /* UIColor+Extensions */,
@@ -603,6 +611,7 @@
 				3E67933B2135B42400BCAAFA /* LoginSceneBuilder.swift */,
 				3ED84D1721EF17050005122A /* SignInVC.swift */,
 				3ED84D1921EF1F300005122A /* SignInMainView.swift */,
+				3E737CBD21F8905000811413 /* SignInPresenter.swift */,
 			);
 			path = LoginScene;
 			sourceTree = "<group>";
@@ -737,6 +746,14 @@
 				3E701197208EFF6800B28B5A /* SafariControllerHelper.swift */,
 			);
 			path = SafariControllerHelper;
+			sourceTree = "<group>";
+		};
+		3E737CBA21F88F2E00811413 /* UIStackView+Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3E737CBB21F88F3B00811413 /* UIStackView+Extensions.swift */,
+			);
+			path = "UIStackView+Extensions";
 			sourceTree = "<group>";
 		};
 		3E7F49A22087083A00A0AB56 /* ReachabilityService */ = {
@@ -1014,6 +1031,7 @@
 				3ED84D1521EF0D5C0005122A /* Proxima Nova Regular.otf in Resources */,
 				3EB167A0206CDBC000A82D11 /* Login.storyboard in Resources */,
 				3ED84D1421EF0D5C0005122A /* Proxima Nova Semibold.otf in Resources */,
+				3E737CC121F8925700811413 /* Localizable.strings in Resources */,
 				3E2FA190206BEE4E0000DAD7 /* LaunchScreen.storyboard in Resources */,
 				3E82D02E2129526C001A2720 /* FormInputView.xib in Resources */,
 				3E7F49B42087267C00A0AB56 /* FeedListTableViewCell.xib in Resources */,
@@ -1120,6 +1138,7 @@
 				3E6288732132AB23001A7E18 /* FeedDataWorker.swift in Sources */,
 				3E8AFAC9207F2C4B00C562AF /* ListPresenter.swift in Sources */,
 				3E8AFAC2207CF76400C562AF /* HUDDisplayHelper.swift in Sources */,
+				3E737CBC21F88F3B00811413 /* UIStackView+Extensions.swift in Sources */,
 				3ED84D2321EF244F0005122A /* AppConfigurationProvider.swift in Sources */,
 				3ED84D1821EF17050005122A /* SignInVC.swift in Sources */,
 				3E62887B2132AB70001A7E18 /* ManagedObjectConvertible.swift in Sources */,
@@ -1129,6 +1148,7 @@
 				3E7F49A42087084600A0AB56 /* ReachabilityService.swift in Sources */,
 				3E6288312131274A001A7E18 /* LoginFormType.swift in Sources */,
 				3E62886C2132A811001A7E18 /* FeedItemEntity+CoreDataProperties.swift in Sources */,
+				3E737CBE21F8905000811413 /* SignInPresenter.swift in Sources */,
 				3E13F84021453C7200CD09D5 /* LoginCoordinator.swift in Sources */,
 				3E7F49A7208708A500A0AB56 /* ErrorConstants.swift in Sources */,
 				3E7F49B62087296400A0AB56 /* DTOInterface.swift in Sources */,
@@ -1186,6 +1206,17 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3E737CC321F8925700811413 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3E737CC221F8925700811413 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		3E2FA179206BED940000DAD7 /* Debug */ = {
