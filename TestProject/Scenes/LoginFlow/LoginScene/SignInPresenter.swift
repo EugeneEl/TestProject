@@ -8,17 +8,35 @@
 
 import Foundation
 
+enum SignInSceneState {
+    case initial
+    case loginRequest(RequestState<Void>)
+}
+
+protocol SignInViewInput: class {
+    func loginStateDidChange(_ state: SignInSceneState)
+}
+
 final class SignInPresenter {
     
     // MARK: - Vars
     
+    weak var view: SignInViewInput?
+    
     fileprivate var inputControllers = [FormInputConroller]()
     fileprivate (set) internal var model: SignInModel = SignInModel(email: "", password: "")
+    fileprivate (set) internal var loginState: SignInSceneState = .initial {
+        didSet {
+            view?.loginStateDidChange(loginState)
+        }
+    }
+    
+    private let userSessionService: UserSessionService
     
     // MARK: - Initialization
     
-    init() {
-        
+    init(userSessionService: UserSessionService) {
+        self.userSessionService = userSessionService
     }
     
     // MARK: - Public
@@ -26,6 +44,17 @@ final class SignInPresenter {
     func addInputController(_ inputController: FormInputConroller) {
         inputControllers.append(inputController)
         inputController.delegate = self
+    }
+    
+    func loginDidTap() {
+        loginState = .loginRequest(.isLoading)
+        userSessionService.openUserSessionWithModel(model, success: {[weak self] (flow, user) in
+            guard let strongSelf = self else {return}
+            strongSelf.loginState =  .loginRequest(.success(()))
+        }) {[weak self] (flow, errorText) in
+            guard let strongSelf = self else {return}
+            strongSelf.loginState = .loginRequest(.failure(nil, errorText, nil))
+        }
     }
 }
 
@@ -67,8 +96,8 @@ struct SignInModel {
     // MARK: - Public
     
     func validateModel() -> String? {
-        let emailError = SignInModel.emailValidators.flatMap({return $0.validationErrorForText(text: email)})
-        let passwordError = SignInModel.passwordValidators.flatMap({return $0.validationErrorForText(text: password)})
+        let emailError = SignInModel.emailValidators.compactMap({return $0.validationErrorForText(text: email)})
+        let passwordError = SignInModel.passwordValidators.compactMap({return $0.validationErrorForText(text: password)})
         
         let errors = emailError + passwordError
         return errors.first

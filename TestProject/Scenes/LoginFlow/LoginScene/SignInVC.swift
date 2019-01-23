@@ -14,11 +14,12 @@ final class SignInVC: UIViewController {
     // MARK: - Vars
     
     fileprivate let mainView = SignInMainView()
-    fileprivate let presenter = SignInPresenter()
+    fileprivate let presenter: SignInPresenter
     
     // MARK: - Initialization
     
-    init(worker: Any) {
+    init(worker: UserSessionService) {
+        self.presenter = SignInPresenter(userSessionService: worker)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -33,6 +34,12 @@ final class SignInVC: UIViewController {
         
         setupUI()
         setupInputControllers()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        configureNavigationBarUI()
     }
     
     // MARK: - Private
@@ -51,5 +58,22 @@ final class SignInVC: UIViewController {
         
         presenter.addInputController(emailController)
         presenter.addInputController(passwordController)
+    }
+}
+
+// MARK: - ViewControllerUIConfigurating
+
+extension SignInVC: ViewControllerUIConfigurating {
+    var navigationBarAppearance: NavigationBarAppearance? {
+        return nil
+    }
+    
+    var isNavigationBarHidden: Bool {
+        return true
+        
+    }
+    
+    var isBackButtonVisible: Bool {
+        return false
     }
 }

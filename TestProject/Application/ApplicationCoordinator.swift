@@ -34,7 +34,7 @@ final class ApplicationCoordinator: Coordinator {
         let loginVC = buildLoginFlow()
         
         window.rootViewController = navigationController
-        if userSessionService.isUserSessionRestored() {
+        if userSessionService.isUserSessionRestorable() {
             let mainMenuVC = buildMainFlowWithOptions(options)
             
             navigationController?.viewControllers = [loginVC, mainMenuVC]

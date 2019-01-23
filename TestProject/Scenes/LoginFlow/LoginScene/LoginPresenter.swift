@@ -58,13 +58,13 @@ final class LoginPresenter: LoginViewOutput {
     
     func loginDidTap() {
         loginState = .isLogging
-        userSessionService.openUserSessionWithModel(model, success: {[weak self] (flow, user) in
-            guard let strongSelf = self else {return}
-            strongSelf.loginState = .loginSuccess
-        }) {[weak self] (flow, errorText) in
-            guard let strongSelf = self else {return}
-            strongSelf.loginState = .loginFail(error: errorText)
-        }
+//        userSessionService.openUserSessionWithModel(model, success: {[weak self] (flow, user) in
+//            guard let strongSelf = self else {return}
+//            strongSelf.loginState = .loginSuccess
+//        }) {[weak self] (flow, errorText) in
+//            guard let strongSelf = self else {return}
+//            strongSelf.loginState = .loginFail(error: errorText)
+//        }
     }
     
     func provideTextForForm(_ form: LoginFormType) -> String {

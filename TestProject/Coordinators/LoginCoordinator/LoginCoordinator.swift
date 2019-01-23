@@ -25,7 +25,7 @@ class LoginCoordinator: Coordinator {
     
     // MARK: - Public
     
-    func buildLoginScreen() -> NewLoginVC {
+    func buildLoginScreen() -> SignInVC {
         return loginBuilder.buildLoginScene()
     }
 }

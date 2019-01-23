@@ -13,14 +13,9 @@ struct LoginSceneBuilder {
     let userSessionService: UserSessionService
     let model: LoginInputModel
     
-    func buildLoginScene() -> NewLoginVC {
-        let vc = NewLoginVC.instantiateFromStoryboardId(.login)
-        let router = LoginRouter(viewController: vc)
-        let presenter = LoginPresenter(userSessionService: userSessionService, model: model)
-        vc.presenter = presenter
-        vc.presenter?.view = vc
-        vc.router = router
-        
+    func buildLoginScene() -> SignInVC {
+        let vc = SignInVC(worker: userSessionService)
+
         return vc
     }
 }

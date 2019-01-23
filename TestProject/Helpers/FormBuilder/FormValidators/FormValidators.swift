@@ -8,6 +8,21 @@
 
 import Foundation
 
+enum RequestState<T> {
+    case isLoading
+    case success(T?)
+    case failure(T?, String, Int?)
+    
+    var isLoadingNow: Bool {
+        switch self {
+        case .isLoading:
+            return true
+        default:
+            return false
+        }
+    }
+}
+
 struct PasswordValidationRules {
     static let minPassword = 6
     static let maxPassowrd = 64

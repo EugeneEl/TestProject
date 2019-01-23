@@ -51,8 +51,8 @@
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let vc = SignInVC(worker: 5)
-        present(vc, animated: true)
+//        let vc = SignInVC(worker: 5)
+//        present(vc, animated: true)
     }
         
     override var preferredStatusBarStyle: UIStatusBarStyle {

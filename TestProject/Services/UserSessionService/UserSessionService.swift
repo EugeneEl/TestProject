@@ -44,7 +44,7 @@ final class UserSessionService {
     
     // MARK: - Public
     
-    func isUserSessionRestored() -> Bool {
+    func isUserSessionRestorable() -> Bool {
         if let token = userSessionStorage.provideToken() {
             let session = UserSession(identifier: token)
             userSession = session
@@ -58,7 +58,7 @@ final class UserSessionService {
         delegates.add(listener)
     }
     
-    func openUserSessionWithModel(_ model: LoginInputModel, success: @escaping AuthCompletionSuccess, failure: @escaping AuthCompletionFailure) {
+    func openUserSessionWithModel(_ model: SignInModel, success: @escaping AuthCompletionSuccess, failure: @escaping AuthCompletionFailure) {
         authWorker.authUserWithFlow(.login(model), success: {[weak self] (authFlow, user) in
             guard let strongSelf = self else {return}
             let session = UserSession(identifier: user.identifier)
