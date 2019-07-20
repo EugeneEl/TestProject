@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import IQKeyboardManager
 
 extension UIStackView {
     
@@ -64,5 +65,19 @@ extension UIStackView {
         stackView.addEmptyViewWithFixedValue(sidePadding)
         
         return stackView
+    }
+    
+    func addArrangedSubviewWithFixedValue(_ subview: UIView, value: CGFloat) {
+        addArrangedSubview(subview)
+        switch self.axis {
+        case .horizontal:
+            subview.snp.makeConstraints { maker in
+                maker.width.equalTo(value)
+            }
+        case .vertical:
+            subview.snp.makeConstraints { maker in
+                maker.height.equalTo(value)
+            }
+        }
     }
 }

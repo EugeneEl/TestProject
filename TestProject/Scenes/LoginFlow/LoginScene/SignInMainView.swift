@@ -11,31 +11,30 @@ import UIKit
 
 final class SignInMainView: UIView {
     
-    // MARK: - Vars
+    // MARK: - Public Vars
     
-    fileprivate let scrollView: UIScrollView = {
-        let scrollView = UIScrollView.init()
-        scrollView.showsVerticalScrollIndicator = false
-        scrollView.bounces = false
-        return scrollView
+    let signInButton: UIButton = {
+        let button = UIButton()
+        let title = "login_scene_sign_in_title".localized
+        let attributedText = title.attributed(.font(UIFont.systemFont(ofSize: 18, weight: .semibold)),
+                                              .alignment(.center),
+                                              .color(.white))
+        button.setAttributedTitle(attributedText, for: .normal)
+        
+        button.backgroundColor = Constants.Colors.lightBlue
+        button.cornerRadius = 8
+        
+        return button
     }()
-    
-    fileprivate let stackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.distribution = .fill
-        stackView.alignment = .fill
-        stackView.spacing = 8
-        stackView.isLayoutMarginsRelativeArrangement = true
-        stackView.layoutMargins = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
-        return stackView
-    }()
-    
-    fileprivate let signInButton = UIButton()
     
     let emailView = FormInputView.instantiateView()
     let passwordView = FormInputView.instantiateView()
     
+    // MARK: - Private Vars
+    
+    fileprivate let scrollView = ViewHelperBuilder.buildScrollView()
+    fileprivate let stackView = ViewHelperBuilder.buildStackViewWithAxis(.vertical)
+
     // MARK: - Initialization
     
     init() {
@@ -53,37 +52,37 @@ final class SignInMainView: UIView {
     // MARK: - Helpers
     
     fileprivate func setupUI() {
-        backgroundColor = .white
+        backgroundColor = Constants.Colors.dirtyWhite
         addSubview(scrollView)
-        scrollView.addSubview(stackView)
-        scrollView.snp.makeConstraints { maker in
-            maker.edges.equalToSuperview()
-        }
-        stackView.snp.makeConstraints { maker in
-            maker.edges.equalToSuperview()
-        }
-        scrollView.snp.makeConstraints { maker in
-            maker.width.equalTo(stackView.snp.width)
-        }
-        setupStackView()
-    }
-    
-    fileprivate func setupSignInButton() {
         
+        stackView.spacing = 8
+        stackView.layoutMargins = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
+        ViewHelperBuilder.setupStackViewScrollInView(self, stackView: stackView, scrollView: scrollView)
+        
+        setupSubviews()
     }
     
-    fileprivate func setupStackView() {
+    fileprivate func setupSubviews() {
         emailView.snp.makeConstraints { maker in
-            maker.height.equalTo(85)
+            maker.height.equalTo(90)
         }
         passwordView.snp.makeConstraints { maker in
-            maker.height.equalTo(85)
+            maker.height.equalTo(90)
         }
-        let bottomPaddingView = UIView()
+        
+        emailView.backgroundColor = Constants.Colors.dirtyWhite
+        emailView.cornerRadius = 8
+
+        passwordView.backgroundColor = Constants.Colors.dirtyWhite
+        passwordView.cornerRadius = 8 
         
         stackView.addEmptyViewWithFixedValue(210)
         stackView.addArrangedSubview(emailView)
         stackView.addArrangedSubview(passwordView)
+        stackView.addEmptyViewWithFixedValue(16)
+        stackView.addArrangedSubviewWithFixedValue(signInButton, value: 50)
+        
+        let bottomPaddingView = UIView()
         stackView.addArrangedSubview(bottomPaddingView)
     }
 }

@@ -19,11 +19,12 @@
 #import "MDCSnackbarMessageView.h"
 
 #import "MaterialAnimationTiming.h"
+#import "MaterialShadowLayer.h"
 #import "MaterialTypography.h"
-#import "private/MaterialSnackbarStrings.h"
-#import "private/MaterialSnackbarStrings_table.h"
 #import "private/MDCSnackbarMessageViewInternal.h"
 #import "private/MDCSnackbarOverlayView.h"
+#import "private/MaterialSnackbarStrings.h"
+#import "private/MaterialSnackbarStrings_table.h"
 
 NSString *const MDCSnackbarMessageTitleAutomationIdentifier =
     @"MDCSnackbarMessageTitleAutomationIdentifier";
@@ -42,17 +43,6 @@ static inline UIColor *MDCRGBAColor(uint8_t r, uint8_t g, uint8_t b, float a) {
  The thickness of the Snackbar border.
  */
 static const CGFloat kBorderWidth = 0;
-
-/**
- Shadow coloring.
- */
-static const CGFloat kShadowAlpha = (CGFloat)0.24;
-
-static const CGSize kShadowOffset = (CGSize){0.0, 2.0};
-static const CGSize kLegacyShadowOffset = (CGSize){0.0, 1.0};
-
-static const CGFloat kShadowSpread = 4;
-static const CGFloat kLegacyShadowSpread = 1;
 
 /**
  The radius of the corners.
@@ -104,11 +94,6 @@ static const CGFloat kMinimumHeight = 48;
  Each button will have a tag indexed starting from this value.
  */
 static const NSInteger kButtonTagStart = 20000;
-
-/**
- The ink radius of the action button.
- */
-static const CGFloat kButtonInkRadius = 64;
 
 static const MDCFontTextStyle kMessageTextStyle = MDCFontTextStyleBody1;
 static const MDCFontTextStyle kButtonTextStyle = MDCFontTextStyleButton;
@@ -170,9 +155,7 @@ static const MDCFontTextStyle kButtonTextStyle = MDCFontTextStyleButton;
 - (instancetype)initWithFrame:(CGRect)frame {
   self = [super initWithFrame:frame];
   if (self) {
-    self.inkMaxRippleRadius = kButtonInkRadius;
     self.inkColor = [UIColor colorWithWhite:1 alpha:(CGFloat)0.06];
-    self.inkStyle = MDCInkStyleUnbounded;
 
     CGFloat buttonContentPadding =
         MDCSnackbarMessage.usesLegacySnackbar ? kLegacyButtonPadding : kButtonPadding;
@@ -183,18 +166,14 @@ static const MDCFontTextStyle kButtonTextStyle = MDCFontTextStyleButton;
     self.titleLabel.numberOfLines = 1;
     self.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     self.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-    self.contentEdgeInsets = UIEdgeInsetsMake(buttonContentPadding,
-                                                buttonContentPadding,
-                                                buttonContentPadding,
-                                                buttonContentPadding);
+    self.contentEdgeInsets = UIEdgeInsetsMake(buttonContentPadding, buttonContentPadding,
+                                              buttonContentPadding, buttonContentPadding);
 
     // Make sure the button doesn't get too compressed.
     [self setContentCompressionResistancePriority:UILayoutPriorityRequired
-                                            forAxis:UILayoutConstraintAxisHorizontal];
+                                          forAxis:UILayoutConstraintAxisHorizontal];
     [self setContentHuggingPriority:UILayoutPriorityDefaultHigh
-                              forAxis:UILayoutConstraintAxisHorizontal];
-
-
+                            forAxis:UILayoutConstraintAxisHorizontal];
   }
   return self;
 }
@@ -225,38 +204,30 @@ static const MDCFontTextStyle kButtonTextStyle = MDCFontTextStyleButton;
   self = [super initWithFrame:CGRectZero];
 
   if (self) {
-    _snackbarMessageViewShadowColor =
-        manager.snackbarMessageViewShadowColor ?: UIColor.blackColor;
+    _snackbarMessageViewShadowColor = manager.snackbarMessageViewShadowColor ?: UIColor.blackColor;
     _snackbarMessageViewBackgroundColor =
         manager.snackbarMessageViewBackgroundColor ?: MDCRGBAColor(0x32, 0x32, 0x32, 1);
-    _messageTextColor =
-        manager.messageTextColor ?: UIColor.whiteColor;
+    _messageTextColor = manager.messageTextColor ?: UIColor.whiteColor;
     _buttonTitleColors = [NSMutableDictionary dictionary];
     _buttonTitleColors[@(UIControlStateNormal)] =
         [manager buttonTitleColorForState:UIControlStateNormal]
             ?: MDCRGBAColor(0xFF, 0xFF, 0xFF, (float)0.6);
     _buttonTitleColors[@(UIControlStateHighlighted)] =
-        [manager buttonTitleColorForState:UIControlStateHighlighted] ?:
-        UIColor.whiteColor;
-    _mdc_adjustsFontForContentSizeCategory =
-        manager.mdc_adjustsFontForContentSizeCategory;
+        [manager buttonTitleColorForState:UIControlStateHighlighted] ?: UIColor.whiteColor;
+    _mdc_adjustsFontForContentSizeCategory = manager.mdc_adjustsFontForContentSizeCategory;
     _messageFont = manager.messageFont;
     _buttonFont = manager.buttonFont;
     _message = message;
     _dismissalHandler = [handler copy];
 
     self.backgroundColor = _snackbarMessageViewBackgroundColor;
-    self.layer.shadowColor = _snackbarMessageViewShadowColor.CGColor;
-    self.layer.shadowOpacity = (float)kShadowAlpha;
     if (MDCSnackbarMessage.usesLegacySnackbar) {
       self.layer.cornerRadius = kLegacyCornerRadius;
-      self.layer.shadowOffset = kLegacyShadowOffset;
-      self.layer.shadowRadius = kLegacyShadowSpread;
     } else {
       self.layer.cornerRadius = kCornerRadius;
-      self.layer.shadowOffset = kShadowOffset;
-      self.layer.shadowRadius = kShadowSpread;
     }
+    _elevation = MDCShadowElevationSnackbar;
+    [(MDCShadowLayer *)self.layer setElevation:MDCShadowElevationSnackbar];
 
     _anchoredToScreenBottom = YES;
 
@@ -314,8 +285,8 @@ static const MDCFontTextStyle kButtonTextStyle = MDCFontTextStyleButton;
 
     if (!_messageFont && !_mdc_adjustsFontForContentSizeCategory) {
       // Find any of the bold attributes in the string, and set the proper font for those ranges.
-      // Use NSAttributedStringEnumerationLongestEffectiveRangeNotRequired as opposed to 0, otherwise
-      // it will only work if bold text is in the end.
+      // Use NSAttributedStringEnumerationLongestEffectiveRangeNotRequired as opposed to 0,
+      // otherwise it will only work if bold text is in the end.
       [messageString
           enumerateAttribute:MDCSnackbarMessageBoldAttributeName
                      inRange:NSMakeRange(0, messageString.length)
@@ -325,7 +296,7 @@ static const MDCFontTextStyle kButtonTextStyle = MDCFontTextStyleButton;
                     if ([value boolValue]) {
                       font = [MDCTypography body2Font];
                     }
-                    [messageString setAttributes:@{ NSFontAttributeName : font } range:range];
+                    [messageString setAttributes:@{NSFontAttributeName : font} range:range];
                   }];
     }
 
@@ -343,11 +314,9 @@ static const MDCFontTextStyle kButtonTextStyle = MDCFontTextStyleButton;
 
     NSString *accessibilityHintKey =
         kMaterialSnackbarStringTable[kStr_MaterialSnackbarMessageViewTitleA11yHint];
-    NSString *accessibilityHint =
-        NSLocalizedStringFromTableInBundle(accessibilityHintKey,
-                                           kMaterialSnackbarStringsTableName,
-                                           [[self class] bundle],
-                                           @"Dismissal accessibility hint for Snackbar");
+    NSString *accessibilityHint = NSLocalizedStringFromTableInBundle(
+        accessibilityHintKey, kMaterialSnackbarStringsTableName, [[self class] bundle],
+        @"Dismissal accessibility hint for Snackbar");
 
     // For UIAccessibility purposes, the label is the primary 'button' for dismissing the Snackbar,
     // so we'll make sure the label is treated like a button.
@@ -366,13 +335,14 @@ static const MDCFontTextStyle kButtonTextStyle = MDCFontTextStyleButton;
 
     _label.textColor = _messageTextColor;
 
-    [self initializeMDCSnackbarMessageViewButtons:message];
+    [self initializeMDCSnackbarMessageViewButtons:message withManager:manager];
   }
 
   return self;
 }
 
-- (void)initializeMDCSnackbarMessageViewButtons:(MDCSnackbarMessage *)message {
+- (void)initializeMDCSnackbarMessageViewButtons:(MDCSnackbarMessage *)message
+                                    withManager:(MDCSnackbarManager *)manager {
   // Add buttons to the view. We'll use this opportunity to determine how much space a button will
   // need, to inform the layout direction.
   NSMutableArray *actions = [NSMutableArray array];
@@ -395,6 +365,7 @@ static const MDCFontTextStyle kButtonTextStyle = MDCFontTextStyleButton;
     }
 #pragma clang diagnostic pop
 
+    button.enableRippleBehavior = message.enableRippleBehavior;
     [buttonView addSubview:button];
     [_actionButtons addObject:button];
 
@@ -406,8 +377,14 @@ static const MDCFontTextStyle kButtonTextStyle = MDCFontTextStyleButton;
     [button setTitle:message.action.title forState:UIControlStateHighlighted];
 
     [button addTarget:self
-               action:@selector(handleButtonTapped:)
-     forControlEvents:UIControlEventTouchUpInside];
+                  action:@selector(handleButtonTapped:)
+        forControlEvents:UIControlEventTouchUpInside];
+
+    button.uppercaseTitle = manager.uppercaseButtonTitle;
+    button.disabledAlpha = manager.disabledButtonAlpha;
+    if (manager.buttonInkColor) {
+      button.inkColor = manager.buttonInkColor;
+    }
 
     [actions addObject:buttonView];
   }
@@ -422,6 +399,23 @@ static const MDCFontTextStyle kButtonTextStyle = MDCFontTextStyleButton;
 
     // In case our dismissal handler has a reference to us, release the block.
     self.dismissalHandler = nil;
+  }
+}
+
++ (Class)layerClass {
+  return [MDCShadowLayer class];
+}
+
+- (void)setElevation:(MDCShadowElevation)elevation {
+  _elevation = elevation;
+  [(MDCShadowLayer *)self.layer setElevation:_elevation];
+}
+
+- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
+  [super traitCollectionDidChange:previousTraitCollection];
+
+  if (self.traitCollectionDidChangeBlock) {
+    self.traitCollectionDidChangeBlock(self, previousTraitCollection);
   }
 }
 
@@ -482,7 +476,7 @@ static const MDCFontTextStyle kButtonTextStyle = MDCFontTextStyleButton;
     } else {
       // Set to default
       UIColor *defaultButtonTitleColor;
-      switch(state) {
+      switch (state) {
         case UIControlStateHighlighted:
           defaultButtonTitleColor = UIColor.whiteColor;
           break;
@@ -494,7 +488,6 @@ static const MDCFontTextStyle kButtonTextStyle = MDCFontTextStyleButton;
       [button setTitleColor:defaultButtonTitleColor forState:state];
     }
   }
-
 }
 
 - (void)addColorToMessageLabel:(UIColor *)color {
@@ -539,9 +532,9 @@ static const MDCFontTextStyle kButtonTextStyle = MDCFontTextStyleButton;
       } else {
         // There is a custom font loader, retrieve the font and scale it.
         UIFont *customTypographyFont = [MDCTypography body1Font];
-        _label.font =
-            [customTypographyFont mdc_fontSizedForMaterialTextStyle:kMessageTextStyle
-                scaledForDynamicType:_mdc_adjustsFontForContentSizeCategory];
+        _label.font = [customTypographyFont
+            mdc_fontSizedForMaterialTextStyle:kMessageTextStyle
+                         scaledForDynamicType:_mdc_adjustsFontForContentSizeCategory];
       }
     } else {
       // If we are using the default (system) font loader, retrieve the
@@ -592,9 +585,9 @@ static const MDCFontTextStyle kButtonTextStyle = MDCFontTextStyleButton;
       } else {
         // There is a custom font loader, retrieve the font and scale it.
         UIFont *customTypographyFont = [MDCTypography buttonFont];
-        finalButtonFont =
-            [customTypographyFont mdc_fontSizedForMaterialTextStyle:kButtonTextStyle
-                scaledForDynamicType:_mdc_adjustsFontForContentSizeCategory];
+        finalButtonFont = [customTypographyFont
+            mdc_fontSizedForMaterialTextStyle:kButtonTextStyle
+                         scaledForDynamicType:_mdc_adjustsFontForContentSizeCategory];
       }
     } else {
       // If we are using the default (system) font loader, retrieve the
@@ -663,8 +656,8 @@ static const MDCFontTextStyle kButtonTextStyle = MDCFontTextStyleButton;
     @"kTitleImagePadding" : @(kTitleImagePadding),
     @"kTopMargin" : @(self.safeContentMargin.top),
     @"kTitleButtonPadding" : @(kTitleButtonPadding),
-    @"kContentSafeBottomInset" : @(kBorderWidth +  self.contentSafeBottomInset),
-    @"kMinVerticalButtonPadding": @(kMinVerticalButtonPadding),
+    @"kContentSafeBottomInset" : @(kBorderWidth + self.contentSafeBottomInset),
+    @"kMinVerticalButtonPadding" : @(kMinVerticalButtonPadding),
   };
   NSDictionary *views = @{
     @"container" : self.containerView,
@@ -730,11 +723,11 @@ static const MDCFontTextStyle kButtonTextStyle = MDCFontTextStyleButton;
   } else {  // This is a horizontal layout, and there are buttons present.
     // Align the content and buttons horizontally.
     formatString = @"H:[content]-(==kTitleButtonPadding)-[buttons]-(==kRightMargin)-|";
-    [constraints addObjectsFromArray:
-        [NSLayoutConstraint constraintsWithVisualFormat:formatString
-                                                options:NSLayoutFormatAlignAllCenterY
-                                                metrics:metrics
-                                                  views:views]];
+    [constraints addObjectsFromArray:[NSLayoutConstraint
+                                         constraintsWithVisualFormat:formatString
+                                                             options:NSLayoutFormatAlignAllCenterY
+                                                             metrics:metrics
+                                                               views:views]];
 
     if (MDCSnackbarMessage.usesLegacySnackbar) {
       // The buttons should take up the entire height of the container view.
@@ -745,11 +738,11 @@ static const MDCFontTextStyle kButtonTextStyle = MDCFontTextStyleButton;
                                                                                  views:views]];
     } else {
       formatString = @"V:|-(>=kMinVerticalButtonPadding)-[buttons]-(>=kMinVerticalButtonPadding)-|";
-      [constraints addObjectsFromArray:
-          [NSLayoutConstraint constraintsWithVisualFormat:formatString
-                                                  options:NSLayoutFormatAlignAllCenterY
-                                                  metrics:metrics
-                                                    views:views]];
+      [constraints addObjectsFromArray:[NSLayoutConstraint
+                                           constraintsWithVisualFormat:formatString
+                                                               options:NSLayoutFormatAlignAllCenterY
+                                                               metrics:metrics
+                                                                 views:views]];
     }
 
     // Pin the content to the bottom of the container view, since there's nothing below.
@@ -915,10 +908,12 @@ static const MDCFontTextStyle kButtonTextStyle = MDCFontTextStyleButton;
   [super layoutSubviews];
 
   // As our layout changes, make sure that the shadow path is kept up-to-date.
-  UIBezierPath *path =
-      [UIBezierPath bezierPathWithRoundedRect:self.bounds cornerRadius:
-          MDCSnackbarMessage.usesLegacySnackbar ? kLegacyCornerRadius : kCornerRadius];
+  UIBezierPath *path = [UIBezierPath
+      bezierPathWithRoundedRect:self.bounds
+                   cornerRadius:MDCSnackbarMessage.usesLegacySnackbar ? kLegacyCornerRadius
+                                                                      : kCornerRadius];
   self.layer.shadowPath = path.CGPath;
+  self.layer.shadowColor = self.snackbarMessageViewShadowColor.CGColor;
 }
 
 #pragma mark - Sizing
@@ -940,9 +935,9 @@ static const MDCFontTextStyle kButtonTextStyle = MDCFontTextStyleButton;
 }
 
 - (CGFloat)contentSafeBottomInset {
-  // If a bottom offset has been set to raise the HUD/Snackbar, e.g. above a tab bar, we should ignore
-  // any safeAreaInsets, since it is no longer 'anchored' to the bottom of the screen. This is set
-  // by the MDCSnackbarOverlayView whenever the bottomOffset is non-zero.
+  // If a bottom offset has been set to raise the HUD/Snackbar, e.g. above a tab bar, we should
+  // ignore any safeAreaInsets, since it is no longer 'anchored' to the bottom of the screen. This
+  // is set by the MDCSnackbarOverlayView whenever the bottomOffset is non-zero.
   if (!self.anchoredToScreenBottom || !MDCSnackbarMessage.usesLegacySnackbar) {
     return 0;
   }
@@ -1059,16 +1054,14 @@ static const MDCFontTextStyle kButtonTextStyle = MDCFontTextStyleButton;
   [CATransaction commit];
 }
 
-- (CABasicAnimation *)animateSnackbarOpacityFrom:(CGFloat)fromOpacity
-                                              to:(CGFloat)toOpacity {
+- (CABasicAnimation *)animateSnackbarOpacityFrom:(CGFloat)fromOpacity to:(CGFloat)toOpacity {
   CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
   opacityAnimation.fromValue = @(fromOpacity);
   opacityAnimation.toValue = @(toOpacity);
   return opacityAnimation;
 }
 
-- (CABasicAnimation *)animateSnackbarScaleFrom:(CGFloat)fromScale
-                                       toScale:(CGFloat)toScale {
+- (CABasicAnimation *)animateSnackbarScaleFrom:(CGFloat)fromScale toScale:(CGFloat)toScale {
   CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
   scaleAnimation.fromValue = [NSNumber numberWithDouble:fromScale];
   scaleAnimation.toValue = [NSNumber numberWithDouble:toScale];

@@ -95,6 +95,7 @@ static inline UIColor *MDCTextInputUnderlineColor() {
 @synthesize textColor = _textColor;
 @synthesize trailingUnderlineLabel = _trailingUnderlineLabel;
 @synthesize underline = _underline;
+@synthesize hasTextContent = _hasTextContent;
 @synthesize textInsetsMode = _textInsetsMode;
 
 - (instancetype)init {
@@ -417,12 +418,15 @@ static inline UIColor *MDCTextInputUnderlineColor() {
   [self.textInput sendSubviewToBack:_underline];
 }
 
+- (void)clearText {
+  self.text = nil;
+}
+
 #pragma mark - Border implementation
 
 - (void)setupBorder {
   if (!_borderView) {
     _borderView = [[MDCTextInputBorderView alloc] initWithFrame:CGRectZero];
-    ;
     [self.textInput addSubview:_borderView];
     [self.textInput sendSubviewToBack:_borderView];
     _borderView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -431,17 +435,13 @@ static inline UIColor *MDCTextInputUnderlineColor() {
         [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[border]|"
                                                 options:0
                                                 metrics:nil
-                                                  views:@{
-                                                    @"border" : _borderView
-                                                  }];
+                                                  views:@{@"border" : _borderView}];
     constraints = [constraints
         arrayByAddingObjectsFromArray:[NSLayoutConstraint
                                           constraintsWithVisualFormat:@"H:|[border]|"
                                                               options:0
                                                               metrics:nil
-                                                                views:@{
-                                                                  @"border" : _borderView
-                                                                }]];
+                                                                views:@{@"border" : _borderView}]];
     for (NSLayoutConstraint *constraint in constraints) {
       constraint.priority = UILayoutPriorityDefaultLow;
     }
@@ -508,9 +508,8 @@ static inline UIColor *MDCTextInputUnderlineColor() {
 #pragma mark - Clear Button Implementation
 
 - (void)updateClearButton {
-  UIImage *image = self.clearButton.currentImage
-                       ? self.clearButton.currentImage
-                       : [self drawnClearButtonImage];
+  UIImage *image =
+      self.clearButton.currentImage ? self.clearButton.currentImage : [self drawnClearButtonImage];
 
   if (![self.clearButton imageForState:UIControlStateNormal]) {
     [self.clearButton setImage:image forState:UIControlStateNormal];
@@ -560,7 +559,7 @@ static inline UIColor *MDCTextInputUnderlineColor() {
 
 - (CGFloat)clearButtonAlpha {
   CGFloat clearButtonAlpha = 0;
-  if (self.text.length > 0) {
+  if (self.textInput.hasTextContent) {
     switch (self.clearButtonMode) {
       case UITextFieldViewModeAlways:
         clearButtonAlpha = 1;
@@ -621,7 +620,7 @@ static inline UIColor *MDCTextInputUnderlineColor() {
     }
   }
 
-  self.text = nil;
+  [self.textInput clearText];
   if (self.textInput.isFirstResponder) {
     if ([self.textInput isKindOfClass:[MDCMultilineTextField class]]) {
       MDCMultilineTextField *textField = (MDCMultilineTextField *)self.textInput;
@@ -899,7 +898,7 @@ static inline UIColor *MDCTextInputUnderlineColor() {
 }
 
 - (void)updatePlaceholderAlpha {
-  CGFloat opacity = (self.hidesPlaceholderOnInput && self.textInput.text.length > 0) ? 0 : 1;
+  CGFloat opacity = (self.hidesPlaceholderOnInput && self.textInput.hasTextContent) ? 0 : 1;
   self.placeholderLabel.alpha = opacity;
 }
 

@@ -11,7 +11,7 @@ import UIKit
 
 final class SignInVC: UIViewController {
     
-    // MARK: - Vars
+    // MARK: - Private Vars
     
     fileprivate let mainView = SignInMainView()
     fileprivate let presenter: SignInPresenter
@@ -33,7 +33,7 @@ final class SignInVC: UIViewController {
         super.viewDidLoad()
         
         setupUI()
-        setupInputControllers()
+        setupBindings()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,12 +52,25 @@ final class SignInVC: UIViewController {
         }
     }
     
+    fileprivate func setupBindings() {
+        mainView.signInButton.addTarget(self, action: #selector(signInDidTap), for: .touchUpInside)
+        setupInputControllers()
+    }
+    
     fileprivate func setupInputControllers() {
-        let emailController = LoginFormModuleProvider.setupModuleForLoginFormType(.email, containerView: mainView.emailView)
-        let passwordController = LoginFormModuleProvider.setupModuleForLoginFormType(.password, containerView: mainView.passwordView)
+        let emailController = LoginFormModuleProvider.setupModuleForLoginFormType(.email,
+                                                                                  containerView: mainView.emailView)
+        let passwordController = LoginFormModuleProvider.setupModuleForLoginFormType(.password,
+                                                                                     containerView: mainView.passwordView)
         
         presenter.addInputController(emailController)
         presenter.addInputController(passwordController)
+    }
+    
+    // MARK: - Actions
+    
+    @objc fileprivate func signInDidTap() {
+        presenter.loginDidTap()
     }
 }
 

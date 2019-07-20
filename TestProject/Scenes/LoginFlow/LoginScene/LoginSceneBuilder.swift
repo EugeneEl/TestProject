@@ -11,7 +11,6 @@ import Foundation
 struct LoginSceneBuilder {
     
     let userSessionService: UserSessionService
-    let model: LoginInputModel
     
     func buildLoginScene() -> SignInVC {
         let vc = SignInVC(worker: userSessionService)

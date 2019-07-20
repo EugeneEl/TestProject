@@ -84,7 +84,6 @@ static NSString *const kMaterialDialogsBundle = @"MaterialDialogs.bundle";
 @end
 
 @implementation MDCAlertController {
-
   // This is because title is overlapping with view controller title, However Apple alertController
   // redefines title as well.
   NSString *_alertTitle;
@@ -94,11 +93,10 @@ static NSString *const kMaterialDialogsBundle = @"MaterialDialogs.bundle";
   BOOL _mdc_adjustsFontForContentSizeCategory;
 }
 
-
 + (instancetype)alertControllerWithTitle:(nullable NSString *)alertTitle
                                  message:(nullable NSString *)message {
-  MDCAlertController *alertController =
-      [[MDCAlertController alloc] initWithTitle:alertTitle message:message];
+  MDCAlertController *alertController = [[MDCAlertController alloc] initWithTitle:alertTitle
+                                                                          message:message];
 
   return alertController;
 }
@@ -117,6 +115,7 @@ static NSString *const kMaterialDialogsBundle = @"MaterialDialogs.bundle";
     _message = [message copy];
     _titleAlignment = NSTextAlignmentNatural;
     _actionManager = [[MDCAlertActionManager alloc] init];
+    _adjustsFontForContentSizeCategoryWhenScaledFontIsUnavailable = YES;
 
     super.transitioningDelegate = _transitionController;
     super.modalPresentationStyle = UIModalPresentationCustom;
@@ -143,7 +142,6 @@ static NSString *const kMaterialDialogsBundle = @"MaterialDialogs.bundle";
     self.alertView.titleLabel.text = title;
     self.preferredContentSize =
         [self.alertView calculatePreferredContentSizeForBounds:CGRectInfinite.size];
-
   }
 }
 
@@ -317,17 +315,26 @@ static NSString *const kMaterialDialogsBundle = @"MaterialDialogs.bundle";
   }
 }
 
+- (void)setAdjustsFontForContentSizeCategoryWhenScaledFontIsUnavailable:
+    (BOOL)adjustsFontForContentSizeCategoryWhenScaledFontIsUnavailable {
+  _adjustsFontForContentSizeCategoryWhenScaledFontIsUnavailable =
+      adjustsFontForContentSizeCategoryWhenScaledFontIsUnavailable;
+  self.alertView.adjustsFontForContentSizeCategoryWhenScaledFontIsUnavailable =
+      adjustsFontForContentSizeCategoryWhenScaledFontIsUnavailable;
+}
+
 - (void)actionButtonPressed:(id)button {
   MDCAlertAction *action = [self.actionManager actionForButton:button];
 
   // We call our action.completionHandler after we dismiss the existing alert in case the handler
   // also presents a view controller. Otherwise we get a warning about presenting on a controller
   // which is already presenting.
-  [self.presentingViewController dismissViewControllerAnimated:YES completion:^(void){
-    if (action.completionHandler) {
-      action.completionHandler(action);
-    }
-  }];
+  [self.presentingViewController dismissViewControllerAnimated:YES
+                                                    completion:^(void) {
+                                                      if (action.completionHandler) {
+                                                        action.completionHandler(action);
+                                                      }
+                                                    }];
 }
 
 #pragma mark - UIViewController
@@ -355,25 +362,20 @@ static NSString *const kMaterialDialogsBundle = @"MaterialDialogs.bundle";
 
   NSString *key =
       kMaterialDialogsStringTable[kStr_MaterialDialogsPresentedAccessibilityAnnouncement];
-  NSString *announcement = NSLocalizedStringFromTableInBundle(key,
-                                                              kMaterialDialogsStringsTableName,
-                                                              [[self class] bundle],
-                                                              @"Alert");
-  UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification,
-                                  announcement);
+  NSString *announcement = NSLocalizedStringFromTableInBundle(key, kMaterialDialogsStringsTableName,
+                                                              [[self class] bundle], @"Alert");
+  UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, announcement);
 }
 
 - (void)setupAlertView {
-  // Explicitly overwrite the view default if true
-  if (_mdc_adjustsFontForContentSizeCategory) {
-    self.alertView.mdc_adjustsFontForContentSizeCategory = YES;
-  }
   self.alertView.titleLabel.text = self.title;
   self.alertView.messageLabel.text = self.message;
   self.alertView.titleFont = self.titleFont;
   self.alertView.messageFont = self.messageFont;
   self.alertView.titleColor = self.titleColor;
   self.alertView.messageColor = self.messageColor;
+  self.alertView.adjustsFontForContentSizeCategoryWhenScaledFontIsUnavailable =
+      self.adjustsFontForContentSizeCategoryWhenScaledFontIsUnavailable;
   if (self.backgroundColor) {
     // Avoid reset background color to transparent when self.backgroundColor is nil.
     self.alertView.backgroundColor = self.backgroundColor;
@@ -391,10 +393,17 @@ static NSString *const kMaterialDialogsBundle = @"MaterialDialogs.bundle";
   self.alertView.titleIcon = self.titleIcon;
   self.alertView.titleIconTintColor = self.titleIconTintColor;
   self.alertView.cornerRadius = self.cornerRadius;
+  self.alertView.enableRippleBehavior = self.enableRippleBehavior;
 
   // Create buttons for the actions (if not already created) and apply default styling
   for (MDCAlertAction *action in self.actions) {
     [self addButtonToAlertViewForAction:action];
+  }
+  // Explicitly overwrite the view default if true
+  // We set this last to make sure all other properties are set first and no overridden by setting
+  // this.
+  if (self.mdc_adjustsFontForContentSizeCategory) {
+    self.alertView.mdc_adjustsFontForContentSizeCategory = YES;
   }
 }
 
@@ -403,8 +412,8 @@ static NSString *const kMaterialDialogsBundle = @"MaterialDialogs.bundle";
   if (CGRectGetWidth(self.view.bounds) != _previousLayoutSize.width ||
       CGRectGetHeight(self.view.bounds) != _previousLayoutSize.height) {
     CGSize currentPreferredContentSize = self.preferredContentSize;
-    CGSize calculatedPreferredContentSize =
-    [self.alertView calculatePreferredContentSizeForBounds:CGRectStandardize(self.alertView.bounds).size];
+    CGSize calculatedPreferredContentSize = [self.alertView
+        calculatePreferredContentSizeForBounds:CGRectStandardize(self.alertView.bounds).size];
 
     if (!CGSizeEqualToSize(currentPreferredContentSize, calculatedPreferredContentSize)) {
       // NOTE: Setting the preferredContentSize can lead to a change to self.view.bounds.
@@ -460,13 +469,21 @@ static NSString *const kMaterialDialogsBundle = @"MaterialDialogs.bundle";
        withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
   [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
 
-  [coordinator animateAlongsideTransition:
-      ^(__unused id<UIViewControllerTransitionCoordinatorContext> _Nonnull context) {
+  [coordinator
+      animateAlongsideTransition:^(
+          __unused id<UIViewControllerTransitionCoordinatorContext> _Nonnull context) {
         // Reset preferredContentSize on viewWIllTransition to take advantage of additional width
         self.preferredContentSize =
             [self.alertView calculatePreferredContentSizeForBounds:CGRectInfinite.size];
       }
-                               completion:nil];
+                      completion:nil];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+  [super viewDidAppear:animated];
+
+  [self.alertView.contentScrollView flashScrollIndicators];
+  [self.alertView.actionsScrollView flashScrollIndicators];
 }
 
 #pragma mark - UIAccessibilityAction

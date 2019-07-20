@@ -52,11 +52,11 @@ static const CGFloat kBottomDividerOpacity = (CGFloat)0.12;
       [colorScheme.onSurfaceColor colorWithAlphaComponent:kBottomDividerOpacity];
 }
 
-+ (void)applyColorScheme:(id<MDCColorScheme>)colorScheme
-                toTabBar:(MDCTabBar *)tabBar {
++ (void)applyColorScheme:(id<MDCColorScheme>)colorScheme toTabBar:(MDCTabBar *)tabBar {
   if ([colorScheme respondsToSelector:@selector(primaryLightColor)]) {
     tabBar.unselectedItemTintColor = colorScheme.primaryLightColor;
     tabBar.inkColor = colorScheme.primaryLightColor;
+    tabBar.rippleColor = colorScheme.primaryLightColor;
   }
   if ([colorScheme respondsToSelector:@selector(primaryDarkColor)]) {
     tabBar.selectedItemTintColor = colorScheme.primaryDarkColor;
