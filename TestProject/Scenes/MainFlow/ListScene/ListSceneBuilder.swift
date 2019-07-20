@@ -12,16 +12,14 @@ struct ListSceneBuilder {
     
     // MARK: - Vars
     
-    let feedDataProvider: FeedDataProvider
-    
     // MARK: - Public
     
     func buildListScene() -> ListVC {
-        let vc = ListVC.instantiateFromStoryboardId(.main)
-        let presenter = ListPresenter(dataProvider: feedDataProvider)
+        let apiWorker = ListWorkersFactory.buildFeedAPIWorker()
+        let presenter = ListPresenter(apiWorker: apiWorker)
+        let vc = ListVC(listPresenter: presenter)
         let router = ListRouter(viewController: vc)
         vc.router = router
-        vc.presenter = presenter
         presenter.view = vc
         
         return vc

@@ -25,7 +25,9 @@ class SettingsCoordinator: Coordinator {
     // MARK: - Public
     
     func provideSettingsScene() -> UIViewController {
-        let navigationController = BaseNavigationController(rootViewController: settingsBuilder.buildSettingsScene())
+        let settingsVC = settingsBuilder.buildSettingsScene()
+        settingsVC.enforceLoadView()
+        let navigationController = BaseNavigationController(rootViewController: settingsVC)
         return navigationController
     }
 }

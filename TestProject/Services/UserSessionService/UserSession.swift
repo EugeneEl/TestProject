@@ -8,15 +8,8 @@
 
 import Foundation
 
-struct DataWorkers {
-    
-    let feedbackDataWorker = FeedDataProvider(dataWorker: FeedDataWorker(),
-                                              apiWorker: FeedAPIWorker())
-}
-
 final class UserSession {
     
-    let workers = DataWorkers()
     let identifier: String
     
     // MARK: - Initialization
@@ -28,6 +21,6 @@ final class UserSession {
     // MARK: - Public
     
     func closeSession() {
-        workers.feedbackDataWorker.clearData()
+        
     }
 }

@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension FeedItemEntity {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<FeedItemEntity> {

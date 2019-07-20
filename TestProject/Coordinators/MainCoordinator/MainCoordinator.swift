@@ -13,7 +13,6 @@ class MainCoordinator: Coordinator {
     
     // MARK: - Vars
     
-    let menuTabBarVC = MenuTabBarVC.instantiateFromStoryboardId(.main)
     let listCoordinator: ListCoordinator
     let settingsCoordinator: SettingsCoordinator
     
@@ -27,10 +26,11 @@ class MainCoordinator: Coordinator {
     
     // MARK: - Public
     
-    func buildMainMenuWithLaunchOptions(_ options: [UIApplicationLaunchOptionsKey: Any]?) -> UIViewController {
+    func buildMainMenuWithLaunchOptions(_ options: [UIApplication.LaunchOptionsKey: Any]?) -> UIViewController {
         let mainNavigationVC = listCoordinator.provideListScene()
         let settingsNavigationVC = settingsCoordinator.provideSettingsScene()
 
+        let menuTabBarVC = MenuTabBarVC(launchOptions: options)
         menuTabBarVC.viewControllers = [mainNavigationVC, settingsNavigationVC]
         
         return menuTabBarVC

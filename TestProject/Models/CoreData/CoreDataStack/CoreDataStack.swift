@@ -14,8 +14,9 @@ protocol CoreDataServiceProtocol:class {
     var persistentContainer: NSPersistentContainer {get}
     var viewContext: NSManagedObjectContext {get}
     var backgroundContext: NSManagedObjectContext {get}
-    func performBackgroundTask(_ block: @escaping (NSManagedObjectContext) -> Void)
-    func performForegroundTask(_ block: @escaping (NSManagedObjectContext) -> Void)
+    
+    func performTaskOnDataOperationQueue(_ dataOperationType: DataOperationQueueType, _ block: @escaping (NSManagedObjectContext) -> Void)
+    func performForegroundTaskAndWait(_ block: @escaping (NSManagedObjectContext) -> Void)
 }
 
 
@@ -45,13 +46,18 @@ final class CoreDataService: CoreDataServiceProtocol {
         return self.persistentContainer.newBackgroundContext()
     }()
     
-    func performForegroundTask(_ block: @escaping (NSManagedObjectContext) -> Void) {
-        self.viewContext.perform {
-            block(self.viewContext)
+    func performTaskOnDataOperationQueue(_ dataOperationType: DataOperationQueueType, _ block: @escaping (NSManagedObjectContext) -> Void) {
+        switch dataOperationType {
+        case .main:
+            viewContext.performAndWait {block(self.viewContext)}
+        case .background:
+            persistentContainer.performBackgroundTask(block)
         }
     }
     
-    func performBackgroundTask(_ block: @escaping (NSManagedObjectContext) -> Void) {
-        self.persistentContainer.performBackgroundTask(block)
+    func performForegroundTaskAndWait(_ block: @escaping (NSManagedObjectContext) -> Void) {
+        self.viewContext.performAndWait {
+            block(self.viewContext)
+        }
     }
 }

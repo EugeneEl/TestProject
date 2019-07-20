@@ -17,15 +17,13 @@ class LoginCoordinator: Coordinator {
     // MARK: - Initialization
     
     init(userSessionService: UserSessionService) {
-        self.loginBuilder = LoginSceneBuilder(userSessionService: userSessionService,
-                             model: LoginInputModel(email: "",
-                                                    password: ""))
+        self.loginBuilder = LoginSceneBuilder(userSessionService: userSessionService)
         super.init(flow: .login)
     }
     
     // MARK: - Public
     
-    func buildLoginScreen() -> NewLoginVC {
+    func buildLoginScreen() -> SignInVC {
         return loginBuilder.buildLoginScene()
     }
 }

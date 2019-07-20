@@ -18,7 +18,7 @@ class ListCoordinator: Coordinator {
     // MARK: - Initialization
     
     init(userSession: UserSession) {
-        self.listBuilder = ListSceneBuilder(feedDataProvider: userSession.workers.feedbackDataWorker)
+        self.listBuilder = ListSceneBuilder()
         super.init(flow: .list)
     }
     

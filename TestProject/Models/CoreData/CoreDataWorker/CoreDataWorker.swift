@@ -10,29 +10,47 @@ import Foundation
 import CoreData
 
 enum Result<T>{
-    case success(T)
+    case success(T?)
     case failure(Error)
 }
 
+enum DataOperationQueueType {
+    case main
+    case background
+}
+
 protocol NewCoreDataWorkerProtocol {
-    func get<Entity: ManagedObjectConvertible>
+    func get<PlainObject: PlainObjectConvertible>
         (with predicate: NSPredicate?,
          sortDescriptors: [NSSortDescriptor]?,
          fetchLimit: Int?,
-         completion: @escaping (Result<[Entity]>) -> Void)
-    func upsert<Entity: ManagedObjectConvertible>
-        (entities: [Entity],
-         completion: @escaping (Error?) -> Void)
-    func delete<Entity: ManagedObjectConvertible>
-        (completion: @escaping (Result<[Entity]>) -> Void)
+         operationQueue: DataOperationQueueType,
+         completion: @escaping (Result<[PlainObject]>) -> ())
+    func upsert<PlainObject: PlainObjectConvertible>
+        (entities: [PlainObject],
+         operationQueue: DataOperationQueueType,
+         completion: @escaping (Error?) -> ())
+    func deleteAll<PlainObject: PlainObjectConvertible>
+        (operationQueue: DataOperationQueueType,
+         completion: @escaping (Result<[PlainObject]>) -> ())
+    
+    func getById<PlainObject: PlainObjectConvertible>(id: String,
+                                                      operationQueue: DataOperationQueueType,
+                                                      completion: @escaping(Result<PlainObject>)-> ())
+    func updateByPlainObject<PlainObject: PlainObjectConvertible>(item: PlainObject,
+                                                                  operationQueue: DataOperationQueueType, completion: @escaping(Result<PlainObject>)-> ())
+    func deleteById<PlainObject: PlainObjectConvertible>(id: String,
+                                                         operationQueue: DataOperationQueueType,
+                                                         completion: @escaping (Result<PlainObject>) -> ())
 }
 
 extension NewCoreDataWorkerProtocol {
-    func get<Entity: ManagedObjectConvertible>
+    func get<PlainObject: PlainObjectConvertible>
         (with predicate: NSPredicate? = nil,
          sortDescriptors: [NSSortDescriptor]? = nil,
          fetchLimit: Int? = nil,
-         completion: @escaping (Result<[Entity]>) -> Void) {
+         operationQueue: DataOperationQueueType = .main,
+         completion: @escaping (Result<[PlainObject]>) -> Void) {
         get(with: predicate,
             sortDescriptors: sortDescriptors,
             fetchLimit: fetchLimit,
@@ -54,22 +72,23 @@ class NewCoreDataWorker: NewCoreDataWorkerProtocol {
         self.coreData = coreData
     }
     
-    func get<Entity: ManagedObjectConvertible>
+    func get<PlainObject: PlainObjectConvertible>
         (with predicate: NSPredicate?,
          sortDescriptors: [NSSortDescriptor]?,
          fetchLimit: Int?,
-         completion: @escaping (Result<[Entity]>) -> Void) {
-        coreData.performForegroundTask { context in
+         operationQueue: DataOperationQueueType,
+         completion: @escaping (Result<[PlainObject]>) -> Void) {
+        coreData.performTaskOnDataOperationQueue(operationQueue) { context in
             do {
-                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Entity.ManagedObject.entityName())
+                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: PlainObject.ManagedObject.entityName())
                 
                 fetchRequest.predicate = predicate
                 fetchRequest.sortDescriptors = sortDescriptors
                 if let fetchLimit = fetchLimit {
                     fetchRequest.fetchLimit = fetchLimit
                 }
-                let results = try context.fetch(fetchRequest) as? [Entity.ManagedObject]
-                let items: [Entity] = results?.flatMap { $0.toEntity() as? Entity } ?? []
+                let results = try context.fetch(fetchRequest) as? [PlainObject.ManagedObject]
+                let items: [PlainObject] = results?.flatMap { $0.toPlainObject() as? PlainObject } ?? []
                 completion(.success(items))
             } catch {
                 let fetchError = CoreDataWorkerError.cannotFetch("Cannot fetch error: \(error))")
@@ -78,12 +97,12 @@ class NewCoreDataWorker: NewCoreDataWorkerProtocol {
         }
     }
     
-    func upsert<Entity: ManagedObjectConvertible>
-        (entities: [Entity],
+    func upsert<PlainObject: PlainObjectConvertible>
+        (entities: [PlainObject],          operationQueue: DataOperationQueueType,
          completion: @escaping (Error?) -> Void) {
         
-        coreData.performBackgroundTask { context in
-            let objects = entities.flatMap({ (entity) -> Entity.ManagedObject? in
+        coreData.performTaskOnDataOperationQueue(operationQueue) { context in
+            let objects = entities.flatMap({ (entity) -> PlainObject.ManagedObject? in
                 return entity.toManagedObject(in: context)
             })
             do {
@@ -95,11 +114,58 @@ class NewCoreDataWorker: NewCoreDataWorkerProtocol {
         }
     }
     
-    func delete<Entity>(completion: @escaping (Result<[Entity]>) -> Void) where Entity : ManagedObjectConvertible {
-        coreData.performForegroundTask { context in
+    func getById<PlainObject: PlainObjectConvertible>(id: String,          operationQueue: DataOperationQueueType, completion: @escaping(Result<PlainObject>)-> ()) {
+        coreData.performForegroundTaskAndWait { (context) in
+            let entity = PlainObject.ManagedObject.single(with: id, from: context) as? PlainObject.ManagedObject
+            let plainObject = entity?.toPlainObject() as? PlainObject
+            let result = Result.success(plainObject)
+            completion(result)
+        }
+    }
+    
+    func updateByPlainObject<PlainObject>(item: PlainObject,          operationQueue: DataOperationQueueType, completion: @escaping (Result<PlainObject>) -> ()) where PlainObject : PlainObjectConvertible {
+        coreData.performTaskOnDataOperationQueue(operationQueue) { context in
+            let object = item.toManagedObject(in: context)
             do {
-                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Entity.ManagedObject.entityName())
-                let results = try context.fetch(fetchRequest) as? [Entity.ManagedObject]
+                try context.save()
+                completion(Result.success(object?.toPlainObject() as? PlainObject))
+            } catch {
+                completion(Result.failure(error))
+            }
+        }
+    }
+    
+    func deleteById<PlainObject: PlainObjectConvertible>(id: String,          operationQueue: DataOperationQueueType, completion: @escaping (Result<PlainObject>) -> ()) {
+        coreData.performTaskOnDataOperationQueue(operationQueue) { context in
+            do {
+                let entity = PlainObject.ManagedObject.single(with: id, from: context) as? PlainObject.ManagedObject
+                
+                guard let managedObject = entity else {
+                    print("nothing to delete")
+                    completion(.success(nil))
+                    return}
+                
+                context.delete(managedObject)
+                
+                do {
+                    try context.save()
+                    print("success delete")
+                    completion(.success(nil))
+                } catch {
+                    completion(.failure(error))
+                }
+            } catch {
+                let fetchError = CoreDataWorkerError.cannotFetch("Cannot fetch error: \(error))")
+                completion(.failure(fetchError))
+            }
+        }
+    }
+    
+    func deleteAll<PlainObject>(operationQueue: DataOperationQueueType, completion: @escaping (Result<[PlainObject]>) -> Void) where PlainObject : PlainObjectConvertible {
+        coreData.performTaskOnDataOperationQueue(operationQueue) { context in
+            do {
+                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: PlainObject.ManagedObject.entityName())
+                let results = try context.fetch(fetchRequest) as? [PlainObject.ManagedObject]
                 
                 guard let savedObjects = results else {
                     print("nothing to delete")

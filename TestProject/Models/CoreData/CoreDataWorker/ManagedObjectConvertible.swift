@@ -12,7 +12,7 @@ import CoreData
 // thanks to Michal Wojtysiak for providing approch for converting CoreData --> Plain Object
 // I took this from https://swifting.io/blog/2016/11/27/28-better-coredata-with-swift-generics/
 
-protocol ManagedObjectConvertible {
+protocol PlainObjectConvertible {
     associatedtype ManagedObject: NSManagedObject, ManagedObjectProtocol
     func toManagedObject(in context: NSManagedObjectContext) -> ManagedObject?
 }

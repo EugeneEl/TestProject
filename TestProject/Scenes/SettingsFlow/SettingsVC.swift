@@ -16,30 +16,61 @@ protocol SettingsViewOutput: class {
 
 final class SettingsVC: UIViewController {
     
-    // MARK: - Vars
+    // MARK: - Private Vars
     
-    var presenter: SettingsViewOutput?
+    fileprivate let mainView = SettingsMainView()
+    fileprivate let presenter: SettingsViewOutput
+    
+    // MARK: - Initialization
+    
+    init(presenter: SettingsViewOutput) {
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("not implemented")
+    }
     
     // MARK: - Lifecycle
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override func loadView() {
+        super.loadView()
         
         tabBarItem = MenuTabBarItem.settings.tabBarItem
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupView()
+        setupBindings()
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        view.backgroundColor = Constants.Colors.grey
         configureNavigationBarUI()
     }
     
     // MARK: - Private
+    // MARK: - Helpers
+    
+    fileprivate func setupView() {
+        view.backgroundColor = Constants.Colors.grey
+        
+        view.addSubview(mainView)
+        mainView.constraintToSuperviewEdges()
+    }
+    
+    fileprivate func setupBindings() {
+        mainView.logoutButton.addTarget(self, action: #selector(logoutDidTap), for: .touchUpInside)
+    }
+    
     // MARK: - Actions
     
     @IBAction fileprivate func logoutDidTap() {
-        presenter?.handleLogoutTap()
+        presenter.handleLogoutTap()
     }
 }
 
@@ -62,12 +93,15 @@ extension SettingsVC: SettingsViewInput {
 
 extension SettingsVC: ViewControllerUIConfigurating {
     var navigationBarAppearance: NavigationBarAppearance? {
-        return NavigationBarAppearance(isSeparatorVisible: false,
-                                       translucent: false,
-                                       navigationBarColor: Constants.Colors.background,
-                                       navigationBarTintColor: .black,
-                                       navigationTitle: "Profile",
-                                       navigationTitleColor: .white,
+        let navigationBarTitleUI = NavigationBarTitleUI(color: .white, font: UIFont.systemFont(ofSize: 15))
+        let navigationBarUI = NavigationBarUI(isSeparatorVisible: false,
+                                              translucent: false,
+                                              navigationBarColor: Constants.Colors.background,
+                                              navigationBarTintColor: .black,
+                                              titleStyle: .text("settings_navitation_title".localized, navigationBarTitleUI))
+        
+        
+        return NavigationBarAppearance(navigationBarUI: navigationBarUI,
                                        leftItem: nil,
                                        rightItem: nil)
     }

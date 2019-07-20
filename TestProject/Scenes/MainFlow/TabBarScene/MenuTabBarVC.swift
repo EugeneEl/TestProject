@@ -13,7 +13,18 @@ class MenuTabBarVC: UITabBarController {
     
     // MARK: - Vars
     
-    private var launchOptions: [UIApplicationLaunchOptionsKey: Any]?
+    private var launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+    
+    // MARK: - Initialization
+    
+    init(launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
+        self.launchOptions = launchOptions
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("not implemented")
+    }
     
     // MARK: - Lifecycle
     
@@ -31,7 +42,7 @@ class MenuTabBarVC: UITabBarController {
     
     // MARK: - Public
     
-    func configureWithLaunchOptions(_ options: [UIApplicationLaunchOptionsKey: Any]?) {
+    func configureWithLaunchOptions(_ options: [UIApplication.LaunchOptionsKey: Any]?) {
         launchOptions = options
     }
     

@@ -9,7 +9,7 @@
 import Foundation
 
 enum AuthFlow {
-    case login(LoginInputModel)
+    case login(SignInModel)
 }
 
 typealias AuthCompletionSuccess = (_ withFlow: AuthFlow, _ user: User) -> ()

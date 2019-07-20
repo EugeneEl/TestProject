@@ -14,63 +14,66 @@ enum FormControllerType {
     case password
 }
 
-/// Form types for composing Login Screen.
+struct FormControllerConfiguration {
+    let ui: FormInputViewUI
+    let formType: FormControllerType
+    let validators: [Validator]
+}
+
+struct FormInputAttrubutes {
+    static let activePlaceholder = FloatingPlaceholderAttribute(color: Constants.Colors.lightGrey,
+                                                                font: ProximaNovaFont.semibold.fontWithSize(15))
+    static let inactivePlaceholder = FloatingPlaceholderAttribute(color: Constants.Colors.lightGrey,
+                                                                  font: ProximaNovaFont.regular.fontWithSize(13))
+    static let textInput = FloatingPlaceholderAttribute(color: .black,
+                                                        font: ProximaNovaFont.semibold.fontWithSize(15))
+    
+    static let formUI = FloatingTextFieldAttribute(
+        activeInputLineColor: Constants.Colors.grey,
+        activePlaceholder: activePlaceholder,
+        inactivePlaceholder: inactivePlaceholder,
+        textInput: textInput
+    )
+}
+
 enum LoginFormType {
     case email
     case password
+
     
-    // MARK: - Constants
+    private static let userNameKeyboardUI = FormKeyboardUI(keyboardType: .default,
+                                                           capitalizationType: .words,
+                                                           autocorrectionType: .no,
+                                                           isSecureTextEntry: false)
     
-    private static let font = UIFont.systemFont(ofSize: 15)
-    private static let rightOffset: CGFloat = 8
-    private static let leftOffset: CGFloat = 8
-    
-    private static let emailPlaceholderUI = FormPlaceholderUI(text: "Email",
-                                                              rightPadding: 8,
-                                                              leftPadding: 8,
-                                                              width: 80);
-    
-    private static let passwordPlaceholderUI = FormPlaceholderUI(text: "Password",
-                                                                 rightPadding: 8,
-                                                                 leftPadding: 8,
-                                                                 width: 80);
-    
-    private static let emailKeyboardUI = FormKeyboardUI(keyboardType: .emailAddress,
-                                                        capitalizationType: .none,
-                                                        autocorrectionType: .no,
-                                                        isSecureTextEntry: false)
     private static let passwordKeyboardUI = FormKeyboardUI(keyboardType: .default,
                                                            capitalizationType: .none,
                                                            autocorrectionType: .no,
                                                            isSecureTextEntry: true)
+    private static let emailKeyboardUI = FormKeyboardUI(keyboardType: .emailAddress,
+                                                        capitalizationType: .none,
+                                                        autocorrectionType: .no,
+                                                        isSecureTextEntry: false)
     
-    static let inputHeight: CGFloat = 44
-    
-    // MARK: - Vars
-    // MARK: - Public
+    // MARK: Public
     
     var formUI: FormInputViewUI {
-        switch self {
-        case .email:
-            return FormInputViewUI(placeholderUI: LoginFormType.emailPlaceholderUI,
-                                   keyboardUI: keyboardUI,
-                                   textFont: LoginFormType.font,
-                                   isSeparatorVisible: true)
-        case .password:
-            return FormInputViewUI(placeholderUI: LoginFormType.passwordPlaceholderUI,
-                                   keyboardUI: keyboardUI,
-                                   textFont: LoginFormType.font,
-                                   isSeparatorVisible: false)
-            
-        }
+        let textFieldType = TextFieldType.floating(attribute: FormInputAttrubutes.formUI)
+        return FormInputViewUI(textFieldType: textFieldType,
+                               keyboardUI: keyboardUI,
+                               placeholderText: hint)
     }
     
-    var formControllerType: FormControllerType {
+    var configuration: FormControllerConfiguration {
         switch self {
-        case .email:
-            return .email
         case .password:
-            return .password
+            return FormControllerConfiguration(ui: formUI,
+                                               formType: .password,
+                                               validators: FormValidators.passwordValidators)
+        case .email:
+            return FormControllerConfiguration(ui: formUI,
+                                               formType: .email,
+                                               validators: FormValidators.emailValidators)
         }
     }
     
@@ -83,5 +86,29 @@ enum LoginFormType {
         case .password:
             return LoginFormType.passwordKeyboardUI
         }
+    }
+    
+    private var hint: String {
+        switch self {
+        case .email:
+            return "login_scene_email_hint".localized
+        case .password:
+            return "login_scene_password_hint".localized
+        }
+    }
+}
+
+final class LoginFormModuleProvider {
+    
+    // MARK: - Public
+    
+    static func setupModuleForLoginFormType(_ loginFormType: LoginFormType, containerView: UIView) -> FormInputConroller {
+        let formView = FormInputView.instantiateView()
+        containerView.addSubview(formView)
+        formView.constraintToSuperviewEdges()
+        
+        let formController = FormInputConroller(formConfigurating: formView, configuration: loginFormType.configuration, initalText: "")
+        
+        return formController
     }
 }

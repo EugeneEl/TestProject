@@ -13,8 +13,8 @@ import CoreData
 // I took this from https://swifting.io/blog/2016/11/27/28-better-coredata-with-swift-generics/
 
 protocol ManagedObjectProtocol {
-    associatedtype Entity
-    func toEntity() -> Entity?
+    associatedtype PlainObject
+    func toPlainObject() -> PlainObject?
 }
 
 extension NSManagedObject {

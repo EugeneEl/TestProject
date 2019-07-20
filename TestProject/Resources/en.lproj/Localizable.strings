@@ -1,0 +1,55 @@
+/* 
+  Localizable.strings
+  TestProject
+
+  Created by Eugene Goloboyar on 23.01.2019.
+  Copyright © 2019 Eugene Goloboyar. All rights reserved.
+*/
+
+// Version 1.0
+
+"login_scene_sign_up_title"                    = "Sign Up";
+"login_scene_have_account_hint"                = "Have an account?";
+"login_scene_sign_in_title"                    = "Sign In";
+"login_scene_username_optional_hint"           = "Username";
+"login_scene_email_hint"                       = "Email";
+"login_scene_password_hint"                    = "Password";
+"login_scene_confirm_password_hint"            = "Confirm Password";
+"login_scene_sign_up_button"                   = "SIGN UP";
+"login_scene_by_tapping_agree_title"           = "By tapping Sign up you are with our ";
+"login_scene_privacy_policy_hint"              = "Privacy Policy";
+"login_scene_terms_of_service_hint"            = "Terms of Service";
+"login_scene_and_text"                         = "and";
+"login_scene_sign_in_button"                   = "SIGN IN";
+"login_scene_forgot_password_hint"             = "Forgot Password?";
+"onboarding_scene_sign_in_top_button_title"    = "Sign In";
+"login_scene_empty_email_error"                = "Email cannot be empty";
+"login_scene_invalid_email_error"              = "Please enter a valid email";
+"login_scene_min_char_password_error"          = "Password should have at least 6 characters";
+"login_scene_max_char_password_error"          = "Password should be less than 64 characters";
+"login_scene_confirm_password_error"           = "Password and confirm password don't match";
+"login_scene_not_have_account_hint"            = "Don't have an account?";
+"forgot_password_scene_title"                  = "Forgot Password?";
+"forgot_password_scene_description"            = "Enter your email address to request a password reset";
+"forgot_password_scene_button_title"           = "RESET PASSWORD";
+"new_password_scene_title"                     = "New password";
+"new_password_scene_description"               = "Choose a new password to finish signing in";
+"new_password_scene_button_title"              = "SIGN IN";
+"new_password_textfield_hint"                  = "New password";
+"login_scene_sign_up_success_alert_title"      = "Confirmation link has been sent to your email!";
+"login_scene_alert_message_suggest_client"     = "Open your email client";
+"forgot_password_scene_success_alert_title"    = "Reset password link has been sent to your email.";
+"login_scene_suggest_email_client_ios_app"     = "Open mail app";
+"login_scene_suggest_email_client_gmail_app"   = "Open gmail";
+"cancel"                                       = "Cancel";
+"done"                                         = "Done";
+"questions_scene_emmissions_hint"              = "Answer the questions and get bigger emmissions cap.";
+"login_scene_max_char_name_error"              = "First name should be less that 64 characters";
+"toast_no_internet_connection"                 = "No internet connection. Please check your connection and retry.";
+"base_error_something_went_wrong"              = "Something went wrong";
+"sign_up_email_already_used_error"             = "E-mail address must be unique. We already have a user with the specified email address";
+"error"                                        = "Error";
+"user_session_has_expired"                     = "User session has expired or cannot find token";
+"settings_logout_button_title"                 = "Logout";
+"settings_navitation_title"                    = "Profile";
+"news_scene_navigation_title"                  = "News";
