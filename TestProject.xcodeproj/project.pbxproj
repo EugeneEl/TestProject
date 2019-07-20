@@ -92,6 +92,7 @@
 		3EB1679E206CDB5000A82D11 /* ViewControllersProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB1679D206CDB5000A82D11 /* ViewControllersProvider.swift */; };
 		3EB167A2206CDBDB00A82D11 /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB167A1206CDBDB00A82D11 /* ServiceLocator.swift */; };
 		3EB167A5206CDCB900A82D11 /* ViewControllerConfigurating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB167A4206CDCB900A82D11 /* ViewControllerConfigurating.swift */; };
+		3EBAE71E22E2FC3600ECEB2C /* DialogHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBAE71D22E2FC3600ECEB2C /* DialogHelper.swift */; };
 		3ECBF33F2157749200A43623 /* NetwordDebugger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECBF33E2157749200A43623 /* NetwordDebugger.swift */; };
 		3ED84D0A21EF022E0005122A /* FormValidators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED84D0921EF022E0005122A /* FormValidators.swift */; };
 		3ED84D0C21EF02790005122A /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED84D0B21EF02790005122A /* String+Localization.swift */; };
@@ -203,6 +204,7 @@
 		3EB1679D206CDB5000A82D11 /* ViewControllersProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllersProvider.swift; sourceTree = "<group>"; };
 		3EB167A1206CDBDB00A82D11 /* ServiceLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
 		3EB167A4206CDCB900A82D11 /* ViewControllerConfigurating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerConfigurating.swift; sourceTree = "<group>"; };
+		3EBAE71D22E2FC3600ECEB2C /* DialogHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogHelper.swift; sourceTree = "<group>"; };
 		3ECBF33E2157749200A43623 /* NetwordDebugger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetwordDebugger.swift; sourceTree = "<group>"; };
 		3ED84D0921EF022E0005122A /* FormValidators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormValidators.swift; sourceTree = "<group>"; };
 		3ED84D0B21EF02790005122A /* String+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localization.swift"; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 		3E2FA183206BEE4D0000DAD7 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				3EBAE71C22E2FC2B00ECEB2C /* DialogHelper */,
 				3EFC7EA422E2DC6C000A9A2B /* ViewHelperBuilder */,
 				3ECBF33D2157748500A43623 /* NetwordDebugger */,
 				3E82D03121295590001A2720 /* FormBuilder */,
@@ -865,6 +868,14 @@
 			path = UIHelpers/ViewControllerConfigurating;
 			sourceTree = "<group>";
 		};
+		3EBAE71C22E2FC2B00ECEB2C /* DialogHelper */ = {
+			isa = PBXGroup;
+			children = (
+				3EBAE71D22E2FC3600ECEB2C /* DialogHelper.swift */,
+			);
+			path = DialogHelper;
+			sourceTree = "<group>";
+		};
 		3ECBF33D2157748500A43623 /* NetwordDebugger */ = {
 			isa = PBXGroup;
 			children = (
@@ -1172,6 +1183,7 @@
 				3E67933C2135B42400BCAAFA /* LoginSceneBuilder.swift in Sources */,
 				3E59D5DF20A3310C00853254 /* UserSessionStorage.swift in Sources */,
 				3E58BA8B206CDF49001DEB34 /* UIColor.swift in Sources */,
+				3EBAE71E22E2FC3600ECEB2C /* DialogHelper.swift in Sources */,
 				3E82D033212955A2001A2720 /* FormInputController.swift in Sources */,
 				3EFC7EA622E2DC78000A9A2B /* ViewHelperBuilder.swift in Sources */,
 				3E62887A2132AB70001A7E18 /* ManagedObjectProtocol.swift in Sources */,

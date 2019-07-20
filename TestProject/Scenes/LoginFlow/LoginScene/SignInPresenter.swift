@@ -47,6 +47,10 @@ final class SignInPresenter {
     }
     
     func loginDidTap() {
+        if let errorText = model.validateModel() {
+            loginState = .loginRequest(.failure(nil, errorText, nil))
+            return
+        }
         loginState = .loginRequest(.isLoading)
         userSessionService.openUserSessionWithModel(model, success: {[weak self] (flow, user) in
             guard let strongSelf = self else {return}

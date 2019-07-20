@@ -21,6 +21,7 @@ final class SignInVC: UIViewController {
     init(worker: UserSessionService) {
         self.presenter = SignInPresenter(userSessionService: worker)
         super.init(nibName: nil, bundle: nil)
+        presenter.view = self
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -71,6 +72,27 @@ final class SignInVC: UIViewController {
     
     @objc fileprivate func signInDidTap() {
         presenter.loginDidTap()
+    }
+}
+
+// MARK: - SignInViewInput
+
+extension SignInVC: SignInViewInput {
+    func loginStateDidChange(_ state: SignInSceneState) {
+        switch state {
+        case .initial:
+            break
+        case .loginRequest(let request):
+            switch request {
+            case .isLoading:
+                HudHelper.showHUDInView(view, animated: true)
+            case .failure(_, let errorText, _):
+                HudHelper.hideHUDInView(view, animated: false)
+                DialogHelper.showOkAlert(errorText, viewController: self)
+            case .success:
+                HudHelper.hideHUDInView(view, animated: false)
+            }
+        }
     }
 }
 
