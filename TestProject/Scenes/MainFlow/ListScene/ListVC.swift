@@ -158,7 +158,7 @@ extension ListVC: ViewControllerUIConfigurating {
                                               translucent: false,
                                               navigationBarColor: Constants.Colors.background,
                                               navigationBarTintColor: .white,
-                                              titleStyle: .text("News", navigationBarTitleUI))
+                                              titleStyle: .text("news_scene_navigation_title".localized, navigationBarTitleUI))
         
         
         return NavigationBarAppearance(navigationBarUI: navigationBarUI,

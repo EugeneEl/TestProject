@@ -13,7 +13,6 @@ class MainCoordinator: Coordinator {
     
     // MARK: - Vars
     
-    let menuTabBarVC = MenuTabBarVC.instantiateFromStoryboardId(.main)
     let listCoordinator: ListCoordinator
     let settingsCoordinator: SettingsCoordinator
     
@@ -31,6 +30,7 @@ class MainCoordinator: Coordinator {
         let mainNavigationVC = listCoordinator.provideListScene()
         let settingsNavigationVC = settingsCoordinator.provideSettingsScene()
 
+        let menuTabBarVC = MenuTabBarVC(launchOptions: options)
         menuTabBarVC.viewControllers = [mainNavigationVC, settingsNavigationVC]
         
         return menuTabBarVC

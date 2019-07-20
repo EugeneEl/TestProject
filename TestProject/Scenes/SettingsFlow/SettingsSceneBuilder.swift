@@ -17,10 +17,9 @@ struct SettingsSceneBuilder {
     // MARK: - Public
     
     func buildSettingsScene() -> SettingsVC {
-        let vc = SettingsVC.instantiateFromStoryboardId(.settings)
         let presenter = SettingsPresenter(userSessionService: userSessionService)
+        let vc = SettingsVC(presenter: presenter)
         presenter.view = vc
-        vc.presenter = presenter
 
         return vc
     }

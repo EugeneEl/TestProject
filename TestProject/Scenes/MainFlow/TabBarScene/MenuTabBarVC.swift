@@ -15,6 +15,17 @@ class MenuTabBarVC: UITabBarController {
     
     private var launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     
+    // MARK: - Initialization
+    
+    init(launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
+        self.launchOptions = launchOptions
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("not implemented")
+    }
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
