@@ -9,11 +9,6 @@ import UIKit
 
 extension UIViewController {
     
-//    func replaceBackButton() {
-//        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "backArrow"), style: .plain, target: self, action: #selector(UIViewController.navigateBack(_:)))
-//        //navigationItem.leftBarButtonItem?.tintColor = Constants.Colors.blueColor
-//    }
-    
     func enforceLoadView() {
         // warning! hack to force load view
         let _ = view

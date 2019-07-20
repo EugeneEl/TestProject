@@ -44,6 +44,7 @@ final class ListMainView: UIView {
         tableView.backgroundColor = Constants.Colors.grey
         tableView.estimatedRowHeight = 85.0
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.separatorStyle = .none
         setupRefreshControl()
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 44, right: 0)
     }

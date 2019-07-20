@@ -78,6 +78,8 @@ class ListVC: UIViewController {
     
     fileprivate func setupBindings() {
         mainView.tableView.registerCellsWithIdentifiers([FeedListTableViewCell.cellIdentifier()])
+        mainView.tableView.dataSource = self
+        mainView.tableView.delegate = self
         mainView.refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
     }
     
@@ -134,11 +136,6 @@ extension ListVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let item = presenter.feedItems[safe: indexPath.row] else {return}
-        let worker = FeedDataWorker()
-        let entity = worker.fetchItemByID(item.url.absoluteString) { (itemInStore) in
-            print("itemInStore: \(itemInStore)")
-        }
-        print("next step")
     }
 }
 

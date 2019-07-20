@@ -29,13 +29,13 @@ final class ListPresenter: ListViewOutput {
         }
     }
     
-    private let dataProvider: FeedDataProvider
+    private let apiWorker: FeedAPIProtocol
     private (set) internal var feedItems = [FeedItem]()
     
     // MARK: - Initialization
     
-    init(dataProvider: FeedDataProvider) {
-        self.dataProvider = dataProvider
+    init(apiWorker: FeedAPIProtocol) {
+        self.apiWorker = apiWorker
     }
     
     // MARK: - Public
@@ -43,14 +43,13 @@ final class ListPresenter: ListViewOutput {
     func fetchData() { 
         state = .isLoading
         
-        dataProvider.fetchItemsUsingLocalData(true, success: {[weak self] (items) in
+        apiWorker.fetchNewsWithCompletionSuccess({[weak self] (items) in
             guard let strongSelf = self else {return}
             strongSelf.feedItems = items
             strongSelf.state = .feedDidFetch(items, nil)
-        }) {[weak self] (error, cachedItems) in
+        }) {[weak self] (errorText) in
             guard let strongSelf = self else {return}
-            strongSelf.feedItems = cachedItems
-            strongSelf.state = .feedDidFetch(cachedItems, error)
+            strongSelf.state = .feedDidFetch([], errorText)
         }
     }
     

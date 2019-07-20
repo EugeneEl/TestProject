@@ -23,6 +23,10 @@ final class FeedAPIWorkerJSON: FeedAPIProtocol {
             }
         }
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            success(models)
+        }
+        
         success(models)
         return nil
     }

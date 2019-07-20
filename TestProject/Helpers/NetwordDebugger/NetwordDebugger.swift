@@ -15,10 +15,29 @@ final class NetworkDebugger {
     // MARK: - Public
     
     class func setupDebugger() {
-        Dotzu.sharedManager.enable()
+        switch AppConfigurationProvider.shared.configuration {
+        case .debug, .test:
+            Dotzu.sharedManager.disable()
+        case .adhoc:
+            Dotzu.sharedManager.disable()
+        case .release:
+            Dotzu.sharedManager.disable()
+        }
     }
     
     class func setupNetworkDebugger(_ configuration: URLSessionConfiguration) {
-        Dotzu.sharedManager.addLogger(session: configuration)
+        switch AppConfigurationProvider.shared.configuration {
+        case .debug, .test:
+            Dotzu.sharedManager.addLogger(session: configuration)
+        case .adhoc:
+            Dotzu.sharedManager.addLogger(session: configuration)
+        case .release:
+            break
+        }
     }
+}
+
+func logAssertionFailuire(_ text: String) {
+    print("__ASSERTION!!!: \(text)")
+    assertionFailure(text)
 }
