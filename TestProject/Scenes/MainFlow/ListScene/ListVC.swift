@@ -18,21 +18,32 @@ protocol ListViewOutput: class {
 
 class ListVC: UIViewController {
  
-    // MARK: - Outlets
+    // MARK: - Public Vars
     
-    @IBOutlet fileprivate weak var tableView: UITableView!
-    
-    // MARK: - Vars
-    
-    fileprivate var refreshControl: UIRefreshControl?
-    var presenter: ListViewOutput?
     var router: ListRouter?
+    
+    // MARK: - Private Vars
+
+    fileprivate let mainView = ListMainView()
+    fileprivate var presenter: ListViewOutput
     fileprivate var safariControllerHelper: SafariControllerHelper?
+    
+    // MARK: - Initialization
+    
+    init(listPresenter: ListViewOutput) {
+        presenter = listPresenter
+        super.init(nibName: nil, bundle: nil)
+        safariControllerHelper = SafariControllerHelper(viewController: self)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("not implemented")
+    }
     
     // MARK: - Lifecycle
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override func loadView() {
+         super.loadView()
         
         tabBarItem = MenuTabBarItem.feed.tabBarItem
     }
@@ -40,10 +51,9 @@ class ListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupTableView()
-        safariControllerHelper = SafariControllerHelper(viewController: self)
-        view.backgroundColor = Constants.Colors.grey
-        presenter?.fetchData()
+        setupMainView()
+        setupBindings()
+        presenter.fetchData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,31 +67,24 @@ class ListVC: UIViewController {
     }
     
     // MARK: - Private
+    // MARK: - Helpers
     
-    private func setupTableView() {
-        tableView.backgroundColor = Constants.Colors.grey
-        tableView.registerCellsWithIdentifiers([FeedListTableViewCell.cellIdentifier()])
-        tableView.estimatedRowHeight = 85.0
-        tableView.rowHeight = UITableView.automaticDimension
-        setupRefreshControl()
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 44, right: 0)
+    fileprivate func setupMainView() {
+        view.addSubview(mainView)
+        mainView.constraintToSuperviewEdges()
+        
+        view.backgroundColor = Constants.Colors.grey
     }
     
-    private func setupRefreshControl() {
-        refreshControl = UIRefreshControl()
-        refreshControl?.tintColor = .blue
-        refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        if #available(iOS 10.0, *) {
-            tableView.refreshControl = refreshControl
-        } else {
-            tableView.backgroundView = refreshControl
-        }
+    fileprivate func setupBindings() {
+        mainView.tableView.registerCellsWithIdentifiers([FeedListTableViewCell.cellIdentifier()])
+        mainView.refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
     }
     
     // MARK: - Actions
     
     @objc fileprivate func refresh() {
-        presenter?.fetchData()
+        presenter.fetchData()
     }
 }
 
@@ -92,12 +95,12 @@ extension ListVC: ListViewInput {
         switch state {
         case .isLoading:
             HudHelper.showHUDInView(view, animated: true)
-            refreshControl?.beginRefreshing()
+            mainView.refreshControl.beginRefreshing()
         case .feedDidFetch(let items, let errorText):
             HudHelper.hideHUDInView(view, animated: false)
-            refreshControl?.endRefreshing()
+            mainView.refreshControl.endRefreshing()
             if !items.isEmpty {
-                tableView.reloadData()
+                mainView.tableView.reloadData()
             }
         }
     }
@@ -107,13 +110,13 @@ extension ListVC: ListViewInput {
 
 extension ListVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter?.feedItems.count ?? 0
+        return presenter.feedItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = FeedListTableViewCell.dequeueFromTableView(tableView)
         
-        guard let item = presenter?.feedItems[safe: indexPath.row] else {
+        guard let item = presenter.feedItems[safe: indexPath.row] else {
             return cell
         }
         
@@ -130,7 +133,7 @@ extension ListVC: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let item = presenter?.feedItems[safe: indexPath.row] else {return}
+        guard let item = presenter.feedItems[safe: indexPath.row] else {return}
         let worker = FeedDataWorker()
         let entity = worker.fetchItemByID(item.url.absoluteString) { (itemInStore) in
             print("itemInStore: \(itemInStore)")
@@ -143,9 +146,9 @@ extension ListVC: UITableViewDelegate {
 
 extension ListVC: FeedListTableViewCellInteractable {
     func linkDidTapInCell(_ cell: FeedListTableViewCell) {
-//        guard let indexPath = tableView.indexPath(for: cell),
-//            let url = presenter?.provideURLForIndex(indexPath.row) else {return}
-//        safariControllerHelper?.openURLInSafariViewController(url)
+        guard let indexPath = mainView.tableView.indexPath(for: cell),
+            let url = presenter.provideURLForIndex(indexPath.row) else {return}
+        safariControllerHelper?.openURLInSafariViewController(url)
     }
 }
 
